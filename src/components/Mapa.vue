@@ -3,9 +3,13 @@
         <div id="header">
             <h1 class="principal-title">Ferriel</h1>
         </div>
-        <div id="footer">
-            <ButtonP/>
+        <div id="content">
+            
         </div>
+        <div id="footer">
+            
+        </div>
+        <ButtonP/>
     </div>
 </template>
 
@@ -13,7 +17,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-//import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import Stats from 'stats.js'
 
 import ButtonP from '@/components/Button.vue'
@@ -31,7 +35,9 @@ export default {
             controls: null,
             renderer: null,
             stats: null,
-            selectedObject: null
+            raycaster: null,
+            mouse: new THREE.Vector2(),
+            group1: null
         }
     },
     methods: {
@@ -39,8 +45,7 @@ export default {
             // set container
             this.container = this.$refs.sceneContainer
 
-            this.mouse = new THREE.Vector2();
-            this.raycaster = new THREE.Raycaster();
+            
 
             // add stats
             this.stats = new Stats()
@@ -59,6 +64,7 @@ export default {
             // create scene
             this.scene = new THREE.Scene()
             this.scene.background = new THREE.Color('skyblue')
+            this.scene.fog = new THREE.Fog( 0x8f93e1, 0, 10 );
 
             // add lights
             const ambientLight = new THREE.HemisphereLight(
@@ -72,19 +78,6 @@ export default {
 
             /* const gridHelper = new THREE.GridHelper( 10, 50, 0x303030, 0x303030 );
             this.scene.add( gridHelper ); */
-
-            // add controls
-            this.controls = new OrbitControls(this.camera, this.container)
-            this.controls.autoRotate = true;
-            this.controls.minDistance = 5;
-            this.controls.maxDistance = 10;
-            //controls.enableRotate = false;
-            this.controls.maxPolarAngle = Math.PI/3;
-            this.controls.minPolarAngle = Math.PI/6;
-            //controls.minAzimuthAngle = Math.PI/4;
-            //controls.maxAzimuthAngle = Math.PI/4;
-            this.controls.zoomSpeed = 4; 
-            this.controls.enableDamping = true;
 
             // create renderer
             this.renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -106,7 +99,7 @@ export default {
                     this.mesh.scene.position.x = 0;
                     this.mesh.scene.position.y = 0;
                     this.mesh.scene.position.z = 0;
-                    this.scene.add(gltf.scene)
+                    this.scene.add(gltf.scene);
                 },
                 undefined,
                 undefined
@@ -165,56 +158,87 @@ export default {
             
             //Add geometry
 			var geometry = new THREE.BoxGeometry(2, 2, 2, 3,  3,  3);
-			var material = new THREE.MeshBasicMaterial( { color: 0xffffff} );
+			var material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff });
 			
-			var object = new THREE.Mesh(geometry, material);
-            object.position.z = -8;
-			this.scene.add( object );
+			var cube = new THREE.Mesh(geometry, material);
+            cube.position.z = -8;
+			this.scene.add( cube );
 
 			//Add Sphere
 			var sphere = new THREE.Mesh(new THREE.SphereGeometry(2, 16, 0, Math.PI), material);
 			sphere.position.x = 5;
             sphere.position.z = -8;
-			this.scene.add(sphere);
+			/* this.scene.add(sphere); */
 
 			//Add cone
 			var cone = new THREE.Mesh(new THREE.ConeGeometry(0.5, 2, 8, 2), material);
 			cone.position.x = -5;
             cone.position.z = -8;
-			this.scene.add(cone);
+			/* this.scene.add(cone); */
+
+            this.group1 = new THREE.Object3D();
+            this.group1.add(sphere);
+            this.group1.add(cone);
+            
+
+             //Render Label
+            this.labelRenderer = new CSS2DRenderer();
+            this.labelRenderer.setSize( window.innerWidth, window.innerHeight );
+            this.labelRenderer.domElement.style.position = 'absolute';
+            this.labelRenderer.domElement.style.top = '0px';
+            document.body.appendChild( this.labelRenderer.domElement );
+            
+            // add controls
+            this.controls = new OrbitControls(this.camera, this.labelRenderer.domElement)
+            this.controls.autoRotate = true;
+            this.controls.minDistance = 5;
+            this.controls.maxDistance = 10;
+            //controls.enableRotate = false;
+            this.controls.maxPolarAngle = Math.PI/3;
+            this.controls.minPolarAngle = Math.PI/6;
+            //controls.minAzimuthAngle = Math.PI/4;
+            //controls.maxAzimuthAngle = Math.PI/4;
+            this.controls.zoomSpeed = 4; 
+            this.controls.enableDamping = true;
+
+            //Label name
+            const nameEstation01 = document.createElement( 'div' );
+            nameEstation01.className = 'label';
+            nameEstation01.textContent = 'Estacion 01';
+            const nameLabel01 = new CSS2DObject( nameEstation01 );
+            nameLabel01.position.set(0, 1, 0);
+            nameLabel01.addEventListener("click", this.pop)
+            sphere.add( nameLabel01 );
+
+            const nameEstation02 = document.createElement( 'div' );
+            nameEstation02.className = 'label';
+            nameEstation02.textContent = 'Estacion 02';
+            const nameLabel02 = new CSS2DObject( nameEstation02 );
+            nameLabel02.position.set(0, 1, 0);
+            nameLabel02.addEventListener("click", this.pop)
+            cone.add( nameLabel02 );
+
+            const nameEstation03 = document.createElement( 'div' );
+            nameEstation03.className = 'label';
+            nameEstation03.textContent = 'Estacion 03';
+            const nameLabel03 = new CSS2DObject( nameEstation03 );
+            nameLabel03.position.set(0, 1, 0);
+            nameLabel03.addEventListener("click", this.pop)
+            cube.add( nameLabel03 );
 
             window.addEventListener( 'resize', this.onWindowResize);
-            document.addEventListener( 'mousemove', this.onMouseMove, false);
+            document.addEventListener( 'mousemove', this.onMouseMove);
+        },
+        pop ()
+        {
+            var popup = document.getElementById("myPopup");
+            popup.ClassList.toggle("show")
         },
         animate () {
 
             requestAnimationFrame( this.animate );
 
             this.controls.update();
-
-            this.raycaster.setFromCamera( this.mouse, this.camera );
-
-            /* const c = [this.object, this.cone, this.sphere];
-            const intersects = this.raycaster.intersectObjects(c); */
-
-            /* if( intersects.length > 0 ) {
-
-                const instanceID = intersects[0].instanceID;
-
-                c.getColorAt( instanceID, this.color );
-
-                if (this.color.equals( this.white )) {
-                    
-                    c.setColorAt( instanceID, this.color.setHex( Math.random()* 0xffffff ));
-
-                    c.instanceColor.needUpdate = true;
-                }
-            } */
-            /* for ( let i = 0; i < intersects.length; i ++ ) 
-            {
-                intersects[ i ].object.rotation.y += 0.15;
-                console.log(i);
-            } */
             this.render();
             this.stats.update();
         },
@@ -223,35 +247,47 @@ export default {
             this.camera.aspect = this.container.clientWidth / this.container.clientHeight
             this.camera.updateProjectionMatrix()
             this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+            this.labelRenderer.setSize(this.container.clientWidth, this.container.clientHeight);
         },
-        onMouseMove( event ) {
+        onMouseMove( event ) 
+        {
+            //Set raycaster
+            this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-            if( this.selectedObject ) {
+            this.raycaster = new THREE.Raycaster();
 
-                this.selectedObject.material.color.setHex( 0xffffff );
-                this.selectedObject = null;
-            }
+            this.raycaster.setFromCamera(this.mouse, this.camera);
 
-            /* event.preventDefault(); */
-            this.mouse.x = ( event.clientX / this.container.offsetWidth ) * 2 - 1;
-            this.mouse.y = - ( event.clientY / this.container.offsetHeight ) * 2 + 1;
+            this.scene.add(this.group1);
 
-            const c = [this.object, this.cone, this.sphere];
-            const intersects = this.raycaster.intersectObjects(c, true);
+            const intersects = this.raycaster.intersectObject(this.group1.children, false);
 
-            if ( intersects.length > 0) {
-                const res = intersects.filter( function ( res ) {
-                    return res && res.object;
-                })[0];
+            let INTERSECTED;
 
-                if( res && res.object) {
-                    this.selectedObject = res.object;
-                    this.selectedObject.material.color.setHex(0x000000);
+            if (intersects.length > 0) 
+            {   
+                console.log("intersecto un objeto");
+                if (INTERSECTED != intersects[0].this.sphere) {
+
+                    if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+
+                    INTERSECTED = intersects[0].this.sphere;
+                    INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+                    INTERSECTED.material.emissive.setHex(0xff0000);
+
                 }
+            } else {
+
+                if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+
+                INTERSECTED = null;
+
             }
         },
-        render () {     
+        render () {    
             this.renderer.render(this.scene, this.camera) 
+            this.labelRenderer.render(this.scene, this.camera)
         }
     },
     mounted () {

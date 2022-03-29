@@ -42,6 +42,7 @@ export default {
       this.scene = new THREE.Scene()
       this.scene.background = new THREE.Color('skyblue')
 
+
       // add lights
       const ambientLight = new THREE.HemisphereLight(
         0xffffff, // bright sky color
