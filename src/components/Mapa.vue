@@ -45,8 +45,6 @@ export default {
             // set container
             this.container = this.$refs.sceneContainer
 
-            
-
             // add stats
             this.stats = new Stats()
             this.container.appendChild(this.stats.dom)
@@ -64,7 +62,7 @@ export default {
             // create scene
             this.scene = new THREE.Scene()
             this.scene.background = new THREE.Color('skyblue')
-            this.scene.fog = new THREE.Fog( 0x8f93e1, 0, 10 );
+            this.scene.fog = new THREE.Fog( 0xa9b6c4, 0, 16 );
 
             // add lights
             const ambientLight = new THREE.HemisphereLight(

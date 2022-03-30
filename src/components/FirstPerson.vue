@@ -1,18 +1,18 @@
 <template>
   <div id="fp-container" ref="fpContainer">
-      <button id="btn">
+      <!-- <button id="btn">
           LOCK
       </button>
-      <!-- <div id="blocker">
-			<div >
-				<p style="font-size:36px">
-					Click to play
-				</p>
-				<p>
-					Move: WASD<br/>
-					Look: MOUSE
-				</p>
-			</div>
+      <div id="blocker">
+        <div id="instructions">
+          <p style="font-size:36px">
+            Click to play
+          </p>
+          <p>
+            Move: WASD<br/>
+            Look: MOUSE
+          </p>
+        </div>
 		</div> -->
   </div>
 </template>
@@ -20,6 +20,7 @@
 <script>
 import * as THREE from "three";
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls'
+//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export default {
   name: "PrimeraPersona",
@@ -30,6 +31,7 @@ export default {
       camera: null,
       renderer: null,
       pControls: null,
+      oControls: null,
       moveForward: false,
       moveBackward: false,
       moveLeft: false,
@@ -73,24 +75,25 @@ export default {
       this.scene.add( gridHelper );
 
       //Add geometry
-      var geometry = new THREE.BoxGeometry(2, 2, 2, 3, 3, 3);
+      var geometry = new THREE.BoxGeometry(0.5, 3, 2, 1, 1, 1);
       var material = new THREE.MeshNormalMaterial();
 
       var cube = new THREE.Mesh(geometry, material);
-      cube.position.set(0, 0, 0);
+      cube.position.set(0, 3, 0);
       this.scene.add(cube);
 
-      // create renderer
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-      this.renderer.setSize(
-        this.container.clientWidth,
-        this.container.clientHeight
-      );
-      this.renderer.setPixelRatio(window.devicePixelRatio);
-      this.container.appendChild(this.renderer.domElement);
+      // add pointerControl
+      this.pControls = new PointerLockControls(this.camera, this.container);
 
-      // add controls
-      this.pControls = new PointerLockControls(this.camera, this.renderer.domElement);
+      this.container.addEventListener('mousedown', ()=> {
+        document.body.requestPointerLock();
+        this.pControls.lock();
+      });
+      
+      //this.oControls = new OrbitControls(this.camera, this.container);
+      //this.oControls.keys;
+
+      
 
       /* const blocker = document.getElementById( 'blocker' );
       const instructions = document.getElementById( 'instructions' );
@@ -109,9 +112,23 @@ export default {
         blocker.style.display = 'block';
         instructions.style.display = '';
       }); */
-      document.getElementById('btn').onclick = ()=>{
+      /* this.pControls = new OrbitControls(this.camera, this.container); */
+
+      /* this.scene.add( this.pControls.getObject()) */
+
+
+      /* document.getElementById('btn').onclick = ()=>{
           this.pControls.lock();
-      } 
+      } */
+      
+       // create renderer
+      this.renderer = new THREE.WebGLRenderer({ antialias: true });
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.container.appendChild(this.renderer.domElement);
 
       window.addEventListener( 'resize', this.onWindowResize);
 

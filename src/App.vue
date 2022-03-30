@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <!-- <PrimeraPersona/> -->
-    <MapaEstaciones/>
+    <PrimeraPersona/>
+    <!-- <MapaEstaciones/> -->
   </div>
 </template>
 
 <script>
-import MapaEstaciones from './components/Mapa.vue'
-/* import PrimeraPersona from './components/FirstPerson.vue' */
+/* import MapaEstaciones from './components/Mapa.vue' */
+import PrimeraPersona from './components/FirstPerson.vue'
 
 export default {
   name: 'App',
   components: {
-    MapaEstaciones,
-    //PrimeraPersona
+    //MapaEstaciones,
+    PrimeraPersona
   }
 }
 </script>
