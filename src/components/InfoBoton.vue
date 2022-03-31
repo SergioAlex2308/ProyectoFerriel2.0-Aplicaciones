@@ -14,10 +14,10 @@
         <div class="datos" style="display:block" id="autores">
             
             <h5>Product Manager</h5>
-            <h6>Jhon Sebastian Martinez Orjuela</h6>
+            <h6>Jhon Sebastian Martínez Orjuela</h6>
           
             <h5>Development Team</h5> 
-            <h6> Sergio Alexander Martinez Cardenas <br>
+            <h6> Sergio Alexander Martínez Cardenas <br>
             David Ernesto Arguello Mosquera <br>
             Guillermo Andres Diaz Moreno<br>
            
