@@ -2,6 +2,8 @@
   <div id="scene-container" ref="sceneContainer">
     <div id="header">
         <h1 class="principal-title">Ferriel 2.0</h1>
+        <button v-if="FPest1 == false" @click="firstPerson">First person</button>
+        <button v-if="FPest1" @click="mainView">Main view</button>
     </div>
     <div id="content">
         <div class="point est1">
@@ -39,6 +41,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 //import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 //import Stats from 'stats.js'
+import { TWEEN }  from "three/examples/jsm/libs/tween.module.min.js"
+//import { TWEEN } from "js/tweenjs.min.js"
 
 //import ButtonP from '@/components/Button.vue'
 
@@ -59,6 +63,7 @@ export default {
       mouse: new THREE.Vector2(),
       points: [],
       point: null,
+      FPest1: false
     };
   },
   methods: {
@@ -77,7 +82,6 @@ export default {
       const far = 1000; // the far clipping plane
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
       camera.position.set(0, 5, 10);
-      /* camera.lookAt( this.scene.position ); */
       this.camera = camera;
 
       // create scene
@@ -109,10 +113,10 @@ export default {
       this.container.appendChild(this.renderer.domElement);
 
       //Load Model
-      const loader01 = new GLTFLoader().setPath("/three-assets/");
-      const loader02 = new GLTFLoader().setPath("/three-assets/");
-      const loader03 = new GLTFLoader().setPath("/three-assets/");
-      const loader04 = new GLTFLoader().setPath("/three-assets/");
+      const loader01 = new GLTFLoader().setPath("/Models/");
+      const loader02 = new GLTFLoader().setPath("/Models/");
+      const loader03 = new GLTFLoader().setPath("/Models/");
+      const loader04 = new GLTFLoader().setPath("/Models/");
 
       loader01.load(
         "City2.glb",
@@ -220,14 +224,15 @@ export default {
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
       this.controls.autoRotate = true;
       this.controls.minDistance = 5;
-      this.controls.maxDistance = 10;
+      this.controls.maxDistance = 12;
       //controls.enableRotate = false;
       this.controls.maxPolarAngle = Math.PI / 3;
       this.controls.minPolarAngle = Math.PI / 6;
       //controls.minAzimuthAngle = Math.PI/4;
       //controls.maxAzimuthAngle = Math.PI/4;
-      this.controls.zoomSpeed = 4;
+      this.controls.zoomSpeed = 1;
       this.controls.enableDamping = true;
+      this.controls.screenSpacePanning = false;
 
       //Label name
       /* const nameEstation01 = document.createElement( 'div' );
@@ -255,12 +260,6 @@ export default {
             cube.add( nameLabel03 ); */
 
       this.raycaster = new THREE.Raycaster();
-      /* this.points = [
-                {
-                    position: new THREE.Vector3(-10, -10, 0),
-                    element: document.querySelector('.point-0'),
-                }
-            ]; */
       this.points = [
         {
           position: new THREE.Vector3(2, 1, 0),
@@ -281,35 +280,7 @@ export default {
       ];
 
       window.addEventListener("resize", this.onWindowResize);
-      document.addEventListener("mousemove", this.onMouseMove);
-    },
-    pop() {
-      var popup = document.getElementById("myPopup");
-      popup.ClassList.toggle("show");
-    },
-    animate() {
-      requestAnimationFrame(this.animate);
-
-      this.controls.update();
-      this.contentPoints();
-      this.render();
-      //this.stats.update();
-    },
-    onWindowResize() {
-      // set aspect ratio to match the new browser window aspect ratio
-      this.camera.aspect =
-        this.container.clientWidth / this.container.clientHeight;
-      this.camera.updateProjectionMatrix();
-      this.renderer.setSize(
-        this.container.clientWidth,
-        this.container.clientHeight
-      );
-      /* this.labelRenderer.setSize(this.container.clientWidth, this.container.clientHeight); */
-    },
-    onMouseMove(event) {
-      //Set raycaster
-      this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      /* document.addEventListener("mousemove", this.onMouseMove); */
     },
     contentPoints() {
       for (this.point of this.points) {
@@ -341,6 +312,48 @@ export default {
         this.point.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
       }
     },
+    firstPerson()
+    {
+        let PosEst1 = new THREE.Vector3(0, 0, 0);
+        let aniEst1 = new TWEEN.Tween(this.camera.position)
+        .to(PosEst1, 2000)
+        .easing(TWEEN.Easing.Cubic.InOut);
+        aniEst1.start();
+        this.FPest1 = true;
+    },
+    mainView()
+    {
+        let PosCam = new THREE.Vector3(0, 5, 10);
+        let aniMain = new TWEEN.Tween(this.camera.position)
+        .to(PosCam, 2000)
+        .easing(TWEEN.Easing.Cubic.In);
+        aniMain.start();
+        this.FPest1 = false;
+    },
+    animate() {
+      requestAnimationFrame(this.animate);
+      this.controls.update();
+      TWEEN.update();
+      this.contentPoints();
+      this.render();
+      //this.stats.update();
+    },
+    onWindowResize() {
+      // set aspect ratio to match the new browser window aspect ratio
+      this.camera.aspect =
+        this.container.clientWidth / this.container.clientHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      /* this.labelRenderer.setSize(this.container.clientWidth, this.container.clientHeight); */
+    },
+    /* onMouseMove(event) {
+      //Set raycaster
+      this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    }, */
     render() {
       this.renderer.render(this.scene, this.camera);
       /* this.labelRenderer.render(this.scene, this.camera) */
