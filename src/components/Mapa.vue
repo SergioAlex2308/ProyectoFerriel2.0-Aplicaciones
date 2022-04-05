@@ -4,12 +4,18 @@
             <h1 class="principal-title">Ferriel</h1>
         </div>
         <div id="content">
-            
+            <div class="point"></div>
+            <div class="label">
+                <h2>Estacion</h2>
+            </div>
+            <div class="nom-estacion">
+                Estacion 01
+            </div>
         </div>
         <div id="footer">
             
         </div>
-        <ButtonP/>
+        <!-- <ButtonP/> -->
     </div>
 </template>
 
@@ -20,12 +26,12 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import Stats from 'stats.js'
 
-import ButtonP from '@/components/Button.vue'
+//import ButtonP from '@/components/Button.vue'
 
 export default {
     name: 'MapaEstaciones',
     components: {
-        ButtonP
+        /* ButtonP */
     },
     data () {
         return {
@@ -37,7 +43,8 @@ export default {
             stats: null,
             raycaster: null,
             mouse: new THREE.Vector2(),
-            group1: null
+            points: [],
+            point: null
         }
     },
     methods: {
@@ -199,6 +206,8 @@ export default {
             this.controls.zoomSpeed = 4; 
             this.controls.enableDamping = true;
 
+            
+            
             //Label name
             const nameEstation01 = document.createElement( 'div' );
             nameEstation01.className = 'label';
@@ -255,32 +264,49 @@ export default {
 
             this.raycaster = new THREE.Raycaster();
 
-            this.raycaster.setFromCamera(this.mouse, this.camera);
-
-            this.scene.add(this.group1);
-
-            const intersects = this.raycaster.intersectObject(this.group1.children, false);
-
-            let INTERSECTED;
-
-            if (intersects.length > 0) 
-            {   
-                console.log("intersecto un objeto");
-                if (INTERSECTED != intersects[0].this.sphere) {
-
-                    if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-
-                    INTERSECTED = intersects[0].this.sphere;
-                    INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-                    INTERSECTED.material.emissive.setHex(0xff0000);
-
+            this.points = [
+                {
+                    position: new THREE.Vector3(0, 1 , 0),
+                    element: document.querySelector('point-0'),
                 }
-            } else {
+            ];
+            /* this.contentPoints(); */
+        },
+        contentPoints()
+        {
+            for(this.point of this.points)
+            {
+                const screenPosition = this.point.position.clone();
+                screenPosition.project(this.camera);
 
-                if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-
-                INTERSECTED = null;
-
+                this.raycaster.setFromCamera(screenPosition, this.camera);
+                this.intersects = this.raycaster.intersectObjects(
+                    this.scene.children,
+                    true
+                );
+                if(this.intersects.length === 0)
+                {
+                    this.point.element.ClassList.add("visible");
+                }
+                else
+                {
+                    const intersectionDistance = this.intersects[0].distance;
+                    const pointDistance = this.point.position.distanceTo(
+                        this.camera.position
+                    );
+                    if(intersectionDistance < pointDistance)
+                    {
+                        this.point.element.ClassList.remove("visible");
+                    }
+                    else
+                    {
+                        this.point.element.ClassList.add("visible");
+                    }
+                }
+                const translateX = screenPosition.x * this.container.clientWidth * 0.5;
+                const translateY =
+                    -screenPosition.y * this.container.clientHeight * 0.5;
+                this.point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`;
             }
         },
         render () {    
