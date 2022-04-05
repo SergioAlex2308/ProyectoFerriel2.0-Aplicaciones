@@ -1,151 +1,168 @@
 <template>
-    <div id="scene-container" ref="sceneContainer">
-        <div id="header">
-            <h1 class="principal-title">Ferriel</h1>
-        </div>
-        <div id="content">
-            <div class="point"></div>
-            <div class="label">
-                <h2>Estacion</h2>
-            </div>
-            <div class="nom-estacion">
-                Estacion 01
-            </div>
-        </div>
-        <div id="footer">
-            
-        </div>
-        <!-- <ButtonP/> -->
+  <div id="scene-container" ref="sceneContainer">
+    <div id="header">
+        <h1 class="principal-title">Ferriel 2.0</h1>
     </div>
+    <div id="content">
+        <div class="point est1">
+            <div class="label">Estacion Usaquén</div>
+            <div class="nom-estacion">
+                Información de las estaciones.
+            </div>
+        </div>
+        <div class="point est2">
+            <div class="label">Estacion Chía</div>
+            <div class="nom-estacion">
+                Información de las estaciones.
+            </div>
+        </div>
+        <div class="point est3">
+            <div class="label">Estacion Cajicá</div>
+            <div class="nom-estacion">
+                Información de las estaciones.
+            </div>
+        </div>
+        <div class="point est4">
+            <div class="label">Estacion Zipaquirá</div>
+            <div class="nom-estacion">
+                Información de las estaciones.
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+  </div>
 </template>
 
 <script>
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
-import Stats from 'stats.js'
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+//import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+//import Stats from 'stats.js'
 
 //import ButtonP from '@/components/Button.vue'
 
 export default {
-    name: 'MapaEstaciones',
-    components: {
-        /* ButtonP */
-    },
-    data () {
-        return {
-            container: null,
-            scene: null,
-            camera: null,
-            controls: null,
-            renderer: null,
-            stats: null,
-            raycaster: null,
-            mouse: new THREE.Vector2(),
-            points: [],
-            point: null
-        }
-    },
-    methods: {
-        init () {
-            // set container
-            this.container = this.$refs.sceneContainer
+  name: "MapaEstaciones",
+  components: {
+    /* ButtonP */
+  },
+  data() {
+    return {
+      container: null,
+      scene: null,
+      camera: null,
+      controls: null,
+      renderer: null,
+      stats: null,
+      raycaster: null,
+      mouse: new THREE.Vector2(),
+      points: [],
+      point: null,
+    };
+  },
+  methods: {
+    init() {
+      // set container
+      this.container = this.$refs.sceneContainer;
 
-            // add stats
-            this.stats = new Stats()
-            this.container.appendChild(this.stats.dom)
+      // add stats
+      /* this.stats = new Stats()
+            this.container.appendChild(this.stats.dom) */
 
-            // add camera
-            const fov = 60 // Field of view
-            const aspect = this.container.clientWidth / this.container.clientHeight
-            const near = 0.1 // the near clipping plane
-            const far = 1000 // the far clipping plane
-            const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-            camera.position.set(0, 5, 10)
-            /* camera.lookAt( this.scene.position ); */
-            this.camera = camera
+      // add camera
+      const fov = 40; // Field of view
+      const aspect = this.container.clientWidth / this.container.clientHeight;
+      const near = 0.1; // the near clipping plane
+      const far = 1000; // the far clipping plane
+      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+      camera.position.set(0, 5, 10);
+      /* camera.lookAt( this.scene.position ); */
+      this.camera = camera;
 
-            // create scene
-            this.scene = new THREE.Scene()
-            this.scene.background = new THREE.Color('skyblue')
-            this.scene.fog = new THREE.Fog( 0xa9b6c4, 0, 16 );
+      // create scene
+      this.scene = new THREE.Scene();
+      this.scene.background = new THREE.Color("skyblue");
+      this.scene.fog = new THREE.Fog(0x8caad2, 0, 16);
 
-            // add lights
-            const ambientLight = new THREE.HemisphereLight(
-                0xffffff, // bright sky color
-                0x222222, // dim ground color
-                0.5 // intensity
-            )
-            const mainLight = new THREE.DirectionalLight(0xffffff, 1.0)
-            mainLight.position.set(10, 10, 10)
-            this.scene.add(ambientLight, mainLight)
+      // add lights
+      const ambientLight = new THREE.HemisphereLight(
+        0xffffff, // bright sky color
+        0x222222, // dim ground color
+        0.5 // intensity
+      );
+      const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
+      mainLight.position.set(10, 10, 10);
+      this.scene.add(ambientLight, mainLight);
 
-            /* const gridHelper = new THREE.GridHelper( 10, 50, 0x303030, 0x303030 );
+      /* const gridHelper = new THREE.GridHelper( 10, 50, 0x303030, 0x303030 );
             this.scene.add( gridHelper ); */
 
-            // create renderer
-            this.renderer = new THREE.WebGLRenderer({ antialias: true })
-            this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
-            this.renderer.setPixelRatio(window.devicePixelRatio)
-            this.renderer.outputEncoding = THREE.sRGBEncoding
-            this.container.appendChild(this.renderer.domElement)
+      // create renderer
+      this.renderer = new THREE.WebGLRenderer({ antialias: true });
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.outputEncoding = THREE.sRGBEncoding;
+      this.container.appendChild(this.renderer.domElement);
 
-            //Load Model
-            const loader01 = new GLTFLoader().setPath('/three-assets/');
-            const loader02 = new GLTFLoader().setPath('/three-assets/');
-            const loader03 = new GLTFLoader().setPath('/three-assets/');
-            const loader04 = new GLTFLoader().setPath('/three-assets/');
+      //Load Model
+      const loader01 = new GLTFLoader().setPath("/three-assets/");
+      const loader02 = new GLTFLoader().setPath("/three-assets/");
+      const loader03 = new GLTFLoader().setPath("/three-assets/");
+      const loader04 = new GLTFLoader().setPath("/three-assets/");
 
-            loader01.load(
-                'City2.glb',
-                gltf => {
-                    this.mesh = gltf;
-                    this.mesh.scene.position.x = 0;
-                    this.mesh.scene.position.y = 0;
-                    this.mesh.scene.position.z = 0;
-                    this.scene.add(gltf.scene);
-                },
-                undefined,
-                undefined
-            )
-            loader02.load(
-                'City2.glb',
-                gltf => {
-                    this.mesh = gltf;
-                    this.mesh.scene.position.x = 4.5;
-                    this.mesh.scene.position.y = 0;
-                    this.mesh.scene.position.z = 0;
-                    this.scene.add(gltf.scene)
-                },
-                undefined,
-                undefined
-            )
-            loader03.load(
-                'City2.glb',
-                gltf => {
-                    this.mesh = gltf;
-                    this.mesh.scene.position.x = 4.5;
-                    this.mesh.scene.position.y = 0;
-                    this.mesh.scene.position.z = 4.5;
-                    this.scene.add(gltf.scene)
-                },
-                undefined,
-                undefined
-            )
-            loader04.load(
-                'City2.glb',
-                gltf => {
-                    this.mesh = gltf;
-                    this.mesh.scene.position.x = 0;
-                    this.mesh.scene.position.y = 0;
-                    this.mesh.scene.position.z = 4.5;
-                    this.scene.add(gltf.scene)
-                },
-                undefined,
-                undefined
-            )
-            /* loader.load(
+      loader01.load(
+        "City2.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.scene.position.x = 0;
+          this.mesh.scene.position.y = 0;
+          this.mesh.scene.position.z = 0;
+          this.scene.add(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader02.load(
+        "City2.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.scene.position.x = 4.5;
+          this.mesh.scene.position.y = 0;
+          this.mesh.scene.position.z = 0;
+          this.scene.add(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader03.load(
+        "City2.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.scene.position.x = 4.5;
+          this.mesh.scene.position.y = 0;
+          this.mesh.scene.position.z = 4.5;
+          this.scene.add(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader04.load(
+        "City2.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.scene.position.x = 0;
+          this.mesh.scene.position.y = 0;
+          this.mesh.scene.position.z = 4.5;
+          this.scene.add(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      /* loader.load(
                 'Train.glb',
                 gltf => {
                     this.mesh = gltf;
@@ -157,59 +174,63 @@ export default {
                 undefined,
                 undefined
             ) */
-            
-            this.color = new THREE.Color();
-			this.white = new THREE.Color().setHex( 0xffffff );
-            
-            //Add geometry
-			var geometry = new THREE.BoxGeometry(2, 2, 2, 3,  3,  3);
-			var material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff });
-			
-			var cube = new THREE.Mesh(geometry, material);
-            cube.position.z = -8;
-			this.scene.add( cube );
 
-			//Add Sphere
-			var sphere = new THREE.Mesh(new THREE.SphereGeometry(2, 16, 0, Math.PI), material);
-			sphere.position.x = 5;
-            sphere.position.z = -8;
-			/* this.scene.add(sphere); */
+      this.color = new THREE.Color();
+      this.white = new THREE.Color().setHex(0xffffff);
 
-			//Add cone
-			var cone = new THREE.Mesh(new THREE.ConeGeometry(0.5, 2, 8, 2), material);
-			cone.position.x = -5;
-            cone.position.z = -8;
-			/* this.scene.add(cone); */
+      //Add geometry
+      var geometry = new THREE.BoxGeometry(2, 2, 2, 3, 3, 3);
+      var material = new THREE.MeshLambertMaterial({
+        color: Math.random() * 0xffffff,
+      });
 
-            this.group1 = new THREE.Object3D();
-            this.group1.add(sphere);
-            this.group1.add(cone);
-            
+      var cube = new THREE.Mesh(geometry, material);
+      cube.position.x = 0;
+      cube.position.y = 0;
+      cube.position.z = -8;
+      /* this.scene.add(cube); */
 
-             //Render Label
-            this.labelRenderer = new CSS2DRenderer();
+      //Add Sphere
+      var sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(2, 16, 0, Math.PI),
+        material
+      );
+      sphere.position.x = 5;
+      sphere.position.z = -8;
+      /* this.scene.add(sphere); */
+
+      //Add cone
+      var cone = new THREE.Mesh(new THREE.ConeGeometry(0.5, 2, 8, 2), material);
+      cone.position.x = -5;
+      cone.position.z = -8;
+      /* this.scene.add(cone); */
+
+      this.group1 = new THREE.Object3D();
+      this.group1.add(sphere);
+      this.group1.add(cone);
+
+      //Render Label
+      /* this.labelRenderer = new CSS2DRenderer();
             this.labelRenderer.setSize( window.innerWidth, window.innerHeight );
             this.labelRenderer.domElement.style.position = 'absolute';
             this.labelRenderer.domElement.style.top = '0px';
-            document.body.appendChild( this.labelRenderer.domElement );
-            
-            // add controls
-            this.controls = new OrbitControls(this.camera, this.labelRenderer.domElement)
-            this.controls.autoRotate = true;
-            this.controls.minDistance = 5;
-            this.controls.maxDistance = 10;
-            //controls.enableRotate = false;
-            this.controls.maxPolarAngle = Math.PI/3;
-            this.controls.minPolarAngle = Math.PI/6;
-            //controls.minAzimuthAngle = Math.PI/4;
-            //controls.maxAzimuthAngle = Math.PI/4;
-            this.controls.zoomSpeed = 4; 
-            this.controls.enableDamping = true;
+            document.body.appendChild( this.labelRenderer.domElement ); */
 
-            
-            
-            //Label name
-            const nameEstation01 = document.createElement( 'div' );
+      // add controls
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+      this.controls.autoRotate = true;
+      this.controls.minDistance = 5;
+      this.controls.maxDistance = 10;
+      //controls.enableRotate = false;
+      this.controls.maxPolarAngle = Math.PI / 3;
+      this.controls.minPolarAngle = Math.PI / 6;
+      //controls.minAzimuthAngle = Math.PI/4;
+      //controls.maxAzimuthAngle = Math.PI/4;
+      this.controls.zoomSpeed = 4;
+      this.controls.enableDamping = true;
+
+      //Label name
+      /* const nameEstation01 = document.createElement( 'div' );
             nameEstation01.className = 'label';
             nameEstation01.textContent = 'Estacion 01';
             const nameLabel01 = new CSS2DObject( nameEstation01 );
@@ -231,94 +252,105 @@ export default {
             const nameLabel03 = new CSS2DObject( nameEstation03 );
             nameLabel03.position.set(0, 1, 0);
             nameLabel03.addEventListener("click", this.pop)
-            cube.add( nameLabel03 );
+            cube.add( nameLabel03 ); */
 
-            window.addEventListener( 'resize', this.onWindowResize);
-            document.addEventListener( 'mousemove', this.onMouseMove);
-        },
-        pop ()
-        {
-            var popup = document.getElementById("myPopup");
-            popup.ClassList.toggle("show")
-        },
-        animate () {
-
-            requestAnimationFrame( this.animate );
-
-            this.controls.update();
-            this.render();
-            this.stats.update();
-        },
-        onWindowResize() {
-            // set aspect ratio to match the new browser window aspect ratio
-            this.camera.aspect = this.container.clientWidth / this.container.clientHeight
-            this.camera.updateProjectionMatrix()
-            this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-            this.labelRenderer.setSize(this.container.clientWidth, this.container.clientHeight);
-        },
-        onMouseMove( event ) 
-        {
-            //Set raycaster
-            this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-            this.raycaster = new THREE.Raycaster();
-
-            this.points = [
+      this.raycaster = new THREE.Raycaster();
+      /* this.points = [
                 {
-                    position: new THREE.Vector3(0, 1 , 0),
-                    element: document.querySelector('point-0'),
+                    position: new THREE.Vector3(-10, -10, 0),
+                    element: document.querySelector('.point-0'),
                 }
-            ];
-            /* this.contentPoints(); */
-        },
-        contentPoints()
+            ]; */
+      this.points = [
         {
-            for(this.point of this.points)
-            {
-                const screenPosition = this.point.position.clone();
-                screenPosition.project(this.camera);
-
-                this.raycaster.setFromCamera(screenPosition, this.camera);
-                this.intersects = this.raycaster.intersectObjects(
-                    this.scene.children,
-                    true
-                );
-                if(this.intersects.length === 0)
-                {
-                    this.point.element.ClassList.add("visible");
-                }
-                else
-                {
-                    const intersectionDistance = this.intersects[0].distance;
-                    const pointDistance = this.point.position.distanceTo(
-                        this.camera.position
-                    );
-                    if(intersectionDistance < pointDistance)
-                    {
-                        this.point.element.ClassList.remove("visible");
-                    }
-                    else
-                    {
-                        this.point.element.ClassList.add("visible");
-                    }
-                }
-                const translateX = screenPosition.x * this.container.clientWidth * 0.5;
-                const translateY =
-                    -screenPosition.y * this.container.clientHeight * 0.5;
-                this.point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`;
-            }
+          position: new THREE.Vector3(2, 1, 0),
+          element: document.querySelector(".est1"),
         },
-        render () {    
-            this.renderer.render(this.scene, this.camera) 
-            this.labelRenderer.render(this.scene, this.camera)
+        {
+          position: new THREE.Vector3(-2, 1, 0),
+          element: document.querySelector(".est2"),
+        },
+        {
+          position: new THREE.Vector3(2, 1, 6),
+          element: document.querySelector(".est3"),
+        },
+        {
+          position: new THREE.Vector3(-2, 1, 6),
+          element: document.querySelector(".est4"),
         }
+      ];
+
+      window.addEventListener("resize", this.onWindowResize);
+      document.addEventListener("mousemove", this.onMouseMove);
     },
-    mounted () {
-        this.init()
-        this.animate()
-    }
-}
+    pop() {
+      var popup = document.getElementById("myPopup");
+      popup.ClassList.toggle("show");
+    },
+    animate() {
+      requestAnimationFrame(this.animate);
+
+      this.controls.update();
+      this.contentPoints();
+      this.render();
+      //this.stats.update();
+    },
+    onWindowResize() {
+      // set aspect ratio to match the new browser window aspect ratio
+      this.camera.aspect =
+        this.container.clientWidth / this.container.clientHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      /* this.labelRenderer.setSize(this.container.clientWidth, this.container.clientHeight); */
+    },
+    onMouseMove(event) {
+      //Set raycaster
+      this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    },
+    contentPoints() {
+      for (this.point of this.points) {
+        const screenPosition = this.point.position.clone();
+        screenPosition.project(this.camera);
+
+        this.raycaster.setFromCamera(screenPosition, this.camera);
+        this.intersects = this.raycaster.intersectObjects(
+          this.scene.children,
+          true
+        );
+        if (this.intersects.length === 0) {
+          this.point.element.classList.add("visible");
+        } 
+        else {
+          const intersectionDistance = this.intersects[0].distance;
+          const pointDistance = this.point.position.distanceTo(
+            this.camera.position
+          );
+          if (intersectionDistance < pointDistance) {
+            this.point.element.classList.remove("visible");
+          } else {
+            this.point.element.classList.add("visible");
+          }
+        }
+        const translateX = screenPosition.x * this.container.clientWidth * 0.5;
+        const translateY =-screenPosition.y * this.container.clientHeight * 0.5;
+        //this.point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`;
+        this.point.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+      }
+    },
+    render() {
+      this.renderer.render(this.scene, this.camera);
+      /* this.labelRenderer.render(this.scene, this.camera) */
+    },
+  },
+  mounted() {
+    this.init();
+    this.animate();
+  },
+};
 </script>
 
 <style src="../assets/Styles/style_Mapa.css"></style>
