@@ -1,8 +1,8 @@
 <template>
 
     <div class="margenes"><h1>Pagina no encontrada</h1>
-    <h3>Error 404</h3>
-    <img alt="Logo" style="width:100%; display:block" src="../assets/imagenes/animu2.gif"> 
+   
+    <img alt="Logo" style="width:100%; display:block" src="src/assets/imagenes/animu2.gif"> 
 
     </div>
     
