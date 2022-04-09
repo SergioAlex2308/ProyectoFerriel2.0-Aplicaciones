@@ -19,9 +19,9 @@ export default {
   name: 'App',
   components: {
     MapaEstaciones,
-    EsperaUsuarios,
+    /* EsperaUsuarios,
     NotFound,
-    InfoBoton
+    InfoBoton */
     //PrimeraPersona
   }
 }
