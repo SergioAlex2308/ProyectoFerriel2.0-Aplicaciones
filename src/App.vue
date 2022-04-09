@@ -2,23 +2,24 @@
   <div id="app">
     <!-- <PrimeraPersona/> -->
     <MapaEstaciones/>
-    <espera-usuarios/>
+    <!-- <espera-usuarios/>
     <info-boton/>
-    <not-found/>
+    <not-found/> -->
   </div>
 </template>
 
 <script>
-import EsperaUsuarios from './components/EsperaUsuarios.vue'
-import InfoBoton from './components/InfoBoton.vue'
+
 import MapaEstaciones from './components/Mapa.vue'
-import NotFound from './components/NotFound.vue'
+//import NotFound from './components/NotFound.vue'
+//import EsperaUsuarios from './components/EsperaUsuarios.vue'
+//import InfoBoton from './components/InfoBoton.vue'
 //import PrimeraPersona from './components/FirstPerson.vue'
 
 export default {
   name: 'App',
   components: {
-    MapaEstaciones,
+    MapaEstaciones
     /* EsperaUsuarios,
     NotFound,
     InfoBoton */
