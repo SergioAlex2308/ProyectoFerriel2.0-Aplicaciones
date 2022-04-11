@@ -3,6 +3,10 @@
     margin: 0;
     padding: 0;
 }
+.imagen{
+    background-color: black;
+}
+
 #scene-container {
     background-color: rgb(55, 55, 55);
     width: 100%;
@@ -10,11 +14,15 @@
     position: fixed;
     outline: none;
 }
+
 .principal-title
 {
     margin: 0;
     text-align: center;
     vertical-align: middle;
+}
+#gabs{
+    background-color: #000000;
 }
 #header
 {
@@ -24,6 +32,7 @@
     width: 20em;
     height: 50em;
     cursor: pointer;
+ 
 }
 #header h1
 {

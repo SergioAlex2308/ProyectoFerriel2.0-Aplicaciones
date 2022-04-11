@@ -1,6 +1,16 @@
 <template>
+
   <div id="scene-container" ref="sceneContainer">
+     <div class="informacion" id="informacionID" style="z-index=100">
+          <info-boton/>
+    </div> 
+     <div class="imagen"  style="position:absolute">
+        <button id=gabs; style="border:none; "  >     
+        </button>
+         <img alt="Logo" style="width:10%; display:block; margin-left: 85%;" src="../assets/imagenes/LOGOFONDO.png" @click="mostrarinformacion()" >   
+      </div>   
     <div id="header">
+        
         <h1 class="principal-title">Ferriel 2.0</h1>
         <button v-if="FPest1 == false" @click="firstPerson">First person</button>
         <button v-if="FPest1" @click="mainView">Main view</button>
@@ -31,7 +41,9 @@
             </div>
         </div>
     </div>
-    <div id="footer"></div>
+    <div id="footer">
+       <img   src="../assets/imagenes/Controles.png">
+    </div>
   </div>
 </template>
 
@@ -44,12 +56,13 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TWEEN }  from "three/examples/jsm/libs/tween.module.min.js"
 //import { TWEEN } from "js/tweenjs.min.js"
 
-//import ButtonP from '@/components/Button.vue'
+import InfoBoton from './InfoBoton.vue';
 
 export default {
   name: "MapaEstaciones",
   components: {
-    /* ButtonP */
+    InfoBoton
+ 
   },
   data() {
     return {
@@ -67,6 +80,13 @@ export default {
     };
   },
   methods: {
+    mostrarinformacion(){
+        var x = document.getElementById("informacionID");
+        x.style.display="block";
+        x.style.zIndex=100;
+        console.log("funciona");
+      },
+
     init() {
       // set container
       this.container = this.$refs.sceneContainer;
@@ -364,6 +384,141 @@ export default {
     this.animate();
   },
 };
+
 </script>
 
-<style src="../assets/Styles/style_Mapa.css"></style>
+<style scoped>
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.imagen{
+  
+    width: 100%;
+ 
+
+}
+
+#scene-container {
+    background-color:skyblue;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    outline: none;
+    z-index: 1000;
+}
+
+.principal-title
+{
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    left: 100%;
+}
+#gabs{
+    background-color: red;
+    z-index: 100;
+}
+#header
+{
+    position: absolute;
+    top: 3em;
+    left: 3em;
+    width: 14em;
+    height: 50em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+ 
+}
+#header h1
+{
+    height: 5%;
+    margin: 10%;
+    background-color: transparent;
+    color: black;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    
+}
+#content 
+{
+    z-index: 1;
+}
+ #footer 
+{
+    width:1%; 
+    margin-left: 75%;
+    position: relative;
+    bottom: -48em;
+} 
+.point
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.point .label {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 330px;
+    height: 90px;
+    padding: 10px;
+    border-radius: 5%;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000000;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 100;
+    font-size: 40px;
+    transform: scale(0, 0);
+    transition: transform 0.3s;
+}
+.point 
+{
+    cursor: pointer;
+}
+.point .nom-estacion 
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+    left: 105px;
+    width: 100px;
+    padding: 20px;
+    border-radius: 6px;
+    background: #000000cb;
+    color: #ffffff;
+    line-height: 1.3em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.point:hover .nom-estacion
+{
+    opacity: 1;
+    overflow: hidden;
+}
+.point.visible .label 
+{
+    transform: scale(0.5, 0.5);
+}
+
+
+</style>
+
+
+

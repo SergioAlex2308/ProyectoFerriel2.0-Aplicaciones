@@ -1,7 +1,7 @@
 <template>
 
     <div id="loading-wrapper">
-        <img src="src/assets/imagenes/PantallaCarga.png" >
+        <img src="../assets/imagenes/PantallaCarga.png" >
       <div id="loading-content">
        
       </div>

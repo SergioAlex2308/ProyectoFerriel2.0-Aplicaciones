@@ -3,19 +3,18 @@
     <div class="todo">
           <header class="header">
             <div class="logos" >
-                    <img alt="Logo" style="width:150px; display:block" src="C:\Users\USUARIO\Documents\GitHub\ProyectoFerriel2.0-Aplicaciones\src\imagenes/LOGOFONDO.png"> 
+                    <img alt="Logo" style="width:150px; display:block" src="../assets/imagenes/LOGOFONDO.png"> 
             </div>
      
             <div class="cerrar">
-                <button type="button" class="btn-close" @click="cerrarinformacion()">
+                <button  type="button" class="btn-close" @click="cerrarinformacion()">X
                 </button>
             </div>
         </header>
-        <div class="overflow-auto" style="display:block" id="autores">
-            
-     <h2>Product Manager</h2>
+        <div class="overflow-auto" style="display:block" id="autores">     
+             <h2>Product Manager</h2>
             <h6>Jhon Sebastian Martinez Orjuela</h6>
-          <img class="circular--square" src="src/assets/imagenes/tres.png" width="100px" alt="virgo">
+          <img class="circular--square" src="../assets/imagenes/tres.png" width="100px" alt="virgo">
             <h2 class="hola">Development Team</h2> 
             <h6> Sergio Alexander Martinez Cardenas <br>
             David Ernesto Arguello Mosquera <br>
@@ -23,9 +22,9 @@
            
             </h6>
              <div class="caras">
-                      <img class="circular--square" src="src/assets/imagenes/uno.png" width="100px" alt="virgo">
-                      <img class="circular--square" src="src/assets/imagenes/dos.png" width="100px" alt="mata">
-                      <img class="circular--square" src="src/assets/imagenes/cuatro.png" width="100px" alt="mata">
+                      <img class="circular--square" src="../assets/imagenes/uno.png" width="100px" alt="virgo">
+                      <img class="circular--square" src="../assets/imagenes/dos.png" width="100px" alt="mata">
+                      <img class="circular--square" src="../assets/imagenes/cuatro.png" width="100px" alt="mata">
                   </div>
             <div class="universidad" style="font-size: 16px;" > 
                <h5> UMNG<br>
@@ -51,8 +50,8 @@
                 </div >
                     <div class="columnas">
                   <div class="imagenescol">
-                      <img src="src/assets/imagenes/virgen.png" width="200px" alt="virgo">
-                       <img src="src/assets/imagenes/matera.png" width="200px" alt="mata">
+                      <img src="../assets/imagenes/virgen.png" width="200px" alt="virgo">
+                       <img src="../assets/imagenes/matera.png" width="200px" alt="mata">
                   </div>
                    <div id="estodeberia" >
                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -88,11 +87,11 @@
                       , and more recently with desktop publishing software like Aldus PageMaker including versions o
                       f Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </p>
-               <img src="src/assets/imagenes/HorariosTrenZipaquira.png" width="600px" alt="mata">
+               <img src="../assets/imagenes/HorariosTrenZipaquira.png" width="600px" alt="mata">
             <h1>Mapas</h1>
              <div class="mapas">
-                      <img src="src/assets/imagenes/tablatren.png" width="300px" alt="virgo">
-                       <img src="src/assets/imagenes/map.jpg" width="300px" alt="mata">
+                      <img src="../assets/imagenes/tablatren.png" width="300px" alt="virgo">
+                       <img src="../assets/imagenes/map.jpg" width="300px" alt="mata">
                   </div>
         </div>
                  <div class="overflow-auto" style="display:none" id="controles">
@@ -109,7 +108,7 @@
             
             <h1>Controles</h1>
              <div class="control">
-                      <img src="src/assets/imagenes/Controles.png" width="200px" alt="control">
+                      <img src="../assets/imagenes/Controles.png" width="200px" alt="control">
                        
                   </div>
             
@@ -148,7 +147,7 @@ export default {
         cerrarinformacion(){
         var x = document.getElementById("informacionID");
         x.style.display="none";
-        x.style.zIndex=100;
+        // x.style.z-index=101;
         },
         informacion:function() {
             var x = document.getElementById("autores");   
@@ -249,6 +248,7 @@ export default {
     justify-content: space-around;
     padding-bottom: 30px;
 }
+
 .universidad{
     margin-bottom: 50px;
 }
@@ -264,8 +264,8 @@ export default {
         flex-direction: column;
         border: solid 2px black;
     }
-    .modal-backdrop {
-       
+    .modal-backdrop  {
+       position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -273,7 +273,7 @@ export default {
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(146, 99, 99, 0);
     }
     .menu{
         display: flex;
@@ -322,11 +322,11 @@ export default {
        border-radius: 30px;
        font-family: 'Montserrat', sans-serif; 
        padding: 3%;
-       color: white;
+       color: black;
     }
     .btn-dark2:hover{
         background-color: #78ccac;
-        color: white;
+        color: black;
     }
     .header{
         display: flex;
@@ -372,7 +372,7 @@ export default {
         
         /*** ESTILOS BOTÓN GROW BOX ***/
 .ov-btn-grow-box {
-  background: #fff; /* color de fondo */
+  background: rgb(0, 0, 0); /* color de fondo */
   color: #4741d7; /* color de fuente */
   border: 2px solid #4741d7; /* tamaño y color de borde */
   padding: 16px 20px;
