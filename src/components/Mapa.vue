@@ -106,7 +106,7 @@ export default {
       // create scene
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("skyblue");
-      this.scene.fog = new THREE.Fog(0x8caad2, 0, 16);
+      this.scene.fog = new THREE.Fog(0xcbe9fc, 0, 20);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
