@@ -5,6 +5,7 @@
     <!-- <espera-usuarios/>
     <info-boton/>
     <not-found/> -->
+    <!-- <Colisiones/> -->
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import MapaEstaciones from './components/Mapa.vue'
 //import EsperaUsuarios from './components/EsperaUsuarios.vue'
 //import InfoBoton from './components/InfoBoton.vue'
 //import PrimeraPersona from './components/FirstPerson.vue'
+//import Colisiones from './components/Collition.vue'
 
 export default {
   name: 'App',
@@ -24,6 +26,7 @@ export default {
     NotFound,
     InfoBoton */
     //PrimeraPersona
+    //Colisiones
   }
 }
 </script>
