@@ -10,36 +10,49 @@
          <img alt="Logo" style="width:10%; display:block; margin-left: 85%;" src="../assets/imagenes/LOGOFONDO.png" @click="mostrarinformacion()" >   
       </div>   
     <div id="header">
+<<<<<<< HEAD
         
         <h1 class="principal-title">Ferriel 2.0</h1>
         <button v-if="FPest1 == false" @click="firstPerson">First person</button>
         <button v-if="FPest1" @click="mainView">Main view</button>
+=======
+      <h1 class="principal-title">Ferriel 2.0</h1>
+      <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
+      <button v-if="FPest1" @click="mainView" class="buttonView">
+        Main view
+      </button>
+      <button v-if="FPest2" @click="mainView" class="buttonView">
+        Main view
+      </button>
+      <button v-if="FPest3" @click="mainView" class="buttonView">
+        Main view
+      </button>
+      <button v-if="FPest4" @click="mainView" class="buttonView">
+        Main view
+      </button>
+>>>>>>> ThreejsFuncionamiento
     </div>
     <div id="content">
-        <div class="point est1">
-            <div class="label">Estacion Usaquén</div>
-            <div class="nom-estacion">
-                Información de las estaciones.
-            </div>
-        </div>
-        <div class="point est2">
-            <div class="label">Estacion Chía</div>
-            <div class="nom-estacion">
-                Información de las estaciones.
-            </div>
-        </div>
-        <div class="point est3">
-            <div class="label">Estacion Cajicá</div>
-            <div class="nom-estacion">
-                Información de las estaciones.
-            </div>
-        </div>
-        <div class="point est4">
-            <div class="label">Estacion Zipaquirá</div>
-            <div class="nom-estacion">
-                Información de las estaciones.
-            </div>
-        </div>
+      <div v-show="FPest1 == false" @click="FPEstacion1" class="point est1">
+        <div class="label">Estacion Usaquén</div>
+        <div class="marca"></div>
+        <div class="nom-estacion">Información de las estaciones.</div>
+      </div>
+      <div v-show="FPest2 == false" @click="FPEstacion2" class="point est2">
+        <div class="label">Estacion Chía</div>
+        <div class="marca"></div>
+        <div class="nom-estacion">Información de las estaciones.</div>
+      </div>
+      <div v-show="FPest3 == false" @click="FPEstacion3" class="point est3">
+        <div class="label">Estacion Cajicá</div>
+        <div class="marca"></div>
+        <div class="nom-estacion">Información de las estaciones.</div>
+      </div>
+      <div v-show="FPest4 == false" @click="FPEstacion4" class="point est4">
+        <div class="label">Estacion Zipaquirá</div>
+        <div class="marca"></div>
+        <div class="nom-estacion">Información de las estaciones.</div>
+      </div>
     </div>
     <div id="footer">
        <img   src="../assets/imagenes/Controles.png">
@@ -51,19 +64,25 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-//import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 //import Stats from 'stats.js'
-import { TWEEN }  from "three/examples/jsm/libs/tween.module.min.js"
-//import { TWEEN } from "js/tweenjs.min.js"
+import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
+import { PointerLockControls } from "three/examples/jsm/controls/PointerLockControls";
+import { Octree } from "three/examples/jsm/math/Octree";
+//import { OctreeHelper } from 'three/examples/jsm/helpers/OctreeHelper';
+import { Capsule } from "three/examples/jsm/math/Capsule";
 
 import InfoBoton from './InfoBoton.vue';
 
 export default {
   name: "MapaEstaciones",
+<<<<<<< HEAD
   components: {
     InfoBoton
  
   },
+=======
+  components: {},
+>>>>>>> ThreejsFuncionamiento
   data() {
     return {
       container: null,
@@ -73,10 +92,40 @@ export default {
       renderer: null,
       stats: null,
       raycaster: null,
-      mouse: new THREE.Vector2(),
-      points: [],
+      MainTarget: null,
+      MainPosition: null,
+      points: [], //PuntosEstaciones
       point: null,
-      FPest1: false
+      FPest1: false,
+      FPest2: false,
+      FPest3: false,
+      FPest4: false,
+      pControls: null, //FirstPerson
+      onViewFP: false,
+      moveForward: false,
+      moveBackward: false,
+      moveLeft: false,
+      moveRight: false,
+      prevTime: performance.now(),
+      velocity: new THREE.Vector3(),
+      direction: new THREE.Vector3(),
+      worldOctree: new Octree(), //Collition
+      playerCollider: new Capsule(
+        new THREE.Vector3(0, 0.35, 0),
+        new THREE.Vector3(0, 1, 0),
+        0.35
+      ),
+      playerVelocity: new THREE.Vector3(),
+      playerDirection: new THREE.Vector3(),
+      mouseTime: 0,
+      keyStates: {},
+      deltaTime: null,
+      STEPS: 2,
+      vector1: new THREE.Vector3(),
+      vector2: new THREE.Vector3(),
+      vector3: new THREE.Vector3(),
+      clock: new THREE.Clock(),
+      GRAVITY: 30,
     };
   },
   methods: {
@@ -100,14 +149,20 @@ export default {
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.1; // the near clipping plane
       const far = 1000; // the far clipping plane
-      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(0, 5, 10);
-      this.camera = camera;
+      this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+      this.camera.position.x = 0;
+      this.camera.position.y = 8;
+      this.camera.position.z = 0;
+
+      this.MainPosition = new THREE.Vector3();
+      this.MainPosition.copy(this.camera.position);
+
+      this.camera.rotation.order = "YXZ";
 
       // create scene
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("skyblue");
-      this.scene.fog = new THREE.Fog(0x8caad2, 0, 16);
+      this.scene.fog = new THREE.Fog(0xcbe9fc, 0, 20);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -134,23 +189,30 @@ export default {
 
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
-      const loader02 = new GLTFLoader().setPath("/Models/");
+      /* const loader02 = new GLTFLoader().setPath("/Models/");
       const loader03 = new GLTFLoader().setPath("/Models/");
-      const loader04 = new GLTFLoader().setPath("/Models/");
+      const loader04 = new GLTFLoader().setPath("/Models/"); */
+      //const loader05 = new GLTFLoader().setPath( '/Models/' );
 
       loader01.load(
-        "City2.glb",
+        "Zipaquira02.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.scene.position.x = 0;
           this.mesh.scene.position.y = 0;
           this.mesh.scene.position.z = 0;
           this.scene.add(gltf.scene);
+          this.worldOctree.fromGraphNode(gltf.scene);
+
+          /* const helper = new OctreeHelper( this.worldOctree );
+          helper.visible = false;
+          this.scene.add( helper ); */
+          this.animate();
         },
         undefined,
         undefined
       );
-      loader02.load(
+      /* loader02.load(
         "City2.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -185,104 +247,85 @@ export default {
         },
         undefined,
         undefined
-      );
-      /* loader.load(
-                'Train.glb',
-                gltf => {
-                    this.mesh = gltf;
-                    this.mesh.scene.position.x = 0;
-                    this.mesh.scene.position.y = 0;
-                    this.mesh.scene.position.z = 0;
-                    this.scene.add(gltf.scene)
-                },
-                undefined,
-                undefined
-            ) */
+      ); */
+
+      /* loader05.load( 'CollisionWorld.glb', ( gltf ) => {
+
+				this.scene.add( gltf.scene );
+
+				this.worldOctree.fromGraphNode( gltf.scene );
+
+				//Shadows
+				gltf.scene.traverse( child => {
+
+					if ( child.isMesh ) {
+
+						child.castShadow = true;
+						child.receiveShadow = true;
+
+						if ( child.material.map ) {
+
+							child.material.map.anisotropy = 4;
+
+						}
+
+					}
+
+				} );
+
+				const helper = new OctreeHelper( this.worldOctree );
+				helper.visible = false;
+				this.scene.add( helper );
+
+			} ); */
 
       this.color = new THREE.Color();
       this.white = new THREE.Color().setHex(0xffffff);
 
       //Add geometry
-      var geometry = new THREE.BoxGeometry(2, 2, 2, 3, 3, 3);
+      var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
 
       var cube = new THREE.Mesh(geometry, material);
-      cube.position.x = 0;
-      cube.position.y = 0;
-      cube.position.z = -8;
-      /* this.scene.add(cube); */
+      cube.position.x = 2;
+      cube.position.y = 0.5;
+      cube.position.z = 0;
+      this.scene.add(cube);
 
-      //Add Sphere
-      var sphere = new THREE.Mesh(
-        new THREE.SphereGeometry(2, 16, 0, Math.PI),
-        material
-      );
-      sphere.position.x = 5;
-      sphere.position.z = -8;
-      /* this.scene.add(sphere); */
-
-      //Add cone
-      var cone = new THREE.Mesh(new THREE.ConeGeometry(0.5, 2, 8, 2), material);
-      cone.position.x = -5;
-      cone.position.z = -8;
-      /* this.scene.add(cone); */
-
-      this.group1 = new THREE.Object3D();
-      this.group1.add(sphere);
-      this.group1.add(cone);
-
-      //Render Label
-      /* this.labelRenderer = new CSS2DRenderer();
-            this.labelRenderer.setSize( window.innerWidth, window.innerHeight );
-            this.labelRenderer.domElement.style.position = 'absolute';
-            this.labelRenderer.domElement.style.top = '0px';
-            document.body.appendChild( this.labelRenderer.domElement ); */
-
-      // add controls
+      console.log("Vista", this.onViewFP);
+      
+      // add Orbitcontrols
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-      this.controls.autoRotate = true;
-      this.controls.minDistance = 5;
-      this.controls.maxDistance = 12;
-      //controls.enableRotate = false;
-      this.controls.maxPolarAngle = Math.PI / 3;
-      this.controls.minPolarAngle = Math.PI / 6;
-      //controls.minAzimuthAngle = Math.PI/4;
-      //controls.maxAzimuthAngle = Math.PI/4;
-      this.controls.zoomSpeed = 1;
-      this.controls.enableDamping = true;
-      this.controls.screenSpacePanning = false;
 
-      //Label name
-      /* const nameEstation01 = document.createElement( 'div' );
-            nameEstation01.className = 'label';
-            nameEstation01.textContent = 'Estacion 01';
-            const nameLabel01 = new CSS2DObject( nameEstation01 );
-            nameLabel01.position.set(0, 1, 0);
-            nameLabel01.addEventListener("click", this.pop)
-            sphere.add( nameLabel01 );
+      // add pointerControl
+      this.pControls = new PointerLockControls(
+        this.camera,
+        this.renderer.domElement
+      );
 
-            const nameEstation02 = document.createElement( 'div' );
-            nameEstation02.className = 'label';
-            nameEstation02.textContent = 'Estacion 02';
-            const nameLabel02 = new CSS2DObject( nameEstation02 );
-            nameLabel02.position.set(0, 1, 0);
-            nameLabel02.addEventListener("click", this.pop)
-            cone.add( nameLabel02 );
-
-            const nameEstation03 = document.createElement( 'div' );
-            nameEstation03.className = 'label';
-            nameEstation03.textContent = 'Estacion 03';
-            const nameLabel03 = new CSS2DObject( nameEstation03 );
-            nameLabel03.position.set(0, 1, 0);
-            nameLabel03.addEventListener("click", this.pop)
-            cube.add( nameLabel03 ); */
+      if (!this.onViewFP) {
+        this.controls.autoRotate = true;
+        this.controls.autoRotateSpeed = 1;
+        this.controls.rotateSpeed = 0.3;
+        this.controls.enableZoom = false;
+        this.controls.enablePan = false;
+        this.controls.maxPolarAngle = Math.PI / 3;
+        this.controls.minPolarAngle = Math.PI / 6;
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.1;
+        this.controls.screenSpacePanning = false;
+        this.MainTarget = new THREE.Vector3(0, 0, 0);
+        this.controls.target.copy(this.MainTarget);
+        //controls.minAzimuthAngle = Math.PI/4;
+        //controls.maxAzimuthAngle = Math.PI/4;
+      }
 
       this.raycaster = new THREE.Raycaster();
       this.points = [
         {
-          position: new THREE.Vector3(2, 1, 0),
+          position: new THREE.Vector3(2, 0.8, 0),
           element: document.querySelector(".est1"),
         },
         {
@@ -296,11 +339,21 @@ export default {
         {
           position: new THREE.Vector3(-2, 1, 6),
           element: document.querySelector(".est4"),
-        }
+        },
       ];
 
+      //Collition
+      this.worldOctree = new Octree();
+      this.playerCollider = new Capsule(
+        new THREE.Vector3(0, 0.35, 0),
+        new THREE.Vector3(0, 1, 0),
+        0.35
+      );
+
       window.addEventListener("resize", this.onWindowResize);
-      /* document.addEventListener("mousemove", this.onMouseMove); */
+
+      /* window.addEventListener( 'keydown', this.onKeyDown);
+      window.addEventListener( 'keyup', this.onkeyUp); */
     },
     contentPoints() {
       for (this.point of this.points) {
@@ -314,8 +367,7 @@ export default {
         );
         if (this.intersects.length === 0) {
           this.point.element.classList.add("visible");
-        } 
-        else {
+        } else {
           const intersectionDistance = this.intersects[0].distance;
           const pointDistance = this.point.position.distanceTo(
             this.camera.position
@@ -327,36 +379,315 @@ export default {
           }
         }
         const translateX = screenPosition.x * this.container.clientWidth * 0.5;
-        const translateY =-screenPosition.y * this.container.clientHeight * 0.5;
-        //this.point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`;
+        const translateY =
+          -screenPosition.y * this.container.clientHeight * 0.5;
         this.point.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
       }
     },
-    firstPerson()
-    {
-        let PosEst1 = new THREE.Vector3(0, 0, 0);
-        let aniEst1 = new TWEEN.Tween(this.camera.position)
-        .to(PosEst1, 2000)
-        .easing(TWEEN.Easing.Cubic.InOut);
-        aniEst1.start();
-        this.FPest1 = true;
+    FPEstacion1() {
+      /* console.log("Camaracopy", CameraPosition);
+        console.log("CamaraMain", this.camera.position.x) */
+      let PosEst1 = new THREE.Vector3(2, 0.5, 0);
+      let aniEst1 = new TWEEN.Tween(this.camera.position)
+        .to(PosEst1, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut);
+      aniEst1.start();
+
+      this.firstPerson();
+
+      this.FPest1 = true;
+      this.FPest2 = false;
+      this.FPest3 = false;
+      this.FPest4 = false;
+
+      this.onViewFP = true;
+      //console.log("Primera", this.onViewFP)
     },
-    mainView()
+    FPEstacion2() {
+      /* console.log("Camaracopy", CameraPosition);
+        console.log("CamaraMain", this.camera.position.x) */
+
+      let PosEst2 = new THREE.Vector3(-2, 1, 0);
+      let aniEst2 = new TWEEN.Tween(this.camera.position)
+        .to(PosEst2, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut);
+      aniEst2.start();
+      this.FPest1 = false;
+      this.FPest2 = true;
+      this.FPest3 = false;
+      this.FPest4 = false;
+
+      this.onViewFP = true;
+      //console.log("Primera", this.onViewFP)
+    },
+    FPEstacion3() {
+      /* console.log("Camaracopy", CameraPosition);
+        console.log("CamaraMain", this.camera.position.x) */
+      let PosEst3 = new THREE.Vector3(2, 1, 6);
+      let aniEst3 = new TWEEN.Tween(this.camera.position)
+        .to(PosEst3, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut);
+      aniEst3.start();
+
+      this.FPest1 = false;
+      this.FPest2 = false;
+      this.FPest3 = true;
+      this.FPest4 = false;
+
+      this.onViewFP = true;
+      //console.log("Primera", this.onViewFP)
+    },
+    FPEstacion4() {
+      /* console.log("Camaracopy", CameraPosition);
+        console.log("CamaraMain", this.camera.position.x) */
+      let PosEst4 = new THREE.Vector3(-2, 1, 6);
+      let aniEst4 = new TWEEN.Tween(this.camera.position)
+        .to(PosEst4, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut);
+      aniEst4.start();
+      this.FPest1 = false;
+      this.FPest2 = false;
+      this.FPest3 = false;
+      this.FPest4 = true;
+
+      this.onViewFP = true;
+      //console.log("Primera", this.onViewFP)
+    },
+    mainView() {
+      let aniMain = new TWEEN.Tween(this.camera.position)
+        .to(this.MainPosition, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut);
+      aniMain.start();
+      
+      this.FPest1 = false;
+      this.onViewFP = false;
+      
+      console.log("Main", this.onViewFP);
+    },
+    firstPerson() {
+      /* this.container.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        document.body.requestPointerLock();
+        this.pControls.lock();
+      }); */
+      
+      this.container.addEventListener("mousedown", () => {
+        document.body.requestPointerLock();
+        this.pControls.lock();
+        this.mouseTime = performance.now();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        this.keyStates[event.code] = true;
+      });
+      document.addEventListener("keyup", (event) => {
+        this.keyStates[event.code] = false;
+      });
+
+      /* document.body.addEventListener("mousemove", (event) => {
+        if (document.pointerLockElement === document.body) {
+          this.camera.rotation.y -= event.movementX / 500;
+          this.camera.rotation.x -= event.movementY / 500;
+        }
+      }); */
+    },
+    /* onKeyDown ( event )
     {
-        let PosCam = new THREE.Vector3(0, 5, 10);
-        let aniMain = new TWEEN.Tween(this.camera.position)
-        .to(PosCam, 2000)
-        .easing(TWEEN.Easing.Cubic.In);
-        aniMain.start();
-        this.FPest1 = false;
+        switch ( event.code ) 
+        {
+
+            case 'ArrowUp':
+            case 'KeyW':
+                this.moveForward = true;
+                break;
+
+            case 'ArrowLeft':
+            case 'KeyA':
+                this.moveLeft = true;
+                break;
+
+            case 'ArrowDown':
+            case 'KeyS':
+                this.moveBackward = true;
+                break;
+
+            case 'ArrowRight':
+            case 'KeyD':
+                this.moveRight = true;
+                break;
+		}
+    },
+    onkeyUp(event) 
+    {
+        switch ( event.code ) 
+        {
+
+            case 'ArrowUp':
+            case 'KeyW':
+                this.moveForward = false;
+                break;
+
+            case 'ArrowLeft':
+            case 'KeyA':
+                this.moveLeft = false;
+                break;
+
+            case 'ArrowDown':
+            case 'KeyS':
+                this.moveBackward = false;
+                break;
+
+            case 'ArrowRight':
+            case 'KeyD':
+                this.moveRight = false;
+                break;
+		}
+    },
+    Move () 
+    {
+        const time = performance.now();
+
+        const delta = (time - this.prevTime)/1000;
+
+        this.velocity.x -=this.velocity.x * 10.0 * delta;
+        this.velocity.z -=this.velocity.z * 10.0 * delta;
+
+        this.direction.z = Number( this.moveForward )- Number( this.moveBackward);
+        this.direction.x = Number( this.moveRight ) - Number( this.moveLeft );
+        this.direction.normalize();
+
+        if(this.moveForward || this.moveBackward) this.velocity.z -=this.direction.z * 20.0 * delta;
+        if(this.moveLeft || this.moveRight ) this.velocity.x -= this.direction.x * 20.0 * delta;
+
+        this.pControls.moveRight( - this.velocity.x *delta);
+        this.pControls.moveForward( - this.velocity.z * delta);
+
+        this.prevTime = time;
+    }, */
+    playerCollisions() {
+      const result = this.worldOctree.capsuleIntersect(this.playerCollider);
+
+      this.playerOnFloor = false;
+
+      if (result) {
+        this.playerOnFloor = result.normal.y > 0;
+
+        if (!this.playerOnFloor) {
+          this.playerVelocity.addScaledVector(
+            result.normal,
+            -result.normal.dot(this.playerVelocity)
+          );
+        }
+
+        this.playerCollider.translate(
+          result.normal.multiplyScalar(result.depth)
+        );
+      }
+    },
+    updatePlayer(deltaTime) {
+      let damping = Math.exp(-4 * deltaTime) - 1;
+
+      if (!this.playerOnFloor) {
+        this.playerVelocity.y -= this.GRAVITY * deltaTime;
+
+        // small air resistance
+        damping *= 0.1;
+      }
+
+      this.playerVelocity.addScaledVector(this.playerVelocity, damping);
+
+      const deltaPosition = this.playerVelocity
+        .clone()
+        .multiplyScalar(deltaTime);
+      this.playerCollider.translate(deltaPosition);
+
+      this.playerCollisions();
+
+      this.camera.position.copy(this.playerCollider.end);
+    },
+    getForwardVector() {
+      this.camera.getWorldDirection(this.playerDirection);
+      this.playerDirection.y = 0;
+      this.playerDirection.normalize();
+
+      return this.playerDirection;
+    },
+    getSideVector() {
+      this.camera.getWorldDirection(this.playerDirection);
+      this.playerDirection.y = 0;
+      this.playerDirection.normalize();
+      this.playerDirection.cross(this.camera.up);
+
+      return this.playerDirection;
+    },
+    controlsMove(deltaTime) {
+      // gives a bit of air control
+      //const speedDelta = deltaTime * ( this.playerOnFloor ? 25 : 8 );
+      const speedDelta = deltaTime * 25;
+
+      if (this.keyStates["KeyW"]) {
+        //this.playerVelocity.add( this.getForwardVector().multiplyScalar( speedDelta ) );
+        this.playerVelocity.add(
+          this.getForwardVector().multiplyScalar(speedDelta)
+        );
+      }
+
+      if (this.keyStates["KeyS"]) {
+        this.playerVelocity.add(
+          this.getForwardVector().multiplyScalar(-speedDelta)
+        );
+      }
+
+      if (this.keyStates["KeyA"]) {
+        this.playerVelocity.add(
+          this.getSideVector().multiplyScalar(-speedDelta)
+        );
+      }
+
+      if (this.keyStates["KeyD"]) {
+        this.playerVelocity.add(
+          this.getSideVector().multiplyScalar(speedDelta)
+        );
+      }
+
+      if ( this.playerOnFloor ) {
+
+				if ( this.keyStates[ 'Space' ] ) {
+
+					this.playerVelocity.y = 15;
+				}
+			}
+    },
+    teleportPlayerIfOob() {
+      if (this.camera.position.y <= -25) {
+        this.playerCollider.start.set(0, 0.35, 0);
+        this.playerCollider.end.set(0, 1, 0);
+        this.playerCollider.radius = 0.35;
+        this.camera.position.copy(this.playerCollider.end);
+        this.camera.rotation.set(0, 0, 0);
+      }
     },
     animate() {
-      requestAnimationFrame(this.animate);
-      this.controls.update();
+      if (this.onViewFP) {
+        //this.Move();
+        this.deltaTime = Math.min(0.05, this.clock.getDelta()) / this.STEPS;
+
+        for (let i = 0; i < this.STEPS; i++) {
+          
+          this.controlsMove(this.deltaTime);
+          this.updatePlayer(this.deltaTime);
+          this.teleportPlayerIfOob();
+        }
+      } else {
+        this.controls.update();
+      }
+
       TWEEN.update();
       this.contentPoints();
       this.render();
       //this.stats.update();
+
+      requestAnimationFrame(this.animate);
     },
     onWindowResize() {
       // set aspect ratio to match the new browser window aspect ratio
@@ -367,13 +698,7 @@ export default {
         this.container.clientWidth,
         this.container.clientHeight
       );
-      /* this.labelRenderer.setSize(this.container.clientWidth, this.container.clientHeight); */
     },
-    /* onMouseMove(event) {
-      //Set raycaster
-      this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    }, */
     render() {
       this.renderer.render(this.scene, this.camera);
       /* this.labelRenderer.render(this.scene, this.camera) */
