@@ -1,0 +1,226 @@
+.columnas {
+	display: flex;
+	margin: 2px;
+	padding: 5px;
+}
+
+.imagenescol {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: 10px;
+	padding: 20px;
+}
+
+.overflow-auto::-webkit-scrollbar {
+	width: 7px;
+	background: black;
+	border: solid 2px black;
+}
+
+.circular--square {
+	border-top-left-radius: 50% 50%;
+	border-top-right-radius: 50% 50%;
+	border-bottom-right-radius: 50% 50%;
+	border-bottom-left-radius: 50% 50%;
+}
+
+.caras {
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 30px;
+}
+
+.universidad {
+	margin-bottom: 50px;
+}
+
+.mapas {
+	display: flex;
+	justify-content: space-around;
+	margin: 10px;
+	padding: 20px;
+
+}
+
+.texto {
+	display: flex;
+	flex-direction: column;
+	border: solid 2px black;
+}
+
+.modal-backdrop {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(146, 99, 99, 0);
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.todo {
+	background: #FFFBBC;
+	width: 40%;
+	height: 70%;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	text-align: center;
+	padding: 33px;
+	min-height: 250px;
+	border-radius: 60px;
+
+	box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.219);
+}
+
+h1 {
+	color: #0053AE;
+}
+
+h2 {
+	color: #0053AE;
+}
+
+h3 {
+	color: black;
+}
+
+h4 {
+	color: black;
+}
+
+h5 {
+	color: black;
+}
+
+h6 {
+	color: black;
+}
+
+p {
+	color: black;
+}
+
+.btn-dark2 {
+	margin: 1%;
+	background-color: #414aff;
+	border: none;
+	border-radius: 30px;
+	font-family: 'Montserrat', sans-serif;
+	padding: 3%;
+	color: black;
+}
+
+.btn-dark2:hover {
+	background-color: #78ccac;
+	color: black;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 5%;
+}
+
+.datos {
+	color: #ffffff;
+}
+
+.logos {
+	margin-left: 40%;
+}
+
+h6 {
+	margin-bottom: 7%;
+}
+
+h5 {
+	font-family: 'Righteous';
+}
+
+#boton2 {
+	left: 10%;
+}
+
+.botones {
+	padding-top: 25px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.vor {
+	border: solid 5px black;
+}
+
+#perfil {
+	height: 350px;
+}
+
+#otracosa {
+	height: 350px;
+}
+
+#controles {
+	height: 350px;
+}
+
+#autores {
+	height: 350px;
+}
+
+/*** ESTILOS BOTÓN GROW BOX ***/
+.ov-btn-grow-box {
+	background: rgb(0, 0, 0);
+	/* color de fondo */
+	color: #4741d7;
+	/* color de fuente */
+	border: 2px solid #4741d7;
+	/* tamaño y color de borde */
+	padding: 16px 20px;
+	border-radius: 3px;
+	/* redondear bordes */
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.ov-btn-grow-box:hover {
+	color: #fff;
+	/* color de fuente hover */
+}
+
+.ov-btn-grow-box::after {
+	content: "";
+	background: #4741d7;
+	/* color de fondo hover */
+	position: absolute;
+	z-index: -1;
+	padding: 16px 20px;
+	display: block;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	transform: scale(0, 0);
+	transition: all 0.3s ease;
+}
+
+.ov-btn-grow-box:hover::after {
+	transition: all 0.3s ease-out;
+	transform: scale(1, 1);
+}
+
+.hola {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
