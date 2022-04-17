@@ -1,7 +1,6 @@
 <template>
-
   <div id="scene-container" ref="sceneContainer">
-     <!-- <div class="informacion" style="z-index=100">
+     <!-- <div class="informacion" style="z-index=1000">
           <Informacion/>
     </div>  -->
      <!-- <div class="imagen"  style="position:absolute">
@@ -11,9 +10,22 @@
       </div>    -->
     <div id="header">
       <h1 class="principal-title">Ferriel 2.0</h1>
-      <img class="icon" src="../assets/imagenes/LOGOFONDO.png" alt="LogoFerriel">
+      <div class="menu">
+        <img
+          class="icon"
+          src="../assets/imagenes/LOGOFONDO.png"
+          alt="LogoFerriel"
+        />
+      </div>
+     <!--  <Informacion v-show="showInfo"></Informacion> -->
+      
+      
+      <!-- <div v-show="cross" class="crosshair"></div> -->
       <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
-      <button v-if="FPest1" @click="mainView" class="buttonView">
+      <button v-if="Fp" @click="mainView" class="buttonView">
+        Volver a la vista aerea
+      </button>
+      <!-- <button v-if="FPest1" @click="mainView" class="buttonView">
         Main view
       </button>
       <button v-if="FPest2" @click="mainView" class="buttonView">
@@ -24,10 +36,15 @@
       </button>
       <button v-if="FPest4" @click="mainView" class="buttonView">
         Main view
-      </button>
+      </button> -->
     </div>
     <div v-show="onViewFP == false" id="content">
-      <div v-show="FPest1 == false" @click="FPEstacion1" class="point est1">
+      <div v-show="Fp == false" @click="ViewFp" class="point FpView">
+        <div class="label">Visita las estaciones</div>
+        <div class="marca"></div>
+        <div class="nom-estacion">Haz click para navegar en primera persona.</div>
+      </div>
+      <!-- <div v-show="FPest1 == false" @click="FPEstacion1" class="point est1">
         <div class="label">Estación Usaquén</div>
         <div class="marca"></div>
         <div class="nom-estacion">Información de las estaciones.</div>
@@ -46,15 +63,29 @@
         <div class="label">Estación Zipaquirá</div>
         <div class="marca"></div>
         <div class="nom-estacion">Información de las estaciones.</div>
+      </div> -->
+    </div>
+    <div v-show="onViewFP == false" id="footer01">
+      <div class="instView">
+          <img class="Mouse" src="../assets/Icons/Icons-Mouse.png" alt="Icono Mouse">
+           <p>Haz click y arrastra el ratón para mover la vista</p>
       </div>
     </div>
-    <div v-show="onViewFP == false" id="footer">
-      <div class="iconControls">
-          <img class="Mouse" src="../assets/imagenes/Iconos-Mouse.png">
-        </div>
-        <div class="instructions">
-          <h3>Haz click y arrastra el mouse para mover la vista</h3>
-        </div>
+    <div v-show="onViewFP" id="footer02">
+      <div class="instMove">
+        <img class="Keys" src="../assets/Icons/Icons-Keys.png" alt="Teclas de movimiento">
+        <p>Presiona las teclas para desplazarte.</p>
+      </div>
+      <div class="instMoveCamera">
+        <img class="Mouse" src="../assets/Icons/Icons-Mouse.png" alt="Icono Mouse">
+        <p>Oprime click derecho 
+          <br>
+          para mirar a tu alrededor.</p>
+      </div>
+      <div class="instEsc">
+        <img class="Escape" src="../assets/Icons/Icons-Escape.png" alt="Icono tecla escape">
+        <p>Presiona la tecla Escape para liberar el cursor.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -88,13 +119,16 @@ export default {
       raycaster: null,
       MainTarget: null,
       MainPosition: null,
+      showInfo: false,
       points: [], //PuntosEstaciones
       point: null,
+      Fp: false,
       FPest1: false,
       FPest2: false,
       FPest3: false,
       FPest4: false,
       pControls: null, //FirstPerson
+      cross: false,
       onViewFP: false,
       moveForward: false,
       moveBackward: false,
@@ -137,8 +171,8 @@ export default {
       const near = 0.1; // the near clipping plane
       const far = 1000; // the far clipping plane
       this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      this.camera.position.x = 0;
-      this.camera.position.y = 8;
+      this.camera.position.x = 10;
+      this.camera.position.y = 20;
       this.camera.position.z = 0;
 
       this.MainPosition = new THREE.Vector3();
@@ -149,7 +183,7 @@ export default {
       // create scene
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("skyblue");
-      this.scene.fog = new THREE.Fog(0xcbe9fc, 0, 20);
+      this.scene.fog = new THREE.Fog(0xcbe9fc, 0, 50);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -176,16 +210,16 @@ export default {
 
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
-      const loader02 = new GLTFLoader().setPath("/Models/");
+      //const loader02 = new GLTFLoader().setPath("/Models/");
       //const loader03 = new GLTFLoader().setPath("/Models/");
       //const loader04 = new GLTFLoader().setPath("/Models/");
       //const loader05 = new GLTFLoader().setPath( '/Models/' );
 
       loader01.load(
-        "Zipaquira03.glb",
+        "Zipaquira05.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.scene.position.x = -2;
+          this.mesh.scene.position.x = -12;
           this.mesh.scene.position.y = 0;
           this.mesh.scene.position.z = 0;
           this.scene.add(gltf.scene);
@@ -199,7 +233,7 @@ export default {
         undefined,
         undefined
       );
-      loader02.load(
+      /* loader02.load(
         "Suelo.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -211,7 +245,7 @@ export default {
         },
         undefined,
         undefined
-      );
+      ); */
       /*loader03.load(
         "City2.glb",
         (gltf) => {
@@ -277,12 +311,12 @@ export default {
       });
 
       var cube1 = new THREE.Mesh(geometry, material);
-      cube1.position.x = 2;
-      cube1.position.y = 0.5;
+      cube1.position.x = 0;
+      cube1.position.y = -0.5;
       cube1.position.z = 0;
       this.scene.add(cube1);
 
-      var cube2 = new THREE.Mesh(geometry, material);
+      /* var cube2 = new THREE.Mesh(geometry, material);
       cube2.position.x = -2;
       cube2.position.y = 0.5;
       cube2.position.z = 0;
@@ -298,7 +332,7 @@ export default {
       cube4.position.x = -2;
       cube4.position.y = 0.5;
       cube4.position.z = 6;
-      this.scene.add(cube4);
+      this.scene.add(cube4); */
       
       // add Orbitcontrols
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -327,7 +361,7 @@ export default {
       }
 
       this.raycaster = new THREE.Raycaster();
-      this.points = [
+      /* this.points = [
         {
           position: new THREE.Vector3(2, 1, 0),
           element: document.querySelector(".est1"),
@@ -344,6 +378,12 @@ export default {
           position: new THREE.Vector3(-2, 1, 6),
           element: document.querySelector(".est4"),
         },
+      ]; */
+      this.points = [
+        {
+          position: new THREE.Vector3(0, 0, 0),
+          element: document.querySelector(".FpView"),
+        }
       ];
 
       //Collition
@@ -358,6 +398,11 @@ export default {
 
       /* window.addEventListener( 'keydown', this.onKeyDown);
       window.addEventListener( 'keyup', this.onkeyUp); */
+    },
+    info()
+    {
+      this.showInfo = true;
+      console.log(this.showInfo);
     },
     contentPoints() {
       for (this.point of this.points) {
@@ -388,12 +433,27 @@ export default {
         this.point.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
       }
     },
+    ViewFp() {
+      this.MainPosition.copy(this.camera.position);
+
+      var PosFp = new THREE.Vector3(0, 0, 0);
+      new TWEEN.Tween(this.camera.position)
+        .to(PosFp, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut).start();
+
+      if(!this.onViewFP)
+      {
+        this.firstPerson();
+      }
+      this.Fp = true;
+      this.onViewFP = true;
+    },
     FPEstacion1() {
       
       this.MainPosition.copy(this.camera.position);
       //var targetEst = new THREE.Vector3(1, 0, 0);
 
-      var PosEst1 = new THREE.Vector3(3, 1, 0);
+      var PosEst1 = new THREE.Vector3(0, 0, 0);
       new TWEEN.Tween(this.camera.position)
         .to(PosEst1, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut).start();
@@ -475,6 +535,9 @@ export default {
         .easing(TWEEN.Easing.Quadratic.InOut).start();
       
       this.FPest1 = false;
+
+      this.Fp = false;
+      this.cross = false;
       this.onViewFP = false;
 
     },
@@ -483,6 +546,7 @@ export default {
       this.pControls.enabled = true;
 
       this.onViewFP = true;
+      this.cross = true;
 
       this.container.addEventListener('contextmenu', e => {
         e.preventDefault();
@@ -667,7 +731,7 @@ export default {
 
 				if ( this.keyStates[ 'Space' ] ) {
 
-					this.playerVelocity.y = 15;
+					this.playerVelocity.y = 5;
 				}
 			}
     },

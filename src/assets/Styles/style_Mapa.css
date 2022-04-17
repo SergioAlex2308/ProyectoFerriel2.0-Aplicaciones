@@ -8,7 +8,11 @@
     width: 100%;
     background-color: black;
 }
-
+#gabs
+{
+    background-color: red;
+    z-index: 100;
+}
 #scene-container {
 
     width: 100%;
@@ -17,41 +21,12 @@
     outline: none;
     z-index: 1000;
 }
-
-.principal-title
-{
-    margin: 0;
-    text-align: center;
-    vertical-align: middle;
-    left: 100%;
-    transition: transform .2s;
-}
-.principal-title:hover
-{
-    transform: scale(1.1);
-}
-.icon
-{
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    right: 3em;
-    transition: transform .2s;
-}
-.icon:hover
-{
-    transform: scale(1.2);
-}
-#gabs
-{
-    background-color: red;
-    z-index: 100;
-}
 #header
 {
     position: absolute;
     top: 3em;
     left: 3em;
+    bottom: 3em;
     width: 14em;
     height: 50em;
     cursor: pointer;
@@ -65,8 +40,61 @@
     color: rgb(255, 255, 255);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
+    font-weight: 400;
     width: 100%;
     display: inline-block;
+}
+.principal-title
+{
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    left: 100%;
+}
+.menu
+{
+    position: fixed;
+    right: 5em;
+}
+.icon
+{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    transition: transform .2s;
+}
+.icon:hover
+{
+    transform: scale(1.2);
+}
+.cross
+{
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+}
+.buttonView
+{
+    background-color: #303030;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: transform .2s;
+}
+.buttonView:hover
+{
+    transform: scale(1.05);
+    background-color:#ffffff;
+    color: #000000;
 }
 #content 
 {
@@ -84,14 +112,14 @@
     justify-content: center;
     align-items: center;
     width: 330px;
-    height: 90px;
-    padding: 10px;
+    height: 100px;
+    padding: 20px;
     left: -160px;
     bottom: -2px;
     border-radius: 5%;
     background: rgba(0, 0, 0, 0.8);
     color: #ffffff;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     line-height: 40px;
     font-weight: 100;
@@ -109,16 +137,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     top: 0px;
     left: 105px;
-    width: 100px;
+    width: 200px;
     padding: 20px;
-    left: -50px;
+    left: -95px;
     border-radius: 6px;
     background: #ffffffcb;
     color: #000000;
     line-height: 1.3em;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 100;
     font-size: 14px;
     opacity: 0;
@@ -133,18 +162,6 @@
 .point.visible .label 
 {
     transform: scale(0.5, 0.5);
-}
-.buttonView
-{
-    background-color: #303030;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
 }
 .point .marca
 {
@@ -165,7 +182,7 @@
 {
     transform: scale(0.5, 0.5);
 }
-#footer 
+#footer01
 {
     display: flex;
     flex-direction: row;
@@ -178,30 +195,116 @@
     bottom: 1em;
     /* background-color: #303030; */
 } 
-.iconControls
+.instView
 {
-    position: relative;
-    height: 100%;
-    width: 30%;
-}
-.Mouse
-{
-    position: fixed;
-    width: 100px;
-    height: 100px;
-}
-.instructions
-{
-    margin: 0;
-    left: 20px;
-}
-.instructions h3
-{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #ffffff;
     font-size: 15px;
+    font-weight: 400;
     text-align: start;
     height: 100%;
     width: 70%;
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: transform .2s; 
 }
+.instView:hover
+{
+    transform: scale(1.1);
+}
+.Mouse
+{
+    width: 100px;
+    height: 100px;
+    padding-bottom: 1%;
+}
+#footer02
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%; 
+    height: 30%;
+    right: 0.5em;
+    bottom: 1em;
+    position: fixed;
+    /* background-color: #303030; */
+}
+#iconControlsFp
+{
+    flex-direction: row;
+}
+.Keys
+{
+    width: 100px;
+    height: 100px;
+}
+.instMove
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    height: 100%;
+    width: 70%;
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: transform .2s; 
+}
+.instMove:hover
+{
+    transform: scale(1.1);
+}
+.instMoveCamera
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    height: 100%;
+    width: 70%;
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: transform .2s; 
+}
+.instMoveCamera:hover
+{
+    transform: scale(1.1);
+}
+.Escape
+{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+.instEsc
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    height: 100%;
+    width: 70%;
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: transform .2s; 
+}
+.instEsc:hover
+{
+    transform: scale(1.1);
+}
+
 
