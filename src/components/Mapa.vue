@@ -18,8 +18,6 @@
         />
       </div>
      <!--  <Informacion v-show="showInfo"></Informacion> -->
-      
-      
       <!-- <div v-show="cross" class="crosshair"></div> -->
       <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
       <button v-if="Fp" @click="mainView" class="buttonView">
@@ -305,7 +303,7 @@ export default {
       this.white = new THREE.Color().setHex(0xffffff);
 
       //Add geometry
-      var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+      var geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
