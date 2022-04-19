@@ -1,9 +1,9 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-     <!-- <div class="informacion" style="z-index=1000">
+    <!-- <div class="informacion" style="z-index=1000">
           <Informacion/>
     </div>  -->
-     <!-- <div class="imagen"  style="position:absolute">
+    <!-- <div class="imagen"  style="position:absolute">
         <button id=gabs; style="border:none; "  >     
         </button>
          <img alt="Logo" style="width:10%; display:block; margin-left: 85%;" src="../assets/imagenes/LOGOFONDO.png" @click="mostrarinformacion()" >   
@@ -12,13 +12,12 @@
       <h1 class="principal-title">Ferriel 2.0</h1>
       <div class="menu">
         <img
-          class="icon"
-          src="../assets/imagenes/LOGOFONDO.png"
+          class="iconHelp"
+          src="../assets/Icons/Icons-Help.png"
           alt="LogoFerriel"
         />
       </div>
-     <!--  <Informacion v-show="showInfo"></Informacion> -->
-      <!-- <div v-show="cross" class="crosshair"></div> -->
+      <!--  <Informacion v-show="showInfo"></Informacion> -->
       <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
       <button v-if="Fp" @click="mainView" class="buttonView">
         Volver a la vista aerea
@@ -37,51 +36,85 @@
       </button> -->
     </div>
     <div v-show="onViewFP == false" id="content">
-      <div v-show="Fp == false" @click="ViewFp" class="point FpView">
+      <div v-show="Fp == false" @click="ViewFp" class="point MapView">
         <div class="label">Visita las estaciones</div>
-        <div class="marca"></div>
-        <div class="nom-estacion">Haz click para navegar en primera persona.</div>
+        <div class="nom-estacion">
+          Haz click para navegar en primera persona.
+        </div>
       </div>
-      <!-- <div v-show="FPest1 == false" @click="FPEstacion1" class="point est1">
-        <div class="label">Estación Usaquén</div>
-        <div class="marca"></div>
-        <div class="nom-estacion">Información de las estaciones.</div>
+    </div>
+    <div id="content">
+      <div v-show="onViewFP" class="pointObject ObjView-1">
+        <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
+        <div class="infoObject">
+          Haz click conocer la historia de este objecto.
+        </div>
       </div>
-      <div v-show="FPest2 == false" @click="FPEstacion2" class="point est2">
-        <div class="label">Estación Chía</div>
-        <div class="marca"></div>
-        <div class="nom-estacion">Información de las estaciones.</div>
+      <div id="ModalObj-1" class="ModalObjects">
+        <div class="contentObj">
+          <div class="headerModal">
+            <span class="close">&times;</span>
+          </div>
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Icons/Icons-Picture.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Nombre del objeto.</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                qui commodi neque sequi hic, asperiores, mollitia placeat
+                quisquam expedita pariatur impedit omnis. Quod consequatur
+                repellendus illum quaerat enim molestiae sint?
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div v-show="FPest3 == false" @click="FPEstacion3" class="point est3">
-        <div class="label">Estación Cajicá</div>
-        <div class="marca"></div>
-        <div class="nom-estacion">Información de las estaciones.</div>
-      </div>
-      <div v-show="FPest4 == false" @click="FPEstacion4" class="point est4">
-        <div class="label">Estación Zipaquirá</div>
-        <div class="marca"></div>
-        <div class="nom-estacion">Información de las estaciones.</div>
-      </div> -->
     </div>
     <div v-show="onViewFP == false" id="footer01">
       <div class="instView">
-          <img class="Mouse" src="../assets/Icons/Icons-Mouse.png" alt="Icono Mouse">
-           <p>Haz click y arrastra el ratón para mover la vista</p>
+        <img
+          class="Mouse"
+          src="../assets/Icons/Icons-Mouse.png"
+          alt="Icono Mouse"
+        />
+        <p>Haz click y arrastra el ratón para mover la vista</p>
       </div>
     </div>
     <div v-show="onViewFP" id="footer02">
       <div class="instMove">
-        <img class="Keys" src="../assets/Icons/Icons-Keys.png" alt="Teclas de movimiento">
+        <img
+          class="Keys"
+          src="../assets/Icons/Icons-Keys.png"
+          alt="Teclas de movimiento"
+        />
         <p>Presiona las teclas para desplazarte.</p>
       </div>
       <div class="instMoveCamera">
-        <img class="Mouse" src="../assets/Icons/Icons-Mouse.png" alt="Icono Mouse">
-        <p>Oprime click derecho 
-          <br>
-          para mirar a tu alrededor.</p>
+        <img
+          class="Mouse"
+          src="../assets/Icons/Icons-Mouse.png"
+          alt="Icono Mouse"
+        />
+        <p>
+          Oprime click derecho
+          <br />
+          para mirar a tu alrededor.
+        </p>
       </div>
       <div class="instEsc">
-        <img class="Escape" src="../assets/Icons/Icons-Escape.png" alt="Icono tecla escape">
+        <img
+          class="Escape"
+          src="../assets/Icons/Icons-Escape.png"
+          alt="Icono tecla escape"
+        />
         <p>Presiona la tecla Escape para liberar el cursor.</p>
       </div>
     </div>
@@ -125,8 +158,9 @@ export default {
       FPest2: false,
       FPest3: false,
       FPest4: false,
+      pointsObjects: [], //PuntosObjetos
+      pointObject: null,
       pControls: null, //FirstPerson
-      cross: false,
       onViewFP: false,
       moveForward: false,
       moveBackward: false,
@@ -179,9 +213,11 @@ export default {
       this.camera.rotation.order = "YXZ";
 
       // create scene
+      const nearFog = 10;
+      const farFog = 50;
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("skyblue");
-      this.scene.fog = new THREE.Fog(0xcbe9fc, 0, 50);
+      this.scene.fog = new THREE.Fog(0xcbe9fc, nearFog, farFog);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -195,6 +231,9 @@ export default {
 
       /* const gridHelper = new THREE.GridHelper( 10, 50, 0x303030, 0x303030 );
             this.scene.add( gridHelper ); */
+
+      /* const axesHelper = new THREE.AxesHelper(5);
+      this.scene.add(axesHelper); */
 
       // create renderer
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -303,7 +342,7 @@ export default {
       this.white = new THREE.Color().setHex(0xffffff);
 
       //Add geometry
-      var geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
+      /* var geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
@@ -312,7 +351,7 @@ export default {
       cube1.position.x = 0;
       cube1.position.y = -0.5;
       cube1.position.z = 0;
-      this.scene.add(cube1);
+      this.scene.add(cube1); */
 
       /* var cube2 = new THREE.Mesh(geometry, material);
       cube2.position.x = -2;
@@ -331,7 +370,7 @@ export default {
       cube4.position.y = 0.5;
       cube4.position.z = 6;
       this.scene.add(cube4); */
-      
+
       // add Orbitcontrols
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -380,27 +419,38 @@ export default {
       this.points = [
         {
           position: new THREE.Vector3(0, 0, 0),
-          element: document.querySelector(".FpView"),
-        }
+          element: document.querySelector(".MapView"),
+        },
+      ];
+      this.pointsObjects = [
+        {
+          position: new THREE.Vector3(-3, 0.2, 1),
+          element: document.querySelector(".ObjView-1"),
+        },
       ];
 
-      //Collition
-      //this.worldOctree = new Octree();
-      /* this.playerCollider = new Capsule(
-        new THREE.Vector3(0, 0.35, 0),
-        new THREE.Vector3(0, 1, 0),
-        0.35
-      ); */
-
       window.addEventListener("resize", this.onWindowResize);
-
-      /* window.addEventListener( 'keydown', this.onKeyDown);
-      window.addEventListener( 'keyup', this.onkeyUp); */
     },
-    info()
-    {
+    info() {
       this.showInfo = true;
       console.log(this.showInfo);
+    },
+    ObjHistory1() {
+      var modal = document.getElementById("ModalObj-1");
+      var obj = document.getElementById("Obj-1");
+      var span = document.getElementsByClassName("close")[0];
+
+      obj.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
     },
     contentPoints() {
       for (this.point of this.points) {
@@ -431,38 +481,70 @@ export default {
         this.point.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
       }
     },
+    contentPointsObjects() {
+      for (this.pointObject of this.pointsObjects) {
+        const screenPosition = this.pointObject.position.clone();
+        screenPosition.project(this.camera);
+
+        this.raycaster.setFromCamera(screenPosition, this.camera);
+        this.intersects = this.raycaster.intersectObjects(
+          this.scene.children,
+          true
+        );
+        if (this.intersects.length === 0) {
+          this.pointObject.element.classList.add("visible");
+        } else {
+          const intersectionDistance = this.intersects[0].distance;
+          const pointDistance = this.pointObject.position.distanceTo(
+            this.camera.position
+          );
+          if (intersectionDistance < pointDistance) {
+            this.pointObject.element.classList.remove("visible");
+          } else {
+            this.pointObject.element.classList.add("visible");
+          }
+        }
+        const translateX = screenPosition.x * this.container.clientWidth * 0.5;
+        const translateY =
+          -screenPosition.y * this.container.clientHeight * 0.5;
+        this.pointObject.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+      }
+    },
     ViewFp() {
       this.MainPosition.copy(this.camera.position);
 
-      var PosFp = new THREE.Vector3(0, 0, 0);
+      var PosFp = new THREE.Vector3(2, 1, 0);
       new TWEEN.Tween(this.camera.position)
         .to(PosFp, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut).start();
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .start();
 
-      if(!this.onViewFP)
-      {
+      /* if (this.camera.position == PosFp) {
+        this.playerCollider.end.set(2, 1, 0);
+      } */
+
+      if (!this.onViewFP) {
         this.firstPerson();
       }
       this.Fp = true;
       this.onViewFP = true;
     },
     FPEstacion1() {
-      
       this.MainPosition.copy(this.camera.position);
       //var targetEst = new THREE.Vector3(1, 0, 0);
 
       var PosEst1 = new THREE.Vector3(0, 0, 0);
       new TWEEN.Tween(this.camera.position)
         .to(PosEst1, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut).start();
-      
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .start();
+
       /* setInterval(() => {
         console.log("set");
         this.camera.position = PosEst1;
       }, 3000);//Entra a la funcion en vista aerea */
 
-      if(!this.onViewFP)
-      {
+      if (!this.onViewFP) {
         //console.log("Camara", this.camera.position);
         this.firstPerson();
       }
@@ -527,44 +609,42 @@ export default {
     mainView() {
       this.controls.enabled = true;
       this.pControls.enabled = false;
-
       new TWEEN.Tween(this.camera.position)
         .to(this.MainPosition, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut).start();
-      
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .start();
+
       this.FPest1 = false;
 
       this.Fp = false;
-      this.cross = false;
       this.onViewFP = false;
-
     },
     firstPerson() {
       this.controls.enabled = false;
       this.pControls.enabled = true;
 
       this.onViewFP = true;
-      this.cross = true;
 
-      this.container.addEventListener('contextmenu', e => {
+      this.container.addEventListener("contextmenu", (e) => {
         e.preventDefault();
         //document.body.requestPointerLock();
         this.pControls.lock();
-        console.log("bloqueado");
+        this.pControls.connect();
+        //console.log("bloqueado");
       });
+      /* const cross = document.getElementById("crosshair");
+      this.pControls.addEventListener("lock", function () {
+        cross.style.display = '';
+      });
+      this.pControls.addEventListener("unlock", function () {
+        cross.style.display = 'none';
+      }); */
       document.addEventListener("keydown", (event) => {
         this.keyStates[event.code] = true;
       });
       document.addEventListener("keyup", (event) => {
         this.keyStates[event.code] = false;
       });
-
-      /* document.body.addEventListener("mousemove", (event) => {
-        if (document.pointerLockElement === document.body) {
-          this.camera.rotation.y -= event.movementX / 500;
-          this.camera.rotation.x -= event.movementY / 500;
-        }
-      }); */
     },
     /* onKeyDown ( event )
     {
@@ -666,7 +746,7 @@ export default {
         this.playerVelocity.y -= this.GRAVITY * deltaTime;
 
         // small air resistance
-        damping *= 0.1;
+        damping *= 0.3;
       }
 
       this.playerVelocity.addScaledVector(this.playerVelocity, damping);
@@ -725,36 +805,31 @@ export default {
         );
       }
 
-      if ( this.playerOnFloor ) {
-
-				if ( this.keyStates[ 'Space' ] ) {
-
-					this.playerVelocity.y = 5;
-				}
-			}
+      if (this.playerOnFloor) {
+        if (this.keyStates["Space"]) {
+          this.playerVelocity.y = 10;
+        }
+      }
     },
     teleportPlayerIfOob() {
       if (this.camera.position.y <= -25) {
-        this.playerCollider.start.set(0, 0.1, 0);
+        this.playerCollider.start.set(0, 0.35, 0);
         this.playerCollider.end.set(0, 1, 0);
         this.playerCollider.radius = 0.35;
         this.camera.position.copy(this.playerCollider.end);
         this.camera.rotation.set(0, 0, 0);
       }
     },
-    mostrarinformacion(){
-        var x = document.getElementById("informacionID");
-        x.style.display="block";
-        x.style.zIndex=100;
+    mostrarinformacion() {
+      var x = document.getElementById("informacionID");
+      x.style.display = "block";
+      x.style.zIndex = 100;
     },
     animate() {
-      
       if (this.onViewFP) {
-
         this.deltaTime = Math.min(0.05, this.clock.getDelta()) / this.STEPS;
 
         for (let i = 0; i < this.STEPS; i++) {
-          
           this.controlsMove(this.deltaTime);
           this.updatePlayer(this.deltaTime);
           this.teleportPlayerIfOob();
@@ -762,12 +837,13 @@ export default {
       } else {
         this.controls.update();
       }
-      
+
       TWEEN.update();
       this.contentPoints();
+      this.contentPointsObjects();
       this.render();
       requestAnimationFrame(this.animate);
-      //this.stats.update();      
+      //this.stats.update();
     },
     onWindowResize() {
       // set aspect ratio to match the new browser window aspect ratio
@@ -779,7 +855,7 @@ export default {
         this.container.clientHeight
       );
     },
-    render() { 
+    render() {
       this.renderer.render(this.scene, this.camera);
     },
   },
@@ -788,7 +864,6 @@ export default {
     this.animate();
   },
 };
-
 </script>
 <style src="../assets/Styles/style_Mapa.css"></style>
 
