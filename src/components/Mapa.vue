@@ -1,8 +1,8 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-     <!-- <div class="informacion" style="z-index=1000">
+     <div class="informacion" style="z-index=1000">
           <Informacion/>
-    </div>  -->
+    </div> 
      <!-- <div class="imagen"  style="position:absolute">
         <button id=gabs; style="border:none; "  >     
         </button>
@@ -101,12 +101,12 @@ import { Octree } from "three/examples/jsm/math/Octree";
 //import { OctreeHelper } from 'three/examples/jsm/helpers/OctreeHelper';
 import { Capsule } from "three/examples/jsm/math/Capsule";
 
-//import Informacion from './InfoBoton.vue';
+import Informacion from './InfoBoton.vue';
 
 export default {
   name: "MapaEstaciones",
   components: {
-    //Informacion
+    Informacion
   },
   data() {
     return {
@@ -183,7 +183,7 @@ export default {
       // create scene
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("skyblue");
-      this.scene.fog = new THREE.Fog(0xcbe9fc, 0, 50);
+      this.scene.fog = new THREE.Fog(0xcbe9fc, 10, 50);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -193,6 +193,13 @@ export default {
       );
       const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
       mainLight.position.set(10, 10, 10);
+      mainLight.castShadow = true;
+      mainLight.shadow.camera.top = 2;
+      mainLight.shadow.camera.bottom = -2;
+      mainLight.shadow.camera.left = -2;
+      mainLight.shadow.camera.right = 2;
+      mainLight.shadow.camera.near = 0.1;
+      mainLight.shadow.camera.far = 40;
       this.scene.add(ambientLight, mainLight);
 
       /* const gridHelper = new THREE.GridHelper( 10, 50, 0x303030, 0x303030 );
@@ -224,6 +231,11 @@ export default {
           this.mesh.scene.position.z = 0;
           this.scene.add(gltf.scene);
           this.worldOctree.fromGraphNode(gltf.scene);
+
+          /* this.mesh.traverse(function (node) {
+          if (node.isMesh || node.isLight) node.castShadow = true;
+          if (node.isMesh || node.isLight) node.receiveShadow = true;
+        }); */
 
           /* const helper = new OctreeHelper( this.worldOctree );
           helper.visible = false;

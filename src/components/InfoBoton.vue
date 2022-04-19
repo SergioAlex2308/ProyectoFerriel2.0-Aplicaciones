@@ -250,12 +250,12 @@
   </div>
 </template>
 <script>
-import MapaEstaciones from "./Mapa.vue";
+//import MapaEstaciones from "./Mapa.vue";
 
 export default {
   name: "Informacion",
   components: {
-    MapaEstaciones,
+    //MapaEstaciones,
   },
   methods: {
     cerrarinformacion() {
