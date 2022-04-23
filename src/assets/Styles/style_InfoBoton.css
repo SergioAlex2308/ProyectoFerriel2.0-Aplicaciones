@@ -12,6 +12,40 @@
 	padding: 20px;
 }
 
+audio:hover, audio:focus, audio:active
+{
+-webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
+
+.audios{
+	display: flex;
+
+	flex-direction: row;
+justify-content: center;
+align-items: center;
+margin: 10px;
+padding: 20px;
+}
+audio
+{
+	
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-box-shadow: 2px 2px 4px 0px #006773;
+-webkit-box-shadow:  2px 2px 4px 0px #006773;
+box-shadow: 2px 2px 4px 0px #006773;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+}
+
 .overflow-auto::-webkit-scrollbar {
 	width: 7px;
 	background: black;
@@ -85,6 +119,7 @@
 	justify-content: space-between;
 }
 .todo {
+	display: comul;
 	background: #ffffff;
 	width: 40%;
 	height: 70%;
@@ -142,7 +177,15 @@ h6 {
 	justify-content: center;
 	margin-bottom: 5%;
 }
+.responsive{
+	padding-top: 10%;
+	display: none;
+	
 
+}
+.abrir{
+	font-size: 80px;
+}
 .datos {
 	color: #ffffff;
 }
@@ -174,7 +217,34 @@ h5 {
 	padding-top: 25px;
 	display: flex;
 	justify-content: space-between;
+	margin:0;
+}
+@media screen and (max-width:1000px) {
 
+	.caras{
+		display: block;
+	}
+	.botones{
+		display: none;
+		position: absolute;
+		height: fit-content;
+		background-color: rgb(65, 65, 65);
+	}
+	.visible{
+		display: block;
+	}
+	.boton{
+		margin: 5%;
+	}
+	#modal-backdrop{
+		display: flex;
+		justify-content: center;
+	}
+	.responsive{
+		
+		display: flex;
+		justify-content: center;
+	}
 }
 
 .vor {

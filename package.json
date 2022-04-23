@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "node-sass": "^7.0.1",
     "stats.js": "^0.17.0",
     "three": "^0.139.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-progress-path": "^0.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.17",

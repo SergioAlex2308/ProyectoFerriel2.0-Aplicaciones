@@ -97,6 +97,7 @@
                   alt="mata"
                 />
               </div>
+           
               <div id="estodeberia">
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
@@ -125,6 +126,15 @@
               </div>
             </div>
           </div>
+             <div class="audios">
+
+                <audio controls muted>
+                  <source src="../assets/audios/sonidotren.mp3" type="audio/mpeg">
+                  <source src="horse.ogv" type="audio/ogg">
+                   
+                </audio>
+
+              </div>
         </div>
         <div class="overflow-auto" style="display: none" id="otracosa">
           <h1>Horarios</h1>
@@ -155,7 +165,7 @@
             <img src="../assets/imagenes/map.jpg" width="300px" alt="mata" />
           </div>
         </div>
-        <div class="overflow-auto" style="display: none" id="controles">
+        <!-- <div class="overflow-auto" style="display: none" id="controles">
           <h1>Ayuda</h1>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -178,14 +188,18 @@
               alt="control"
             />
           </div>
-        </div>
+        </div> -->
+        <div class="responsive">
+          <i class='bx bx-menu abrir'></i>
+          </div>
         <div class="botones">
+       
           <div class="boton">
             <a
               class="ov-btn-grow-box"
               id="boton1"
               style="
-                display: block;
+                display: flex;
                 text-decoration: none;
                 background-color: transparent;
                 border: none;
@@ -201,7 +215,7 @@
               class="ov-btn-grow-box"
               id="boton2"
               style="
-                display: block;
+                display: flex;
                 text-decoration: none;
                 background-color: transparent;
                 border: none;
@@ -217,7 +231,7 @@
               class="ov-btn-grow-box"
               id="boton3"
               style="
-                display: block;
+                display: flex;
                 text-decoration: none;
                 background-color: transparent;
                 border: none;
@@ -228,12 +242,12 @@
               Horarios
             </a>
           </div>
-          <div class="boton">
+          <!-- <div class="boton">
             <a
               class="ov-btn-grow-box"
               id="boton4"
               style="
-                display: block;
+                display: flex;
                 text-decoration: none;
                 background-color: transparent;
                 border: none;
@@ -243,14 +257,15 @@
             >
               controles
             </a>
-          </div>
+          
+          </div> -->
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-//import MapaEstaciones from "./Mapa.vue";
+
 
 export default {
   name: "Informacion",
