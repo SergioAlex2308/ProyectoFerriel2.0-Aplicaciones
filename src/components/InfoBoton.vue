@@ -235,6 +235,7 @@
                 text-decoration: none;
                 background-color: transparent;
                 border: none;
+                margin-bottom:50%;
               "
               type="submit"
               @click="informacion3()"

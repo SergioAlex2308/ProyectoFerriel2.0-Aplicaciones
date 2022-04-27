@@ -1,6 +1,8 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-     <div class="informacion" style="z-index=1000">
+    <div class="wrapper">
+    <div id="header">
+     <div class="informacion" id="informacionID" style=" z-index=100 " v-if="mostrar"> 
           <Informacion/>
     </div> 
      <!-- <div class="imagen"  style="position:absolute">
@@ -8,15 +10,14 @@
         </button>
          <img alt="Logo" style="width:10%; display:block; margin-left: 85%;" src="../assets/imagenes/LOGOFONDO.png" @click="mostrarinformacion()" >   
       </div>    -->
-    <div id="header">
+    
       <h1 class="principal-title">Ferriel 2.0</h1>
-      <div class="menu">
-        <img
-          class="icon"
-          src="../assets/imagenes/LOGOFONDO.png"
-          alt="LogoFerriel"
-        />
+      <div class="menu" >
+        <a>
+          <img class="icon" alt="Logo"  src="../assets/imagenes/LOGOFONDO.png" v-on:click="mostrarinformacion()">  
+        </a>
       </div>
+    </div>
      <!--  <Informacion v-show="showInfo"></Informacion> -->
       
       
@@ -110,6 +111,7 @@ export default {
   },
   data() {
     return {
+      mostrar:false,
       container: null,
       scene: null,
       camera: null,
@@ -410,6 +412,16 @@ export default {
 
       /* window.addEventListener( 'keydown', this.onKeyDown);
       window.addEventListener( 'keyup', this.onkeyUp); */
+    },
+      mostrarinformacion(){
+        this.mostrar=true;
+         var x = document.getElementById("modal-backdrop");
+         console.log(x);
+         x.style.display = "block";
+      // x.style.z-index=101;
+        // var x = document.getElementById("informacionID");
+        // x.style.display="block";
+        // x.style.zIndex=100;
     },
     info()
     {
@@ -756,11 +768,7 @@ export default {
         this.camera.rotation.set(0, 0, 0);
       }
     },
-    mostrarinformacion(){
-        var x = document.getElementById("informacionID");
-        x.style.display="block";
-        x.style.zIndex=100;
-    },
+  
     animate() {
       
       if (this.onViewFP) {
