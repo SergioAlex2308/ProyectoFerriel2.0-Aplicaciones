@@ -2,9 +2,9 @@
   <div id="scene-container" ref="sceneContainer">
     <espera-usuarios class="esperar" v-if="esperatime"> </espera-usuarios>
     <a class="siguiboton" v-on:click="quitarespera()" v-if="quitarboton"
-      >Siguiente</a
+      >Iniciar</a
     >
-    <div class="wrapper">
+    <!-- <div class="wrapper">
       <div id="header">
         <div
           class="informacion"
@@ -14,209 +14,203 @@
         >
           <Informacion />
         </div>
-        <!-- <div class="menu">
-          <a>
-            <img
-              class="icon"
-              alt="Logo"
-              src="../assets/imagenes/LOGOFONDO.png"
-            />
-          </a>
-        </div> -->
       </div>
-      <div id="header">
-        <h1 class="principal-title" v-on:click="mostrarinformacion()">
-          Ferriel 2.0
-        </h1>
-        <div id="menuHelp" @click="HelpMenu()">
-          <img
-            class="iconHelp"
-            src="../assets/Icons/Icons-Help.png"
-            alt="IconoAyuda"
-          />
-        </div>
-        <div id="ModalHelp" class="ModalControls">
-          <div class="contentHelp">
-            <div class="headerModal">
-              <span class="close">&times;</span>
+    </div> -->
+    <div id="header">
+      <h1 id="principal-title" @click="mostrarinformacion()">
+        Ferriel 2.0
+      </h1>
+      <div id="menuHelp" @click="HelpMenu()">
+        <img
+          class="iconHelp"
+          src="../assets/Icons/Icons-Help.png"
+          alt="IconoAyuda"
+        />
+      </div>
+      <div id="ModalHelp" class="ModalControls">
+        <div class="contentHelp">
+          <div class="headerModal">
+            <span class="close">&times;</span>
+          </div>
+          <div class="contentModal">
+            <div class="titleHelp">
+              <h2 class="NameMenu">Ayuda</h2>
             </div>
-            <div class="contentModal">
-              <div class="titleHelp">
-                <h2 class="NameMenu">Ayuda</h2>
-              </div>
-              <div class="textHelp">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                  qui commodi neque sequi hic, asperiores, mollitia placeat
-                  quisquam expedita pariatur impedit omnis. Quod consequatur
-                  repellendus illum quaerat enim molestiae sint?
+            <div class="textHelp">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                qui commodi neque sequi hic, asperiores, mollitia placeat
+                quisquam expedita pariatur impedit omnis. Quod consequatur
+                repellendus illum quaerat enim molestiae sint?
+              </p>
+            </div>
+            <h3 class="titleControls">Controles en la vista aérea</h3>
+            <div class="PictureControls">
+              <div class="InstControls">
+                <div class="invert">
+                  <img src="../assets/Icons/Icons-Clic.png" alt="Icono Mouse" />
+                </div>
+                <p class="textControls">
+                  Haz clic izquierdo y arrastra para mover la vista.
                 </p>
               </div>
-              <h3 class="titleControls">Controles en la vista aérea</h3>
-              <div class="PictureControls">
-                <div class="InstControls">
-                  <div class="invert">
-                    <img
-                      src="../assets/Icons/Icons-Clic.png"
-                      alt="Icono Mouse"
-                    />
-                  </div>
-                  <p class="textControls">
-                    Haz clic izquierdo y arrastra para mover la vista.
-                  </p>
-                </div>
-              </div>
-              <h3 class="titleControls">
-                Controles en la vista de primera persona
-              </h3>
-              <div class="PictureControls">
-                <div class="InstControls">
-                  <div class="invert">
-                    <img
-                      src="../assets/Icons/Icons-Keys.png"
-                      alt="Teclas de movimiento"
-                    />
-                  </div>
-                  <p class="textControls">
-                    Con las teclas A, W, S y D, te podras desplazar a través de
-                    entorno.
-                  </p>
-                </div>
-                <div class="InstControls">
-                  <div class="invert">
-                    <img
-                      class="MouseClic"
-                      src="../assets/Icons/Icons-Clic.png"
-                      alt="Icono Mouse"
-                    />
-                  </div>
-                  <p class="textControls">
-                    Haz clic derecho para poder mover la cámara y mirar a tu
-                    alrededor.
-                  </p>
-                </div>
-                <div class="InstControls">
-                  <div class="invert">
-                    <img
-                      src="../assets/Icons/Icons-Escape.png"
-                      alt="Icono tecla escape"
-                    />
-                  </div>
-                  <p class="textControls">
-                    Cuando tenga el cursor bloqueado dale a la tecla de Escape
-                    para liberarlo.
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-        <!--  <Informacion v-show="showInfo"></Informacion> -->
-        <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
-        <button v-if="Fp" @click="mainView" class="buttonView">
-          Volver a la vista aerea
-        </button>
-      </div>
-      <div v-show="onViewFP == false" id="content">
-        <div v-show="Fp == false" @click="FPEstacion1" class="point MapView-1">
-          <div class="label">Estación de Zipaquirá</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
-        </div>
-        <div v-show="Fp == false" @click="FPEstacion2" class="point MapView-2">
-          <div class="label">Estación de Usaquén</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
-        </div>
-        <div v-show="Fp == false" @click="FPEstacion3" class="point MapView-3">
-          <div class="label">Estación de Cajicá</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
-        </div>
-        <div v-show="Fp == false" @click="FPEstacion4" class="point MapView-4">
-          <div class="label">Estación de Chía</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
-        </div>
-      </div>
-      <div id="content">
-        <div v-show="onViewFP" class="pointObject ObjView-1">
-          <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
-          <div class="infoObject">
-            Haz click conocer la historia de este objecto.
-          </div>
-        </div>
-        <div id="ModalObj-1" class="ModalObjects">
-          <div class="contentObj">
-            <div class="headerModal">
-              <span class="close">&times;</span>
-            </div>
-            <div class="contentModal">
-              <div class="imageObject">
-                <img
-                  class="PictureModal"
-                  src="../assets/Icons/Icons-Picture.png"
-                  alt="Fotografia Objeto"
-                />
+            <h3 class="titleControls">
+              Controles en la vista de primera persona
+            </h3>
+            <div class="PictureControls">
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    src="../assets/Icons/Icons-Keys.png"
+                    alt="Teclas de movimiento"
+                  />
+                </div>
+                <p class="textControls">
+                  Con las teclas A, W, S y D, te podras desplazar a través de
+                  entorno.
+                </p>
               </div>
-              <div class="titleObj">
-                <h1 class="NameObject">Nombre del objeto.</h1>
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    class="MouseClic"
+                    src="../assets/Icons/Icons-Clic.png"
+                    alt="Icono Mouse"
+                  />
+                </div>
+                <p class="textControls">
+                  Haz clic derecho para poder mover la cámara y mirar a tu
+                  alrededor.
+                </p>
               </div>
-              <div class="historyObjtext">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                  qui commodi neque sequi hic, asperiores, mollitia placeat
-                  quisquam expedita pariatur impedit omnis. Quod consequatur
-                  repellendus illum quaerat enim molestiae sint?
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    src="../assets/Icons/Icons-Escape.png"
+                    alt="Icono tecla escape"
+                  />
+                </div>
+                <p class="textControls">
+                  Cuando tenga el cursor bloqueado dale a la tecla de Escape
+                  para liberarlo.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div v-show="onViewFP == false" id="footer01">
-        <div class="instView">
-          <img
-            class="Mouse"
-            src="../assets/Icons/Icons-Clic.png"
-            alt="Icono Mouse"
-          />
-          <p>Haz click y arrastra el ratón para mover la vista</p>
+      <!--  <Informacion v-show="showInfo"></Informacion> -->
+      <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
+      <button v-if="Fp" @click="mainView" class="buttonView">
+        Volver a la vista aerea
+      </button>
+    </div>
+    <div v-show="onViewFP == false" id="content">
+      <div v-show="Fp == false" @click="FPEstacion1" class="point MapView-1">
+        <div class="label">Estación de Zipaquirá</div>
+        <div class="nom-estacion">
+          Haz click para navegar en primera persona.
         </div>
       </div>
-      <div v-show="onViewFP" id="footer02">
-        <div class="instMove">
-          <img
-            class="Keys"
-            src="../assets/Icons/Icons-Keys.png"
-            alt="Teclas de movimiento"
-          />
-          <p>Presiona las teclas para desplazarte.</p>
+      <div v-show="Fp == false" @click="FPEstacion2" class="point MapView-2">
+        <div class="label">Estación de Usaquén</div>
+        <div class="nom-estacion">
+          Haz click para navegar en primera persona.
         </div>
-        <div class="instMoveCamera">
-          <img
-            class="Mouse MouseClic"
-            src="../assets/Icons/Icons-Clic.png"
-            alt="Icono Mouse"
-          />
-          <p>
-            Oprime click derecho
-            <br />
-            para mirar a tu alrededor.
-          </p>
+      </div>
+      <div v-show="Fp == false" @click="FPEstacion3" class="point MapView-3">
+        <div class="label">Estación de Cajicá</div>
+        <div class="nom-estacion">
+          Haz click para navegar en primera persona.
         </div>
-        <div class="instEsc">
-          <img
-            class="Escape"
-            src="../assets/Icons/Icons-Escape.png"
-            alt="Icono tecla escape"
-          />
-          <p>Presiona la tecla Escape para liberar el cursor.</p>
+      </div>
+      <div v-show="Fp == false" @click="FPEstacion4" class="point MapView-4">
+        <div class="label">Estación de Chía</div>
+        <div class="nom-estacion">
+          Haz click para navegar en primera persona.
         </div>
+      </div>
+    </div>
+    <div id="content">
+      <!-- <div class="informacion" style=" z-index=100 " v-if="mostrar">
+        <Informacion />
+      </div> -->
+      <div id="MenuInfo">
+        <Informacion/>
+      </div>
+      <div v-show="onViewFP" class="pointObject ObjView-1">
+        <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
+        <div class="infoObject">
+          Haz click conocer la historia de este objecto.
+        </div>
+      </div>
+      <div id="ModalObj-1" class="ModalObjects">
+        <div class="contentObj">
+          <div class="headerModal">
+            <span class="close">&times;</span>
+          </div>
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Icons/Icons-Picture.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Nombre del objeto.</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                qui commodi neque sequi hic, asperiores, mollitia placeat
+                quisquam expedita pariatur impedit omnis. Quod consequatur
+                repellendus illum quaerat enim molestiae sint?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-show="onViewFP == false" id="footer01">
+      <div class="instView">
+        <img
+          class="Mouse"
+          src="../assets/Icons/Icons-Clic.png"
+          alt="Icono Mouse"
+        />
+        <p>Haz click y arrastra el ratón para mover la vista</p>
+      </div>
+    </div>
+    <div v-show="onViewFP" id="footer02">
+      <div class="instMove">
+        <img
+          class="Keys"
+          src="../assets/Icons/Icons-Keys.png"
+          alt="Teclas de movimiento"
+        />
+        <p>Presiona las teclas para desplazarte.</p>
+      </div>
+      <div class="instMoveCamera">
+        <img
+          class="Mouse MouseClic"
+          src="../assets/Icons/Icons-Clic.png"
+          alt="Icono Mouse"
+        />
+        <p>
+          Oprime click derecho
+          <br />
+          para mirar a tu alrededor.
+        </p>
+      </div>
+      <div class="instEsc">
+        <img
+          class="Escape"
+          src="../assets/Icons/Icons-Escape.png"
+          alt="Icono tecla escape"
+        />
+        <p>Presiona la tecla Escape para liberar el cursor.</p>
       </div>
     </div>
   </div>
@@ -527,10 +521,25 @@ export default {
       window.addEventListener("resize", this.onWindowResize);
     },
     mostrarinformacion() {
-      this.mostrar = true;
-      var x = document.getElementById("modal-backdrop");
-      console.log(x);
-      x.style.display = "block";
+      //this.mostrar = true;
+      //var x = document.getElementById("ModalMenu");
+      //x.style.display = "block";
+
+      var modal = document.getElementById("MenuInfo");
+      var titleMenu = document.getElementById("principal-title");
+      var span = document.getElementsByClassName("close")[0];
+
+      titleMenu.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
       // x.style.z-index=101;
       // var x = document.getElementById("informacionID");
       // x.style.display="block";
