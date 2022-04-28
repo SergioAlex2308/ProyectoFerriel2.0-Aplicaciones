@@ -1,5 +1,8 @@
 <template>
+
   <div id="scene-container" ref="sceneContainer">
+    <espera-usuarios class="esperar" v-if="esperatime"> </espera-usuarios>
+    <a  class="siguiboton" v-on:click="quitarespera()" v-if="quitarboton">Siguiente</a>
     <div class="wrapper">
     <div id="header">
      <div class="informacion" id="informacionID" style=" z-index=100 " v-if="mostrar"> 
@@ -11,10 +14,10 @@
          <img alt="Logo" style="width:10%; display:block; margin-left: 85%;" src="../assets/imagenes/LOGOFONDO.png" @click="mostrarinformacion()" >   
       </div>    -->
     
-      <h1 class="principal-title">Ferriel 2.0</h1>
+      <h1 class="principal-title" v-on:click="mostrarinformacion()">Ferriel 2.0</h1>
       <div class="menu" >
         <a>
-          <img class="icon" alt="Logo"  src="../assets/imagenes/LOGOFONDO.png" v-on:click="mostrarinformacion()">  
+          <img class="icon" alt="Logo"  src="../assets/imagenes/LOGOFONDO.png" >  
         </a>
       </div>
     </div>
@@ -92,6 +95,7 @@
 </template>
 
 <script>
+
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -103,14 +107,17 @@ import { Octree } from "three/examples/jsm/math/Octree";
 import { Capsule } from "three/examples/jsm/math/Capsule";
 
 import Informacion from './InfoBoton.vue';
-
+import EsperaUsuarios from './EsperaUsuarios.vue'
 export default {
   name: "MapaEstaciones",
   components: {
-    Informacion
+    Informacion,
+    EsperaUsuarios
   },
   data() {
     return {
+      quitarboton: false,
+      esperatime: true,
       mostrar:false,
       container: null,
       scene: null,
@@ -233,7 +240,11 @@ export default {
           this.mesh.scene.position.z = 0;
           this.scene.add(gltf.scene);
           this.worldOctree.fromGraphNode(gltf.scene);
-
+        if(this.mesh){
+          this.quitarboton=true;
+          console.log("esta cargado")
+          
+        }
           /* this.mesh.traverse(function (node) {
           if (node.isMesh || node.isLight) node.castShadow = true;
           if (node.isMesh || node.isLight) node.receiveShadow = true;
@@ -422,6 +433,10 @@ export default {
         // var x = document.getElementById("informacionID");
         // x.style.display="block";
         // x.style.zIndex=100;
+    },
+    quitarespera(){
+      this.esperatime=false;
+      this.quitarboton=false;
     },
     info()
     {

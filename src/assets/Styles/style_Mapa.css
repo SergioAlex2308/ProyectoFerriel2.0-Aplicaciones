@@ -13,6 +13,12 @@
     background-color: red;
     z-index: 100;
 }
+.siguiboton{
+    position: absolute;
+    bottom: 0;
+    background-color: aliceblue;
+    z-index: 10001;
+}
 #scene-container {
 
     width: 100%;
@@ -20,6 +26,13 @@
     position: fixed;
     outline: none;
     z-index: 1000;
+}
+.esperar{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: bisque;
+    z-index: 10000;
 }
 #header
 {

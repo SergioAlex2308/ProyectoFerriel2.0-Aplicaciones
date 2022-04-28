@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- <PrimeraPersona/> -->
-    <!-- <espera-usuarios/> -->
-     <MapaEstaciones/>
-     <informacion/>
+     <!-- <espera-usuarios/>  -->
+      <MapaEstaciones/>
+     <informacion/> 
      <!-- <not-found/>  -->
     <!-- <Colisiones/> -->
     <!-- <Menus/> -->
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-// import EsperaUsuarios from './components/EsperaUsuarios.vue'
- import MapaEstaciones from './components/Mapa.vue'
+//import EsperaUsuarios from './components/EsperaUsuarios.vue'
+import MapaEstaciones from './components/Mapa.vue'
 //import Menus from "./components/Menu.vue";
 // import NotFound from './components/NotFound.vue'
 import Informacion from './components/InfoBoton.vue'
@@ -22,7 +22,7 @@ import Informacion from './components/InfoBoton.vue'
 export default {
   name: "App",
   components: {
-    // EsperaUsuarios,
+     //EsperaUsuarios,
     MapaEstaciones,
     
     // NotFound,
