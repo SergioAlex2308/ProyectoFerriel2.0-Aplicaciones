@@ -119,9 +119,10 @@ border-radius:7px 7px 7px 7px ;
 	justify-content: space-between;
 }
 .todo {
+	display: flex;
 	align-items: center;
-	display: block;
-	justify-content: center;
+	justify-content: space-around;
+	flex-direction: column;
 	background: #ffffff;
 	position: absolute;
 	width: 100vh;
@@ -133,8 +134,6 @@ border-radius:7px 7px 7px 7px ;
 	min-height: 250px;
 	border-radius: 2%;
 	filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
-	left: 50vh;
-	right: 0%;
 }
 
 h1 {

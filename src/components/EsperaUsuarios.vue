@@ -15,6 +15,7 @@
 .container{
   display: flex;
   justify-content: center;
+  align-content: center;
 }
 body {
   justify-content: center;
