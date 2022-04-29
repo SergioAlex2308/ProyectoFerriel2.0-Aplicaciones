@@ -9,7 +9,7 @@
   <div id="loading">
     <div class="ring">
       Cargando
-      <span></span>
+      <span class="circle"></span>
     </div>
   </div>
 </template>
