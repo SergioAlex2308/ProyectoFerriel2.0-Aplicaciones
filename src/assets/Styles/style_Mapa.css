@@ -13,10 +13,17 @@
     z-index: 100;
 }
 
+.btnInit {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .siguiboton {
     position: absolute;
-    bottom: 0;
-    background-color: aliceblue;
+    bottom: 20%;
+    background-color: #fff000;
     z-index: 10001;
 }
 
@@ -38,10 +45,9 @@
 }
 
 .esperar {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    background-color: bisque;
+    margin: 0;
+    padding: 0;
+    background: #262626;
     z-index: 10000;
 }
 
@@ -336,7 +342,8 @@
     margin-bottom: 2%;
 }
 
-.close {
+.close,
+.closeObj {
     color: #aaaaaa;
     float: right;
     font-size: 30px;
@@ -345,6 +352,13 @@
 
 .close:hover,
 .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeObj:hover,
+.clossObj:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

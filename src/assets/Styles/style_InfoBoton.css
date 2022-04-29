@@ -66,9 +66,15 @@ audio {
 }
 
 .universidad {
-	margin-bottom: 50px;
-	font-size: 16px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+.universidad h5 {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: 400;
+	font-size: 20px;
 }
 
 .mapas {
@@ -125,7 +131,6 @@ audio {
 	justify-content: flex-end;
 	align-items: center;
 	width: 100%;
-	padding-bottom: 2%;
 	box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.1);
 	margin-bottom: 2%;
 }
@@ -143,7 +148,7 @@ audio {
 	background: #ffffff;
 	position: absolute;
 	width: 60%;
-	height: 70%;
+	height: 80%;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 18px;
 	text-align: center;
@@ -159,6 +164,20 @@ audio {
 	width: 100%;
 	height: 80%;
 	overflow-y: auto;
+}
+
+.closeMenu {
+	color: #aaaaaa;
+	float: right;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.closeMenu:hover,
+.closeMenu:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 h1 {
@@ -246,7 +265,7 @@ h5 {
 	justify-content: space-evenly;
 	align-items: center;
 	width: 100%;
-	padding-top: 5%;
+	padding-top: 2%;
 }
 
 .vor {
@@ -259,6 +278,12 @@ h5 {
 	width: 100%;
 	height: 80%;
 	padding: 5% 5%;
+	text-align: justify;
+}
+
+.tituloHistory {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 18px;
 }
 
 #horarios {
@@ -267,6 +292,34 @@ h5 {
 	width: 100%;
 	height: 80%;
 	padding: 5% 5%;
+	text-align: justify;
+}
+.tableHorario {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+.tableHorario tr:hover {
+	background-color: #7d7d7d6c;
+}
+.Itinerario {
+	background-color: #303030;
+	color: #ffffff;
+}
+.infoTable {
+	background-color: #7d7d7d;
+	color: #ffffff;
+}
+table,
+th,
+td {
+	border: 1px solid black;
+}
+
+.textHorarios {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 #autores {
@@ -294,11 +347,11 @@ h5 {
 }
 
 .boton:hover {
-	background-color: #c1c1c1;
+	background-color: #202020;
 }
 
 .boton h3 {
-	color: black;
+	color: rgb(255, 255, 255);
 	font-size: 20px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-weight: 100;

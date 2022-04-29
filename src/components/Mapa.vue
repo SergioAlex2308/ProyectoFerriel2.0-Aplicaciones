@@ -1,25 +1,14 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
     <espera-usuarios class="esperar" v-if="esperatime"> </espera-usuarios>
-    <a class="siguiboton" v-on:click="quitarespera()" v-if="quitarboton"
-      >Iniciar</a
-    >
-    <!-- <div class="wrapper">
-      <div id="header">
-        <div
-          class="informacion"
-          id="informacionID"
-          style=" z-index=100 "
-          v-if="mostrar"
-        >
-          <Informacion />
-        </div>
-      </div>
-    </div> -->
+    <div class="btnInit" v-if="quitarboton">
+      <a class="siguiboton" v-on:click="quitarespera()" v-if="quitarboton"
+        >Iniciar</a
+      >
+    </div>
+
     <div id="header">
-      <h1 id="principal-title" @click="mostrarinformacion()">
-        Ferriel 2.0
-      </h1>
+      <h1 id="principal-title" @click="ShowInfo()">Ferriel 2.0</h1>
       <div id="menuHelp" @click="HelpMenu()">
         <img
           class="iconHelp"
@@ -100,8 +89,6 @@
           </div>
         </div>
       </div>
-      <!--  <Informacion v-show="showInfo"></Informacion> -->
-      <!-- <button v-if="FPest1 == false" @click="FPEstacion1" class="buttonView">First person</button> -->
       <button v-if="Fp" @click="mainView" class="buttonView">
         Volver a la vista aerea
       </button>
@@ -133,11 +120,8 @@
       </div>
     </div>
     <div id="content">
-      <!-- <div class="informacion" style=" z-index=100 " v-if="mostrar">
-        <Informacion />
-      </div> -->
       <div id="MenuInfo">
-        <Informacion/>
+        <Informacion />
       </div>
       <div v-show="onViewFP" class="pointObject ObjView-1">
         <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
@@ -148,7 +132,7 @@
       <div id="ModalObj-1" class="ModalObjects">
         <div class="contentObj">
           <div class="headerModal">
-            <span class="close">&times;</span>
+            <span class="closeObj">&times;</span>
           </div>
           <div class="contentModal">
             <div class="imageObject">
@@ -250,7 +234,6 @@ export default {
       raycaster: null,
       MainTarget: null,
       MainPosition: null,
-      showInfo: false,
       points: [], //PuntosEstaciones
       point: null,
       Fp: false,
@@ -520,14 +503,10 @@ export default {
 
       window.addEventListener("resize", this.onWindowResize);
     },
-    mostrarinformacion() {
-      //this.mostrar = true;
-      //var x = document.getElementById("ModalMenu");
-      //x.style.display = "block";
-
+    ShowInfo() {
       var modal = document.getElementById("MenuInfo");
       var titleMenu = document.getElementById("principal-title");
-      var span = document.getElementsByClassName("close")[0];
+      var span = document.getElementsByClassName("closeMenu")[0];
 
       titleMenu.onclick = function () {
         modal.style.display = "block";
@@ -540,18 +519,10 @@ export default {
           modal.style.display = "none";
         }
       };
-      // x.style.z-index=101;
-      // var x = document.getElementById("informacionID");
-      // x.style.display="block";
-      // x.style.zIndex=100;
     },
     quitarespera() {
       this.esperatime = false;
       this.quitarboton = false;
-    },
-    info() {
-      this.showInfo = true;
-      console.log(this.showInfo);
     },
     HelpMenu() {
       var modal = document.getElementById("ModalHelp");
@@ -573,7 +544,7 @@ export default {
     ObjHistory1() {
       var modal = document.getElementById("ModalObj-1");
       var obj = document.getElementById("Obj-1");
-      var span = document.getElementsByClassName("close")[0];
+      var span = document.getElementsByClassName("closeObj")[0];
 
       obj.onclick = function () {
         modal.style.display = "block";
