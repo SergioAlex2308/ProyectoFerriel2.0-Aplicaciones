@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <!-- <PrimeraPersona/> -->
-     <!-- <espera-usuarios/>  -->
-      <MapaEstaciones/>
-     <!-- <informacion/>  -->
-     <!-- <not-found/>  -->
+    <!-- <Carga/> -->
+    <MapaEstaciones />
+    <!-- <informacion/>  -->
+    <!-- <not-found/>  -->
     <!-- <Colisiones/> -->
     <!-- <Menus/> -->
   </div>
 </template>
 
 <script>
-//import EsperaUsuarios from './components/EsperaUsuarios.vue'
+//import Carga from "./components/EsperaUsuarios.vue";
 import MapaEstaciones from './components/Mapa.vue'
 //import Menus from "./components/Menu.vue";
 // import NotFound from './components/NotFound.vue'
@@ -22,15 +21,15 @@ import MapaEstaciones from './components/Mapa.vue'
 export default {
   name: "App",
   components: {
-     //EsperaUsuarios,
+    //Carga,
     MapaEstaciones,
-    
+
     // NotFound,
     //Informacion
     //PrimeraPersona
     //Colisiones
     //Menus
-  }
+  },
 };
 </script>
 <style src="./assets/Styles/style_Main.css"></style>

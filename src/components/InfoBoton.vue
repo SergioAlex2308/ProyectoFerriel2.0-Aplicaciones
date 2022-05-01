@@ -6,45 +6,43 @@
       </div>
       <div class="seccionMenu">
         <div id="autores" style="display: none">
-          <h2>Gerente de producto</h2>
-          <h6>Jhon Sebastian Martínez Orjuela</h6>
+          <h1>Equipo Ferriel 2.0</h1>
           <img
             class="circular--square"
             src="../assets/Icons/Icons-User.png"
             width="100px"
             alt="IconUser"
           />
-          <h2 class="hola">Equipo de desarrollo</h2>
-          <h6>
-            Sergio Alexander Martínez Cardenas <br />
-            David Ernesto Arguello Mosquera <br />
-            Guillermo Andres Diaz Moreno<br />
-          </h6>
-          <div class="caras">
-            <img
-              class="circular--square"
-              src="../assets/Icons/Icons-User.png"
-              width="100px"
-              alt="Foto integrante"
-            />
-            <img
-              class="circular--square"
-              src="../assets/Icons/Icons-User.png"
-              width="100px"
-              alt="Foto integrante"
-            />
-            <img
-              class="circular--square"
-              src="../assets/Icons/Icons-User.png"
-              width="100px"
-              alt="Foto integrante"
-            />
-          </div>
+          <h2>Jhon Sebastian Martínez Orjuela</h2>
+          <h6>Gerente de producto y desarrollador 3D</h6>
+          <img
+            class="circular--square"
+            src="../assets/Icons/Icons-User.png"
+            width="100px"
+            alt="IconUser"
+          />
+          <h2>Sergio Alexander Martínez Cardenas</h2>
+          <h6>Desarrollador BackEnd y FrontEnd</h6>
+          <img
+            class="circular--square"
+            src="../assets/Icons/Icons-User.png"
+            width="100px"
+            alt="IconUser"
+          />
+          <h2>David Ernesto Arguello Mosquera</h2>
+          <h6>Desarrollador 3D</h6>
+          <img
+            class="circular--square"
+            src="../assets/Icons/Icons-User.png"
+            width="100px"
+            alt="IconUser"
+          />
+          <h2>Guillermo Andres Diaz Moreno</h2>
           <div class="universidad">
-            <h5>
-              UMNG<br />
-              Proyecto Ferriel 2022
-            </h5>
+            <h3>
+              Universidad Militar Nueva Granada<br />
+              2022
+            </h3>
           </div>
         </div>
         <div id="historia" style="display: block">
@@ -134,8 +132,9 @@
           </div>
           <table class="tableHorario">
             <tr class="Itinerario">
-              <th colspan="5">ITINERARIO TREN TURISTICO DE IDA: BOGOTÁ - ZIPAQUIRÁ <br/>
-              Sábados, Domingos y Festivos
+              <th colspan="5">
+                ITINERARIO TREN TURISTICO DE IDA: BOGOTÁ - ZIPAQUIRÁ <br />
+                Sábados, Domingos y Festivos
               </th>
             </tr>
             <tr class="infoTable">
@@ -149,19 +148,19 @@
               <td>Estación de la Sabana</td>
               <td></td>
               <td></td>
-              <td> 8:20 </td>
-              <td> 0:45</td>
+              <td>8:20</td>
+              <td>0:45</td>
             </tr>
             <tr>
               <td>Estación de Usaquén</td>
-              <td> 9:05 </td>
-              <td> 0:10 </td>
-              <td> 9:15 </td>
-              <td> 1:30 </td>
+              <td>9:05</td>
+              <td>0:10</td>
+              <td>9:15</td>
+              <td>1:30</td>
             </tr>
             <tr>
               <td>Estación de Zipaquirá</td>
-              <td> 10:45 </td>
+              <td>10:45</td>
               <td></td>
               <td></td>
               <td></td>
@@ -169,8 +168,9 @@
           </table>
           <table class="tableHorario">
             <tr class="Itinerario">
-              <th colspan="5">ITINERARIO TREN TURISTICO DE REGRESO: ZIPAQUIRÁ - BOGOTÁ<br/>
-              Sábados, Domingos y Festivos
+              <th colspan="5">
+                ITINERARIO TREN TURISTICO DE REGRESO: ZIPAQUIRÁ - BOGOTÁ<br />
+                Sábados, Domingos y Festivos
               </th>
             </tr>
             <tr class="infoTable">
@@ -189,7 +189,7 @@
             </tr>
             <tr>
               <td>Estación de Usaquén</td>
-              <td>16:45 </td>
+              <td>16:45</td>
               <td>0:05</td>
               <td>16:50</td>
               <td>0:45</td>

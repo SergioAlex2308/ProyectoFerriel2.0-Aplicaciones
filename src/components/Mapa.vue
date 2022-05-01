@@ -1,12 +1,6 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-    <espera-usuarios class="esperar" v-if="esperatime"> </espera-usuarios>
-    <div class="btnInit" v-if="quitarboton">
-      <a class="siguiboton" v-on:click="quitarespera()" v-if="quitarboton"
-        >Iniciar</a
-      >
-    </div>
-
+    <Carga :HideLoad="loaded" class="esperar" v-if="!loaded"></Carga>
     <div id="header">
       <h1 id="principal-title" @click="ShowInfo()">Ferriel 2.0</h1>
       <div id="menuHelp" @click="HelpMenu()">
@@ -213,16 +207,20 @@ import { Capsule } from "three/examples/jsm/math/Capsule";
 //import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 
 import Informacion from "./InfoBoton.vue";
-import EsperaUsuarios from "./EsperaUsuarios.vue";
+import Carga from "./EsperaUsuarios.vue";
 export default {
   name: "MapaEstaciones",
   components: {
     Informacion,
-    EsperaUsuarios,
+    Carga,
   },
   data() {
     return {
-      quitarboton: false,
+      loaded: false, //Carga
+      load01: false,
+      load02: false,
+      load03: false,
+      load04: false,
       esperatime: true,
       mostrar: false,
       container: null,
@@ -309,7 +307,7 @@ export default {
         0.5 // intensity
       );
       const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
-      mainLight.position.set(10, 10, 10);
+      mainLight.position.set(10, 2, 10);
       mainLight.castShadow = true;
       mainLight.shadow.camera.top = 2;
       mainLight.shadow.camera.bottom = -2;
@@ -319,11 +317,32 @@ export default {
       mainLight.shadow.camera.far = 40;
       this.scene.add(ambientLight, mainLight);
 
-      /* const gridHelper = new THREE.GridHelper( 10, 50, 0x303030, 0x303030 );
-            this.scene.add( gridHelper ); */
+      /* const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+      hemiLight.position.set(0, 20, 0);
+      this.scene.add(hemiLight); */
 
-      /* const axesHelper = new THREE.AxesHelper(5);
-      this.scene.add(axesHelper); */
+      /* const dirLight = new THREE.DirectionalLight(0xffffff);
+      dirLight.position.set(-3, 2, -10);
+      dirLight.castShadow = true;
+      dirLight.shadow.camera.top = 4;
+      dirLight.shadow.camera.bottom = -4;
+      dirLight.shadow.camera.left = -4;
+      dirLight.shadow.camera.right = 4;
+      dirLight.shadow.camera.near = 0.1;
+      dirLight.shadow.camera.far = 40;
+      this.scene.add(dirLight); */
+
+      /* const spotLight = new THREE.SpotLight(0xffffff);
+      spotLight.position.set(-3, 2, -25);
+
+      spotLight.castShadow = true;
+      spotLight.shadow.mapSize.width = 1024;
+      spotLight.shadow.mapSize.height = 1024;
+      spotLight.shadow.camera.near = 500;
+      spotLight.shadow.camera.far = 4000;
+      spotLight.shadow.camera.fov = 30;
+
+      this.scene.add(spotLight); */
 
       // create renderer
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -333,16 +352,18 @@ export default {
       );
       this.renderer.setPixelRatio(window.devicePixelRatio);
       this.renderer.outputEncoding = THREE.sRGBEncoding;
+      this.renderer.shadowMap.enabled = true;
+      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       this.container.appendChild(this.renderer.domElement);
 
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
-      //const loader02 = new GLTFLoader().setPath("/Models/");
+      const loader02 = new GLTFLoader().setPath("/Models/");
       const loader03 = new GLTFLoader().setPath("/Models/");
       //const loader04 = new GLTFLoader().setPath("/Models/");
 
       loader01.load(
-        "ModeloColisiones.glb",
+        "Cajica01.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.scene.position.x = 10;
@@ -350,14 +371,17 @@ export default {
           this.mesh.scene.position.z = 5;
           this.scene.add(gltf.scene);
           this.worldOctree.fromGraphNode(gltf.scene);
+
           if (this.mesh) {
-            this.quitarboton = true;
-            console.log("esta cargado");
+            this.load01 = true;
           }
+          /* this.mesh.scene.traverse(function (object) {
+            if (object.isMesh) object.castShadow = true;
+          }); */
           /* this.mesh.traverse(function (node) {
-          if (node.isMesh || node.isLight) node.castShadow = true;
-          if (node.isMesh || node.isLight) node.receiveShadow = true;
-        }); */
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
           this.animate();
 
           /* const helper = new OctreeHelper(this.worldOctree);
@@ -372,20 +396,24 @@ export default {
         undefined,
         undefined
       );
-      /* loader02.load(
+      loader02.load(
         "Zipaquira05.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.scene.position.x = 12;
+          this.mesh.scene.position.x = 35;
           this.mesh.scene.position.y = 0;
-          this.mesh.scene.position.z = 0;
+          this.mesh.scene.position.z = 5;
           this.scene.add(gltf.scene);
           this.worldOctree.fromGraphNode(gltf.scene);
+
+          if (this.mesh) {
+            this.load02 = true;
+          }
           this.animate();
         },
         undefined,
         undefined
-      ); */
+      );
       loader03.load(
         "Cloud01.glb",
         (gltf) => {
@@ -500,7 +528,6 @@ export default {
           element: document.querySelector(".ObjView-1"),
         },
       ];
-
       window.addEventListener("resize", this.onWindowResize);
     },
     ShowInfo() {
@@ -520,9 +547,11 @@ export default {
         }
       };
     },
-    quitarespera() {
-      this.esperatime = false;
-      this.quitarboton = false;
+    HideWait() {
+      if(this.load01 && this.load02)
+      {
+        this.loaded = true;
+      }
     },
     HelpMenu() {
       var modal = document.getElementById("ModalHelp");
@@ -878,6 +907,7 @@ export default {
 
       TWEEN.update();
       this.contentPoints();
+      this.HideWait();
       this.contentPointsObjects();
       this.render();
       requestAnimationFrame(this.animate);
