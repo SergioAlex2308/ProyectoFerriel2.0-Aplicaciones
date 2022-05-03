@@ -1,5 +1,5 @@
 <template>
-  <div id="todo">
+  <div id="Modal">
     <div class="contentMenu">
       <div class="headerModal">
         <span class="closeMenu">&times;</span>
@@ -202,6 +202,9 @@
               <td></td>
             </tr>
           </table>
+          <div class="pageTrain">
+            <a href="https://www.turistren.com.co" target="_blank">Página oficial del tren de la sabana</a>
+          </div>
         </div>
       </div>
       <div class="botones">
@@ -221,16 +224,7 @@
 <script>
 export default {
   name: "Informacion",
-  components: {
-    //MapaEstaciones,
-  },
   methods: {
-    cerrarinformacion() {
-      var x = document.getElementById("todo");
-
-      x.style.display = "none";
-      // x.style.z-index=101;
-    },
     informacion: function () {
       var author = document.getElementById("autores");
       var schedule = document.getElementById("horarios");
@@ -239,7 +233,6 @@ export default {
       schedule.style.display = "none";
       history.style.display = "block";
     },
-
     informacion2: function () {
       var author = document.getElementById("autores");
       var schedule = document.getElementById("horarios");

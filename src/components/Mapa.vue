@@ -1,8 +1,17 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-    <Carga :HideLoad="loaded" class="esperar" v-if="!loaded"></Carga>
+    <Carga class="esperar" v-if="!loaded"></Carga>
+    <div id="title">
+      <h1 id="principal-title">Ferriel 2.0</h1>
+    </div>
     <div id="header">
-      <h1 id="principal-title" @click="ShowInfo()">Ferriel 2.0</h1>
+      <div id="menuIcon" @click="ShowInfo()">
+        <div class="hamburIcon">
+          <div class="lineIcon"></div>
+          <div class="lineIcon"></div>
+          <div class="lineIcon"></div>
+        </div>
+      </div>
       <div id="menuHelp" @click="HelpMenu()">
         <img
           class="iconHelp"
@@ -83,6 +92,9 @@
           </div>
         </div>
       </div>
+      <div id="MenuInfo">
+        <Informacion />
+      </div>
       <button v-if="Fp" @click="mainView" class="buttonView">
         Volver a la vista aerea
       </button>
@@ -114,9 +126,6 @@
       </div>
     </div>
     <div id="content">
-      <div id="MenuInfo">
-        <Informacion />
-      </div>
       <div v-show="onViewFP" class="pointObject ObjView-1">
         <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
         <div class="infoObject">
@@ -161,6 +170,16 @@
         <p>Haz click y arrastra el ratón para mover la vista</p>
       </div>
     </div>
+    <div id="keyLock">
+      <div id="lockCursor" class="instEsc">
+        <img
+          class="Escape"
+          src="../assets/Icons/Icons-Escape.png"
+          alt="Icono tecla escape"
+        />
+        <p>Presiona la tecla Escape para liberar el cursor.</p>
+      </div>
+    </div>
     <div v-show="onViewFP" id="footer02">
       <div class="instMove">
         <img
@@ -182,13 +201,17 @@
           para mirar a tu alrededor.
         </p>
       </div>
-      <div class="instEsc">
+      <div class="instJump">
         <img
-          class="Escape"
-          src="../assets/Icons/Icons-Escape.png"
-          alt="Icono tecla escape"
+          class="Mouse"
+          src="../assets/Icons/Icons-Space.png"
+          alt="Icono Espace"
         />
-        <p>Presiona la tecla Escape para liberar el cursor.</p>
+        <p>
+          Oprime la tecla Espacio
+          <br />
+          para saltar y moverte mas rápido.
+        </p>
       </div>
     </div>
   </div>
@@ -359,7 +382,7 @@ export default {
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
       const loader02 = new GLTFLoader().setPath("/Models/");
-      const loader03 = new GLTFLoader().setPath("/Models/");
+      //const loader03 = new GLTFLoader().setPath("/Models/");
       //const loader04 = new GLTFLoader().setPath("/Models/");
 
       loader01.load(
@@ -414,7 +437,7 @@ export default {
         undefined,
         undefined
       );
-      loader03.load(
+      /* loader03.load(
         "Cloud01.glb",
         (gltf) => {
           this.model = gltf.scene;
@@ -430,7 +453,7 @@ export default {
         function (e) {
           console.error(e);
         }
-      );
+      ); */
       /* loader04.load(
         "City2.glb",
         (gltf) => {
@@ -532,7 +555,7 @@ export default {
     },
     ShowInfo() {
       var modal = document.getElementById("MenuInfo");
-      var titleMenu = document.getElementById("principal-title");
+      var titleMenu = document.getElementById("menuIcon");
       var span = document.getElementsByClassName("closeMenu")[0];
 
       titleMenu.onclick = function () {
@@ -548,8 +571,7 @@ export default {
       };
     },
     HideWait() {
-      if(this.load01 && this.load02)
-      {
+      if (this.load01 && this.load02) {
         this.loaded = true;
       }
     },
@@ -772,9 +794,16 @@ export default {
 
       this.onViewFP = true;
 
+      this.pControls.addEventListener("unlock", function () {
+        var cursor = document.getElementById("lockCursor");
+        cursor.style.display = "none";
+      });
+      this.pControls.addEventListener("lock", function () {
+        var cursor = document.getElementById("lockCursor");
+        cursor.style.display = "block";
+      });
       this.container.addEventListener("contextmenu", (e) => {
         e.preventDefault();
-        //document.body.requestPointerLock();
         this.pControls.lock();
         this.pControls.connect();
       });
@@ -902,8 +931,8 @@ export default {
       console.log("y", this.playerCollider.end.y);
       console.log("z", this.playerCollider.end.z); */
 
-      const d = this.clock.getDelta();
-      this.mixer.update(d);
+      /* const d = this.clock.getDelta();
+      this.mixer.update(d); */
 
       TWEEN.update();
       this.contentPoints();

@@ -34,10 +34,10 @@ audio:active {
 
 audio {
 
-	-webkit-transition: all 0.5s linear;
-	-moz-transition: all 0.5s linear;
-	-o-transition: all 0.5s linear;
-	transition: all 0.5s linear;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
 	-moz-box-shadow: 2px 2px 4px 0px #006773;
 	-webkit-box-shadow: 2px 2px 4px 0px #006773;
 	box-shadow: 2px 2px 4px 0px #006773;
@@ -91,18 +91,6 @@ audio {
 	border: solid 2px black;
 }
 
-#modal-backdrop {
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(146, 99, 99, 0);
-}
-
 .btn-close {
 	background-color: #303030;
 	border: none;
@@ -135,11 +123,16 @@ audio {
 	margin-bottom: 2%;
 }
 
-#todo {
+#Modal {
 	display: flex;
 	justify-content: center;
 }
-
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
 .contentMenu {
 	display: flex;
 	align-items: center;
@@ -156,6 +149,8 @@ audio {
 	min-height: 250px;
 	border-radius: 2%;
 	filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+	animation: appear 350ms ease-in 1;
+	z-index: 6;
 }
 
 .seccionMenu {
@@ -321,6 +316,11 @@ td {
 	flex-direction: column;
 	justify-content: center;
 }
+.pageTrain {
+	display: flex;
+	justify-content: center;
+	padding: 2% 0 2% 0;
+}
 
 #autores {
 	display: flex;
@@ -344,6 +344,7 @@ td {
 	padding: 5% 5%;
 	background-color: #444444;
 	height: 1%;
+	cursor: pointer;
 }
 
 .boton:hover {
