@@ -1,4 +1,7 @@
-* {
+
+  
+
+ * {
 	margin: 0;
 	padding: 0;
 }
@@ -12,15 +15,15 @@
 	position: fixed;
 	outline: none;
 	z-index: 1000;
-	-webkit-user-select: none;
-	/* Chrome all / Safari all */
-	-moz-user-select: none;
+	-webkit-user-select: none; 
+	/* Chrome all / Safari all */ 
+	-moz-user-select: none; 
 	/* Firefox all */
-	-ms-user-select: none;
-	/* IE 10+ */
-	user-select: none;
-	/* Likely future */
-}
+	-ms-user-select: none; 
+	/* IE 10+ */ 
+	 user-select: none; 
+	/* Likely future   */
+ }
 
 .ring {
 	position: absolute;
@@ -29,9 +32,9 @@
 	transform: translate(-50%, -50%);
 	width: 150px;
 	height: 150px;
-	background: transparent;
+	background: transparent; 
 	/* border: 3px solid #3c3c3c; */
-	border-radius: 50%;
+	 border-radius: 50%;
 	line-height: 150px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
@@ -106,7 +109,7 @@
 	100% {
 		transform: rotate(405deg);
 	}
-}
+} 
 
 /* body {
 	display: flex;

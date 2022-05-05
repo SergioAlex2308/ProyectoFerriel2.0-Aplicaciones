@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div id="notfound">
+    <!-- <div id="notfound">
         <div class="text">
             <h1>Página no encontrada
                 <br> 404
@@ -31,10 +31,17 @@
         <div class="gif">
             <img class="train" src="Train404.gif" alt="Train404">
         </div>
+    </div> -->
+    <div class="error-page">
+    <header class="error-page__header">
+    <img class="error-page__header-image" src="Train404.gif" alt="tren">
+    <h1 class="error-page__title nolinks">Pagina no encontrada</h1>
+    </header>
+    <span class="error-page__message">La pagina que estas buscando no ha sido encontrada.</span>
     </div>
 </body>
 <style scoped>
-    * {
+    /* * {
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -75,7 +82,100 @@
         font-weight: 100;
         font-size: 100px;
         color: rgb(255, 255, 255);
-    }
+    } */
+    body {
+    font: normal 16px/26px Arial, sans-serif;
+    background: #fafafa;
+    color: #2a3744;
+    text-align:center;
+    overflow:hidden;
+    backface-visibility: hidden;
+    perspective: none;
+    transform:none;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+div {
+  display:inline-block;
+  overflow:hidden;
+  white-space:pre-wrap;
+}
+
+div:first-of-type {    /* For increasing performance 
+                       ID/Class should've been used. 
+                       For a small demo 
+                       it's okaish for now */
+  animation: showup 7s infinite;
+}
+
+div:last-of-type {
+  width:100px;
+  animation: reveal 7s infinite;
+}
+
+div:last-of-type span {
+  margin-left:-355px;
+  animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:400px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:400px;}
+}
+
+
+p {
+  font-size:12px;
+  color:#999;
+  margin-top:200px;
+}
+
+.error-page {
+    position: relative;
+    margin: 150px 0 40px;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+   
+}
+
+.error-page__header-image {
+    width: 100%;
+    height: 100%;
+}
+
+.error-page__title {
+    display: flex;
+    justify-content: center;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 3vw;
+    width: 100%;
+}
+.error-page__message{
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 2vw;
+    width: 500px;
+
+}
 </style>
 
 </html>

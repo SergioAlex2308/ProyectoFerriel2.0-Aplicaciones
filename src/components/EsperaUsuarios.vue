@@ -4,8 +4,8 @@
       <h2>Ferriel 2.0</h2>
       <span class="circle"></span>
     </div>
-  </div>
-  
+  </div> 
+
 </template>
 <script>
 //import MapaEstaciones from './Mapa.vue';
