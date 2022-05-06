@@ -250,6 +250,9 @@
     transform: scale(0.5, 0.5);
 }
 
+#contentObjs{
+    z-index: 1;
+}
 .pointObject {
     position: absolute;
     top: 50%;

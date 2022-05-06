@@ -125,7 +125,7 @@
         </div>
       </div>
     </div>
-    <div id="content">
+    <div id="contentObjs">
       <div v-show="onViewFP" class="pointObject ObjView-1">
         <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
         <div class="infoObject">
@@ -240,10 +240,10 @@ export default {
   data() {
     return {
       loaded: false, //Carga
-      load01: false,
-      load02: false,
-      load03: false,
-      load04: false,
+      load01: false, //Zipaquirá load
+      load02: false, //Usaquén load
+      load03: false, //Cajicá load
+      load04: false, //Chía load
       esperatime: true,
       mostrar: false,
       container: null,
@@ -255,6 +255,8 @@ export default {
       raycaster: null,
       MainTarget: null,
       MainPosition: null,
+      MainFar: null,
+      FarFp: null,
       points: [], //PuntosEstaciones
       point: null,
       Fp: false,
@@ -302,9 +304,9 @@ export default {
       const fov = 60; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.1; // the near clipping plane
-      const far = 1000; // the far clipping plane
+      var far = 150; // the far clipping plane
       this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      this.camera.position.x = 20;
+      this.camera.position.x = 60;
       this.camera.position.y = 40;
       this.camera.position.z = 0;
 
@@ -383,15 +385,12 @@ export default {
       const loader01 = new GLTFLoader().setPath("/Models/");
       const loader02 = new GLTFLoader().setPath("/Models/");
       //const loader03 = new GLTFLoader().setPath("/Models/");
-      //const loader04 = new GLTFLoader().setPath("/Models/");
+      const loader04 = new GLTFLoader().setPath("/Models/");
 
       loader01.load(
         "Cajica01.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.scene.position.x = 10;
-          this.mesh.scene.position.y = -1;
-          this.mesh.scene.position.z = 5;
           this.scene.add(gltf.scene);
           this.worldOctree.fromGraphNode(gltf.scene);
 
@@ -400,32 +399,20 @@ export default {
           }
           /* this.mesh.scene.traverse(function (object) {
             if (object.isMesh) object.castShadow = true;
-          }); */
-          /* this.mesh.traverse(function (node) {
+          });
+          this.mesh.traverse(function (node) {
             if (node.isMesh || node.isLight) node.castShadow = true;
             if (node.isMesh || node.isLight) node.receiveShadow = true;
           }); */
           this.animate();
-
-          /* const helper = new OctreeHelper(this.worldOctree);
-          helper.visible = false;
-          this.scene.add(helper);
-
-          const gui = new GUI({ width: 200 });
-          gui.add({ debug: false }, "debug").onChange(function (value) {
-            helper.visible = value;
-          }); */
         },
         undefined,
         undefined
       );
       loader02.load(
-        "Zipaquira05.glb",
+        "Zipaquira01.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.scene.position.x = 35;
-          this.mesh.scene.position.y = 0;
-          this.mesh.scene.position.z = 5;
           this.scene.add(gltf.scene);
           this.worldOctree.fromGraphNode(gltf.scene);
 
@@ -438,51 +425,51 @@ export default {
         undefined
       );
       /* loader03.load(
-        "Cloud01.glb",
-        (gltf) => {
-          this.model = gltf.scene;
-          this.model.scale.set(2, 2, 2);
-          this.scene.add(this.model);
-
-          this.mixer = new THREE.AnimationMixer(this.model);
-          this.mixer.clipAction(gltf.animations[0]).play();
-
-          this.animate();
-        },
-        undefined,
-        function (e) {
-          console.error(e);
-        }
-      ); */
-      /* loader04.load(
-        "City2.glb",
+        "Isla.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.scene.position.x = 0;
-          this.mesh.scene.position.y = 0;
-          this.mesh.scene.position.z = 4.5;
           this.scene.add(gltf.scene);
+          this.worldOctree.fromGraphNode(gltf.scene);
+
+          if (this.mesh) {
+            this.load03 = true;
+          }
+          this.animate();
         },
         undefined,
         undefined
       ); */
+      loader04.load(
+        "Parque.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          this.worldOctree.fromGraphNode(gltf.scene);
+
+          if (this.mesh) {
+            this.load04 = true;
+          }
+        },
+        undefined,
+        undefined
+      );
 
       this.color = new THREE.Color();
       this.white = new THREE.Color().setHex(0xffffff);
 
       //Add geometry
-      var geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
+      /* var geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
 
       var cube1 = new THREE.Mesh(geometry, material);
-      cube1.position.x = 0;
-      cube1.position.y = -0.5;
-      cube1.position.z = 0;
-      this.scene.add(cube1);
+      cube1.position.x = 34;
+      cube1.position.y = 2;
+      cube1.position.z = 6;
+      this.scene.add(cube1); */
 
-      var cube2 = new THREE.Mesh(geometry, material);
+      /*  var cube2 = new THREE.Mesh(geometry, material);
       cube2.position.x = 25;
       cube2.position.y = -0.5;
       cube2.position.z = 0;
@@ -499,7 +486,7 @@ export default {
       cube4.position.y = -0.5;
       cube4.position.z = 25;
       this.scene.add(cube4);
-
+ */
       // add Orbitcontrols
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -529,25 +516,30 @@ export default {
       this.raycaster = new THREE.Raycaster();
       this.points = [
         {
-          position: new THREE.Vector3(0, 0, 0),
+          //Zipaquirá
+          position: new THREE.Vector3(33, 5, 0),
           element: document.querySelector(".MapView-1"),
         },
         {
-          position: new THREE.Vector3(25, 0, 0),
+          //Usaquén
+          position: new THREE.Vector3(0, 1, 40),
           element: document.querySelector(".MapView-2"),
         },
         {
-          position: new THREE.Vector3(0, 0, 25),
+          //Cajicá
+          position: new THREE.Vector3(-36, 5, 0),
           element: document.querySelector(".MapView-3"),
         },
         {
-          position: new THREE.Vector3(25, 0, 25),
+          //Chía
+          position: new THREE.Vector3(0, 1, -40),
           element: document.querySelector(".MapView-4"),
         },
       ];
       this.pointsObjects = [
         {
-          position: new THREE.Vector3(-3, 0.2, 1),
+          //Telefono
+          position: new THREE.Vector3(34, 1, 6),
           element: document.querySelector(".ObjView-1"),
         },
       ];
@@ -571,7 +563,7 @@ export default {
       };
     },
     HideWait() {
-      if (this.load01 && this.load02) {
+      if (this.load01 && this.load02 && this.load04) {
         this.loaded = true;
       }
     },
@@ -671,7 +663,7 @@ export default {
       //Estacion de Zipaquirá
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
-      const PosEst1 = new THREE.Vector3(0, 1, 0);
+      const PosEst1 = new THREE.Vector3(20, 1, 0);
       const RotEst1 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst1);
@@ -696,7 +688,7 @@ export default {
       //Estacion de Usaquén
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
-      const PosEst2 = new THREE.Vector3(25, 1, 0);
+      const PosEst2 = new THREE.Vector3(0, 1, 40);
       const RotEst2 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst2);
@@ -721,7 +713,7 @@ export default {
       //Estacion de Cajicá
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
-      const PosEst3 = new THREE.Vector3(0, 1, 25);
+      const PosEst3 = new THREE.Vector3(-36, 1, 5);
       const RotEst3 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst3);
@@ -746,7 +738,7 @@ export default {
       //Estacion de Chía
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
-      const PosEst4 = new THREE.Vector3(25, 1, 25);
+      const PosEst4 = new THREE.Vector3(0, 1, -40);
       const RotEst4 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst4);
@@ -784,6 +776,8 @@ export default {
         .to(this.MainRotation, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
         .start();
+
+      this.camera.far = this.MainFar;
 
       this.Fp = false;
       this.onViewFP = false;
