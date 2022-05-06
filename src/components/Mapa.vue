@@ -22,13 +22,17 @@
       <div id="ModalHelp" class="ModalControls">
         <div class="contentHelp">
           <div class="headerModal">
+              <div class="boo">
+         <button type="button" id="ZoomMenos"  class="btn btn-dark mr-1" @click="ZoomMenos()">Disminuir</button>
+         <button type="button" id="ZoomMas" class="btn btn-dark mr-1" @click="ZoomMas()">Aumentar</button>
+        </div>
             <span class="close">&times;</span>
           </div>
           <div class="contentModal">
-            <div class="titleHelp">
+            <div id="zoomtexto" class="titleHelp">
               <h2 class="NameMenu">Ayuda</h2>
             </div>
-            <div class="textHelp">
+            <div id="zoomtexto1" class="textHelp">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
                 qui commodi neque sequi hic, asperiores, mollitia placeat
@@ -36,18 +40,18 @@
                 repellendus illum quaerat enim molestiae sint?
               </p>
             </div>
-            <h3 class="titleControls">Controles en la vista aérea</h3>
+            <h3 id="zoomtexto2" class="titleControls">Controles en la vista aérea</h3>
             <div class="PictureControls">
               <div class="InstControls">
                 <div class="invert">
                   <img src="../assets/Icons/Icons-Clic.png" alt="Icono Mouse" />
                 </div>
-                <p class="textControls">
+                <p id="zoomtexto3" class="textControls">
                   Haz clic izquierdo y arrastra para mover la vista.
                 </p>
               </div>
             </div>
-            <h3 class="titleControls">
+            <h3 id="zoomtexto4" class="titleControls">
               Controles en la vista de primera persona
             </h3>
             <div class="PictureControls">
@@ -58,7 +62,7 @@
                     alt="Teclas de movimiento"
                   />
                 </div>
-                <p class="textControls">
+                <p id="zoomtexto5" class="textControls">
                   Con las teclas A, W, S y D, te podras desplazar a través de
                   entorno.
                 </p>
@@ -71,7 +75,7 @@
                     alt="Icono Mouse"
                   />
                 </div>
-                <p class="textControls">
+                <p id="zoomtexto6" class="textControls">
                   Haz clic derecho para poder mover la cámara y mirar a tu
                   alrededor.
                 </p>
@@ -83,7 +87,7 @@
                     alt="Icono tecla escape"
                   />
                 </div>
-                <p class="textControls">
+                <p id="zoomtexto7" class="textControls">
                   Cuando tenga el cursor bloqueado dale a la tecla de Escape
                   para liberarlo.
                 </p>
@@ -591,6 +595,46 @@ export default {
           modal.style.display = "none";
         }
       };
+    },
+    ZoomMas: function(){
+      var zoom = 1;
+      var zoompoquito = 0.1;
+    
+      document.getElementById("ZoomMas").addEventListener("click", function() {
+      
+      zoom += zoompoquito;
+      
+      document.getElementById("zoomtexto").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto1").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto2").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto3").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto4").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto5").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto6").style.transform = "scale(" + zoom + ")";
+      document.getElementById("zoomtexto7").style.transform = "scale(" + zoom + ")";
+    console.log("se logro")
+        
+    });
+    },
+    ZoomMenos: function(){
+       var zoom = 1;
+      var zoompoquito = 0.1;
+      document.getElementById("ZoomMenos").addEventListener("click", function() {
+      // if (zoom > zoompoquito) {
+       
+      zoom -= zoompoquito;
+      
+      
+        document.getElementById("zoomtexto").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto1").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto2").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto3").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto4").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto5").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto6").style.transform = "scale(" + zoom + ")";
+        document.getElementById("zoomtexto7").style.transform = "scale(" + zoom + ")";
+      console.log("se logro")
+    });
     },
     ObjHistory1() {
       var modal = document.getElementById("ModalObj-1");
