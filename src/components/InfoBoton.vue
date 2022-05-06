@@ -1,11 +1,16 @@
 <template>
-  <div id="Modal">
-    <div class="contentMenu">
+  <div id="Modal" >
+    <div id="contentMenu" class="darkmode">
       <div class="headerModal">
+
         <div class="boo">
+        
+        
          <button type="button" id="ZoomMenos"  class="btn btn-dark mr-1" @click="ZoomMenos()">Disminuir</button>
          <button type="button" id="ZoomMas" class="btn btn-dark mr-1" @click="ZoomMas()">Aumentar</button>
+        <Toggle :mode="mode" @toggle="$emit('toggle')" />
         </div>
+        
           <!-- <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Botones">
           <button type="button" id="disminuir" class="btn btn-dark mr-1">Disminuir</button>
           <button type="button" id="aumentar" class="btn btn-dark mr-1">Aumentar</button>
@@ -270,19 +275,19 @@
       <div class="botones">
         <div class="boton" @click="informacion()">
          <div id="zoomtexto21">
-          <h3>Historia</h3>
+          <h3 class="btres">Historia</h3>
           </div>
         </div>
         
         <div class="boton" @click="informacion2()">
          <div id="zoomtexto22"> 
-          <h3>Integrantes</h3>
+          <h3 class="btres">Integrantes</h3>
           </div>
         </div>
          
         <div class="boton" @click="informacion3()">
          <div id="zoomtexto23">
-          <h3>Horarios</h3>
+          <h3 class="btres">Horarios</h3>
           </div>
         </div>
       </div>

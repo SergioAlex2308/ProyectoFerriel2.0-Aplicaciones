@@ -16,7 +16,7 @@
 	display: block;
 	flex-direction: row;
 
-}
+} 
 
 audio:hover,
 audio:focus,
@@ -99,6 +99,10 @@ audio {
 	flex-direction: column;
 	border: solid 2px black;
 }
+.dark .texto{
+	border: solid 2px white;
+	
+}
 
 .btn-close {
 	background-color: #303030;
@@ -107,6 +111,10 @@ audio {
 	width: 30px;
 	height: 30px;
 	transition: transform .2s;
+}
+.dark .btn-close{
+	color: #000;
+	background-color: #aaaaaa;
 }
 
 .btn-close:hover {
@@ -142,7 +150,7 @@ audio {
         transform: translateY(-10px);
     }
 }
-.contentMenu {
+#contentMenu {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -161,6 +169,9 @@ audio {
 	animation: appear 350ms ease-in 1;
 	z-index: 6;
 }
+.dark #contentMenu {
+	background: #202020;
+}
 
 .seccionMenu {
 	display: flex;
@@ -171,10 +182,13 @@ audio {
 }
 
 .closeMenu {
-	color: #aaaaaa;
+	color: #000000;
 	float: right;
 	font-size: 30px;
 	font-weight: bold;
+}
+.dark .closeMenu{
+	color: white;
 }
 
 .closeMenu:hover,
@@ -183,7 +197,27 @@ audio {
 	text-decoration: none;
 	cursor: pointer;
 }
-
+.dark h1 {
+	color: white;
+}
+.dark h2 {
+	color: white;
+}
+.dark h3 {
+	color: rgb(255, 255, 255);
+}
+.dark .btres{
+	color: #000;
+}
+.dark h4 {
+	color: white;
+}
+.dark h5 {
+	color: white;
+}
+.dark h6 {
+	color: white;
+}
 h1 {
 	color: #000000;
 }
@@ -244,6 +278,9 @@ h6 {
 .datos {
 	color: #ffffff;
 }
+.dark .datos{
+	color:#000;
+}
 
 .logos {
 	display: flex;
@@ -275,7 +312,9 @@ h5 {
 .vor {
 	border: solid 5px black;
 }
-
+.dark .vor {
+	border: solid 5px black;
+}
 #historia {
 	display: flex;
 	justify-content: center;
@@ -304,22 +343,44 @@ h5 {
 	border-collapse: collapse;
 }
 .tableHorario tr:hover {
-	background-color: #7d7d7d6c;
+	background-color: #d009096c;
 }
 .Itinerario {
-	background-color: #303030;
+	background-color: #665454;
 	color: #ffffff;
 }
+.dark .Itinerario{
+	background-color: #614f4f;
+	color: #000;
+}
 .infoTable {
-	background-color: #7d7d7d;
+	background-color: #6b5d5d;
 	color: #ffffff;
+}
+.dark .infoTable{
+	background-color: #6b5d5d;
+	color: #000;
 }
 table,
 th,
 td {
 	border: 1px solid black;
+	color: #000;
+}
+.dark table{
+	border: 1px solid white
 }
 
+.dark th{
+	color: rgb(255, 255, 255);
+	border: 1px solid white
+	
+}
+
+.dark td{
+	color: rgb(255, 255, 255);
+	border: 1px solid white
+}
 .textHorarios {
 	display: flex;
 	flex-direction: column;
@@ -354,6 +415,9 @@ td {
 	background-color: #444444;
 	height: 1%;
 	cursor: pointer;
+}
+.dark .boton{
+	background-color: beige;
 }
 
 .boton:hover {

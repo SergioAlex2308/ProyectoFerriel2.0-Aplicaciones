@@ -80,20 +80,35 @@
     border-radius: 15% 15% 15% 15% / 50% 50% 50% 50%;
     transition: transform .2s;
 }
+.dark p {
+    color:white;
+}
+.dark .scene.background{
+    background-color: #303030;
+}
+.dark .lineIcon{
+    background-color: #000;
+}
 #title {
     position: absolute;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding: 0px 50px 10px 50px;
-    border-radius: 0px 0px 50px 50px / 25px 25px 50px 50px;
+    border-radius: 25px 25px 25px 25px / 25px 25px 25px 25px;
     background-color: #262626;
     z-index: 3;
+}
+.dark #title{
+    background-color: #ffffff;
 }
 #principal-title {
     margin: 0;
     text-align: center;
     vertical-align: middle;
     color: #fefefe;
+}
+.dark #principal-title {
+    color:#000;
 }
 
 #menuHelp {

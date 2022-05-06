@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" :class= "mode">
+>
     <!-- <Carga/> -->
-    <MapaEstaciones />
+    <MapaEstaciones :mode= "mode" @toggle= "toggle"/>
     <!-- <informacion/>  -->
     <!-- <not-found/>  -->
     <!-- <Colisiones/> -->
@@ -20,6 +21,11 @@ import MapaEstaciones from './components/Mapa.vue'
 
 export default {
   name: "App",
+  data (){
+  return{
+    mode: 'light'
+  }
+  },
   components: {
     //Carga,
     MapaEstaciones,
@@ -30,6 +36,16 @@ export default {
     //Colisiones
     //Menus
   },
+   methods: {
+  
+    toggle () {
+      if (this.mode === "dark") {
+        this.mode = "light"
+      } else {
+        this.mode = "dark"
+      }
+    }
+  }
 };
 </script>
 <style src="./assets/Styles/style_Main.css"></style>
