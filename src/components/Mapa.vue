@@ -4,8 +4,6 @@
      <Toggle :mode="mode" @toggle="$emit('toggle')" />
     <div id="title">
       <h1 id="principal-title">Ferriel 2.0</h1>
-      
-
     </div>
    
     <div id="header">
@@ -246,7 +244,6 @@ export default {
     Informacion,
     Carga,
     Toggle
-  
   },
   data() {
     return {

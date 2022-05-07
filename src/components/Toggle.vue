@@ -1,26 +1,29 @@
 <template>
   <div class="toggle-wrapper">
     <label class="toggle">
-      <input type= "checkbox" :checked= "(mode === 'dark') ? 'checked' : false" @change= "$emit('toggle')"
+      <input
+        type="checkbox"
+        :checked="mode === 'dark' ? 'checked' : false"
+        @change="$emit('toggle')"
       />
-      <span class= "toggler round"></span>
+      <span class="toggler round"></span>
     </label>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['mode']
-}
+  props: ["mode"],
+};
 </script>
 
 <style>
-.toggle-wrapper{
+.toggle-wrapper {
   display: flex;
   justify-content: end;
   position: absolute;
-    z-index: 100;
-    right: 2%;
+  z-index: 100;
+  right: 2%;
 }
 .toggle {
   position: relative;
@@ -40,7 +43,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #15202B;
+  background: #15202b;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -51,15 +54,15 @@ export default {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background: #FFF;
+  background: #fff;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 input:checked + .toggler {
-  background: #2196F3;
+  background: #2196f3;
 }
 input:focus + toggler {
-  box-shadow: 0 0 2px #2196F3;
+  box-shadow: 0 0 2px #2196f3;
 }
 input:checked + .toggler:before {
   -webkit-transform: translateX(26px);
