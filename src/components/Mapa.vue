@@ -1,11 +1,12 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-    <Carga class="esperar" v-if="!loaded"></Carga>
-     <Toggle :mode="mode" @toggle="$emit('toggle')" />
+    <!-- <Carga class="wait" v-show="!loaded"></Carga> -->
+    <Carga class="wait" v-show="!loaded"></Carga>
+    <Toggle :mode="mode" @toggle="$emit('toggle')" />
     <div id="title">
-      <h1 id="principal-title">Ferriel 2.0</h1>
+      <h1 id="principal-title">Ferriel Web</h1>
     </div>
-   
+
     <div id="header">
       <div id="menuIcon" @click="ShowInfo()">
         <div class="hamburIcon">
@@ -21,13 +22,27 @@
           alt="IconoAyuda"
         />
       </div>
-      <div id="ModalHelp" class="ModalControls">
+      <!-- <div id="ModalHelp" class="ModalControls">
         <div class="contentHelp">
           <div class="headerModal">
-              <div class="boo">
-         <button type="button" id="zoommin"  class="btn btn-dark mr-1" @click="zoommin()">Disminuir</button>
-         <button type="button" id="zoommax" class="btn btn-dark mr-1" @click="zoommax()">Aumentar</button>
-        </div>
+            <div class="boo">
+              <button
+                type="button"
+                id="zoommin"
+                class="btn btn-dark mr-1"
+                @click="zoommin()"
+              >
+                Disminuir
+              </button>
+              <button
+                type="button"
+                id="zoommax"
+                class="btn btn-dark mr-1"
+                @click="zoommax()"
+              >
+                Aumentar
+              </button>
+            </div>
             <span class="close">&times;</span>
           </div>
           <div class="contentModal">
@@ -42,7 +57,9 @@
                 repellendus illum quaerat enim molestiae sint?
               </p>
             </div>
-            <h3 id="zoomletra2" class="titleControls">Controles en la vista aérea</h3>
+            <h3 id="zoomletra2" class="titleControls">
+              Controles en la vista aérea
+            </h3>
             <div class="PictureControls">
               <div class="InstControls">
                 <div class="invert">
@@ -97,9 +114,186 @@
             </div>
           </div>
         </div>
+      </div> -->
+      <div id="ModalHelp" class="ModalControls">
+        <div class="contentHelp">
+          <div class="headerModal">
+            <span class="close">&times;</span>
+          </div>
+          <div class="contentModal">
+            <div class="titleHelp">
+              <h2 class="NameMenu">Ayuda</h2>
+            </div>
+            <div class="textHelp">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                qui commodi neque sequi hic, asperiores, mollitia placeat
+                quisquam expedita pariatur impedit omnis. Quod consequatur
+                repellendus illum quaerat enim molestiae sint?
+              </p>
+            </div>
+            <h3 class="titleControls">Controles en la vista aérea</h3>
+            <div class="PictureControls">
+              <div class="InstControls">
+                <div class="invert">
+                  <img src="../assets/Icons/Icons-Clic.png" alt="Icono Mouse" />
+                </div>
+                <p class="textControls">
+                  Haz clic izquierdo y arrastra para mover la vista.
+                </p>
+              </div>
+            </div>
+            <h3 class="titleControls">
+              Controles en la vista de primera persona
+            </h3>
+            <div class="PictureControls">
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    src="../assets/Icons/Icons-Keys.png"
+                    alt="Teclas de movimiento"
+                  />
+                </div>
+                <p class="textControls">
+                  Con las teclas A, W, S y D, te podras desplazar a través de
+                  entorno.
+                </p>
+              </div>
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    class="MouseClic"
+                    src="../assets/Icons/Icons-Clic.png"
+                    alt="Icono Mouse"
+                  />
+                </div>
+                <p class="textControls">
+                  Haz clic derecho para poder mover la cámara y mirar a tu
+                  alrededor.
+                </p>
+              </div>
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    src="../assets/Icons/Icons-Escape.png"
+                    alt="Icono tecla escape"
+                  />
+                </div>
+                <p class="textControls">
+                  Cuando tenga el cursor bloqueado dale a la tecla de Escape
+                  para liberarlo.
+                </p>
+              </div>
+              <div class="InstControls">
+                <div class="invert">
+                  <img
+                    src="../assets/Icons/Icons-Space.png"
+                    alt="Icono tecla espacio"
+                  />
+                </div>
+                <p class="textControls">
+                  Para moverte mas rápido por el entorno puedes saltar y tomar
+                  velocidad.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="MenuInfo">
         <Informacion />
+      </div>
+      <div id="TeamInfo">
+        <div class="contentMenu darkmode">
+          <div class="headerModal">
+            <span class="closeTeam">&times;</span>
+          </div>
+          <div class="contentModal">
+            <div class="titleTeam">
+              <h1>Equipo Ferriel Web</h1>
+            </div>
+            <div class="teamMember">
+              <div class="pictureTeam">
+                <img
+                  class="circular--square"
+                  src="../assets/Icons/Icons-User.png"
+                  width="100px"
+                  alt="IconUser"
+                />
+              </div>
+              <div class="infoMember">
+                <div class="nameMember">
+                  <h2>Jhon Sebastian Martínez Orjuela</h2>
+                </div>
+                <div class="rolMember">
+                  <h6>Gerente de producto y desarrollador 3D</h6>
+                </div>
+              </div>
+            </div>
+            <div class="teamMember">
+              <div class="pictureTeam">
+                <img
+                  class="circular--square"
+                  src="../assets/Icons/Icons-User.png"
+                  width="100px"
+                  alt="IconUser"
+                />
+              </div>
+              <div class="infoMember">
+                <div class="nameMember">
+                  <h2>Sergio Alexander Martínez Cardenas</h2>
+                </div>
+                <div class="rolMember">
+                  <h6>Desarrollador BackEnd y FrontEnd</h6>
+                </div>
+              </div>
+            </div>
+            <div class="teamMember">
+              <div class="pictureTeam">
+                <img
+                  class="circular--square"
+                  src="../assets/Icons/Icons-User.png"
+                  width="100px"
+                  alt="IconUser"
+                />
+              </div>
+              <div class="infoMember">
+                <div class="nameMember">
+                  <h2>David Ernesto Arguello Mosquera</h2>
+                </div>
+                <div class="rolMember">
+                  <h6>Desarrollador 3D</h6>
+                </div>
+              </div>
+            </div>
+            <div class="teamMember">
+              <div class="pictureTeam">
+                <img
+                  class="circular--square"
+                  src="../assets/Icons/Icons-User.png"
+                  width="100px"
+                  alt="IconUser"
+                />
+              </div>
+              <div class="infoMember">
+                <div class="nameMember">
+                  <h2>Guillermo Andres Diaz Moreno</h2>
+                </div>
+                <div class="rolMember">
+                  <h6>Accesibilidad</h6>
+                </div>
+              </div>
+            </div>
+            <div class="universidad">
+              <div id="zoomtexto5">
+                <h3>
+                  Universidad Militar Nueva Granada<br />
+                  2022
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <button v-if="Fp" @click="mainView" class="buttonView">
         Volver a la vista aerea
@@ -220,6 +414,15 @@
         </p>
       </div>
     </div>
+    <div id="footer03">
+      <div id="menuTeam" @click="ShowTeam()">
+        <img
+          class="iconTeam"
+          src="../assets/Icons/Icons-Team.png"
+          alt="IconoEquipo"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -234,7 +437,7 @@ import { Octree } from "three/examples/jsm/math/Octree";
 import { Capsule } from "three/examples/jsm/math/Capsule";
 //import { OctreeHelper } from "three/examples/jsm/helpers/OctreeHelper";
 //import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
-import Toggle from './Toggle.vue';
+import Toggle from "./Toggle.vue";
 import Informacion from "./InfoBoton.vue";
 import Carga from "./EsperaUsuarios.vue";
 
@@ -243,7 +446,7 @@ export default {
   components: {
     Informacion,
     Carga,
-    Toggle
+    Toggle,
   },
   data() {
     return {
@@ -257,14 +460,14 @@ export default {
       container: null,
       scene: null,
       camera: null,
+      cameraFp: null,
+      cameraPerspectiveHelper: null,
       controls: null,
       renderer: null,
       stats: null,
       raycaster: null,
       MainTarget: null,
       MainPosition: null,
-      MainFar: null,
-      FarFp: null,
       points: [], //PuntosEstaciones
       point: null,
       Fp: false,
@@ -318,6 +521,10 @@ export default {
       this.camera.position.y = 40;
       this.camera.position.z = 0;
 
+      // add camera first person
+      var farFp = 20;
+      this.cameraFp = new THREE.PerspectiveCamera(fov, aspect, near, farFp);
+
       this.MainPosition = new THREE.Vector3();
       this.MainPosition.copy(this.camera.position);
 
@@ -328,13 +535,13 @@ export default {
 
       // create scene
       const nearFog = 60;
-      const farFog = 80;
+      const farFog = 120;
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("skyblue");
       this.scene.fog = new THREE.Fog(0xcbe9fc, nearFog, farFog);
 
       // add lights
-      const ambientLight = new THREE.HemisphereLight(
+      /* const ambientLight = new THREE.HemisphereLight(
         0xffffff, // bright sky color
         0x222222, // dim ground color
         0.5 // intensity
@@ -348,11 +555,11 @@ export default {
       mainLight.shadow.camera.right = 2;
       mainLight.shadow.camera.near = 0.1;
       mainLight.shadow.camera.far = 40;
-      this.scene.add(ambientLight, mainLight);
+      this.scene.add(ambientLight, mainLight); */
 
-      /* const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+      const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
       hemiLight.position.set(0, 20, 0);
-      this.scene.add(hemiLight); */
+      this.scene.add(hemiLight);
 
       /* const dirLight = new THREE.DirectionalLight(0xffffff);
       dirLight.position.set(-3, 2, -10);
@@ -400,11 +607,11 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-          this.worldOctree.fromGraphNode(gltf.scene);
 
           if (this.mesh) {
             this.load01 = true;
           }
+          this.worldOctree.fromGraphNode(gltf.scene);
           /* this.mesh.scene.traverse(function (object) {
             if (object.isMesh) object.castShadow = true;
           });
@@ -412,7 +619,7 @@ export default {
             if (node.isMesh || node.isLight) node.castShadow = true;
             if (node.isMesh || node.isLight) node.receiveShadow = true;
           }); */
-          this.animate();
+          //this.animate();
         },
         undefined,
         undefined
@@ -422,12 +629,11 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-          this.worldOctree.fromGraphNode(gltf.scene);
-
           if (this.mesh) {
             this.load02 = true;
           }
-          this.animate();
+          this.worldOctree.fromGraphNode(gltf.scene);
+          //this.animate();
         },
         undefined,
         undefined
@@ -452,11 +658,10 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-          this.worldOctree.fromGraphNode(gltf.scene);
-
           if (this.mesh) {
             this.load04 = true;
           }
+          this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
@@ -500,7 +705,7 @@ export default {
 
       // add pointerControl
       this.pControls = new PointerLockControls(
-        this.camera,
+        this.cameraFp,
         this.renderer.domElement
       );
 
@@ -570,9 +775,27 @@ export default {
         }
       };
     },
+    ShowTeam() {
+      var modal = document.getElementById("TeamInfo");
+      var authorIcon = document.getElementById("menuTeam");
+      var span = document.getElementsByClassName("closeTeam")[0];
+
+      authorIcon.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    },
     HideWait() {
       if (this.load01 && this.load02 && this.load04) {
         this.loaded = true;
+        //console.log("Cargados", this.loaded);
       }
     },
     HelpMenu() {
@@ -592,45 +815,58 @@ export default {
         }
       };
     },
-    zoommax: function(){
+    zoommax: function () {
       var zoom = 1;
       var zoompoquito = 0.1;
-    
-      document.getElementById("zoommax").addEventListener("click", function() {
-      
-      zoom += zoompoquito;
-      
-      document.getElementById("zoomletra").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra1").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra2").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra3").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra4").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra5").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra6").style.transform = "scale(" + zoom + ")";
-      document.getElementById("zoomletra7").style.transform = "scale(" + zoom + ")";
-    console.log("se logro")
-        
-    });
+
+      document.getElementById("zoommax").addEventListener("click", function () {
+        zoom += zoompoquito;
+
+        document.getElementById("zoomletra").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra1").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra2").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra3").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra4").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra5").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra6").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra7").style.transform =
+          "scale(" + zoom + ")";
+        console.log("se logro");
+      });
     },
-    zoommin: function(){
-       var zoom = 1;
+    zoommin: function () {
+      var zoom = 1;
       var zoompoquito = 0.1;
-      document.getElementById("zoommin").addEventListener("click", function() {
-      // if (zoom > zoompoquito) {
-       
-      zoom -= zoompoquito;
-      
-      
-        document.getElementById("zoomletra").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra1").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra2").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra3").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra4").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra5").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra6").style.transform = "scale(" + zoom + ")";
-        document.getElementById("zoomletra7").style.transform = "scale(" + zoom + ")";
-      console.log("se logro")
-    });
+      document.getElementById("zoommin").addEventListener("click", function () {
+        // if (zoom > zoompoquito) {
+
+        zoom -= zoompoquito;
+
+        document.getElementById("zoomletra").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra1").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra2").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra3").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra4").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra5").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra6").style.transform =
+          "scale(" + zoom + ")";
+        document.getElementById("zoomletra7").style.transform =
+          "scale(" + zoom + ")";
+        console.log("se logro");
+      });
     },
     ObjHistory1() {
       var modal = document.getElementById("ModalObj-1");
@@ -681,9 +917,9 @@ export default {
     contentPointsObjects() {
       for (this.pointObject of this.pointsObjects) {
         const screenPosition = this.pointObject.position.clone();
-        screenPosition.project(this.camera);
+        screenPosition.project(this.cameraFp);
 
-        this.raycaster.setFromCamera(screenPosition, this.camera);
+        this.raycaster.setFromCamera(screenPosition, this.cameraFp);
         this.intersects = this.raycaster.intersectObjects(
           this.scene.children,
           true
@@ -693,7 +929,7 @@ export default {
         } else {
           const intersectionDistance = this.intersects[0].distance;
           const pointDistance = this.pointObject.position.distanceTo(
-            this.camera.position
+            this.cameraFp.position
           );
           if (intersectionDistance < pointDistance) {
             this.pointObject.element.classList.remove("visible");
@@ -711,14 +947,20 @@ export default {
       //Estacion de Zipaquirá
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
+
       const PosEst1 = new THREE.Vector3(20, 1, 0);
       const RotEst1 = new THREE.Vector3(0, 0, 0);
+      this.cameraFp.position.copy(PosEst1);
+      this.cameraFp.rotation.copy(RotEst1);
 
       this.playerCollider.translate(PosEst1);
 
       new TWEEN.Tween(this.camera.position)
         .to(PosEst1, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(function () {
+          this.onViewFP = true;
+        })
         .start();
 
       new TWEEN.Tween(this.camera.rotation)
@@ -730,7 +972,6 @@ export default {
         this.firstPerson();
       }
       this.Fp = true;
-      this.onViewFP = true;
     },
     FPEstacion2() {
       //Estacion de Usaquén
@@ -761,8 +1002,11 @@ export default {
       //Estacion de Cajicá
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
+
       const PosEst3 = new THREE.Vector3(-36, 1, 5);
       const RotEst3 = new THREE.Vector3(0, 0, 0);
+      this.cameraFp.position.copy(PosEst3);
+      this.cameraFp.rotation.copy(RotEst3);
 
       this.playerCollider.translate(PosEst3);
 
@@ -811,6 +1055,9 @@ export default {
       this.controls.enabled = true;
       this.pControls.enabled = false;
 
+      this.camera.position.copy(this.cameraFp.position);
+      this.camera.rotation.copy(this.cameraFp.rotation);
+
       this.playerCollider.start.set(0, 0.35, 0);
       this.playerCollider.end.set(0, 1, 0);
       this.playerCollider.radius = 0.35;
@@ -824,8 +1071,6 @@ export default {
         .to(this.MainRotation, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
         .start();
-
-      this.camera.far = this.MainFar;
 
       this.Fp = false;
       this.onViewFP = false;
@@ -895,17 +1140,17 @@ export default {
 
       this.playerCollisions();
 
-      this.camera.position.copy(this.playerCollider.end);
+      this.cameraFp.position.copy(this.playerCollider.end);
     },
     getForwardVector() {
-      this.camera.getWorldDirection(this.playerDirection);
+      this.cameraFp.getWorldDirection(this.playerDirection);
       this.playerDirection.y = 0;
       this.playerDirection.normalize();
 
       return this.playerDirection;
     },
     getSideVector() {
-      this.camera.getWorldDirection(this.playerDirection);
+      this.cameraFp.getWorldDirection(this.playerDirection);
       this.playerDirection.y = 0;
       this.playerDirection.normalize();
       this.playerDirection.cross(this.camera.up);
@@ -949,12 +1194,12 @@ export default {
       }
     },
     teleportPlayerIfOob() {
-      if (this.camera.position.y <= -25) {
+      if (this.cameraFp.position.y <= -25) {
         this.playerCollider.start.set(0, 0.35, 0);
         this.playerCollider.end.set(0, 1, 0);
         this.playerCollider.radius = 0.35;
-        this.camera.position.copy(this.playerCollider.end);
-        this.camera.rotation.set(0, 0, 0);
+        this.cameraFp.position.copy(this.playerCollider.end);
+        this.cameraFp.rotation.set(0, 0, 0);
       }
     },
     animate() {
@@ -978,7 +1223,6 @@ export default {
 
       TWEEN.update();
       this.contentPoints();
-      this.HideWait();
       this.contentPointsObjects();
       this.render();
       requestAnimationFrame(this.animate);
@@ -993,9 +1237,23 @@ export default {
         this.container.clientWidth,
         this.container.clientHeight
       );
+
+      this.cameraFp.aspect =
+        this.container.clientWidth / this.container.clientHeight;
+      this.cameraFp.updateProjectionMatrix();
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
     },
     render() {
-      this.renderer.render(this.scene, this.camera);
+      this.HideWait();
+      if (this.onViewFP) {
+        this.renderer.render(this.scene, this.cameraFp);
+      } else {
+        this.renderer.render(this.scene, this.camera);
+      }
+      //this.renderer.render(this.scene, this.camera);
     },
   },
   mounted() {

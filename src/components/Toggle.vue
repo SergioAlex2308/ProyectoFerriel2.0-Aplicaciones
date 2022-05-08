@@ -21,7 +21,7 @@ export default {
 .toggle-wrapper {
   display: flex;
   justify-content: end;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   right: 2%;
 }

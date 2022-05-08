@@ -307,6 +307,7 @@ h5 {
 	align-items: center;
 	width: 100%;
 	padding-top: 2%;
+	box-shadow: 0 -8px 14px -9px rgba(0, 0, 0, 0.2);
 }
 
 .vor {
@@ -411,7 +412,7 @@ td {
 	text-decoration: none;
 	background-color: transparent;
 	border: none;
-	padding: 5% 5%;
+	padding: 3% 5%;
 	background-color: #444444;
 	height: 1%;
 	cursor: pointer;
