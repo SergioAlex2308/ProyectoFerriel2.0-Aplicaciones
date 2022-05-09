@@ -295,30 +295,30 @@
           </div>
         </div>
       </div>
-      <button v-if="Fp" @click="mainView" class="buttonView">
+      <button v-if="Fp" @click="mainView()" class="buttonView">
         Volver a la vista aerea
       </button>
     </div>
     <div v-show="onViewFP == false" id="content">
-      <div v-show="Fp == false" @click="FPEstacion1" class="point MapView-1">
+      <div v-show="Fp == false" @click="FPEstacion1()" class="point MapView-1">
         <div class="label">Estación de Zipaquirá</div>
         <div class="nom-estacion">
           Haz click para navegar en primera persona.
         </div>
       </div>
-      <div v-show="Fp == false" @click="FPEstacion2" class="point MapView-2">
+      <div v-show="Fp == false" @click="FPEstacion2()" class="point MapView-2">
         <div class="label">Estación de Usaquén</div>
         <div class="nom-estacion">
           Haz click para navegar en primera persona.
         </div>
       </div>
-      <div v-show="Fp == false" @click="FPEstacion3" class="point MapView-3">
+      <div v-show="Fp == false" @click="FPEstacion3()" class="point MapView-3">
         <div class="label">Estación de Cajicá</div>
         <div class="nom-estacion">
           Haz click para navegar en primera persona.
         </div>
       </div>
-      <div v-show="Fp == false" @click="FPEstacion4" class="point MapView-4">
+      <div v-show="Fp == false" @click="FPEstacion4()" class="point MapView-4">
         <div class="label">Estación de Chía</div>
         <div class="nom-estacion">
           Haz click para navegar en primera persona.
@@ -382,11 +382,18 @@
     </div>
     <div v-show="onViewFP" id="footer02">
       <div class="instMove">
-        <img
-          class="Keys"
-          src="../assets/Icons/Icons-Keys.png"
-          alt="Teclas de movimiento"
-        />
+        <div class="imgMove">
+          <img
+            class="Keys"
+            src="../assets/Icons/Icons-Keys.png"
+            alt="Teclas de movimiento"
+          />
+          <img
+            class="Keys"
+            src="../assets/Icons/Icons-Arrows.png"
+            alt="Teclas de movimiento"
+          />
+        </div>
         <p>Presiona las teclas para desplazarte.</p>
       </div>
       <div class="instMoveCamera">
@@ -461,13 +468,13 @@ export default {
       scene: null,
       camera: null,
       cameraFp: null,
-      cameraPerspectiveHelper: null,
       controls: null,
       renderer: null,
       stats: null,
       raycaster: null,
       MainTarget: null,
       MainPosition: null,
+      MainRotation: null,
       points: [], //PuntosEstaciones
       point: null,
       Fp: false,
@@ -475,6 +482,7 @@ export default {
       pointObject: null,
       pControls: null, //FirstPerson
       onViewFP: false,
+      onStation: false,
       moveForward: false,
       moveBackward: false,
       moveLeft: false,
@@ -522,7 +530,7 @@ export default {
       this.camera.position.z = 0;
 
       // add camera first person
-      var farFp = 20;
+      var farFp = 30;
       this.cameraFp = new THREE.PerspectiveCamera(fov, aspect, near, farFp);
 
       this.MainPosition = new THREE.Vector3();
@@ -532,6 +540,7 @@ export default {
       this.MainRotation.copy(this.camera.rotation);
 
       this.camera.rotation.order = "YXZ";
+      this.cameraFp.rotation.order = "YXZ";
 
       // create scene
       const nearFog = 60;
@@ -612,7 +621,7 @@ export default {
             this.load01 = true;
           }
           this.worldOctree.fromGraphNode(gltf.scene);
-          /* this.mesh.scene.traverse(function (object) {
+          /*  this.mesh.scene.traverse(function (object) {
             if (object.isMesh) object.castShadow = true;
           });
           this.mesh.traverse(function (node) {
@@ -793,7 +802,7 @@ export default {
       };
     },
     HideWait() {
-      if (this.load01 && this.load02 && this.load04) {
+      if (this.load02 && this.load04) {
         this.loaded = true;
         //console.log("Cargados", this.loaded);
       }
@@ -950,22 +959,24 @@ export default {
 
       const PosEst1 = new THREE.Vector3(20, 1, 0);
       const RotEst1 = new THREE.Vector3(0, 0, 0);
-      this.cameraFp.position.copy(PosEst1);
-      this.cameraFp.rotation.copy(RotEst1);
 
       this.playerCollider.translate(PosEst1);
-
-      new TWEEN.Tween(this.camera.position)
-        .to(PosEst1, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .onComplete(function () {
-          this.onViewFP = true;
-        })
-        .start();
 
       new TWEEN.Tween(this.camera.rotation)
         .to(RotEst1, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.cameraFp.rotation.copy(this.camera.rotation);
+        })
+        .start();
+
+      new TWEEN.Tween(this.camera.position)
+        .to(PosEst1, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.onStation = true;
+          this.cameraFp.position.copy(PosEst1);
+        })
         .start();
 
       if (!this.onViewFP) {
@@ -977,26 +988,33 @@ export default {
       //Estacion de Usaquén
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
+
       const PosEst2 = new THREE.Vector3(0, 1, 40);
       const RotEst2 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst2);
 
-      new TWEEN.Tween(this.camera.position)
-        .to(PosEst2, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .start();
-
       new TWEEN.Tween(this.camera.rotation)
         .to(RotEst2, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.cameraFp.rotation.copy(this.camera.rotation);
+        })
+        .start();
+
+      new TWEEN.Tween(this.camera.position)
+        .to(PosEst2, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.onStation = true;
+          this.cameraFp.position.copy(PosEst2);
+        })
         .start();
 
       if (!this.onViewFP) {
         this.firstPerson();
       }
       this.Fp = true;
-      this.onViewFP = true;
     },
     FPEstacion3() {
       //Estacion de Cajicá
@@ -1005,56 +1023,66 @@ export default {
 
       const PosEst3 = new THREE.Vector3(-36, 1, 5);
       const RotEst3 = new THREE.Vector3(0, 0, 0);
-      this.cameraFp.position.copy(PosEst3);
-      this.cameraFp.rotation.copy(RotEst3);
 
       this.playerCollider.translate(PosEst3);
-
-      new TWEEN.Tween(this.camera.position)
-        .to(PosEst3, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .start();
 
       new TWEEN.Tween(this.camera.rotation)
         .to(RotEst3, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.cameraFp.rotation.copy(this.camera.rotation);
+        })
+        .start();
+
+      new TWEEN.Tween(this.camera.position)
+        .to(PosEst3, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.onStation = true;
+          this.cameraFp.position.copy(PosEst3);
+        })
         .start();
 
       if (!this.onViewFP) {
         this.firstPerson();
       }
       this.Fp = true;
-      this.onViewFP = true;
     },
     FPEstacion4() {
       //Estacion de Chía
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
+
       const PosEst4 = new THREE.Vector3(0, 1, -40);
       const RotEst4 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst4);
 
-      new TWEEN.Tween(this.camera.position)
-        .to(PosEst4, 3000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .start();
-
       new TWEEN.Tween(this.camera.rotation)
         .to(RotEst4, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.cameraFp.rotation.copy(this.camera.rotation);
+        })
+        .start();
+
+      new TWEEN.Tween(this.camera.position)
+        .to(PosEst4, 3000)
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.onStation = true;
+          this.cameraFp.position.copy(PosEst4);
+        })
         .start();
 
       if (!this.onViewFP) {
         this.firstPerson();
       }
       this.Fp = true;
-      this.onViewFP = true;
     },
     mainView() {
       this.controls.enabled = true;
       this.pControls.enabled = false;
-
       this.camera.position.copy(this.cameraFp.position);
       this.camera.rotation.copy(this.cameraFp.rotation);
 
@@ -1074,12 +1102,14 @@ export default {
 
       this.Fp = false;
       this.onViewFP = false;
+      this.onStation = false;
     },
     firstPerson() {
+      this.onViewFP = true;
       this.controls.enabled = false;
       this.pControls.enabled = true;
 
-      this.onViewFP = true;
+      this.changeFog();
 
       this.pControls.addEventListener("unlock", function () {
         var cursor = document.getElementById("lockCursor");
@@ -1100,6 +1130,15 @@ export default {
       document.addEventListener("keyup", (event) => {
         this.keyStates[event.code] = false;
       });
+    },
+    changeFog() {
+      if (this.onStation) {
+        this.scene.fog.near = 5;
+        this.scene.fog.far = 20;
+      } else {
+        this.scene.fog.near = 60;
+        this.scene.fog.far = 120;
+      }
     },
     playerCollisions() {
       const result = this.worldOctree.capsuleIntersect(this.playerCollider);
@@ -1162,26 +1201,26 @@ export default {
       //const speedDelta = deltaTime * ( this.playerOnFloor ? 25 : 8 );
       const speedDelta = deltaTime * 25;
 
-      if (this.keyStates["KeyW"]) {
+      if (this.keyStates["KeyW"] || this.keyStates["ArrowUp"]) {
         //this.playerVelocity.add( this.getForwardVector().multiplyScalar( speedDelta ) );
         this.playerVelocity.add(
           this.getForwardVector().multiplyScalar(speedDelta)
         );
       }
 
-      if (this.keyStates["KeyS"]) {
+      if (this.keyStates["KeyS"] || this.keyStates["ArrowDown"]) {
         this.playerVelocity.add(
           this.getForwardVector().multiplyScalar(-speedDelta)
         );
       }
 
-      if (this.keyStates["KeyA"]) {
+      if (this.keyStates["KeyA"] || this.keyStates["ArrowLeft"]) {
         this.playerVelocity.add(
           this.getSideVector().multiplyScalar(-speedDelta)
         );
       }
 
-      if (this.keyStates["KeyD"]) {
+      if (this.keyStates["KeyD"] || this.keyStates["ArrowRight"]) {
         this.playerVelocity.add(
           this.getSideVector().multiplyScalar(speedDelta)
         );
@@ -1199,7 +1238,6 @@ export default {
         this.playerCollider.end.set(0, 1, 0);
         this.playerCollider.radius = 0.35;
         this.cameraFp.position.copy(this.playerCollider.end);
-        this.cameraFp.rotation.set(0, 0, 0);
       }
     },
     animate() {
@@ -1248,7 +1286,8 @@ export default {
     },
     render() {
       this.HideWait();
-      if (this.onViewFP) {
+      this.changeFog();
+      if (this.onStation) {
         this.renderer.render(this.scene, this.cameraFp);
       } else {
         this.renderer.render(this.scene, this.camera);

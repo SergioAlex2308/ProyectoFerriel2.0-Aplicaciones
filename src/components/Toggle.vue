@@ -20,10 +20,11 @@ export default {
 <style>
 .toggle-wrapper {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   position: fixed;
-  z-index: 100;
+  z-index: 5;
   right: 2%;
+  top: 2%;
 }
 .toggle {
   position: relative;

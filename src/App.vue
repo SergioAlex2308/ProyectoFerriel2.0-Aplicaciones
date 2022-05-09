@@ -1,6 +1,5 @@
 <template>
   <div id="app" :class= "mode">
->
     <!-- <Carga/> -->
     <MapaEstaciones :mode= "mode" @toggle= "toggle"/>
     <!-- <informacion/>  -->

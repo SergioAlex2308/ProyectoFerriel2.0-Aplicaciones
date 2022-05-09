@@ -655,6 +655,11 @@
     transition: transform .2s;
 }
 
+.imgMove {
+    display: flex;
+    flex-direction: row;
+}
+
 .instMove:hover {
     transform: scale(1.1);
 }

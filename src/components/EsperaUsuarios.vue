@@ -7,7 +7,7 @@
       <h2>Cargando estaciones</h2>
       <span class="circle"></span>
     </div>
-  </div> 
+  </div>
 </template>
 <script>
 //import MapaEstaciones from './Mapa.vue';
