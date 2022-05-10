@@ -4,7 +4,8 @@
     <Carga class="wait" v-show="!loaded"></Carga>
     <Toggle :mode="mode" @toggle="$emit('toggle')" />
     <div id="title">
-      <h1 id="principal-title">Ferriel Web</h1>
+      <img id="logo" src="../assets/Images/logo.png" alt="Logo" />
+      <!-- <h1 id="principal-title">Ferriel Web</h1> -->
     </div>
 
     <div id="header">
@@ -382,18 +383,11 @@
     </div>
     <div v-show="onViewFP" id="footer02">
       <div class="instMove">
-        <div class="imgMove">
-          <img
-            class="Keys"
-            src="../assets/Icons/Icons-Keys.png"
-            alt="Teclas de movimiento"
-          />
-          <img
-            class="Keys"
-            src="../assets/Icons/Icons-Arrows.png"
-            alt="Teclas de movimiento"
-          />
-        </div>
+        <img
+          class="Keys"
+          src="../assets/Icons/Icons-Keys.png"
+          alt="Teclas de movimiento"
+        />
         <p>Presiona las teclas para desplazarte.</p>
       </div>
       <div class="instMoveCamera">
@@ -520,18 +514,19 @@ export default {
       this.container.appendChild(this.stats.dom);
 
       // add camera
-      const fov = 60; // Field of view
+      const fov = 80; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.1; // the near clipping plane
       var far = 150; // the far clipping plane
       this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      this.camera.position.x = 60;
+      this.camera.position.x = 40;
       this.camera.position.y = 40;
       this.camera.position.z = 0;
 
       // add camera first person
-      var farFp = 30;
-      this.cameraFp = new THREE.PerspectiveCamera(fov, aspect, near, farFp);
+      const fovFp = 80;
+      var farFp = 20;
+      this.cameraFp = new THREE.PerspectiveCamera(fovFp, aspect, near, farFp);
 
       this.MainPosition = new THREE.Vector3();
       this.MainPosition.copy(this.camera.position);
@@ -546,7 +541,7 @@ export default {
       const nearFog = 60;
       const farFog = 120;
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color("skyblue");
+      this.scene.background = new THREE.Color("#b2daee");
       this.scene.fog = new THREE.Fog(0xcbe9fc, nearFog, farFog);
 
       // add lights
@@ -608,7 +603,7 @@ export default {
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
       const loader02 = new GLTFLoader().setPath("/Models/");
-      //const loader03 = new GLTFLoader().setPath("/Models/");
+      const loader03 = new GLTFLoader().setPath("/Models/");
       const loader04 = new GLTFLoader().setPath("/Models/");
 
       loader01.load(
@@ -647,21 +642,19 @@ export default {
         undefined,
         undefined
       );
-      /* loader03.load(
-        "Isla.glb",
+      loader03.load(
+        "Esquinas.glb",
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-          this.worldOctree.fromGraphNode(gltf.scene);
-
           if (this.mesh) {
             this.load03 = true;
           }
-          this.animate();
+          //this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
-      ); */
+      );
       loader04.load(
         "Parque.glb",
         (gltf) => {
@@ -802,7 +795,7 @@ export default {
       };
     },
     HideWait() {
-      if (this.load02 && this.load04) {
+      if (this.load01 && this.load02 && this.load03 && this.load04) {
         this.loaded = true;
         //console.log("Cargados", this.loaded);
       }
@@ -1199,28 +1192,28 @@ export default {
     controlsMove(deltaTime) {
       // gives a bit of air control
       //const speedDelta = deltaTime * ( this.playerOnFloor ? 25 : 8 );
-      const speedDelta = deltaTime * 25;
+      const speedDelta = deltaTime * 15;
 
-      if (this.keyStates["KeyW"] || this.keyStates["ArrowUp"]) {
+      if (this.keyStates["KeyW"]) {
         //this.playerVelocity.add( this.getForwardVector().multiplyScalar( speedDelta ) );
         this.playerVelocity.add(
           this.getForwardVector().multiplyScalar(speedDelta)
         );
       }
 
-      if (this.keyStates["KeyS"] || this.keyStates["ArrowDown"]) {
+      if (this.keyStates["KeyS"]) {
         this.playerVelocity.add(
           this.getForwardVector().multiplyScalar(-speedDelta)
         );
       }
 
-      if (this.keyStates["KeyA"] || this.keyStates["ArrowLeft"]) {
+      if (this.keyStates["KeyA"]) {
         this.playerVelocity.add(
           this.getSideVector().multiplyScalar(-speedDelta)
         );
       }
 
-      if (this.keyStates["KeyD"] || this.keyStates["ArrowRight"]) {
+      if (this.keyStates["KeyD"]) {
         this.playerVelocity.add(
           this.getSideVector().multiplyScalar(speedDelta)
         );
