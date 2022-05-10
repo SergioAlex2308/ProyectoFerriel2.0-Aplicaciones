@@ -1,8 +1,11 @@
 <template>
   <div id="scene-container" ref="sceneContainer">
-    <!-- <Carga class="wait" v-show="!loaded"></Carga> -->
-    <Carga class="wait" v-show="!loaded"></Carga>
+    <transition name="fade">
+      <Carga class="loadPage" v-show="!loaded"></Carga>
+    </transition>
     <Toggle :mode="mode" @toggle="$emit('toggle')" />
+    <AeControls :View="onViewFP"></AeControls>
+    <FpControls :ViewFp="onViewFP"></FpControls>
     <div id="title">
       <img id="logo" src="../assets/Images/logo.png" alt="Logo" />
       <!-- <h1 id="principal-title">Ferriel Web</h1> -->
@@ -297,38 +300,59 @@
         </div>
       </div>
       <button v-if="Fp" @click="mainView()" class="buttonView">
-        Volver a la vista aerea
+        Volver a la vista aérea
       </button>
     </div>
-    <div v-show="onViewFP == false" id="content">
-      <div v-show="Fp == false" @click="FPEstacion1()" class="point MapView-1">
-        <div class="label">Estación de Zipaquirá</div>
-        <div class="nom-estacion">
-          Haz click para navegar en primera persona.
+    <transition name="fade">
+      <div v-show="onViewFP == false" id="content">
+        <div
+          v-show="Fp == false"
+          @click="FPEstacion1()"
+          class="point MapView-1"
+        >
+          <div class="label">Estación de Zipaquirá</div>
+          <div class="nom-estacion">
+            Haz click para navegar en primera persona.
+          </div>
+        </div>
+        <div
+          v-show="Fp == false"
+          @click="FPEstacion2()"
+          class="point MapView-2"
+        >
+          <div class="label">Estación de Usaquén</div>
+          <div class="nom-estacion">
+            Haz click para navegar en primera persona.
+          </div>
+        </div>
+        <div
+          v-show="Fp == false"
+          @click="FPEstacion3()"
+          class="point MapView-3"
+        >
+          <div class="label">Estación de Cajicá</div>
+          <div class="nom-estacion">
+            Haz click para navegar en primera persona.
+          </div>
+        </div>
+        <div
+          v-show="Fp == false"
+          @click="FPEstacion4()"
+          class="point MapView-4"
+        >
+          <div class="label">Estación de Chía</div>
+          <div class="nom-estacion">
+            Haz click para navegar en primera persona.
+          </div>
         </div>
       </div>
-      <div v-show="Fp == false" @click="FPEstacion2()" class="point MapView-2">
-        <div class="label">Estación de Usaquén</div>
-        <div class="nom-estacion">
-          Haz click para navegar en primera persona.
-        </div>
-      </div>
-      <div v-show="Fp == false" @click="FPEstacion3()" class="point MapView-3">
-        <div class="label">Estación de Cajicá</div>
-        <div class="nom-estacion">
-          Haz click para navegar en primera persona.
-        </div>
-      </div>
-      <div v-show="Fp == false" @click="FPEstacion4()" class="point MapView-4">
-        <div class="label">Estación de Chía</div>
-        <div class="nom-estacion">
-          Haz click para navegar en primera persona.
-        </div>
-      </div>
-    </div>
+    </transition>
+
     <div id="contentObjs">
       <div v-show="onViewFP" class="pointObject ObjView-1">
-        <div id="Obj-1" @click="ObjHistory1()" class="labelObject">1</div>
+        <div id="Obj-1" @click="ObjHistory1()" class="labelObject">
+          Teléfono
+        </div>
         <div class="infoObject">
           Haz click conocer la historia de este objecto.
         </div>
@@ -436,11 +460,17 @@ import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { PointerLockControls } from "three/examples/jsm/controls/PointerLockControls";
 import { Octree } from "three/examples/jsm/math/Octree";
 import { Capsule } from "three/examples/jsm/math/Capsule";
+/* import {
+  CSS2DRenderer,
+  CSS2DObject,
+} from "three/examples/jsm/renderers/CSS2DRenderer"; */
 //import { OctreeHelper } from "three/examples/jsm/helpers/OctreeHelper";
 //import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import Toggle from "./Toggle.vue";
 import Informacion from "./InfoBoton.vue";
 import Carga from "./EsperaUsuarios.vue";
+import AeControls from "./AerialControls.vue";
+import FpControls from "./FirstControls.vue";
 
 export default {
   name: "MapaEstaciones",
@@ -448,6 +478,8 @@ export default {
     Informacion,
     Carga,
     Toggle,
+    AeControls,
+    FpControls,
   },
   data() {
     return {
@@ -474,6 +506,8 @@ export default {
       Fp: false,
       pointsObjects: [], //PuntosObjetos
       pointObject: null,
+      cubo: null,
+      labelRenderer: null,
       pControls: null, //FirstPerson
       onViewFP: false,
       onStation: false,
@@ -588,23 +622,12 @@ export default {
 
       this.scene.add(spotLight); */
 
-      // create renderer
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-      this.renderer.setSize(
-        this.container.clientWidth,
-        this.container.clientHeight
-      );
-      this.renderer.setPixelRatio(window.devicePixelRatio);
-      this.renderer.outputEncoding = THREE.sRGBEncoding;
-      this.renderer.shadowMap.enabled = true;
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      this.container.appendChild(this.renderer.domElement);
-
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
       const loader02 = new GLTFLoader().setPath("/Models/");
       const loader03 = new GLTFLoader().setPath("/Models/");
       const loader04 = new GLTFLoader().setPath("/Models/");
+      const loader05 = new GLTFLoader().setPath("/Models/");
 
       loader01.load(
         "Cajica01.glb",
@@ -615,7 +638,12 @@ export default {
           if (this.mesh) {
             this.load01 = true;
           }
-          this.worldOctree.fromGraphNode(gltf.scene);
+          /* this.mesh.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+              child.visible = false;
+            }
+          }); */
+          //this.worldOctree.fromGraphNode(gltf.scene);
           /*  this.mesh.scene.traverse(function (object) {
             if (object.isMesh) object.castShadow = true;
           });
@@ -632,11 +660,12 @@ export default {
         "Zipaquira01.glb",
         (gltf) => {
           this.mesh = gltf;
+          this.mesh.visible = false;
           this.scene.add(gltf.scene);
           if (this.mesh) {
             this.load02 = true;
           }
-          this.worldOctree.fromGraphNode(gltf.scene);
+          //this.worldOctree.fromGraphNode(gltf.scene);
           //this.animate();
         },
         undefined,
@@ -663,6 +692,19 @@ export default {
           if (this.mesh) {
             this.load04 = true;
           }
+          //this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader05.load(
+        "Suelo.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load04 = true;
+          }
           this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
@@ -673,16 +715,18 @@ export default {
       this.white = new THREE.Color().setHex(0xffffff);
 
       //Add geometry
-      /* var geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
+      var geometry = new THREE.BoxGeometry(2, 2, 2);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
 
       var cube1 = new THREE.Mesh(geometry, material);
-      cube1.position.x = 34;
+      cube1.position.x = 10;
       cube1.position.y = 2;
-      cube1.position.z = 6;
-      this.scene.add(cube1); */
+      cube1.position.z = 0;
+      this.cubo = cube1;
+      //this.cubo.visible = false;
+      this.scene.add(this.cubo);
 
       /*  var cube2 = new THREE.Mesh(geometry, material);
       cube2.position.x = 25;
@@ -702,8 +746,30 @@ export default {
       cube4.position.z = 25;
       this.scene.add(cube4);
  */
+      // create renderer
+      this.renderer = new THREE.WebGLRenderer({ antialias: true });
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.outputEncoding = THREE.sRGBEncoding;
+      this.renderer.shadowMap.enabled = true;
+      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      this.container.appendChild(this.renderer.domElement);
+
+      /* this.labelRenderer = new CSS2DRenderer();
+      this.labelRenderer.setSize(window.innerWidth, window.innerHeight);
+      this.labelRenderer.domElement.style.position = "absolute";
+      this.labelRenderer.domElement.style.top = "0px";
+      document.body.appendChild(this.labelRenderer.domElement); */
+
+      //this.objectIndicator();
       // add Orbitcontrols
-      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+      this.controls = new OrbitControls(
+        this.camera,
+        this.renderer.domElement
+      );
 
       // add pointerControl
       this.pControls = new PointerLockControls(
@@ -945,6 +1011,16 @@ export default {
         this.pointObject.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
       }
     },
+    objectIndicator() {
+      //const earthDiv = document.createElement("div");
+      //const earthDiv = document.getElementById("Object1");
+      //earthDiv.className = "ObjView-1";
+      //earthDiv.textContent = "Earth";
+      //earthDiv.style.marginTop = "-1em";
+      //const earthLabel = new CSS2DObject(earthDiv);
+      //earthLabel.position.set(0, 0, 0);
+      //this.cubo.add(earthLabel);
+    },
     FPEstacion1() {
       //Estacion de Zipaquirá
       this.MainPosition.copy(this.camera.position);
@@ -1086,6 +1162,9 @@ export default {
       new TWEEN.Tween(this.camera.position)
         .to(this.MainPosition, 3000)
         .easing(TWEEN.Easing.Quadratic.InOut)
+        .onComplete(() => {
+          this.onViewFP = false;
+        })
         .start();
 
       new TWEEN.Tween(this.camera.rotation)
@@ -1094,7 +1173,6 @@ export default {
         .start();
 
       this.Fp = false;
-      this.onViewFP = false;
       this.onStation = false;
     },
     firstPerson() {
@@ -1284,6 +1362,7 @@ export default {
         this.renderer.render(this.scene, this.cameraFp);
       } else {
         this.renderer.render(this.scene, this.camera);
+        //this.labelRenderer.render(this.scene, this.camera);
       }
       //this.renderer.render(this.scene, this.camera);
     },

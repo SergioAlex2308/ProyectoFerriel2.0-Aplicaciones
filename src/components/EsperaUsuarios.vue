@@ -10,7 +10,6 @@
   </div>
 </template>
 <script>
-//import MapaEstaciones from './Mapa.vue';
 
 export default {
   name: "Carga"
