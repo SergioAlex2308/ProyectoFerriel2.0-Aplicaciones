@@ -349,6 +349,9 @@
     </transition>
 
     <div id="contentObjs">
+      <div class="pointer">
+        <div v-show="onViewFP" id="cross"></div>
+      </div>
       <div v-show="onViewFP" class="pointObject ObjView-1">
         <div id="Obj-1" @click="ObjHistory1()" class="labelObject">
           Teléfono
@@ -507,6 +510,8 @@ export default {
       pointsObjects: [], //PuntosObjetos
       pointObject: null,
       cubo: null,
+      pointer: new THREE.Vector2(),
+      INTERSECTED: null,
       labelRenderer: null,
       pControls: null, //FirstPerson
       onViewFP: false,
@@ -595,20 +600,33 @@ export default {
       mainLight.shadow.camera.far = 40;
       this.scene.add(ambientLight, mainLight); */
 
-      const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+      /* const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
       hemiLight.position.set(0, 20, 0);
-      this.scene.add(hemiLight);
+      this.scene.add(hemiLight); */
 
-      /* const dirLight = new THREE.DirectionalLight(0xffffff);
-      dirLight.position.set(-3, 2, -10);
+      const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+      dirLight.color.setHSL(0.1, 1, 0.95);
+      dirLight.position.set(-1, 1.75, 1);
+      dirLight.position.multiplyScalar(30);
+      this.scene.add(dirLight);
+
       dirLight.castShadow = true;
-      dirLight.shadow.camera.top = 4;
-      dirLight.shadow.camera.bottom = -4;
-      dirLight.shadow.camera.left = -4;
-      dirLight.shadow.camera.right = 4;
-      dirLight.shadow.camera.near = 0.1;
-      dirLight.shadow.camera.far = 40;
-      this.scene.add(dirLight); */
+
+      dirLight.shadow.mapSize.width = 2048;
+      dirLight.shadow.mapSize.height = 2048;
+
+      const d = 50;
+
+      dirLight.shadow.camera.left = -d;
+      dirLight.shadow.camera.right = d;
+      dirLight.shadow.camera.top = d;
+      dirLight.shadow.camera.bottom = -d;
+
+      dirLight.shadow.camera.far = 3500;
+      dirLight.shadow.bias = -0.0001;
+
+      const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
+      this.scene.add(dirLightHelper);
 
       /* const spotLight = new THREE.SpotLight(0xffffff);
       spotLight.position.set(-3, 2, -25);
@@ -635,6 +653,9 @@ export default {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
 
+          this.mesh.receiveShadow = true;
+          this.mesh.castShadow = true;
+
           if (this.mesh) {
             this.load01 = true;
           }
@@ -660,7 +681,9 @@ export default {
         "Zipaquira01.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.visible = false;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+
           this.scene.add(gltf.scene);
           if (this.mesh) {
             this.load02 = true;
@@ -688,6 +711,8 @@ export default {
         "Parque.glb",
         (gltf) => {
           this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
           if (this.mesh) {
             this.load04 = true;
@@ -701,6 +726,8 @@ export default {
         "Suelo.glb",
         (gltf) => {
           this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
           if (this.mesh) {
             this.load04 = true;
@@ -755,7 +782,6 @@ export default {
       this.renderer.setPixelRatio(window.devicePixelRatio);
       this.renderer.outputEncoding = THREE.sRGBEncoding;
       this.renderer.shadowMap.enabled = true;
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       this.container.appendChild(this.renderer.domElement);
 
       /* this.labelRenderer = new CSS2DRenderer();
@@ -766,10 +792,7 @@ export default {
 
       //this.objectIndicator();
       // add Orbitcontrols
-      this.controls = new OrbitControls(
-        this.camera,
-        this.renderer.domElement
-      );
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
       // add pointerControl
       this.pControls = new PointerLockControls(
@@ -935,6 +958,42 @@ export default {
           "scale(" + zoom + ")";
         console.log("se logro");
       });
+    },
+    onPointerMove(event) {
+      this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+      this.pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    },
+    rayObject() {
+      this.raycaster.setFromCamera(this.pointer, this.cameraFp);
+
+      const intersects = this.raycaster.intersectObjects(
+        this.scene.children,
+        false
+      );
+      var modal = document.getElementById("ModalObj-1");
+
+      if (intersects.length > 0) {
+        if (this.INTERSECTED != intersects[0].object) {
+          if (this.INTERSECTED)
+            this.INTERSECTED.material.emissive.setHex(
+              this.INTERSECTED.currentHex
+            );
+
+          this.INTERSECTED = intersects[0].object;
+          this.INTERSECTED.currentHex =
+            this.INTERSECTED.material.emissive.getHex();
+          this.INTERSECTED.material.emissive.setHex(0xff0000);
+          modal.style.display = '';
+        }
+      } else {
+        if (this.INTERSECTED)
+          this.INTERSECTED.material.emissive.setHex(
+            this.INTERSECTED.currentHex
+          );
+
+        this.INTERSECTED = null;
+        modal.style.display = 'none';
+      }
     },
     ObjHistory1() {
       var modal = document.getElementById("ModalObj-1");
@@ -1331,6 +1390,7 @@ export default {
       this.mixer.update(d); */
 
       TWEEN.update();
+      this.rayObject();
       this.contentPoints();
       this.contentPointsObjects();
       this.render();

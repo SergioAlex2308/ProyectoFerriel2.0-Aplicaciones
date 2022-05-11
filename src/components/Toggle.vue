@@ -22,7 +22,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   position: fixed;
-  z-index: 5;
+  z-index: 7;
   right: 2%;
   top: 2%;
 }

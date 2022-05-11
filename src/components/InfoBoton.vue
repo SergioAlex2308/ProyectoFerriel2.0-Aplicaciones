@@ -2,7 +2,7 @@
   <div id="Modal">
     <div id="contentMenu" class="darkmode">
       <div class="headerModal">
-        <div class="boo">
+        <div class="buttons">
           <button
             type="button"
             id="ZoomMenos"
@@ -19,66 +19,31 @@
           >
             Aumentar
           </button>
-          <Toggle :mode="mode" @toggle="$emit('toggle')" />
         </div>
         <span class="closeMenu">&times;</span>
       </div>
       <div class="seccionMenu">
-        <div id="historia" style="display: block">
-          <div class="virgencentrada">
-            <div class="tituloHistory">
-              <div id="zoomtexto6">
-                <h1>Bienvenidos a Ferriel</h1>
-              </div>
+        <div id="historia" class="seccion" style="display: block">
+          <div class="titleModal">
+            <div id="zoomtexto6">
+              <h1>Bienvenidos a Ferriel</h1>
             </div>
-            <div id="estodebe">
-              <div id="zoomtexto7">
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not o nly five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum passages
-                  , and more recently with desktop publishing software like
-                  Aldus PageMaker including versions o f Lorem Ipsum.Lorem Ipsum
-                  is simply dummy text of the printing and typesetting industry.
-                </p>
-              </div>
-            </div>
-            <div class="columnas">
-              <div class="imagenescol"></div>
-              <div id="estodeberia">
-                <div id="zoomtexto8">
-                  <p class="mitexto">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not o nly five
-                    centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the
-                    1960s with the release of Letraset sheets containing Lorem
-                    Ipsum passages , and more recently with desktop publishing
-                    software like Aldus PageMaker including versions o f Lorem
-                    Ipsum.Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum is simply dummy text of
-                    the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled
-                    it to make a type specimen book. It has survived not o nly
-                    five centuries, but also the leap into electronic
-                    typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets
-                    containing Lorem Ipsum passages , and more recently with
-                    desktop publishing software like Aldus PageMaker including
-                    versions o f Lorem Ipsum.Lorem Ipsum is simply dummy text of
-                    the printing and typesetting industry.
-                  </p>
-                </div>
-              </div>
+          </div>
+          <div class="contentHistory">
+            <div id="zoomtexto7">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not o nly five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages , and more recently with desktop
+                publishing software like Aldus PageMaker including versions o f
+                Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry.
+              </p>
             </div>
           </div>
           <div class="pocisionamientoaudio">
@@ -93,11 +58,12 @@
             </div>
           </div>
         </div>
-        <div id="horarios" style="display: none">
+        <div id="horarios" class="seccion" style="display: none">
+          <div class="titleModal">
+            <h1>Horarios</h1>
+          </div>
           <div class="textHorarios">
             <div id="zoomtexto9">
-              <h1>Horarios</h1>
-
               <p class="mitexto">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
@@ -195,16 +161,8 @@
         </div>
       </div>
       <div class="botones">
-        <div class="boton" @click="informacion()">
-          <div id="zoomtexto21">
-            <h3 class="btres">Historia</h3>
-          </div>
-        </div>
-        <div class="boton" @click="informacion2()">
-          <div id="zoomtexto23">
-            <h3 class="btres">Horarios</h3>
-          </div>
-        </div>
+        <button class="boton" @click="informacion()">Historia</button>
+        <button class="boton" @click="informacion2()">Horarios</button>
       </div>
     </div>
   </div>

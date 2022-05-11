@@ -1,3 +1,70 @@
+:root {
+    /******** LIGHT MODE ********/
+    /*Modal color*/
+    --modal-bg-color: #ffffff;
+    --modal-title-color: #000000;
+    --modal-subtitle-color: #000000;
+    --modal-txt-color: #000000;
+    --bg-modal-color: #00000099;
+    --modal-header-border-color: #0000001a;
+    --modal-close: #aaaaaa;
+    --modal-close-hover: #000;
+    --modal-scroll-color: #808080;
+    --modal-scroll-hover-color: #000000;
+    --modal-scroll-shadow-color: #808080;
+
+    /*Load Color*/
+    --load-bg-color: #262626;
+
+    /*Menu icon color*/
+    --icon-bg-color: #00000047;
+    --icon-hover-color: #000000;
+    --burger-line-color: #ffffff;
+
+    /*Header color*/
+    --title-bg-color: #262626;
+
+    /*Shadows icons*/
+    --shadow-icon-color: #00000066;
+
+    /*Button view*/
+    --btn-bg-color: #303030;
+    --btn-bg-hover-color: #0f0f0f;
+    --btn-txt-color: #ffffff;
+    --btn-bg-hover-color: #ffffff;
+    --btn-txt-hover-color: #000000;
+    --btn-shadow-color: #0f0f0f35;
+
+    /*Station labels*/
+    --label-txt-color: #ffffff;
+    --label-bg-color: #000000cc;
+    --label-info-bg-color: #ffffffcb;
+    --label-txt-info-color: #000000;
+    --label-border-color: #000000cc;
+
+    /*Footer icons*/
+    --footer-txt-color: #ffffff;
+
+    /******** DARK MODE ********/
+    /*Modal color*/
+    --dark-modal-bg-color: #000000;
+    --dark-modal-title-color: #ffffff;
+    --dark-modal-txt-color: #ffffff;
+    --dark-bg-modal-color: #00000099;
+    --dark-modal-header-border-color: #ffffff1a;
+    --dark-modal-close: #e8e8e8;
+    --dark-modal-close-hover: #727272;
+    --dark-modal-scroll-color: #e1e1e1;
+    --dark-modal-scroll-hover-color: #757575;
+    --dark-modal-scroll-shadow-color: #dfdfdf;
+
+    /*Menu icon color*/
+    --dark-icon-bg-color: #ffffff47;
+    --dark-icon-hover-color: #ffffff;
+    --dark-burger-line-color: #000000;
+
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -33,20 +100,17 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    background: #262626;
+    background-color: var(--load-bg-color);
     z-index: 2;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 1s
+    transition: opacity 1s;
 }
 
 .fade-enter,
-.fade-leave-to
-
-/* .fade-leave-active below version 2.1.8 */
-    {
+.fade-leave-to {
     opacity: 0
 }
 
@@ -72,7 +136,7 @@
     left: 5em;
     height: 50px;
     width: 50px;
-    background-color: #00000047;
+    background-color: var(--icon-bg-color);
     padding: 10px;
     border-radius: 50%;
     transition: transform .2s;
@@ -80,7 +144,7 @@
 
 .hamburIcon:hover .lineIcon {
     transform: scale(1.1);
-    background-color: rgb(0, 0, 0);
+    background-color: var(--icon-hover-color);
 }
 
 .hamburIcon {
@@ -96,21 +160,21 @@
     width: 100%;
     height: 5px;
     margin: 1px 0;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--burger-line-color);
     border-radius: 15% 15% 15% 15% / 50% 50% 50% 50%;
     transition: transform .2s;
 }
 
 .dark p {
-    color: white;
-}
-
-.dark .scene.background {
-    background-color: #303030;
+    color: var(--dark-modal-txt-color);
 }
 
 .dark .lineIcon {
-    background-color: #000;
+    background-color: var(--dark-burger-line-color);
+}
+
+.dark #menuIcon {
+    background-color: var(--dark-icon-bg-color);
 }
 
 #title {
@@ -119,7 +183,7 @@
     justify-content: center;
     padding: 0px 50px 10px 50px;
     border-radius: 0px 0px 50px 50px / 25px 25px 50px 50px;
-    background-color: #262626;
+    background-color: var(--title-bg-color);
     z-index: 1;
 }
 
@@ -131,11 +195,6 @@
     margin: 0;
     text-align: center;
     vertical-align: middle;
-    color: #fefefe;
-}
-
-.dark #principal-title {
-    color: #000;
 }
 
 #menuHelp {
@@ -149,7 +208,7 @@
 .iconHelp {
     position: absolute;
     height: 80%;
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    filter: drop-shadow(3px 5px 2px var(--shadow-icon-color));
     transition: transform .2s;
 }
 
@@ -159,24 +218,24 @@
 
 .buttonView {
     position: absolute;
-    background-color: #303030;
+    background-color: var(--btn-bg-color);
     border: none;
-    color: white;
+    color: var(--btn-txt-color);
     height: 100%;
     width: 15%;
     padding: 8px 15px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    filter: drop-shadow(3px 5px 2px var(--shadow-icon-color));
     transition: transform .2s;
     z-index: 0;
 }
 
 .buttonView:hover {
     transform: scale(1.05);
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--btn-bg-hover-color);
+    color: var(--btn-txt-hover-color);
 }
 
 #MenuInfo {
@@ -189,8 +248,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--bg-modal-color);
 }
 
 #content {
@@ -214,8 +272,8 @@
     left: -160px;
     bottom: -2px;
     border-radius: 20%/50%;
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
+    background: var(--label-bg-color);
+    color: var(--label-txt-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     line-height: 40px;
@@ -235,7 +293,7 @@
     top: 99%;
     border-width: 25px;
     border-style: solid;
-    border-color: rgb(0, 0, 0, 0.8) transparent transparent transparent;
+    border-color: var(--label-border-color) transparent transparent transparent;
 }
 
 .point {
@@ -254,8 +312,8 @@
     padding: 20px;
     left: -95px;
     border-radius: 6px;
-    background: #ffffffcb;
-    color: #000000;
+    background: var(--label-info-bg-color);
+    color: var(--label-txt-info-color);
     line-height: 1.3em;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 100;
@@ -297,6 +355,28 @@
     z-index: 1;
 }
 
+.pointer {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+}
+#cross {
+    height: 20px;
+    background-color: #000;
+    position: relative;
+    width: 3px;
+}
+
+#cross::after {
+    position: absolute;
+    background: #000000;
+    content: "";
+    height: 3px;
+    left: -9px;
+    top: 9px;
+    width: 20px;
+}
+
 .pointObject {
     position: absolute;
     top: 50%;
@@ -313,8 +393,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
+    background: var(--label-bg-color);
+    color: var(--label-txt-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     line-height: 40px;
@@ -340,8 +420,8 @@
     padding: 20px;
     left: 30px;
     border-radius: 6px;
-    background: #ffffffcb;
-    color: #000000;
+    background: var(--label-info-bg-color);
+    color: var(--label-txt-info-color);
     line-height: 1.3em;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 100;
@@ -370,8 +450,8 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgb(0, 0, 0); */
+    background-color: var(--bg-modal-color);
 }
 
 .contentObj {
@@ -379,7 +459,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background-color: #fefefe;
+    background-color: var(--modal-bg-color);
     margin: auto;
     padding: 20px;
     width: 50%;
@@ -402,12 +482,12 @@
     align-items: center;
     width: 100%;
     padding-bottom: 2%;
-    box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 3px -3px var(--modal-header-border-color);
 }
 
 .close,
 .closeObj {
-    color: #aaaaaa;
+    color: var(--modal-close);
     float: right;
     font-size: 30px;
     font-weight: bold;
@@ -415,14 +495,14 @@
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: var(--modal-close-hover);
     text-decoration: none;
     cursor: pointer;
 }
 
 .closeObj:hover,
 .clossObj:focus {
-    color: #000;
+    color: var(--modal-close-hover);
     text-decoration: none;
     cursor: pointer;
 }
@@ -434,19 +514,19 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px var(--modal-scroll-shadow-color);
     border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: grey;
+    background: var(--modal-scroll-color);
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #000000;
+    background: var(--modal-scroll-hover-color);
 }
 
 .contentModal {
@@ -476,7 +556,7 @@
 }
 
 .NameObject {
-    color: black;
+    color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
@@ -500,8 +580,8 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.6);
+    /*  background-color: rgb(0, 0, 0); */
+    background-color: var(--bg-modal-color);
 }
 
 .contentHelp {
@@ -509,7 +589,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background-color: #fefefe;
+    background-color: var(--modal-bg-color);
     margin: auto;
     padding: 20px;
     width: 50%;
@@ -527,7 +607,7 @@
 }
 
 .NameMenu {
-    color: black;
+    color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
@@ -543,7 +623,7 @@
     text-align: center;
     margin-top: 5%;
     margin-bottom: 5%;
-    color: black;
+    color: var(--modal-subtitle-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 200;
 }
@@ -591,7 +671,7 @@
     flex-direction: row;
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #ffffff;
+    color: var(--footer-txt-color);
     font-size: 15px;
     font-weight: 400;
     text-align: start;
@@ -668,7 +748,7 @@
     flex-direction: column;
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #ffffff;
+    color: var(--footer-txt-color);
     font-size: 12px;
     font-weight: 400;
     text-align: center;
@@ -687,7 +767,7 @@
     flex-direction: column;
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #ffffff;
+    color: var(--footer-txt-color);
     font-size: 12px;
     font-weight: 400;
     text-align: center;
@@ -711,7 +791,7 @@
     flex-direction: column;
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #ffffff;
+    color: var(--footer-txt-color);
     font-size: 12px;
     font-weight: 400;
     text-align: center;
@@ -730,7 +810,7 @@
     flex-direction: column;
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #ffffff;
+    color: var(--footer-txt-color);
     font-size: 12px;
     font-weight: 400;
     text-align: center;
@@ -761,7 +841,7 @@
     position: absolute;
     left: 5em;
     height: 80%;
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    filter: drop-shadow(3px 5px 2px var(--shadow-icon-color));
     transition: transform .2s;
 }
 
@@ -780,12 +860,12 @@
     height: 100%;
     z-index: 2;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgb(0, 0, 0); */
+    background-color: var(--bg-modal-color);
 }
 
 .closeTeam {
-    color: #000000;
+    color: var(--modal-close);
     float: right;
     font-size: 30px;
     font-weight: bold;
@@ -807,7 +887,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background-color: #fefefe;
+    background-color: var(--modal-bg-color);
     margin: auto;
     padding: 20px;
     width: 50%;
@@ -825,7 +905,7 @@
 }
 
 .titleTeam h1 {
-    color: black;
+    color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
@@ -851,16 +931,16 @@
 }
 
 .nameMember {
-    color: black;
+    color: var(--modal-subtitle-color);
     text-align: start;
 }
 
 .rolMember {
-    color: rgb(44, 44, 44);
+    color: var(--modal-subtitle-color);
     text-align: start;
 }
 
 .universidad {
     padding-top: 5%;
-    box-shadow: 0 -8px 14px -9px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -8px 14px -9px var(--modal-header-border-color);
 }

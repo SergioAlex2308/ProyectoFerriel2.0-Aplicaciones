@@ -1,3 +1,15 @@
+:root {
+	/******** LIGHT MODE ********/
+	
+	/*Table*/
+	--table-header-color: #363636;
+	--table-hover-color: #9191916c;
+	--table-txt-color: #030303;
+	--table-bg-color: #6b5d5d;
+	--table-border-color: #000000;
+	
+}
+
 .columnas {
 	display: flex;
 	margin: 2px;
@@ -12,11 +24,6 @@
 	padding: 20px;
 	left: 0%;
 }
-.pocisionamientoaudio{
-	display: block;
-	flex-direction: row;
-
-} 
 
 audio:hover,
 audio:focus,
@@ -28,7 +35,7 @@ audio:active {
 	-moz-transform: scale(1.05);
 	transform: scale(1.05);
 }
-.boo{
+.buttons{
 	display: flex;
 	justify-content: center;
 }
@@ -166,7 +173,7 @@ audio {
 	padding: 33px;
 	min-height: 250px;
 	border-radius: 2%;
-	filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+	filter: drop-shadow(3px 5px 2px var(--modal-scroll-shadow-color));
 	animation: appear 350ms ease-in 1;
 }
 .dark #contentMenu {
@@ -176,13 +183,14 @@ audio {
 .seccionMenu {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	width: 100%;
 	height: 80%;
 	overflow-y: auto;
 }
 
 .closeMenu {
-	color: #000000;
+	color: var(--modal-close);
 	float: right;
 	font-size: 30px;
 	font-weight: bold;
@@ -197,6 +205,136 @@ audio {
 	text-decoration: none;
 	cursor: pointer;
 }
+.seccion {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 80%;
+	padding: 1% 5%;
+	text-align: justify;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--modal-scroll-shadow-color);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--modal-scroll-color);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--modal-scroll-hover-color);
+}
+
+.titleModal {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 18px;
+	margin-bottom: 4%;
+	color: var(--modal-title-color);
+}
+.contentHistory {
+	color: var(--modal-txt-color);
+}
+.tableHorario {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	margin-bottom: 2%;
+}
+.tableHorario tr:hover {
+	background-color: var(--table-hover-color);
+}
+.Itinerario {
+	background-color: var(--table-header-color);
+}
+.dark .Itinerario{
+	background-color: #676767;
+}
+.infoTable {
+	background-color: var(--table-bg-color);
+}
+.dark .infoTable{
+	background-color: #6b5d5d;
+}
+table,
+th,
+td {
+	border: 1px solid var(--table-border-color);
+	color: var(--table-txt-color);
+}
+.dark table{
+	border: 1px solid white
+}
+
+.dark th{
+	color: rgb(255, 255, 255);
+	border: 1px solid white
+	
+}
+
+.dark td{
+	color: rgb(255, 255, 255);
+	border: 1px solid white
+}
+.textHorarios {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.pageTrain {
+	display: flex;
+	justify-content: center;
+	padding: 2% 0 2% 0;
+}
+
+.botones {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+	padding-top: 2%;
+	box-shadow: 0 -8px 14px -9px var(--modal-header-border-color);
+}
+
+.boton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	background-color: transparent;
+	border: none;
+	padding: 3% 5%;
+	background-color: var(--btn-bg-color);
+	height: 1%;
+	color: var(--btn-txt-color);
+	font-size: 20px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: 100;
+	cursor: pointer;
+	transition: transform .2s;
+	filter: drop-shadow(0 0 0.75rem var(--btn-shadow-color));
+}
+
+.boton:hover {
+    transform: scale(1.05);
+    background-color: var(--btn-bg-hover-color);
+    color: var(--btn-txt-hover-color);
+}
+
+.dark .boton{
+	background-color: beige;
+}
+
 .dark h1 {
 	color: white;
 }
@@ -301,97 +439,13 @@ h5 {
 	font-family: 'Righteous';
 }
 
-.botones {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 100%;
-	padding-top: 2%;
-	box-shadow: 0 -8px 14px -9px rgba(0, 0, 0, 0.2);
-}
-
 .vor {
 	border: solid 5px black;
 }
 .dark .vor {
 	border: solid 5px black;
 }
-#historia {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 80%;
-	padding: 5% 5%;
-	text-align: justify;
-}
 
-.tituloHistory {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-size: 18px;
-}
-
-#horarios {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 80%;
-	padding: 5% 5%;
-	text-align: justify;
-}
-.tableHorario {
-	width: 100%;
-	text-align: center;
-	border-collapse: collapse;
-}
-.tableHorario tr:hover {
-	background-color: #d009096c;
-}
-.Itinerario {
-	background-color: #665454;
-	color: #ffffff;
-}
-.dark .Itinerario{
-	background-color: #614f4f;
-	color: #000;
-}
-.infoTable {
-	background-color: #6b5d5d;
-	color: #ffffff;
-}
-.dark .infoTable{
-	background-color: #6b5d5d;
-	color: #000;
-}
-table,
-th,
-td {
-	border: 1px solid black;
-	color: #000;
-}
-.dark table{
-	border: 1px solid white
-}
-
-.dark th{
-	color: rgb(255, 255, 255);
-	border: 1px solid white
-	
-}
-
-.dark td{
-	color: rgb(255, 255, 255);
-	border: 1px solid white
-}
-.textHorarios {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-.pageTrain {
-	display: flex;
-	justify-content: center;
-	padding: 2% 0 2% 0;
-}
 
 #autores {
 	display: flex;
@@ -405,32 +459,7 @@ td {
 	height: 45%;
 }
 
-.boton {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-decoration: none;
-	background-color: transparent;
-	border: none;
-	padding: 3% 5%;
-	background-color: #444444;
-	height: 1%;
-	cursor: pointer;
-}
-.dark .boton{
-	background-color: beige;
-}
 
-.boton:hover {
-	background-color: #202020;
-}
-
-.boton h3 {
-	color: rgb(255, 255, 255);
-	font-size: 20px;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-weight: 100;
-}
 
 /*** ESTILOS BOTÓN GROW BOX ***/
 .ov-btn-grow-box {
@@ -477,26 +506,4 @@ td {
 .hola {
 	padding-top: 30px;
 	padding-bottom: 30px;
-}
-
-/* width */
-::-webkit-scrollbar {
-	width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 5px grey;
-	border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-	background: grey;
-	border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	background: #000000;
 }
