@@ -376,7 +376,6 @@
     top: 9px;
     width: 20px;
 }
-
 .pointObject {
     position: absolute;
     top: 50%;
@@ -447,7 +446,7 @@
     padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 30%;
     height: 100%;
     overflow: auto;
     /* background-color: rgb(0, 0, 0); */
@@ -458,11 +457,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     overflow: hidden;
     background-color: var(--modal-bg-color);
     margin: auto;
     padding: 20px;
-    width: 50%;
+    width: 80%;
     height: 80%;
     border-radius: 2%;
     animation: appear 350ms ease-in 1;

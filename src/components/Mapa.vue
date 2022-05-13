@@ -352,15 +352,69 @@
       <div class="pointer">
         <div v-show="onViewFP" id="cross"></div>
       </div>
-      <div v-show="onViewFP" class="pointObject ObjView-1">
+      <div v-show="onViewFP" id="ModalObj-1" class="ModalObjects">
+        <div class="contentObj">
+          <!-- <div class="headerModal">
+            <span class="closeObj">&times;</span>
+          </div> -->
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Icons/Icons-Picture.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Nombre del objeto 1.</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                qui commodi neque sequi hic, asperiores, mollitia placeat
+                quisquam expedita pariatur impedit omnis. Quod consequatur
+                repellendus illum quaerat enim molestiae sint?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="ModalObj-2" class="ModalObjects">
+        <div class="contentObj">
+          <!-- <div class="headerModal">
+            <span class="closeObj">&times;</span>
+          </div> -->
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Icons/Icons-Picture.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Nombre del objeto 2.</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                qui commodi neque sequi hic, asperiores, mollitia placeat
+                quisquam expedita pariatur impedit omnis. Quod consequatur
+                repellendus illum quaerat enim molestiae sint?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div v-show="onViewFP" class="pointObject ObjView-1">
         <div id="Obj-1" @click="ObjHistory1()" class="labelObject">
           Teléfono
         </div>
         <div class="infoObject">
           Haz click conocer la historia de este objecto.
         </div>
-      </div>
-      <div id="ModalObj-1" class="ModalObjects">
+      </div> -->
+      <!-- <div id="ModalObj-1" class="ModalObjects">
         <div class="contentObj">
           <div class="headerModal">
             <span class="closeObj">&times;</span>
@@ -386,7 +440,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div v-show="onViewFP == false" id="footer01">
       <div class="instView">
@@ -509,7 +563,9 @@ export default {
       Fp: false,
       pointsObjects: [], //PuntosObjetos
       pointObject: null,
-      cubo: null,
+      modalObj: null,
+      Model1: null,
+      intersects: null,
       pointer: new THREE.Vector2(),
       INTERSECTED: null,
       labelRenderer: null,
@@ -625,8 +681,8 @@ export default {
       dirLight.shadow.camera.far = 3500;
       dirLight.shadow.bias = -0.0001;
 
-      const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
-      this.scene.add(dirLightHelper);
+      /* const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
+      this.scene.add(dirLightHelper); */
 
       /* const spotLight = new THREE.SpotLight(0xffffff);
       spotLight.position.set(-3, 2, -25);
@@ -690,6 +746,9 @@ export default {
           }
           //this.worldOctree.fromGraphNode(gltf.scene);
           //this.animate();
+          /* this.Model1 = new THREE.Object3D();
+          this.Model1.add(this.mesh.scene);
+          this.scene.add(this.Model1); */
         },
         undefined,
         undefined
@@ -742,18 +801,24 @@ export default {
       this.white = new THREE.Color().setHex(0xffffff);
 
       //Add geometry
-      var geometry = new THREE.BoxGeometry(2, 2, 2);
+      //this.Obj1 = new THREE.Object3D();
+      var geometry = new THREE.SphereGeometry(0.5, 6, 4);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
-
       var cube1 = new THREE.Mesh(geometry, material);
-      cube1.position.x = 10;
-      cube1.position.y = 2;
-      cube1.position.z = 0;
-      this.cubo = cube1;
-      //this.cubo.visible = false;
-      this.scene.add(this.cubo);
+      cube1.position.x = 34;
+      cube1.position.y = 1;
+      cube1.position.z = 6;
+      cube1.nameId = "Object1";
+      this.scene.add(cube1);
+
+      var cube2 = new THREE.Mesh(geometry, material);
+      cube2.position.x = 0;
+      cube2.position.y = 2;
+      cube2.position.z = 0;
+      cube2.nameId = "Object2";
+      this.scene.add(cube2);
 
       /*  var cube2 = new THREE.Mesh(geometry, material);
       cube2.position.x = 25;
@@ -963,36 +1028,55 @@ export default {
       this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
       this.pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
     },
+    intersectObj() {
+      /* var modal = document.getElementById("ModalObj-1");
+      this.raycaster.setFromCamera(this.pointer, this.cameraFp);
+      this.intersectObj1 = this.raycaster.intersectObjects(this.scene.children, false);
+
+      const intersects = this.intersectObj1; */
+      //this.rayObject(intersects, modal);
+      for (let id = 1; id < 3; id++) {
+        if (this.intersects[0].object.nameId === `Object${id}`) {
+          this.modal = document.getElementById(`ModalObj-${id}`);
+          this.modal.style.display = "block";
+        }
+      }
+    },
+    hideModalObj() {
+      for (let id = 1; id < 3; id++) {
+        this.modal = document.getElementById(`ModalObj-${id}`);
+        this.modal.style.display = "none";
+      }
+    },
     rayObject() {
       this.raycaster.setFromCamera(this.pointer, this.cameraFp);
-
-      const intersects = this.raycaster.intersectObjects(
+      this.intersects = this.raycaster.intersectObjects(
         this.scene.children,
         false
       );
-      var modal = document.getElementById("ModalObj-1");
+      //console.log("escena", this.scene.children);
 
-      if (intersects.length > 0) {
-        if (this.INTERSECTED != intersects[0].object) {
+      if (this.intersects.length > 0) {
+        console.log("Inter", this.intersects);
+        if (this.INTERSECTED != this.intersects[0].object) {
           if (this.INTERSECTED)
             this.INTERSECTED.material.emissive.setHex(
               this.INTERSECTED.currentHex
             );
 
-          this.INTERSECTED = intersects[0].object;
+          this.INTERSECTED = this.intersects[0].object;
           this.INTERSECTED.currentHex =
             this.INTERSECTED.material.emissive.getHex();
           this.INTERSECTED.material.emissive.setHex(0xff0000);
-          modal.style.display = '';
+          this.intersectObj();
         }
       } else {
         if (this.INTERSECTED)
           this.INTERSECTED.material.emissive.setHex(
             this.INTERSECTED.currentHex
           );
-
         this.INTERSECTED = null;
-        modal.style.display = 'none';
+        this.hideModalObj();
       }
     },
     ObjHistory1() {
@@ -1390,9 +1474,10 @@ export default {
       this.mixer.update(d); */
 
       TWEEN.update();
+      //this.intersectObj();
       this.rayObject();
       this.contentPoints();
-      this.contentPointsObjects();
+      //this.contentPointsObjects();
       this.render();
       requestAnimationFrame(this.animate);
       this.stats.update();
