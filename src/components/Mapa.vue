@@ -352,55 +352,250 @@
       <div class="pointer">
         <div v-show="onViewFP" id="cross"></div>
       </div>
-      <div v-show="onViewFP" id="ModalObj-1" class="ModalObjects">
+      <!-- Info Obcject -->
+      <div v-show="onViewFP" id="Modal-1" class="ModalObjects">
         <div class="contentObj">
-          <!-- <div class="headerModal">
-            <span class="closeObj">&times;</span>
-          </div> -->
           <div class="contentModal">
             <div class="imageObject">
               <img
                 class="PictureModal"
-                src="../assets/Icons/Icons-Picture.png"
+                src="../assets/Images/MaquinaRoyal.jpg"
                 alt="Fotografia Objeto"
               />
             </div>
             <div class="titleObj">
-              <h1 class="NameObject">Nombre del objeto 1.</h1>
+              <h1 class="NameObject">Máquina de escribir</h1>
             </div>
             <div class="historyObjtext">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                qui commodi neque sequi hic, asperiores, mollitia placeat
-                quisquam expedita pariatur impedit omnis. Quod consequatur
-                repellendus illum quaerat enim molestiae sint?
+                Las máquinas de escribir se utilizaban en gran medida en las
+                estaciones para evitar la documentación a mano y mantener un
+                registro constante de los pasajeros y productos que circulaban
+                por cada estación.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="ModalObj-2" class="ModalObjects">
+      <div v-show="onViewFP" id="Modal-2" class="ModalObjects">
         <div class="contentObj">
-          <!-- <div class="headerModal">
-            <span class="closeObj">&times;</span>
-          </div> -->
           <div class="contentModal">
             <div class="imageObject">
               <img
                 class="PictureModal"
-                src="../assets/Icons/Icons-Picture.png"
+                src="../assets/Images/Telegrafo.jpg"
                 alt="Fotografia Objeto"
               />
             </div>
             <div class="titleObj">
-              <h1 class="NameObject">Nombre del objeto 2.</h1>
+              <h1 class="NameObject">Télegrafo</h1>
             </div>
             <div class="historyObjtext">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                qui commodi neque sequi hic, asperiores, mollitia placeat
-                quisquam expedita pariatur impedit omnis. Quod consequatur
-                repellendus illum quaerat enim molestiae sint?
+                Utilizado para mantener la comunicación a larga distancia entre
+                estaciones y otras empresas relacionadas con la vía ferrovial,
+                remplazado años más tarde por el teléfono.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-3" class="ModalObjects">
+        <div class="contentObj">
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Perforador.jpg"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Perforador de papel</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Utilizado por los encargados de los pasajeros en los trenes para
+                poder confirmar si un boleto fue utilizado previamente o no.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-4" class="ModalObjects">
+        <div class="contentObj">
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Vagoneta.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Vagoneta</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Es un vagón pequeño que sirve para el transporte de mercancías,
+                principalmente minerales, piedra, arena o materiales de
+                construcción. También se usaba para transportar pequeños grupos
+                de personas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-5" class="ModalObjects">
+        <div class="contentObj">
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Telefono.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Télefono de campaña</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Son teléfonos portátiles de uso militar, diseñados para soportar
+                condiciones adversas.
+                <br />
+                Pueden alimentarse de su propia batería, desde una central
+                telefónica o de una fuente de energía externa, estos eran
+                utilizados por los operarios en las estaciones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Info Station -->
+      <div v-show="onViewFP" id="Modal-6" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Zipaquira01.jpg"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Zipaquirá</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                En 1926 mientras el General Pedro Nel Ospina era presidente de
+                la República, comenzó la construcción con un estilo neoclásico
+                francés de la edificación conocida como la estación Tres
+                Esquinas, parte del trayecto hacia el norte del Ferrocarril de
+                la Sabana; el 8 de diciembre de 1927, fue inaugurada con la
+                presencia de varios funcionarios del Gobierno, con bombos y
+                platillos, pues marcaba el punto de partida para el progreso de
+                la ciudad.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-7" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Usaquen02.jpg"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Usaquén</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                La estación del tren de Usaquén fue, con la estación de La
+                Sabana, los principales centros de recepción de la Bogotá de
+                antaño, cuando esta no tenía vías y el norte eran potreros.
+                <br />
+                El ferrocarril del nordeste llegó a la estación de Usaquén hacia
+                1926 con el fin de comunicar los departamentos de Cundinamarca y
+                Boyacá.
+                <br />
+                El proyecto del tren de la Sabana, terminado en 1953, tuvo en
+                Bogotá estaciones principales como la de Chapinero, Calle 100,
+                Fontibón, Bosa, entre otras, que a la postre determinaron la
+                dirección en la que la capital se desarrolló.
+                <br />
+                Las únicas estaciones “sobrevivientes” son Usaquén y Sabana, las
+                cuales son patrimonio histórico de cómo la ciudad olvidó este
+                sistema vial para enfocarse en la construcción de vías y la
+                implementación de los buses urbanos, que eran la moda en los
+                años 50.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-8" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Chia02.jpg"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Chía</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                La estación de La Caro fue una de las últimas líneas construidas
+                en el año 1953. Se ubica en el municipio de Chía, a 33 KM de la
+                ciudad de Bogotá, Cerca de una de las obras más importantes de
+                la época colonial y que a la fecha sigue siendo un referente
+                histórico y turístico, como lo es el Puente del Común y a 4.5 KM
+                del Instituto Caro y Cuervo que es un centro colombiano de altos
+                estudios en literatura, filología y lingüística del idioma
+                castellano y las lenguas nativas del país, orientado a la
+                investigación y a la divulgación de la cultura del libro y la
+                lectura.
+                <br />
+                Su arquitectura es de estilo republicano, llamada así en memoria
+                de Miguel Antonio Caro, político y escritor.
+                <br />
+                El Ferrocarril de la Sabana sirvió como base para la expansión
+                de las vías férreas hacia el resto del país las cuales
+                posteriormente se unieron bajo la administración de los
+                Ferrocarriles Nacionales de Colombia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-9" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Cajica01.jpg"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Cajicá</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                neque, sint quas a sunt velit non consectetur debitis laboriosam
+                voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
+                recusandae alias numquam.
               </p>
             </div>
           </div>
@@ -517,10 +712,7 @@ import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { PointerLockControls } from "three/examples/jsm/controls/PointerLockControls";
 import { Octree } from "three/examples/jsm/math/Octree";
 import { Capsule } from "three/examples/jsm/math/Capsule";
-/* import {
-  CSS2DRenderer,
-  CSS2DObject,
-} from "three/examples/jsm/renderers/CSS2DRenderer"; */
+
 //import { OctreeHelper } from "three/examples/jsm/helpers/OctreeHelper";
 //import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import Toggle from "./Toggle.vue";
@@ -555,6 +747,7 @@ export default {
       renderer: null,
       stats: null,
       raycaster: null,
+      raycaster2: null,
       MainTarget: null,
       MainPosition: null,
       MainRotation: null,
@@ -802,23 +995,72 @@ export default {
 
       //Add geometry
       //this.Obj1 = new THREE.Object3D();
-      var geometry = new THREE.SphereGeometry(0.5, 6, 4);
+      var geometry = new THREE.SphereGeometry(0.4, 6, 4);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
-      var cube1 = new THREE.Mesh(geometry, material);
-      cube1.position.x = 34;
-      cube1.position.y = 1;
-      cube1.position.z = 6;
-      cube1.nameId = "Object1";
-      this.scene.add(cube1);
+      var sphere1 = new THREE.Mesh(geometry, material);
+      sphere1.position.x = 34;
+      sphere1.position.y = 1;
+      sphere1.position.z = 6;
+      sphere1.nameId = "Label1";
+      this.scene.add(sphere1);
 
-      var cube2 = new THREE.Mesh(geometry, material);
-      cube2.position.x = 0;
-      cube2.position.y = 2;
-      cube2.position.z = 0;
-      cube2.nameId = "Object2";
-      this.scene.add(cube2);
+      var sphere2 = new THREE.Mesh(geometry, material);
+      sphere2.position.x = 0;
+      sphere2.position.y = 2;
+      sphere2.position.z = 0;
+      sphere2.nameId = "Label2";
+      this.scene.add(sphere2);
+
+      var sphere3 = new THREE.Mesh(geometry, material);
+      sphere3.position.x = 2;
+      sphere3.position.y = 2;
+      sphere3.position.z = 0;
+      sphere3.nameId = "Label3";
+      this.scene.add(sphere3);
+
+      var sphere4 = new THREE.Mesh(geometry, material);
+      sphere4.position.x = 4;
+      sphere4.position.y = 2;
+      sphere4.position.z = 0;
+      sphere4.nameId = "Label4";
+      this.scene.add(sphere4);
+
+      var sphere5 = new THREE.Mesh(geometry, material);
+      sphere5.position.x = 8;
+      sphere5.position.y = 2;
+      sphere5.position.z = 0;
+      sphere5.nameId = "Label5";
+      this.scene.add(sphere5);
+
+      var sphere6 = new THREE.Mesh(geometry, material);
+      sphere6.position.x = 10;
+      sphere6.position.y = 2;
+      sphere6.position.z = 0;
+      sphere6.nameId = "Label6";
+      this.scene.add(sphere6);
+
+      var sphere7 = new THREE.Mesh(geometry, material);
+      sphere7.position.x = 12;
+      sphere7.position.y = 2;
+      sphere7.position.z = 0;
+      sphere7.nameId = "Label7";
+      this.scene.add(sphere7);
+
+      var sphere8 = new THREE.Mesh(geometry, material);
+      sphere8.position.x = 14;
+      sphere8.position.y = 2;
+      sphere8.position.z = 0;
+      sphere8.nameId = "Label8";
+      this.scene.add(sphere8);
+
+      var sphere9 = new THREE.Mesh(geometry, material);
+      sphere9.position.x = 16;
+      sphere9.position.y = 2;
+      sphere9.position.z = 0;
+      sphere9.nameId = "Label9";
+      this.scene.add(sphere9);
 
       /*  var cube2 = new THREE.Mesh(geometry, material);
       cube2.position.x = 25;
@@ -883,6 +1125,7 @@ export default {
       }
 
       this.raycaster = new THREE.Raycaster();
+      this.raycaster2 = new THREE.Raycaster();
       this.points = [
         {
           //Zipaquirá
@@ -905,13 +1148,13 @@ export default {
           element: document.querySelector(".MapView-4"),
         },
       ];
-      this.pointsObjects = [
+      /* this.pointsObjects = [
         {
           //Telefono
           position: new THREE.Vector3(34, 1, 6),
           element: document.querySelector(".ObjView-1"),
         },
-      ];
+      ]; */
       window.addEventListener("resize", this.onWindowResize);
     },
     ShowInfo() {
@@ -1028,36 +1271,28 @@ export default {
       this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
       this.pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
     },
-    intersectObj() {
-      /* var modal = document.getElementById("ModalObj-1");
-      this.raycaster.setFromCamera(this.pointer, this.cameraFp);
-      this.intersectObj1 = this.raycaster.intersectObjects(this.scene.children, false);
-
-      const intersects = this.intersectObj1; */
-      //this.rayObject(intersects, modal);
-      for (let id = 1; id < 3; id++) {
-        if (this.intersects[0].object.nameId === `Object${id}`) {
-          this.modal = document.getElementById(`ModalObj-${id}`);
+    intersectPoint() {
+      for (let id = 1; id < 10; id++) {
+        if (this.intersects[0].object.nameId === `Label${id}`) {
+          this.modal = document.getElementById(`Modal-${id}`);
           this.modal.style.display = "block";
         }
       }
     },
-    hideModalObj() {
-      for (let id = 1; id < 3; id++) {
-        this.modal = document.getElementById(`ModalObj-${id}`);
+    hideModalPoint() {
+      for (let id = 1; id < 10; id++) {
+        this.modal = document.getElementById(`Modal-${id}`);
         this.modal.style.display = "none";
       }
     },
-    rayObject() {
+    rayPoints() {
       this.raycaster.setFromCamera(this.pointer, this.cameraFp);
       this.intersects = this.raycaster.intersectObjects(
         this.scene.children,
         false
       );
-      //console.log("escena", this.scene.children);
 
       if (this.intersects.length > 0) {
-        console.log("Inter", this.intersects);
         if (this.INTERSECTED != this.intersects[0].object) {
           if (this.INTERSECTED)
             this.INTERSECTED.material.emissive.setHex(
@@ -1068,7 +1303,7 @@ export default {
           this.INTERSECTED.currentHex =
             this.INTERSECTED.material.emissive.getHex();
           this.INTERSECTED.material.emissive.setHex(0xff0000);
-          this.intersectObj();
+          this.intersectPoint();
         }
       } else {
         if (this.INTERSECTED)
@@ -1076,7 +1311,7 @@ export default {
             this.INTERSECTED.currentHex
           );
         this.INTERSECTED = null;
-        this.hideModalObj();
+        this.hideModalPoint();
       }
     },
     ObjHistory1() {
@@ -1153,16 +1388,6 @@ export default {
           -screenPosition.y * this.container.clientHeight * 0.5;
         this.pointObject.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
       }
-    },
-    objectIndicator() {
-      //const earthDiv = document.createElement("div");
-      //const earthDiv = document.getElementById("Object1");
-      //earthDiv.className = "ObjView-1";
-      //earthDiv.textContent = "Earth";
-      //earthDiv.style.marginTop = "-1em";
-      //const earthLabel = new CSS2DObject(earthDiv);
-      //earthLabel.position.set(0, 0, 0);
-      //this.cubo.add(earthLabel);
     },
     FPEstacion1() {
       //Estacion de Zipaquirá
@@ -1474,8 +1699,7 @@ export default {
       this.mixer.update(d); */
 
       TWEEN.update();
-      //this.intersectObj();
-      this.rayObject();
+      this.rayPoints();
       this.contentPoints();
       //this.contentPointsObjects();
       this.render();
