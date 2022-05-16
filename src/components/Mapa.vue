@@ -347,11 +347,11 @@
         </div>
       </div>
     </transition>
-
     <div id="contentObjs">
       <div class="pointer">
         <div v-show="onViewFP" id="cross"></div>
       </div>
+
       <!-- Info Obcject -->
       <div v-show="onViewFP" id="Modal-1" class="ModalObjects">
         <div class="contentObj">
@@ -693,6 +693,7 @@
     </div>
     <div id="footer03">
       <div id="menuTeam" @click="ShowTeam()">
+        <span class="tooltiptext">Equipo Ferriel</span>
         <img
           class="iconTeam"
           src="../assets/Icons/Icons-Team.png"
@@ -733,10 +734,16 @@ export default {
   data() {
     return {
       loaded: false, //Carga
-      load01: false, //Zipaquirá load
-      load02: false, //Usaquén load
-      load03: false, //Cajicá load
-      load04: false, //Chía load
+      load01: false, //Cajicá load
+      load02: false, //Zipaquirá load
+      load03: false, //Parque load
+      load04: false, //Puentes load
+      load05: false, //Cajicá Letrero load
+      load06: false, //Zipaquirá Letrero load
+      load07: false, //CajicaColisiones load
+      load08: false, // ZipaquiraColisiones load
+      load09: false, //PuentesColisiones load
+      load10: false, //ParqueColisiones load
       esperatime: true,
       mostrar: false,
       container: null,
@@ -813,7 +820,7 @@ export default {
 
       // add camera first person
       const fovFp = 80;
-      var farFp = 20;
+      var farFp = 40;
       this.cameraFp = new THREE.PerspectiveCamera(fovFp, aspect, near, farFp);
 
       this.MainPosition = new THREE.Vector3();
@@ -827,10 +834,10 @@ export default {
 
       // create scene
       const nearFog = 60;
-      const farFog = 120;
+      const farFog = 90;
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color("#b2daee");
-      this.scene.fog = new THREE.Fog(0xcbe9fc, nearFog, farFog);
+      this.scene.background = new THREE.Color("#6dd2dc");
+      this.scene.fog = new THREE.Fog(0x4eacce, nearFog, farFog);
 
       // add lights
       /* const ambientLight = new THREE.HemisphereLight(
@@ -849,11 +856,11 @@ export default {
       mainLight.shadow.camera.far = 40;
       this.scene.add(ambientLight, mainLight); */
 
-      /* const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+      const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
       hemiLight.position.set(0, 20, 0);
-      this.scene.add(hemiLight); */
+      this.scene.add(hemiLight);
 
-      const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+      /* const dirLight = new THREE.DirectionalLight(0xffffff, 1);
       dirLight.color.setHSL(0.1, 1, 0.95);
       dirLight.position.set(-1, 1.75, 1);
       dirLight.position.multiplyScalar(30);
@@ -872,7 +879,7 @@ export default {
       dirLight.shadow.camera.bottom = -d;
 
       dirLight.shadow.camera.far = 3500;
-      dirLight.shadow.bias = -0.0001;
+      dirLight.shadow.bias = -0.0001; */
 
       /* const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
       this.scene.add(dirLightHelper); */
@@ -895,7 +902,13 @@ export default {
       const loader03 = new GLTFLoader().setPath("/Models/");
       const loader04 = new GLTFLoader().setPath("/Models/");
       const loader05 = new GLTFLoader().setPath("/Models/");
+      const loader06 = new GLTFLoader().setPath("/Models/");
+      const loader07 = new GLTFLoader().setPath("/Models/");
+      const loader08 = new GLTFLoader().setPath("/Models/");
+      const loader09 = new GLTFLoader().setPath("/Models/");
+      const loader10 = new GLTFLoader().setPath("/Models/");
 
+      //Models
       loader01.load(
         "Cajica01.glb",
         (gltf) => {
@@ -947,7 +960,7 @@ export default {
         undefined
       );
       loader03.load(
-        "Esquinas.glb",
+        "Parque.glb",
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
@@ -960,7 +973,7 @@ export default {
         undefined
       );
       loader04.load(
-        "Parque.glb",
+        "Puentes.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.castShadow = true;
@@ -975,14 +988,90 @@ export default {
         undefined
       );
       loader05.load(
-        "Suelo.glb",
+        "CajicaLetrero.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.castShadow = true;
           this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
           if (this.mesh) {
-            this.load04 = true;
+            this.load05 = true;
+          }
+          //this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader06.load(
+        "ZipaquiraLetrero.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load06 = true;
+          }
+          //this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      //Collitions
+      loader07.load(
+        "CajicaColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load07 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader08.load(
+        "ZipaquiraColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load08 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader09.load(
+        "PuentesColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load09 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader10.load(
+        "ParqueColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load010 = true;
           }
           this.worldOctree.fromGraphNode(gltf.scene);
         },
@@ -990,96 +1079,8 @@ export default {
         undefined
       );
 
-      this.color = new THREE.Color();
-      this.white = new THREE.Color().setHex(0xffffff);
+      this.pointObjs();
 
-      //Add geometry
-      //this.Obj1 = new THREE.Object3D();
-      var geometry = new THREE.SphereGeometry(0.4, 6, 4);
-      var material = new THREE.MeshLambertMaterial({
-        color: Math.random() * 0xffffff,
-      });
-      var sphere1 = new THREE.Mesh(geometry, material);
-      sphere1.position.x = 34;
-      sphere1.position.y = 1;
-      sphere1.position.z = 6;
-      sphere1.nameId = "Label1";
-      this.scene.add(sphere1);
-
-      var sphere2 = new THREE.Mesh(geometry, material);
-      sphere2.position.x = 0;
-      sphere2.position.y = 2;
-      sphere2.position.z = 0;
-      sphere2.nameId = "Label2";
-      this.scene.add(sphere2);
-
-      var sphere3 = new THREE.Mesh(geometry, material);
-      sphere3.position.x = 2;
-      sphere3.position.y = 2;
-      sphere3.position.z = 0;
-      sphere3.nameId = "Label3";
-      this.scene.add(sphere3);
-
-      var sphere4 = new THREE.Mesh(geometry, material);
-      sphere4.position.x = 4;
-      sphere4.position.y = 2;
-      sphere4.position.z = 0;
-      sphere4.nameId = "Label4";
-      this.scene.add(sphere4);
-
-      var sphere5 = new THREE.Mesh(geometry, material);
-      sphere5.position.x = 8;
-      sphere5.position.y = 2;
-      sphere5.position.z = 0;
-      sphere5.nameId = "Label5";
-      this.scene.add(sphere5);
-
-      var sphere6 = new THREE.Mesh(geometry, material);
-      sphere6.position.x = 10;
-      sphere6.position.y = 2;
-      sphere6.position.z = 0;
-      sphere6.nameId = "Label6";
-      this.scene.add(sphere6);
-
-      var sphere7 = new THREE.Mesh(geometry, material);
-      sphere7.position.x = 12;
-      sphere7.position.y = 2;
-      sphere7.position.z = 0;
-      sphere7.nameId = "Label7";
-      this.scene.add(sphere7);
-
-      var sphere8 = new THREE.Mesh(geometry, material);
-      sphere8.position.x = 14;
-      sphere8.position.y = 2;
-      sphere8.position.z = 0;
-      sphere8.nameId = "Label8";
-      this.scene.add(sphere8);
-
-      var sphere9 = new THREE.Mesh(geometry, material);
-      sphere9.position.x = 16;
-      sphere9.position.y = 2;
-      sphere9.position.z = 0;
-      sphere9.nameId = "Label9";
-      this.scene.add(sphere9);
-
-      /*  var cube2 = new THREE.Mesh(geometry, material);
-      cube2.position.x = 25;
-      cube2.position.y = -0.5;
-      cube2.position.z = 0;
-      this.scene.add(cube2);
-
-      var cube3 = new THREE.Mesh(geometry, material);
-      cube3.position.x = 0;
-      cube3.position.y = -0.5;
-      cube3.position.z = 25;
-      this.scene.add(cube3);
-
-      var cube4 = new THREE.Mesh(geometry, material);
-      cube4.position.x = 25;
-      cube4.position.y = -0.5;
-      cube4.position.z = 25;
-      this.scene.add(cube4);
- */
       // create renderer
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
       this.renderer.setSize(
@@ -1091,13 +1092,6 @@ export default {
       this.renderer.shadowMap.enabled = true;
       this.container.appendChild(this.renderer.domElement);
 
-      /* this.labelRenderer = new CSS2DRenderer();
-      this.labelRenderer.setSize(window.innerWidth, window.innerHeight);
-      this.labelRenderer.domElement.style.position = "absolute";
-      this.labelRenderer.domElement.style.top = "0px";
-      document.body.appendChild(this.labelRenderer.domElement); */
-
-      //this.objectIndicator();
       // add Orbitcontrols
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -1129,7 +1123,7 @@ export default {
       this.points = [
         {
           //Zipaquirá
-          position: new THREE.Vector3(33, 5, 0),
+          position: new THREE.Vector3(-50, 6, 0),
           element: document.querySelector(".MapView-1"),
         },
         {
@@ -1139,7 +1133,7 @@ export default {
         },
         {
           //Cajicá
-          position: new THREE.Vector3(-36, 5, 0),
+          position: new THREE.Vector3(50, 5, 0),
           element: document.querySelector(".MapView-3"),
         },
         {
@@ -1156,6 +1150,77 @@ export default {
         },
       ]; */
       window.addEventListener("resize", this.onWindowResize);
+    },
+    pointObjs() {
+      this.color = new THREE.Color();
+      this.white = new THREE.Color().setHex(0xffffff);
+      //Add geometry
+      var geometry = new THREE.SphereGeometry(0.4, 6, 4);
+      var material = new THREE.MeshLambertMaterial({
+        color: Math.random() * 0xffffff,
+      });
+      var sphere1 = new THREE.Mesh(geometry, material);
+      sphere1.position.x = 0;
+      sphere1.position.y = 2;
+      sphere1.position.z = 5;
+      sphere1.nameId = "Label1";
+      this.scene.add(sphere1);
+
+      var sphere2 = new THREE.Mesh(geometry, material);
+      sphere2.position.x = 0;
+      sphere2.position.y = 2;
+      sphere2.position.z = -5;
+      sphere2.nameId = "Label2";
+      this.scene.add(sphere2);
+
+      var sphere3 = new THREE.Mesh(geometry, material);
+      sphere3.position.x = 2;
+      sphere3.position.y = 2;
+      sphere3.position.z = 5;
+      sphere3.nameId = "Label3";
+      this.scene.add(sphere3);
+
+      var sphere4 = new THREE.Mesh(geometry, material);
+      sphere4.position.x = 2;
+      sphere4.position.y = 2;
+      sphere4.position.z = -5;
+      sphere4.nameId = "Label4";
+      this.scene.add(sphere4);
+
+      var sphere5 = new THREE.Mesh(geometry, material);
+      sphere5.position.x = 4;
+      sphere5.position.y = 2;
+      sphere5.position.z = 5;
+      sphere5.nameId = "Label5";
+      this.scene.add(sphere5);
+
+      var sphere6 = new THREE.Mesh(geometry, material);
+      sphere6.position.x = 4;
+      sphere6.position.y = 2;
+      sphere6.position.z = -5;
+      sphere6.nameId = "Label6";
+      this.scene.add(sphere6);
+
+      var sphere7 = new THREE.Mesh(geometry, material);
+      sphere7.position.x = 6;
+      sphere7.position.y = 2;
+      sphere7.position.z = 5;
+      sphere7.nameId = "Label7";
+      this.scene.add(sphere7);
+
+      var sphere8 = new THREE.Mesh(geometry, material);
+      sphere8.position.x = 6;
+      sphere8.position.y = 2;
+      sphere8.position.z = -5;
+      sphere8.nameId = "Label8";
+      this.scene.add(sphere8);
+
+      var sphere9 = new THREE.Mesh(geometry, material);
+      sphere9.position.x = 8;
+      sphere9.position.y = 2;
+      sphere9.position.z = 5;
+      sphere9.nameId = "Label9";
+      this.scene.add(sphere9);
     },
     ShowInfo() {
       var modal = document.getElementById("MenuInfo");
@@ -1192,9 +1257,17 @@ export default {
       };
     },
     HideWait() {
-      if (this.load01 && this.load02 && this.load03 && this.load04) {
+      if (
+        this.load01 &&
+        this.load02 &&
+        this.load03 &&
+        this.load04 &&
+        this.load05 &&
+        this.load06 &&
+        this.load07 &&
+        this.load08
+      ) {
         this.loaded = true;
-        //console.log("Cargados", this.loaded);
       }
     },
     HelpMenu() {
@@ -1394,7 +1467,7 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst1 = new THREE.Vector3(20, 1, 0);
+      const PosEst1 = new THREE.Vector3(-36, 1, 0);
       const RotEst1 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst1);
@@ -1426,7 +1499,7 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst2 = new THREE.Vector3(0, 1, 40);
+      const PosEst2 = new THREE.Vector3(0, 1, 13);
       const RotEst2 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst2);
@@ -1458,7 +1531,7 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst3 = new THREE.Vector3(-36, 1, 5);
+      const PosEst3 = new THREE.Vector3(36, 1, 0);
       const RotEst3 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst3);
@@ -1490,7 +1563,7 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst4 = new THREE.Vector3(0, 1, -40);
+      const PosEst4 = new THREE.Vector3(0, 1, -13);
       const RotEst4 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst4);
@@ -1573,7 +1646,7 @@ export default {
     changeFog() {
       if (this.onStation) {
         this.scene.fog.near = 5;
-        this.scene.fog.far = 20;
+        this.scene.fog.far = 30;
       } else {
         this.scene.fog.near = 60;
         this.scene.fog.far = 120;
@@ -1676,6 +1749,8 @@ export default {
         this.playerCollider.start.set(0, 0.35, 0);
         this.playerCollider.end.set(0, 1, 0);
         this.playerCollider.radius = 0.35;
+        const Respawn = new THREE.Vector3(0, 0, 2);
+        this.playerCollider.translate(Respawn);
         this.cameraFp.position.copy(this.playerCollider.end);
       }
     },

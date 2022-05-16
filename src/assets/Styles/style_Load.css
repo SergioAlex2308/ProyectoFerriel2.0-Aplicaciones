@@ -37,8 +37,8 @@
 	letter-spacing: 20px;
 	text-transform: uppercase;
 	text-shadow: 0 0 10px #ffffff;
-	animation: opacityOn 5s normal infinite;
-    animation-delay: 3s;
+	animation: opacityOn 2s normal infinite;
+    animation-delay: 0.5s;
 }
 
 @keyframes opacityOn {

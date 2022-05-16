@@ -43,7 +43,14 @@
     --label-border-color: #000000cc;
 
     /*Footer icons*/
+    --footer-bg-color: #00000025;
     --footer-txt-color: #ffffff;
+    --footer-txt-size: 12px;
+    --footer-txt-weight: 400;
+
+    /*Tooltip*/
+    --tool-bg-color: #000000;
+    --tool-txt-color: #ffffff;
 
     /******** DARK MODE ********/
     /*Modal color*/
@@ -358,13 +365,15 @@
 .pointer {
     position: fixed;
     left: 50%;
-    top: 45%;
+    top: 48%;
 }
+
 #cross {
     height: 20px;
     background-color: #000;
     position: relative;
     width: 3px;
+    animation: appear 4s ease-in 1;
 }
 
 #cross::after {
@@ -376,6 +385,7 @@
     top: 9px;
     width: 20px;
 }
+
 .pointObject {
     position: absolute;
     top: 50%;
@@ -581,6 +591,7 @@
     /* background-color: rgb(0, 0, 0); */
     background-color: var(--bg-modal-color);
 }
+
 .contentSta {
     position: relative;
     display: flex;
@@ -622,6 +633,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
+
 .historyStation {
     display: flex;
     justify-content: center;
@@ -719,12 +731,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 25%;
     height: 100px;
     right: 0.5em;
     position: fixed;
     bottom: 1em;
-    animation: appearControls 3000ms ease-in 1;
+    background-color: #00000061;
+    border-radius: 1%;
+    animation: appearControls 3s ease-in 1;
+    animation-delay: 1s;
 }
 
 .instView {
@@ -733,8 +748,8 @@
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--footer-txt-color);
-    font-size: 15px;
-    font-weight: 400;
+    font-size: var(--footer-txt-size);
+    font-weight: var(--footer-txt-weight);
     text-align: start;
     height: 100%;
     width: 70%;
@@ -769,9 +784,11 @@
     justify-content: flex-start;
     align-items: center;
     width: 40%;
-    height: 15%;
-    left: 5em;
+    height: 14%;
+    left: 30em;
     bottom: 1em;
+    /*     background-color: var(--footer-bg-color);
+    border-radius: 1%; */
     position: fixed;
     animation: appearControls 3000ms ease-in 1;
 }
@@ -779,14 +796,18 @@
 #footer02 {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    padding-top: 0.5%;
     width: 40%;
-    height: 15%;
+    height: 14%;
     right: 5em;
     bottom: 1em;
     position: fixed;
-    animation: appearControls 3000ms ease-in 1;
+    background-color: var(--footer-bg-color);
+    border-radius: 1%;
+    animation: appearControls 3s ease-in 1;
+    animation-delay: 1s;
 }
 
 #iconControlsFp {
@@ -810,8 +831,8 @@
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--footer-txt-color);
-    font-size: 12px;
-    font-weight: 400;
+    font-size: var(--footer-txt-size);
+    font-weight: var(--footer-txt-weight);
     text-align: center;
     height: 100%;
     width: 100%;
@@ -829,8 +850,8 @@
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--footer-txt-color);
-    font-size: 12px;
-    font-weight: 400;
+    font-size: var(--footer-txt-size);
+    font-weight: var(--footer-txt-weight);
     text-align: center;
     height: 100%;
     width: 70%;
@@ -853,8 +874,8 @@
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--footer-txt-color);
-    font-size: 12px;
-    font-weight: 400;
+    font-size: var(--footer-txt-size);
+    font-weight: var(--footer-txt-weight);
     text-align: center;
     height: 100%;
     width: 70%;
@@ -872,8 +893,8 @@
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--footer-txt-color);
-    font-size: 12px;
-    font-weight: 400;
+    font-size: var(--footer-txt-size);
+    font-weight: var(--footer-txt-weight);
     text-align: center;
     height: 100%;
     width: 70%;
@@ -896,6 +917,38 @@
     justify-content: flex-start;
     align-items: center;
     z-index: 0;
+}
+
+#menuTeam .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--tool-bg-color);
+    color: var(--tool-txt-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -20%;
+    left: 8%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#menuTeam .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: -4%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent  var(--tool-bg-color) transparent transparent;
+}
+
+#menuTeam:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
 
 .iconTeam {

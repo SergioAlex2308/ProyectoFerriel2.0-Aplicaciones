@@ -2,7 +2,7 @@
   <div v-show="ViewFp" id="ShowControlsFp">
     <div id="tutoControlsFp">
       <div id="tutoViewFp">
-        <div class="instMove">
+        <div class="instKeys">
           <img
             class="Keys"
             src="../assets/Icons/Icons-Keys.png"
@@ -10,7 +10,7 @@
           />
           <p>Presiona las teclas para desplazarte.</p>
         </div>
-        <div class="instMoveCamera">
+        <div class="instKeys">
           <img
             class="Mouse MouseClic"
             src="../assets/Icons/Icons-Clic.png"
@@ -22,7 +22,7 @@
             para mirar a tu alrededor.
           </p>
         </div>
-        <div class="instJump">
+        <div class="instKeys">
           <img
             class="Mouse"
             src="../assets/Icons/Icons-Space.png"

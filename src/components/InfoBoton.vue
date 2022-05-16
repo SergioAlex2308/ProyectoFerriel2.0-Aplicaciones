@@ -2,7 +2,7 @@
   <div id="Modal">
     <div id="contentMenu" class="darkmode">
       <div class="headerModal">
-        <div class="buttons">
+        <!-- <div class="buttons">
           <button
             type="button"
             id="ZoomMenos"
@@ -19,7 +19,7 @@
           >
             Aumentar
           </button>
-        </div>
+        </div> -->
         <span class="closeMenu">&times;</span>
       </div>
       <div class="seccionMenu">
