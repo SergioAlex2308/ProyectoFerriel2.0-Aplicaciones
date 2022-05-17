@@ -54,56 +54,56 @@
 
     /******** DARK MODE ********/
     /*Modal color*/
-    --back-modal-bg-color: #ffffff;
-    --back-modal-title-color: #000000;
-    --back-modal-subtitle-color: #000000;
-    --back-modal-txt-color: #000000;
-    --back-bg-modal-color: #00000099;
-    --back-modal-header-border-color: #0000001a;
-    --back-modal-close: #aaaaaa;
-    --back-modal-close-hover: #000;
-    --back-modal-scroll-color: #808080;
-    --back-modal-scroll-hover-color: #000000;
-    --back-modal-scroll-shadow-color: #808080;
+    --dark-modal-bg-color: #ffffff;
+    --dark-modal-title-color: #000000;
+    --dark-modal-subtitle-color: #000000;
+    --dark-modal-txt-color: #000000;
+    --dark-bg-modal-color: #00000099;
+    --dark-modal-header-border-color: #0000001a;
+    --dark-modal-close: #aaaaaa;
+    --dark-modal-close-hover: #000;
+    --dark-modal-scroll-color: #808080;
+    --dark-modal-scroll-hover-color: #000000;
+    --dark-modal-scroll-shadow-color: #808080;
 
     /*Load Color*/
-    --back-load-bg-color: #262626;
+    --dark-load-bg-color: #262626;
 
     /*Menu icon color*/
-    --back-icon-bg-color: #00000047;
-    --back-icon-hover-color: #000000;
-    --back-burger-line-color: #ffffff;
+    --dark-icon-bg-color: #00000047;
+    --dark-icon-hover-color: #000000;
+    --dark-burger-line-color: #ffffff;
 
     /*Header color*/
-    --back-title-bg-color: #262626;
+    --dark-title-bg-color: #262626;
 
     /*Shadows icons*/
-    --back-shadow-icon-color: #00000066;
+    --dark-shadow-icon-color: #00000066;
 
     /*Button view*/
-    --back-btn-bg-color: #303030;
-    --back-btn-bg-hover-color: #0f0f0f;
-    --back-btn-txt-color: #ffffff;
-    --back-btn-bg-hover-color: #ffffff;
-    --back-btn-txt-hover-color: #000000;
-    --back-btn-shadow-color: #0f0f0f35;
+    --dark-btn-bg-color: #303030;
+    --dark-btn-bg-hover-color: #0f0f0f;
+    --dark-btn-txt-color: #ffffff;
+    --dark-btn-bg-hover-color: #ffffff;
+    --dark-btn-txt-hover-color: #000000;
+    --dark-btn-shadow-color: #0f0f0f35;
 
     /*Station labels*/
-    --back-label-txt-color: #ffffff;
-    --back-label-bg-color: #000000cc;
-    --back-label-info-bg-color: #ffffffcb;
-    --back-label-txt-info-color: #000000;
-    --back-label-border-color: #000000cc;
+    --dark-label-txt-color: #ffffff;
+    --dark-label-bg-color: #000000cc;
+    --dark-label-info-bg-color: #ffffffcb;
+    --dark-label-txt-info-color: #000000;
+    --dark-label-border-color: #000000cc;
 
     /*Footer icons*/
-    --back-footer-bg-color: #00000025;
-    --back-footer-txt-color: #ffffff;
-    --back-footer-txt-size: 12px;
-    --back-footer-txt-weight: 400;
+    --dark-footer-bg-color: #00000025;
+    --dark-footer-txt-color: #ffffff;
+    --dark-footer-txt-size: 12px;
+    --dark-footer-txt-weight: 400;
 
     /*Tooltip*/
-    --back-tool-bg-color: #000000;
-    --back-tool-txt-color: #ffffff;
+    --dark-tool-bg-color: #000000;
+    --dark-tool-txt-color: #ffffff;
 
 }
 
