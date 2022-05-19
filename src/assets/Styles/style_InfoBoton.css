@@ -8,9 +8,121 @@
 	--table-txt-color: #030303;
 	--table-bg-color: #7c7c7c;
 	--table-border-color: #000000;
-	
+	 /*Modal color*/
+	 --modal-bg-color: #ffffff;
+	 --modal-title-color: #000000;
+	 --modal-subtitle-color: #000000;
+	 --modal-txt-color: #000000;
+	 --bg-modal-color: #00000099;
+	 --modal-header-border-color: #0000001a;
+	 --modal-close: #aaaaaa;
+	 --modal-close-hover: #000;
+	 --modal-scroll-color: #808080;
+	 --modal-scroll-hover-color: #000000;
+	 --modal-scroll-shadow-color: #808080;
+ 
+	 /*Load Color*/
+	 --load-bg-color: #262626;
+ 
+	 /*Menu icon color*/
+	 --icon-bg-color: #00000047;
+	 --icon-hover-color: #000000;
+	 --burger-line-color: #ffffff;
+ 
+	 /*Header color*/
+	 --title-bg-color: #262626;
+ 
+	 /*Shadows icons*/
+	 --shadow-icon-color: #00000066;
+ 
+	 /*Button view*/
+	 --btn-bg-color: #303030;
+	 --btn-bg-hover-color: #0f0f0f;
+	 --btn-txt-color: #ffffff;
+	 --btn-bg-hover-color: #ffffff;
+	 --btn-txt-hover-color: #000000;
+	 --btn-shadow-color: #0f0f0f35;
+ 
+	 /*Station labels*/
+	 --label-txt-color: #ffffff;
+	 --label-bg-color: #000000cc;
+	 --label-info-bg-color: #ffffffcb;
+	 --label-txt-info-color: #000000;
+	 --label-border-color: #000000cc;
+ 
+	 /*Footer icons*/
+	 --footer-bg-color: #00000025;
+	 --footer-txt-color: #ffffff;
+	 --footer-txt-size: 12px;
+	 --footer-txt-weight: 400;
+ 
+	 /*Tooltip*/
+	 --tool-bg-color: #000000;
+	 --tool-txt-color: #ffffff;
+ 
+	 /******** DARK MODE ********/
+	 /*Modal color*/
+	 --dark-modal-bg-color: #000000;
+	 --dark-modal-title-color: #ffffff;
+	 --dark-modal-subtitle-color: #000000;
+	 --dark-modal-txt-color: #ffffff;
+	 --dark-bg-modal-color: #00000099;
+	 --dark-modal-header-border-color: #0000001a;
+	 --dark-modal-close: #aaaaaa;
+	 --dark-modal-close-hover: #000;
+	 --dark-modal-scroll-color: #808080;
+	 --dark-modal-scroll-hover-color: #000000;
+	 --dark-modal-scroll-shadow-color: #808080;
+ 
+	 /*Load Color*/
+	 --dark-load-bg-color: #262626;
+ 
+	 /*Menu icon color*/
+	 --dark-icon-bg-color: #00000047;
+	 --dark-icon-hover-color: #000000;
+	 --dark-burger-line-color: #ffffff;
+ 
+	 /*Header color*/
+	 --dark-title-bg-color: #262626;
+ 
+	 /*Shadows icons*/
+	 --dark-shadow-icon-color: #00000066;
+ 
+	 /*Button view*/
+	 --dark-btn-bg-color: #303030;
+	 --dark-btn-bg-hover-color: #0f0f0f;
+	 --dark-btn-txt-color: #ffffff;
+	 --dark-btn-bg-hover-color: #ffffff;
+	 --dark-btn-txt-hover-color: #000000;
+	 --dark-btn-shadow-color: #0f0f0f35;
+ 
+	 /*Station labels*/
+	 --dark-label-txt-color: #ffffff;
+	 --dark-label-bg-color: #000000cc;
+	 --dark-label-info-bg-color: #ffffffcb;
+	 --dark-label-txt-info-color: #000000;
+	 --dark-label-border-color: #000000cc;
+ 
+	 /*Footer icons*/
+	 --dark-footer-bg-color: #00000025;
+	 --dark-footer-txt-color: #ffffff;
+	 --dark-footer-txt-size: 12px;
+	 --dark-footer-txt-weight: 400;
+ 
+	 /*Tooltip*/
+	 --dark-tool-bg-color: #000000;
+	 --dark-tool-txt-color: #ffffff;
+ 
+ 
 }
-
+.dark .buttonView {
+    color: var(--dark-btn-txt-color);
+}
+.dark .buttonView:hover {
+   
+    background-color: var(--dark-btn-bg-hover-color);
+    color: var(--dark-btn-txt-hover-color);
+}
 .columnas {
 	display: flex;
 	margin: 2px;
@@ -329,7 +441,10 @@ td {
 	transition: transform .2s;
 	filter: drop-shadow(0 0 0.75rem var(--btn-shadow-color));
 }
-
+.dark .boton {
+	background-color: var(--dark-btn-bg-color);
+	color: var(--dark-btn-txt-color);
+}
 .boton:hover {
     transform: scale(1.05);
     background-color: var(--btn-bg-hover-color);

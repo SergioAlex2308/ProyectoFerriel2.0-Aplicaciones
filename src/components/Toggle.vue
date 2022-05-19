@@ -1,6 +1,8 @@
 <template>
   <div class="toggle-wrapper">
+   
     <label class="toggle">
+      
       <input
         type="checkbox"
         :checked="mode === 'dark' ? 'checked' : false"
@@ -29,8 +31,8 @@ export default {
   justify-content: flex-end;
   position: fixed;
   z-index: 7;
-  right: 2%;
-  top: 2%;
+  right: 3%;
+  top: 4%;
 }
 .toggle {
   position: relative;

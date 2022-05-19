@@ -3,7 +3,11 @@
     <transition name="fade">
       <Carga class="loadPage" v-show="!loaded"></Carga>
     </transition>  
+    <div class="solyluna">
+       <img src="../assets/Icons/sunn.png" alt="sol"/>
     <Toggle :mode="mode" @toggle="$emit('toggle')" />
+    <img src="../assets/Icons/lunn.png" alt="luna"/>
+    </div>
     <AeControls :View="onViewFP"></AeControls>
     <FpControls :ViewFp="onViewFP"></FpControls>
     <div id="title">

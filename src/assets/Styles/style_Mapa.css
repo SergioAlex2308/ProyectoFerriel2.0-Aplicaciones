@@ -55,10 +55,10 @@
 
     /******** DARK MODE ********/
     /*Modal color*/
-    --dark-modal-bg-color: #ffffff;
-    --dark-modal-title-color: #000000;
+    --dark-modal-bg-color: #000000;
+    --dark-modal-title-color: #ffffff;
     --dark-modal-subtitle-color: #000000;
-    --dark-modal-txt-color: #000000;
+    --dark-modal-txt-color: #ffffff;
     --dark-bg-modal-color: #00000099;
     --dark-modal-header-border-color: #0000001a;
     --dark-modal-close: #aaaaaa;
@@ -274,7 +274,23 @@
     transition: transform .2s;
     z-index: 0;
 }
-
+.solyluna{
+    display: flex;
+    width: 7%;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 7;
+    right: 1%;
+    top: 4%;
+}
+.dark .buttonView {
+    color: var(--dark-btn-txt-color);
+}
+.dark .buttonView:hover {
+   
+    background-color: var(--dark-btn-bg-hover-color);
+    color: var(--dark-btn-txt-hover-color);
+}
 .buttonView:hover {
     transform: scale(1.05);
     background-color: var(--btn-bg-hover-color);
@@ -513,7 +529,9 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
-
+.dark .contentObj {
+    background-color: var(--dark-modal-bg-color);
+}
 @keyframes appear {
     0% {
         opacity: 0;
@@ -645,6 +663,9 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
+.dark .contentSta {
+    background-color: var(--dark-modal-bg-color);
+}
 
 .contentModal {
     height: 100%;
@@ -709,7 +730,9 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
-
+.dark .contentHelp {
+    background-color: var(--dark-modal-bg-color);
+}
 .titleHelp {
     display: flex;
     justify-content: center;
@@ -723,7 +746,9 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
-
+.dark .NameMenu {
+    color: var(--dark-modal-title-color);
+}
 .textHelp {
     display: flex;
     justify-content: center;
@@ -944,7 +969,12 @@
 .instJump:hover {
     transform: scale(1.1);
 }
-
+p{
+    color: var(--modal-txt-color);
+}
+.dark p{
+    color: var(--dark-modal-txt-color);
+}
 #footer03 {
     position: absolute;
     bottom: 5em;
@@ -1048,6 +1078,9 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
+.dark .contentMenu{
+    background-color: var(--dark-modal-bg-color);
+}
 
 .titleTeam {
     display: flex;
@@ -1055,8 +1088,16 @@
     align-items: center;
     text-align: center;
     padding: 5%;
+    color: var(--modal-txt-color);
 }
 
+
+h1{
+    color: var(--modal-txt-color);
+}
+.dark .titleTeam h1{
+    color: var(--dark-modal-txt-color);
+}
 .titleTeam h1 {
     color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
