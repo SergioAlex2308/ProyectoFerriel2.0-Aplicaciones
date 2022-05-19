@@ -2,7 +2,7 @@
   <div id="Modal">
     <div id="contentMenu" class="darkmode">
       <div class="headerModal">
-        <!-- <div class="buttons">
+        <div class="buttons">
           <button
             type="button"
             id="ZoomMenos"
@@ -19,19 +19,19 @@
           >
             Aumentar
           </button>
-        </div> -->
+        </div>
         <span class="closeMenu">&times;</span>
       </div>
       <div class="seccionMenu">
         <div id="historia" class="seccion" style="display: block">
           <div class="titleModal">
-            <div id="zoomtexto6">
-              <h1>Bienvenidos a Ferriel</h1>
+            <div >
+                <h1 id="zoomtexto1" > Bienvenidos a Ferriel</h1>
             </div>
           </div>
           <div class="contentHistory">
-            <div id="zoomtexto7">
-              <p>
+            <div >
+               <p id="zoomtexto2" class="mitexto"> 
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -60,11 +60,11 @@
         </div>
         <div id="horarios" class="seccion" style="display: none">
           <div class="titleModal">
-            <h1>Horarios</h1>
+            <h1 id="zoomtexto3">Horarios</h1>
           </div>
           <div class="textHorarios">
-            <div id="zoomtexto9">
-              <p class="mitexto">
+            <div >
+              <p id="zoomtexto4" class="mitexto">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -152,8 +152,8 @@
             </tr>
           </table>
           <div class="pageTrain">
-            <div id="zoomtexto20">
-              <a href="https://www.turistren.com.co" target="_blank"
+            <div >
+              <a id="zoomtexto5" href="https://www.turistren.com.co" target="_blank"
                 >Página oficial del tren de la sabana</a
               >
             </div>
@@ -197,83 +197,92 @@
 export default {
   name: "Informacion",
   methods: {
+    
     ZoomMas: function () {
-      var zoom = 1;
-      var zoompoquito = 0.1;
-
+      // var zoom = 1;
+      // var zoompoquito = 0.1;
+      // let fontSize=getfontsize();
       document.getElementById("ZoomMas").addEventListener("click", function () {
-        zoom += zoompoquito;
+        // zoom += zoompoquito;
+         getfontsize("zoomtexto1","+");
+          getfontsize("zoomtexto2","+");
+          getfontsize("zoomtexto3","+")
+           getfontsize("zoomtexto4","+");
+          getfontsize("zoomtexto5","+");
+        // document.getElementById("zoomtexto9").style.setProperty('--font-size', `${fontSize + 0.5}`);
 
-        document.getElementById("zoomtexto").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto1").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto2").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto3").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto4").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto5").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto6").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto7").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto8").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto9").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto20").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto21").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto22").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomtexto23").style.transform =
-          "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto1").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto2").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto3").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto4").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto5").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto6").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto7").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto8").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto20").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto21").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto22").style.transform =
+        //   "scale(" + zoom + ")";
+        // document.getElementById("zoomtexto23").style.transform =
+        //   "scale(" + zoom + ")";
         console.log("se logro");
       });
     },
+    nueva: function () {
+
+    },
     ZoomMenos: function () {
-      var zoom = 1;
-      var zoompoquito = 0.1;
-      document
-        .getElementById("ZoomMenos")
-        .addEventListener("click", function () {
+      // var zoom = 1;
+      // var zoompoquito = 0.1;
+      document.getElementById("ZoomMenos").addEventListener("click", function () {
           // if (zoom > zoompoquito) {
 
-          zoom -= zoompoquito;
+          // zoom -= zoompoquito;
 
-          document.getElementById("zoomtexto").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto1").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto2").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto3").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto4").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto5").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto6").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto7").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto8").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto9").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto20").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto21").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto22").style.transform =
-            "scale(" + zoom + ")";
-          document.getElementById("zoomtexto23").style.transform =
-            "scale(" + zoom + ")";
-          console.log("se logro");
+          getfontsize("zoomtexto1","-");
+          getfontsize("zoomtexto2","-");
+          getfontsize("zoomtexto3","-")
+           getfontsize("zoomtexto4","-");
+          getfontsize("zoomtexto5","-");
+          // document.getElementById("zoomtexto1").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto2").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto3").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto4").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto5").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto6").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto7").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto8").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto9").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto20").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto21").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto22").style.transform =
+          //   "scale(" + zoom + ")";
+          // document.getElementById("zoomtexto23").style.transform =
+          //   "scale(" + zoom + ")";
+          console.log("se logro menos");
         });
     },
     informacion: function () {
@@ -290,6 +299,24 @@ export default {
     },
   },
 };
+
+const getfontsize=(id,ip)=>{
+  // let parseFloat=
+  // parseFloat(getComputedStyle(document.documentElement)
+  //   .getPropertyValue('--font-size'))
+  let texto=document.getElementById(id);
+  let style= document.defaultView.getComputedStyle(texto).getPropertyValue('font-size')
+  let fontSize=parseInt(style);
+  
+  if(ip ==="+"){
+  texto.style.fontSize=`${fontSize+6}px `;
+    console.log("este:",style);
+  }
+    else{
+  texto.style.fontSize=`${fontSize-6}px `;
+
+  }
+ }
 </script>
 
-<style src="../assets/Styles/style_InfoBoton.css"></style>
+<style src="../assets/Styles/style_InfoBoton.css">

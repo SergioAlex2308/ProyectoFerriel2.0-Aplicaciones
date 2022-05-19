@@ -1,6 +1,7 @@
 :root {
 	/******** LIGHT MODE ********/
-	
+	--font-size: 20px;
+	font-size: 18px;
 	/*Table*/
 	--table-header-color: #9e9e9e;
 	--table-hover-color: #9191916c;
@@ -146,7 +147,11 @@ audio {
 	box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.1);
 	margin-bottom: 2%;
 }
+ .mitexto{
+	/* font-size: 1em; */
 
+	font-size: 18px;
+}
 #Modal {
 	display: flex;
 	justify-content: center;
@@ -357,6 +362,7 @@ td {
 	color: white;
 }
 h1 {
+	font-size: 50px;
 	color: #000000;
 }
 

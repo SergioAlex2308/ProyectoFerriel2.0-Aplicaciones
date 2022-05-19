@@ -2,7 +2,7 @@
   <div id="scene-container" ref="sceneContainer">
     <transition name="fade">
       <Carga class="loadPage" v-show="!loaded"></Carga>
-    </transition>
+    </transition>  
     <Toggle :mode="mode" @toggle="$emit('toggle')" />
     <AeControls :View="onViewFP"></AeControls>
     <FpControls :ViewFp="onViewFP"></FpControls>
@@ -122,32 +122,50 @@
       <div id="ModalHelp" class="ModalControls">
         <div class="contentHelp">
           <div class="headerModal">
+             <div class="buttons">
+          <button
+            type="button"
+            id="ZoomMenos2"
+            class="btn btn-dark mr-1"
+            @click="ZoomMenos2()"
+          >
+            Disminuir
+          </button>
+          <button
+            type="button"
+            id="ZoomMas2"
+            class="btn btn-dark mr-1"
+            @click="ZoomMas2()"
+          >
+            Aumentar
+          </button>
+        </div>
             <span class="close">&times;</span>
           </div>
           <div class="contentModal">
             <div class="titleHelp">
-              <h2 class="NameMenu">Ayuda</h2>
+              <h2 id="zoomtexto16" class="NameMenu">Ayuda</h2>
             </div>
             <div class="textHelp">
-              <p>
+              <p id="zoomtexto17">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
                 qui commodi neque sequi hic, asperiores, mollitia placeat
                 quisquam expedita pariatur impedit omnis. Quod consequatur
                 repellendus illum quaerat enim molestiae sint?
               </p>
             </div>
-            <h3 class="titleControls">Controles en la vista aérea</h3>
+            <h3 class="titleControls" id="zoomtexto18">Controles en la vista aérea</h3>
             <div class="PictureControls">
               <div class="InstControls">
                 <div class="invert">
                   <img src="../assets/Icons/Icons-Clic.png" alt="Icono Mouse" />
                 </div>
-                <p class="textControls">
+                <p class="textControls" id="zoomtexto19">
                   Haz clic izquierdo y arrastra para mover la vista.
                 </p>
               </div>
             </div>
-            <h3 class="titleControls">
+            <h3 class="titleControls" id="zoomtexto20">
               Controles en la vista de primera persona
             </h3>
             <div class="PictureControls">
@@ -158,7 +176,7 @@
                     alt="Teclas de movimiento"
                   />
                 </div>
-                <p class="textControls">
+                <p class="textControls" id="zoomtexto21">
                   Con las teclas A, W, S y D, te podras desplazar a través de
                   entorno.
                 </p>
@@ -171,7 +189,7 @@
                     alt="Icono Mouse"
                   />
                 </div>
-                <p class="textControls">
+                <p class="textControls" id="zoomtexto22">
                   Haz clic derecho para poder mover la cámara y mirar a tu
                   alrededor.
                 </p>
@@ -183,7 +201,7 @@
                     alt="Icono tecla escape"
                   />
                 </div>
-                <p class="textControls">
+                <p class="textControls" id="zoomtexto23">
                   Cuando tenga el cursor bloqueado dale a la tecla de Escape
                   para liberarlo.
                 </p>
@@ -195,7 +213,7 @@
                     alt="Icono tecla espacio"
                   />
                 </div>
-                <p class="textControls">
+                <p class="textControls" id="zoomtexto24">
                   Para moverte mas rápido por el entorno puedes saltar y tomar
                   velocidad.
                 </p>
@@ -210,11 +228,29 @@
       <div id="TeamInfo">
         <div class="contentMenu darkmode">
           <div class="headerModal">
+                 <div class="buttons">
+          <button
+            type="button"
+            id="ZoomMenos1"
+            class="btn btn-dark mr-1"
+            @click="ZoomMenos1()"
+          >
+            Disminuir
+          </button>
+          <button
+            type="button"
+            id="ZoomMas1"
+            class="btn btn-dark mr-1"
+            @click="ZoomMas1()"
+          >
+            Aumentar
+          </button>
+        </div>
             <span class="closeTeam">&times;</span>
           </div>
           <div class="contentModal">
             <div class="titleTeam">
-              <h1>Equipo Ferriel Web</h1>
+              <h1 id="zoomtexto6">Equipo Ferriel Web</h1>
             </div>
             <div class="teamMember">
               <div class="pictureTeam">
@@ -227,28 +263,10 @@
               </div>
               <div class="infoMember">
                 <div class="nameMember">
-                  <h2>Jhon Sebastian Martínez Orjuela</h2>
+                  <h2 id="zoomtexto7">Jhon Sebastian Martínez Orjuela</h2>
                 </div>
                 <div class="rolMember">
-                  <h6>Gerente de producto y desarrollador 3D</h6>
-                </div>
-              </div>
-            </div>
-            <div class="teamMember">
-              <div class="pictureTeam">
-                <img
-                  class="circular--square"
-                  src="../assets/Icons/Icons-User.png"
-                  width="100px"
-                  alt="IconUser"
-                />
-              </div>
-              <div class="infoMember">
-                <div class="nameMember">
-                  <h2>Sergio Alexander Martínez Cardenas</h2>
-                </div>
-                <div class="rolMember">
-                  <h6>Desarrollador BackEnd y FrontEnd</h6>
+                  <h6 id="zoomtexto8">Gerente de producto y desarrollador 3D</h6>
                 </div>
               </div>
             </div>
@@ -263,10 +281,10 @@
               </div>
               <div class="infoMember">
                 <div class="nameMember">
-                  <h2>David Ernesto Arguello Mosquera</h2>
+                  <h2 id="zoomtexto9">Sergio Alexander Martínez Cardenas</h2>
                 </div>
                 <div class="rolMember">
-                  <h6>Desarrollador 3D</h6>
+                  <h6 id="zoomtexto10">Desarrollador BackEnd y FrontEnd</h6>
                 </div>
               </div>
             </div>
@@ -281,16 +299,34 @@
               </div>
               <div class="infoMember">
                 <div class="nameMember">
-                  <h2>Guillermo Andres Diaz Moreno</h2>
+                  <h2 id="zoomtexto11">David Ernesto Arguello Mosquera</h2>
                 </div>
                 <div class="rolMember">
-                  <h6>Accesibilidad</h6>
+                  <h6 id="zoomtexto12">Desarrollador 3D</h6>
+                </div>
+              </div>
+            </div>
+            <div class="teamMember">
+              <div class="pictureTeam">
+                <img
+                  class="circular--square"
+                  src="../assets/Icons/Icons-User.png"
+                  width="100px"
+                  alt="IconUser"
+                />
+              </div>
+              <div class="infoMember">
+                <div class="nameMember">
+                  <h2 id="zoomtexto13">Guillermo Andres Diaz Moreno</h2>
+                </div>
+                <div class="rolMember">
+                  <h6 id="zoomtexto14">Accesibilidad</h6>
                 </div>
               </div>
             </div>
             <div class="universidad">
               <div id="zoomtexto5">
-                <h3>
+                <h3 id="zoomtexto15">
                   Universidad Militar Nueva Granada<br />
                   2022
                 </h3>
@@ -1287,56 +1323,61 @@ export default {
         }
       };
     },
-    zoommax: function () {
-      var zoom = 1;
-      var zoompoquito = 0.1;
-
-      document.getElementById("zoommax").addEventListener("click", function () {
-        zoom += zoompoquito;
-
-        document.getElementById("zoomletra").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra1").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra2").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra3").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra4").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra5").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra6").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra7").style.transform =
-          "scale(" + zoom + ")";
+  ZoomMas1: function () {
+      document.getElementById("ZoomMas1").addEventListener("click", function () {
+         getfontsize("zoomtexto6","+");
+          getfontsize("zoomtexto7","+");
+          getfontsize("zoomtexto8","+")
+           getfontsize("zoomtexto9","+");
+          getfontsize("zoomtexto10","+");
+            getfontsize("zoomtexto11","+");
+          getfontsize("zoomtexto12","+")
+           getfontsize("zoomtexto13","+");
+          getfontsize("zoomtexto14","+");
+          getfontsize("zoomtexto15","+");
+    });
+  },
+  ZoomMenos1: function () {
+      document.getElementById("ZoomMenos1").addEventListener("click", function () {
+   getfontsize("zoomtexto6","-");
+          getfontsize("zoomtexto7","-");
+          getfontsize("zoomtexto8","-")
+           getfontsize("zoomtexto9","-");
+          getfontsize("zoomtexto10","-");
+            getfontsize("zoomtexto11","-");
+          getfontsize("zoomtexto12","-")
+           getfontsize("zoomtexto13","-");
+          getfontsize("zoomtexto14","-");
+          getfontsize("zoomtexto15","-");
         console.log("se logro");
       });
     },
-    zoommin: function () {
-      var zoom = 1;
-      var zoompoquito = 0.1;
-      document.getElementById("zoommin").addEventListener("click", function () {
-        // if (zoom > zoompoquito) {
-
-        zoom -= zoompoquito;
-
-        document.getElementById("zoomletra").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra1").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra2").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra3").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra4").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra5").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra6").style.transform =
-          "scale(" + zoom + ")";
-        document.getElementById("zoomletra7").style.transform =
-          "scale(" + zoom + ")";
+    ZoomMas2: function () {
+      document.getElementById("ZoomMas2").addEventListener("click", function () {
+         getfontsize("zoomtexto16","+");
+          getfontsize("zoomtexto17","+");
+          getfontsize("zoomtexto18","+")
+           getfontsize("zoomtexto19","+");
+          getfontsize("zoomtexto20","+");
+            getfontsize("zoomtexto21","+");
+          getfontsize("zoomtexto22","+")
+           getfontsize("zoomtexto23","+");
+          getfontsize("zoomtexto24","+");
+          getfontsize("zoomtexto25","+");
+    });
+  },
+  ZoomMenos2: function () {
+      document.getElementById("ZoomMenos2").addEventListener("click", function () {
+   getfontsize("zoomtexto16","-");
+          getfontsize("zoomtexto17","-");
+          getfontsize("zoomtexto18","-")
+           getfontsize("zoomtexto19","-");
+          getfontsize("zoomtexto20","-");
+            getfontsize("zoomtexto21","-");
+          getfontsize("zoomtexto22","-")
+           getfontsize("zoomtexto23","-");
+          getfontsize("zoomtexto24","-");
+          getfontsize("zoomtexto25","-");
         console.log("se logro");
       });
     },
@@ -1816,6 +1857,23 @@ export default {
     this.animate();
   },
 };
+const getfontsize=(id,ip)=>{
+  // let parseFloat=
+  // parseFloat(getComputedStyle(document.documentElement)
+  //   .getPropertyValue('--font-size'))
+  let texto=document.getElementById(id);
+  let style= document.defaultView.getComputedStyle(texto).getPropertyValue('font-size')
+  let fontSize=parseInt(style);
+  
+  if(ip ==="+"){
+  texto.style.fontSize=`${fontSize+6}px `;
+    console.log("este:",style);
+  }
+    else{
+  texto.style.fontSize=`${fontSize-6}px `;
+
+  }
+ }
 </script>
 <style src="../assets/Styles/style_Mapa.css"></style>
 

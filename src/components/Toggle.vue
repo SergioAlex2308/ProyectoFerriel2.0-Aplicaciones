@@ -18,6 +18,12 @@ export default {
 </script>
 
 <style>
+:root {
+  --light: #d8dbe0;
+  --dark: #28292c;
+
+} 
+
 .toggle-wrapper {
   display: flex;
   justify-content: flex-end;
@@ -44,7 +50,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #15202b;
+  background: #000000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -60,7 +66,7 @@ export default {
   transition: 0.4s;
 }
 input:checked + .toggler {
-  background: #2196f3;
+  background: #f3d721;
 }
 input:focus + toggler {
   box-shadow: 0 0 2px #2196f3;
