@@ -2,11 +2,11 @@
   <div id="scene-container" ref="sceneContainer">
     <transition name="fade">
       <Carga class="loadPage" v-show="!loaded"></Carga>
-    </transition>  
+    </transition>
     <div class="solyluna">
-       <img src="../assets/Icons/sunn.png" alt="sol"/>
-    <Toggle :mode="mode" @toggle="$emit('toggle')" />
-    <img src="../assets/Icons/lunn.png" alt="luna"/>
+      <img src="../assets/Icons/sunn.png" alt="sol" />
+      <Toggle :mode="mode" @toggle="$emit('toggle')" />
+      <img src="../assets/Icons/lunn.png" alt="luna" />
     </div>
     <AeControls :View="onViewFP"></AeControls>
     <FpControls :ViewFp="onViewFP"></FpControls>
@@ -126,24 +126,24 @@
       <div id="ModalHelp" class="ModalControls">
         <div class="contentHelp">
           <div class="headerModal">
-             <div class="buttons">
-          <button
-            type="button"
-            id="ZoomMenos2"
-            class="btn btn-dark mr-1"
-            @click="ZoomMenos2()"
-          >
-            Disminuir
-          </button>
-          <button
-            type="button"
-            id="ZoomMas2"
-            class="btn btn-dark mr-1"
-            @click="ZoomMas2()"
-          >
-            Aumentar
-          </button>
-        </div>
+            <div class="buttons">
+              <button
+                type="button"
+                id="ZoomMenos2"
+                class="btn btn-dark mr-1"
+                @click="ZoomMenos2()"
+              >
+                Disminuir
+              </button>
+              <button
+                type="button"
+                id="ZoomMas2"
+                class="btn btn-dark mr-1"
+                @click="ZoomMas2()"
+              >
+                Aumentar
+              </button>
+            </div>
             <span class="close">&times;</span>
           </div>
           <div class="contentModal">
@@ -158,7 +158,9 @@
                 repellendus illum quaerat enim molestiae sint?
               </p>
             </div>
-            <h3 class="titleControls" id="zoomtexto18">Controles en la vista aérea</h3>
+            <h3 class="titleControls" id="zoomtexto18">
+              Controles en la vista aérea
+            </h3>
             <div class="PictureControls">
               <div class="InstControls">
                 <div class="invert">
@@ -232,24 +234,24 @@
       <div id="TeamInfo">
         <div class="contentMenu darkmode">
           <div class="headerModal">
-                 <div class="buttons">
-          <button
-            type="button"
-            id="ZoomMenos1"
-            class="btn btn-dark mr-1"
-            @click="ZoomMenos1()"
-          >
-            Disminuir
-          </button>
-          <button
-            type="button"
-            id="ZoomMas1"
-            class="btn btn-dark mr-1"
-            @click="ZoomMas1()"
-          >
-            Aumentar
-          </button>
-        </div>
+            <div class="buttons">
+              <button
+                type="button"
+                id="ZoomMenos1"
+                class="btn btn-dark mr-1"
+                @click="ZoomMenos1()"
+              >
+                Disminuir
+              </button>
+              <button
+                type="button"
+                id="ZoomMas1"
+                class="btn btn-dark mr-1"
+                @click="ZoomMas1()"
+              >
+                Aumentar
+              </button>
+            </div>
             <span class="closeTeam">&times;</span>
           </div>
           <div class="contentModal">
@@ -270,7 +272,9 @@
                   <h2 id="zoomtexto7">Jhon Sebastian Martínez Orjuela</h2>
                 </div>
                 <div class="rolMember">
-                  <h6 id="zoomtexto8">Gerente de producto y desarrollador 3D</h6>
+                  <h6 id="zoomtexto8">
+                    Gerente de producto y desarrollador 3D
+                  </h6>
                 </div>
               </div>
             </div>
@@ -393,6 +397,7 @@
       </div>
 
       <!-- Info Obcject -->
+      <!-- Máquina de escribir -->
       <div v-show="onViewFP" id="Modal-1" class="ModalObjects">
         <div class="contentObj">
           <div class="contentModal">
@@ -417,6 +422,7 @@
           </div>
         </div>
       </div>
+      <!-- Télegrafo -->
       <div v-show="onViewFP" id="Modal-2" class="ModalObjects">
         <div class="contentObj">
           <div class="contentModal">
@@ -440,6 +446,7 @@
           </div>
         </div>
       </div>
+      <!-- Perforador -->
       <div v-show="onViewFP" id="Modal-3" class="ModalObjects">
         <div class="contentObj">
           <div class="contentModal">
@@ -462,6 +469,7 @@
           </div>
         </div>
       </div>
+      <!-- Vagoneta -->
       <div v-show="onViewFP" id="Modal-4" class="ModalObjects">
         <div class="contentObj">
           <div class="contentModal">
@@ -486,6 +494,7 @@
           </div>
         </div>
       </div>
+      <!-- Telefono -->
       <div v-show="onViewFP" id="Modal-5" class="ModalObjects">
         <div class="contentObj">
           <div class="contentModal">
@@ -513,6 +522,7 @@
         </div>
       </div>
       <!-- Info Station -->
+      <!-- Zipaquirá -->
       <div v-show="onViewFP" id="Modal-6" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
@@ -541,6 +551,7 @@
           </div>
         </div>
       </div>
+      <!-- Usaquén -->
       <div v-show="onViewFP" id="Modal-7" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
@@ -579,6 +590,7 @@
           </div>
         </div>
       </div>
+      <!-- Chía -->
       <div v-show="onViewFP" id="Modal-8" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
@@ -617,6 +629,7 @@
           </div>
         </div>
       </div>
+      <!-- Cajicá -->
       <div v-show="onViewFP" id="Modal-9" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
@@ -780,10 +793,19 @@ export default {
       load04: false, //Puentes load
       load05: false, //Cajicá Letrero load
       load06: false, //Zipaquirá Letrero load
-      load07: false, //CajicaColisiones load
-      load08: false, // ZipaquiraColisiones load
-      load09: false, //PuentesColisiones load
-      load10: false, //ParqueColisiones load
+      load07: false, //Usaquen load
+      load08: false, // UsaquenLetrero load
+      load09: false, //Chia load
+      load10: false, //ChiaLetrero load
+      load11: false, //CajicaColisiones load
+      load12: false, //ZipaquiraColisiones load
+      load13: false, //PuentesColisiones load
+      load14: false, //ParqueColisiones load
+      load15: false, //UsaquenColisiones load
+      load16: false, //ChiaColisiones load
+      load17: false, //Vagoneta load
+      load18: false, //Maquina escribir load
+      load19: false, //Perforador load
       esperatime: true,
       mostrar: false,
       container: null,
@@ -947,6 +969,15 @@ export default {
       const loader08 = new GLTFLoader().setPath("/Models/");
       const loader09 = new GLTFLoader().setPath("/Models/");
       const loader10 = new GLTFLoader().setPath("/Models/");
+      const loader11 = new GLTFLoader().setPath("/Models/");
+      const loader12 = new GLTFLoader().setPath("/Models/");
+      const loader13 = new GLTFLoader().setPath("/Models/");
+      const loader14 = new GLTFLoader().setPath("/Models/");
+      const loader15 = new GLTFLoader().setPath("/Models/");
+      const loader16 = new GLTFLoader().setPath("/Models/");
+      const loader17 = new GLTFLoader().setPath("/Models/");
+      const loader18 = new GLTFLoader().setPath("/Models/");
+      const loader19 = new GLTFLoader().setPath("/Models/");
 
       //Models
       loader01.load(
@@ -1007,7 +1038,6 @@ export default {
           if (this.mesh) {
             this.load03 = true;
           }
-          //this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
@@ -1022,7 +1052,6 @@ export default {
           if (this.mesh) {
             this.load04 = true;
           }
-          //this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
@@ -1037,7 +1066,6 @@ export default {
           if (this.mesh) {
             this.load05 = true;
           }
-          //this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
@@ -1052,14 +1080,12 @@ export default {
           if (this.mesh) {
             this.load06 = true;
           }
-          //this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
       );
-      //Collitions
       loader07.load(
-        "CajicaColisiones.glb",
+        "Usaquen01.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.castShadow = true;
@@ -1068,13 +1094,12 @@ export default {
           if (this.mesh) {
             this.load07 = true;
           }
-          this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
       );
       loader08.load(
-        "ZipaquiraColisiones.glb",
+        "UsaquenLetrero.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.castShadow = true;
@@ -1083,13 +1108,12 @@ export default {
           if (this.mesh) {
             this.load08 = true;
           }
-          this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
       );
       loader09.load(
-        "PuentesColisiones.glb",
+        "Chia01.glb",
         (gltf) => {
           this.mesh = gltf;
           this.mesh.castShadow = true;
@@ -1098,12 +1122,71 @@ export default {
           if (this.mesh) {
             this.load09 = true;
           }
-          this.worldOctree.fromGraphNode(gltf.scene);
         },
         undefined,
         undefined
       );
       loader10.load(
+        "ChiaLetrero.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load10 = true;
+          }
+        },
+        undefined,
+        undefined
+      );
+      //Collitions
+      loader11.load(
+        "CajicaColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load11 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader12.load(
+        "ZipaquiraColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load12 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader13.load(
+        "PuentesColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load13 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader14.load(
         "ParqueColisiones.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -1111,7 +1194,83 @@ export default {
           this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
           if (this.mesh) {
-            this.load010 = true;
+            this.load14 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader15.load(
+        "UsaquenColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load15 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader16.load(
+        "ChiaColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load16 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      //Objects
+      loader17.load(
+        "Obj1-Vagoneta.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load17 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader18.load(
+        "Obj2-MaquinaEscribir.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load18 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader19.load(
+        "Obj3-Perforadora.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.mesh.castShadow = true;
+          this.mesh.receiveShadow = true;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load19 = true;
           }
           this.worldOctree.fromGraphNode(gltf.scene);
         },
@@ -1168,7 +1327,7 @@ export default {
         },
         {
           //Usaquén
-          position: new THREE.Vector3(0, 1, 40),
+          position: new THREE.Vector3(0, 6, -50),
           element: document.querySelector(".MapView-2"),
         },
         {
@@ -1178,7 +1337,7 @@ export default {
         },
         {
           //Chía
-          position: new THREE.Vector3(0, 1, -40),
+          position: new THREE.Vector3(0, 5, 45),
           element: document.querySelector(".MapView-4"),
         },
       ];
@@ -1195,17 +1354,20 @@ export default {
       this.color = new THREE.Color();
       this.white = new THREE.Color().setHex(0xffffff);
       //Add geometry
-      var geometry = new THREE.SphereGeometry(0.4, 6, 4);
+      var geometry = new THREE.SphereGeometry(0.1, 3, 2);
       var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
       });
+
+      //Maquina de escribir
       var sphere1 = new THREE.Mesh(geometry, material);
-      sphere1.position.x = 0;
-      sphere1.position.y = 2;
-      sphere1.position.z = 5;
+      sphere1.position.x = 51.5;
+      sphere1.position.y = 1.4;
+      sphere1.position.z = 0;
       sphere1.nameId = "Label1";
       this.scene.add(sphere1);
 
+      //Telegrafo
       var sphere2 = new THREE.Mesh(geometry, material);
       sphere2.position.x = 0;
       sphere2.position.y = 2;
@@ -1213,20 +1375,23 @@ export default {
       sphere2.nameId = "Label2";
       this.scene.add(sphere2);
 
+      //Perforador
       var sphere3 = new THREE.Mesh(geometry, material);
-      sphere3.position.x = 2;
-      sphere3.position.y = 2;
-      sphere3.position.z = 5;
+      sphere3.position.x = 51;
+      sphere3.position.y = 1.3;
+      sphere3.position.z = 8;
       sphere3.nameId = "Label3";
       this.scene.add(sphere3);
 
+      //Vagoneta
       var sphere4 = new THREE.Mesh(geometry, material);
-      sphere4.position.x = 2;
+      sphere4.position.x = 61.2;
       sphere4.position.y = 2;
-      sphere4.position.z = -5;
+      sphere4.position.z = 4.5;
       sphere4.nameId = "Label4";
       this.scene.add(sphere4);
 
+      //Telefono
       var sphere5 = new THREE.Mesh(geometry, material);
       sphere5.position.x = 4;
       sphere5.position.y = 2;
@@ -1234,31 +1399,35 @@ export default {
       sphere5.nameId = "Label5";
       this.scene.add(sphere5);
 
+      //Zipaquirá
       var sphere6 = new THREE.Mesh(geometry, material);
-      sphere6.position.x = 4;
+      sphere6.position.x = -44.7;
       sphere6.position.y = 2;
-      sphere6.position.z = -5;
+      sphere6.position.z = -3.8;
       sphere6.nameId = "Label6";
       this.scene.add(sphere6);
 
+      //Usaquén
       var sphere7 = new THREE.Mesh(geometry, material);
-      sphere7.position.x = 6;
-      sphere7.position.y = 2;
-      sphere7.position.z = 5;
+      sphere7.position.x = 2.6;
+      sphere7.position.y = 2.2;
+      sphere7.position.z = -41;
       sphere7.nameId = "Label7";
       this.scene.add(sphere7);
 
+      //Chía
       var sphere8 = new THREE.Mesh(geometry, material);
-      sphere8.position.x = 6;
-      sphere8.position.y = 2;
-      sphere8.position.z = -5;
+      sphere8.position.x = -2.5;
+      sphere8.position.y = 2.2;
+      sphere8.position.z = 39.5;
       sphere8.nameId = "Label8";
       this.scene.add(sphere8);
 
+      //Cajicá
       var sphere9 = new THREE.Mesh(geometry, material);
-      sphere9.position.x = 8;
-      sphere9.position.y = 2;
-      sphere9.position.z = 5;
+      sphere9.position.x = 45;
+      sphere9.position.y = 2.2;
+      sphere9.position.z = 2.6;
       sphere9.nameId = "Label9";
       this.scene.add(sphere9);
     },
@@ -1305,7 +1474,15 @@ export default {
         this.load05 &&
         this.load06 &&
         this.load07 &&
-        this.load08
+        this.load08 &&
+        this.load09 &&
+        this.load10 &&
+        this.load11 &&
+        this.load12 &&
+        this.load13 &&
+        this.load14 &&
+        this.load15 &&
+        this.load16
       ) {
         this.loaded = true;
       }
@@ -1327,63 +1504,71 @@ export default {
         }
       };
     },
-  ZoomMas1: function () {
-      document.getElementById("ZoomMas1").addEventListener("click", function () {
-         getfontsize("zoomtexto6","+");
-          getfontsize("zoomtexto7","+");
-          getfontsize("zoomtexto8","+")
-           getfontsize("zoomtexto9","+");
-          getfontsize("zoomtexto10","+");
-            getfontsize("zoomtexto11","+");
-          getfontsize("zoomtexto12","+")
-           getfontsize("zoomtexto13","+");
-          getfontsize("zoomtexto14","+");
-          getfontsize("zoomtexto15","+");
-    });
-  },
-  ZoomMenos1: function () {
-      document.getElementById("ZoomMenos1").addEventListener("click", function () {
-   getfontsize("zoomtexto6","-");
-          getfontsize("zoomtexto7","-");
-          getfontsize("zoomtexto8","-")
-           getfontsize("zoomtexto9","-");
-          getfontsize("zoomtexto10","-");
-            getfontsize("zoomtexto11","-");
-          getfontsize("zoomtexto12","-")
-           getfontsize("zoomtexto13","-");
-          getfontsize("zoomtexto14","-");
-          getfontsize("zoomtexto15","-");
-        console.log("se logro");
-      });
+    ZoomMas1: function () {
+      document
+        .getElementById("ZoomMas1")
+        .addEventListener("click", function () {
+          getfontsize("zoomtexto6", "+");
+          getfontsize("zoomtexto7", "+");
+          getfontsize("zoomtexto8", "+");
+          getfontsize("zoomtexto9", "+");
+          getfontsize("zoomtexto10", "+");
+          getfontsize("zoomtexto11", "+");
+          getfontsize("zoomtexto12", "+");
+          getfontsize("zoomtexto13", "+");
+          getfontsize("zoomtexto14", "+");
+          getfontsize("zoomtexto15", "+");
+        });
+    },
+    ZoomMenos1: function () {
+      document
+        .getElementById("ZoomMenos1")
+        .addEventListener("click", function () {
+          getfontsize("zoomtexto6", "-");
+          getfontsize("zoomtexto7", "-");
+          getfontsize("zoomtexto8", "-");
+          getfontsize("zoomtexto9", "-");
+          getfontsize("zoomtexto10", "-");
+          getfontsize("zoomtexto11", "-");
+          getfontsize("zoomtexto12", "-");
+          getfontsize("zoomtexto13", "-");
+          getfontsize("zoomtexto14", "-");
+          getfontsize("zoomtexto15", "-");
+          console.log("se logro");
+        });
     },
     ZoomMas2: function () {
-      document.getElementById("ZoomMas2").addEventListener("click", function () {
-         getfontsize("zoomtexto16","+");
-          getfontsize("zoomtexto17","+");
-          getfontsize("zoomtexto18","+")
-           getfontsize("zoomtexto19","+");
-          getfontsize("zoomtexto20","+");
-            getfontsize("zoomtexto21","+");
-          getfontsize("zoomtexto22","+")
-           getfontsize("zoomtexto23","+");
-          getfontsize("zoomtexto24","+");
-          getfontsize("zoomtexto25","+");
-    });
-  },
-  ZoomMenos2: function () {
-      document.getElementById("ZoomMenos2").addEventListener("click", function () {
-   getfontsize("zoomtexto16","-");
-          getfontsize("zoomtexto17","-");
-          getfontsize("zoomtexto18","-")
-           getfontsize("zoomtexto19","-");
-          getfontsize("zoomtexto20","-");
-            getfontsize("zoomtexto21","-");
-          getfontsize("zoomtexto22","-")
-           getfontsize("zoomtexto23","-");
-          getfontsize("zoomtexto24","-");
-          getfontsize("zoomtexto25","-");
-        console.log("se logro");
-      });
+      document
+        .getElementById("ZoomMas2")
+        .addEventListener("click", function () {
+          getfontsize("zoomtexto16", "+");
+          getfontsize("zoomtexto17", "+");
+          getfontsize("zoomtexto18", "+");
+          getfontsize("zoomtexto19", "+");
+          getfontsize("zoomtexto20", "+");
+          getfontsize("zoomtexto21", "+");
+          getfontsize("zoomtexto22", "+");
+          getfontsize("zoomtexto23", "+");
+          getfontsize("zoomtexto24", "+");
+          getfontsize("zoomtexto25", "+");
+        });
+    },
+    ZoomMenos2: function () {
+      document
+        .getElementById("ZoomMenos2")
+        .addEventListener("click", function () {
+          getfontsize("zoomtexto16", "-");
+          getfontsize("zoomtexto17", "-");
+          getfontsize("zoomtexto18", "-");
+          getfontsize("zoomtexto19", "-");
+          getfontsize("zoomtexto20", "-");
+          getfontsize("zoomtexto21", "-");
+          getfontsize("zoomtexto22", "-");
+          getfontsize("zoomtexto23", "-");
+          getfontsize("zoomtexto24", "-");
+          getfontsize("zoomtexto25", "-");
+          console.log("se logro");
+        });
     },
     onPointerMove(event) {
       this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -1513,7 +1698,7 @@ export default {
       this.MainRotation.copy(this.camera.rotation);
 
       const PosEst1 = new THREE.Vector3(-36, 1, 0);
-      const RotEst1 = new THREE.Vector3(0, 0, 0);
+      const RotEst1 = new THREE.Vector3(0, Math.PI/2, 0);
 
       this.playerCollider.translate(PosEst1);
 
@@ -1544,7 +1729,7 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst2 = new THREE.Vector3(0, 1, 13);
+      const PosEst2 = new THREE.Vector3(0, 1, -35);
       const RotEst2 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst2);
@@ -1577,7 +1762,7 @@ export default {
       this.MainRotation.copy(this.camera.rotation);
 
       const PosEst3 = new THREE.Vector3(36, 1, 0);
-      const RotEst3 = new THREE.Vector3(0, 0, 0);
+      const RotEst3 = new THREE.Vector3(0, -Math.PI/2, 0);
 
       this.playerCollider.translate(PosEst3);
 
@@ -1608,8 +1793,8 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst4 = new THREE.Vector3(0, 1, -13);
-      const RotEst4 = new THREE.Vector3(0, 0, 0);
+      const PosEst4 = new THREE.Vector3(0, 1, 35);
+      const RotEst4 = new THREE.Vector3(0, Math.PI, 0);
 
       this.playerCollider.translate(PosEst4);
 
@@ -1861,23 +2046,23 @@ export default {
     this.animate();
   },
 };
-const getfontsize=(id,ip)=>{
+const getfontsize = (id, ip) => {
   // let parseFloat=
   // parseFloat(getComputedStyle(document.documentElement)
   //   .getPropertyValue('--font-size'))
-  let texto=document.getElementById(id);
-  let style= document.defaultView.getComputedStyle(texto).getPropertyValue('font-size')
-  let fontSize=parseInt(style);
-  
-  if(ip ==="+"){
-  texto.style.fontSize=`${fontSize+6}px `;
-    console.log("este:",style);
-  }
-    else{
-  texto.style.fontSize=`${fontSize-6}px `;
+  let texto = document.getElementById(id);
+  let style = document.defaultView
+    .getComputedStyle(texto)
+    .getPropertyValue("font-size");
+  let fontSize = parseInt(style);
 
+  if (ip === "+") {
+    texto.style.fontSize = `${fontSize + 6}px `;
+    console.log("este:", style);
+  } else {
+    texto.style.fontSize = `${fontSize - 6}px `;
   }
- }
+};
 </script>
 <style src="../assets/Styles/style_Mapa.css"></style>
 
