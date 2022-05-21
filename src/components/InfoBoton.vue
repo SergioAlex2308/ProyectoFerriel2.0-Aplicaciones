@@ -3,7 +3,21 @@
     <div id="contentMenu" class="darkmode">
       <div class="headerModal">
         <div class="buttons">
-          <button
+          <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
+            <img
+              src="../assets/Icons/Icons-ZoomOut.png"
+              alt="Lupa disminucion"
+              class="Lens"
+            />
+          </div>
+          <div id="ZoomMas" @click="ZoomMas()" class="boton">
+            <img
+              src="../assets/Icons/Icons-ZoomIn.png"
+              alt="Lupa aumento"
+              class="Lens"
+            />
+          </div>
+          <!-- <button
             type="button"
             id="ZoomMenos"
             class="btn btn-dark mr-1"
@@ -18,20 +32,20 @@
             @click="ZoomMas()"
           >
             Aumentar
-          </button>
+          </button> -->
         </div>
         <span class="closeMenu">&times;</span>
       </div>
       <div class="seccionMenu">
         <div id="historia" class="seccion" style="display: block">
           <div class="titleModal">
-            <div >
-                <h1 id="zoomtexto1" > Bienvenidos a Ferriel</h1>
+            <div>
+              <h1 id="zoomtexto1">Bienvenidos a Ferriel</h1>
             </div>
           </div>
           <div class="contentHistory">
-            <div >
-               <p id="zoomtexto2" class="mitexto"> 
+            <div>
+              <p id="zoomtexto2" class="mitexto">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -63,7 +77,7 @@
             <h1 id="zoomtexto3">Horarios</h1>
           </div>
           <div class="textHorarios">
-            <div >
+            <div>
               <p id="zoomtexto4" class="mitexto">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
@@ -152,8 +166,11 @@
             </tr>
           </table>
           <div class="pageTrain">
-            <div >
-              <a id="zoomtexto5" href="https://www.turistren.com.co" target="_blank"
+            <div>
+              <a
+                id="zoomtexto5"
+                href="https://www.turistren.com.co"
+                target="_blank"
                 >Página oficial del tren de la sabana</a
               >
             </div>
@@ -168,47 +185,21 @@
   </div>
 </template>
 <script>
-//   const $ = require('jquery')
-
-// //Obtengo el tamaño de letra inicial de 16px
-//     // tamañoLetra(); {
-//      $(".restablecer").on("click", function() {
-//   $(".mitexto").css("font-size", "initial");
-//   size = $(".mitexto" ).css("font-size");
-//   size = parseInt(size, 10);
-//   $( ".tamaño-actual" ).text(size);
-//   })
-
-// // Función para aumentar el tamaño del texto (fuente)
-//   $(".aumentar").on("click", function() {
-//   if ((size + 2) <= 47) {
-//     $(".mitexto").css("font-size", "+=2");
-//     $(".tamaño-actual").text(size += 1);
-//   }
-//   });
-//      $(".disminuir").on("click", function() {
-//     console.log("Disminye");
-//     if ((size - 2) >= 13) {
-//     $(".mitexto").css("font-size", "-=2");
-//     $(".tamaño-actual").text(size -= 1);
-//     }
-//    })
 // // Función para restablecer el tamaño del texto (fuente) al tamaño inicial
 export default {
   name: "Informacion",
   methods: {
-    
     ZoomMas: function () {
       // var zoom = 1;
       // var zoompoquito = 0.1;
       // let fontSize=getfontsize();
       document.getElementById("ZoomMas").addEventListener("click", function () {
         // zoom += zoompoquito;
-         getfontsize("zoomtexto1","+");
-          getfontsize("zoomtexto2","+");
-          getfontsize("zoomtexto3","+")
-           getfontsize("zoomtexto4","+");
-          getfontsize("zoomtexto5","+");
+        getfontsize("zoomtexto1", "+");
+        getfontsize("zoomtexto2", "+");
+        getfontsize("zoomtexto3", "+");
+        getfontsize("zoomtexto4", "+");
+        getfontsize("zoomtexto5", "+");
         // document.getElementById("zoomtexto9").style.setProperty('--font-size', `${fontSize + 0.5}`);
 
         // document.getElementById("zoomtexto1").style.transform =
@@ -240,22 +231,22 @@ export default {
         console.log("se logro");
       });
     },
-    nueva: function () {
-
-    },
+    nueva: function () {},
     ZoomMenos: function () {
       // var zoom = 1;
       // var zoompoquito = 0.1;
-      document.getElementById("ZoomMenos").addEventListener("click", function () {
+      document
+        .getElementById("ZoomMenos")
+        .addEventListener("click", function () {
           // if (zoom > zoompoquito) {
 
           // zoom -= zoompoquito;
 
-          getfontsize("zoomtexto1","-");
-          getfontsize("zoomtexto2","-");
-          getfontsize("zoomtexto3","-")
-           getfontsize("zoomtexto4","-");
-          getfontsize("zoomtexto5","-");
+          getfontsize("zoomtexto1", "-");
+          getfontsize("zoomtexto2", "-");
+          getfontsize("zoomtexto3", "-");
+          getfontsize("zoomtexto4", "-");
+          getfontsize("zoomtexto5", "-");
           // document.getElementById("zoomtexto1").style.transform =
           //   "scale(" + zoom + ")";
           // document.getElementById("zoomtexto2").style.transform =
@@ -300,23 +291,23 @@ export default {
   },
 };
 
-const getfontsize=(id,ip)=>{
+const getfontsize = (id, ip) => {
   // let parseFloat=
   // parseFloat(getComputedStyle(document.documentElement)
   //   .getPropertyValue('--font-size'))
-  let texto=document.getElementById(id);
-  let style= document.defaultView.getComputedStyle(texto).getPropertyValue('font-size')
-  let fontSize=parseInt(style);
-  
-  if(ip ==="+"){
-  texto.style.fontSize=`${fontSize+6}px `;
-    console.log("este:",style);
-  }
-    else{
-  texto.style.fontSize=`${fontSize-6}px `;
+  let texto = document.getElementById(id);
+  let style = document.defaultView
+    .getComputedStyle(texto)
+    .getPropertyValue("font-size");
+  let fontSize = parseInt(style);
 
+  if (ip === "+") {
+    texto.style.fontSize = `${fontSize + 6}px `;
+    console.log("este:", style);
+  } else {
+    texto.style.fontSize = `${fontSize - 6}px `;
   }
- }
+};
 </script>
 
 <style src="../assets/Styles/style_InfoBoton.css">

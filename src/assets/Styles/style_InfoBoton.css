@@ -149,8 +149,19 @@ audio:active {
 	transform: scale(1.05);
 }
 .buttons{
+	width: 30%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
+	margin-right: 2%;
+}
+#ZoomMenos, #ZoomMas {
+	width: 45%;
+	background-color: var(--btn-bg-color);
+}
+.Lens {
+	width: 20px;
+	height: 20px;
 }
 .audios {
 	display: flex;

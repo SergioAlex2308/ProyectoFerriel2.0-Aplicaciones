@@ -3,19 +3,18 @@
     <transition name="fade">
       <Carga class="loadPage" v-show="!loaded"></Carga>
     </transition>
-    <div class="solyluna">
-      <img src="../assets/Icons/sunn.png" alt="sol" />
+    <div v-show="!onViewFP" class="IconsDarkMode">
+      <img src="../assets/Icons/Icons-Moon.png" alt="Luna" />
       <Toggle :mode="mode" @toggle="$emit('toggle')" />
-      <img src="../assets/Icons/lunn.png" alt="luna" />
+      <img src="../assets/Icons/Icons-Sun.png" alt="Sol" />
     </div>
-    <AeControls :View="onViewFP"></AeControls>
-    <FpControls :ViewFp="onViewFP"></FpControls>
-    <div id="title">
+    <!-- <AeControls :View="onViewFP"></AeControls> -->
+    <!-- <FpControls :ViewFp="onViewFP"></FpControls> -->
+    <!-- <div id="title">
       <img id="logo" src="../assets/Images/logo.png" alt="Logo" />
-      <!-- <h1 id="principal-title">Ferriel Web</h1> -->
-    </div>
+    </div> -->
 
-    <div id="header">
+    <div v-show="!onViewFP" id="header">
       <div id="menuIcon" @click="ShowInfo()">
         <div class="hamburIcon">
           <div class="lineIcon"></div>
@@ -30,119 +29,24 @@
           alt="IconoAyuda"
         />
       </div>
-      <!-- <div id="ModalHelp" class="ModalControls">
-        <div class="contentHelp">
-          <div class="headerModal">
-            <div class="boo">
-              <button
-                type="button"
-                id="zoommin"
-                class="btn btn-dark mr-1"
-                @click="zoommin()"
-              >
-                Disminuir
-              </button>
-              <button
-                type="button"
-                id="zoommax"
-                class="btn btn-dark mr-1"
-                @click="zoommax()"
-              >
-                Aumentar
-              </button>
-            </div>
-            <span class="close">&times;</span>
-          </div>
-          <div class="contentModal">
-            <div id="zoomletra" class="titleHelp">
-              <h2 class="NameMenu">Ayuda</h2>
-            </div>
-            <div id="zoomletra1" class="textHelp">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                qui commodi neque sequi hic, asperiores, mollitia placeat
-                quisquam expedita pariatur impedit omnis. Quod consequatur
-                repellendus illum quaerat enim molestiae sint?
-              </p>
-            </div>
-            <h3 id="zoomletra2" class="titleControls">
-              Controles en la vista aérea
-            </h3>
-            <div class="PictureControls">
-              <div class="InstControls">
-                <div class="invert">
-                  <img src="../assets/Icons/Icons-Clic.png" alt="Icono Mouse" />
-                </div>
-                <p id="zoomletra3" class="textControls">
-                  Haz clic izquierdo y arrastra para mover la vista.
-                </p>
-              </div>
-            </div>
-            <h3 id="zoomletra4" class="titleControls">
-              Controles en la vista de primera persona
-            </h3>
-            <div class="PictureControls">
-              <div class="InstControls">
-                <div class="invert">
-                  <img
-                    src="../assets/Icons/Icons-Keys.png"
-                    alt="Teclas de movimiento"
-                  />
-                </div>
-                <p id="zoomletra5" class="textControls">
-                  Con las teclas A, W, S y D, te podras desplazar a través de
-                  entorno.
-                </p>
-              </div>
-              <div class="InstControls">
-                <div class="invert">
-                  <img
-                    class="MouseClic"
-                    src="../assets/Icons/Icons-Clic.png"
-                    alt="Icono Mouse"
-                  />
-                </div>
-                <p id="zoomletra6" class="textControls">
-                  Haz clic derecho para poder mover la cámara y mirar a tu
-                  alrededor.
-                </p>
-              </div>
-              <div class="InstControls">
-                <div class="invert">
-                  <img
-                    src="../assets/Icons/Icons-Escape.png"
-                    alt="Icono tecla escape"
-                  />
-                </div>
-                <p id="zoomletra7" class="textControls">
-                  Cuando tenga el cursor bloqueado dale a la tecla de Escape
-                  para liberarlo.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div id="ModalHelp" class="ModalControls">
         <div class="contentHelp">
           <div class="headerModal">
             <div class="buttons">
-              <button
-                type="button"
-                id="ZoomMenos2"
-                class="btn btn-dark mr-1"
-                @click="ZoomMenos2()"
-              >
-                Disminuir
-              </button>
-              <button
-                type="button"
-                id="ZoomMas2"
-                class="btn btn-dark mr-1"
-                @click="ZoomMas2()"
-              >
-                Aumentar
-              </button>
+              <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
+                <img
+                  src="../assets/Icons/Icons-ZoomOut.png"
+                  alt="Lupa disminucion"
+                  class="Lens"
+                />
+              </div>
+              <div id="ZoomMas" @click="ZoomMas()" class="boton">
+                <img
+                  src="../assets/Icons/Icons-ZoomIn.png"
+                  alt="Lupa aumento"
+                  class="Lens"
+                />
+              </div>
             </div>
             <span class="close">&times;</span>
           </div>
@@ -235,22 +139,20 @@
         <div class="contentMenu darkmode">
           <div class="headerModal">
             <div class="buttons">
-              <button
-                type="button"
-                id="ZoomMenos1"
-                class="btn btn-dark mr-1"
-                @click="ZoomMenos1()"
-              >
-                Disminuir
-              </button>
-              <button
-                type="button"
-                id="ZoomMas1"
-                class="btn btn-dark mr-1"
-                @click="ZoomMas1()"
-              >
-                Aumentar
-              </button>
+              <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
+                <img
+                  src="../assets/Icons/Icons-ZoomOut.png"
+                  alt="Lupa disminucion"
+                  class="Lens"
+                />
+              </div>
+              <div id="ZoomMas" @click="ZoomMas()" class="boton">
+                <img
+                  src="../assets/Icons/Icons-ZoomIn.png"
+                  alt="Lupa aumento"
+                  class="Lens"
+                />
+              </div>
             </div>
             <span class="closeTeam">&times;</span>
           </div>
@@ -343,21 +245,21 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="btn-back">
       <button v-if="Fp" @click="mainView()" class="buttonView">
         Volver a la vista aérea
       </button>
     </div>
     <transition name="fade">
-      <div v-show="onViewFP == false" id="content">
+      <div v-show="!onViewFP" id="content">
         <div
           v-show="Fp == false"
           @click="FPEstacion1()"
           class="point MapView-1"
         >
           <div class="label">Estación de Zipaquirá</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
+          <div class="nom-estacion">Haz click para visitar la estación.</div>
         </div>
         <div
           v-show="Fp == false"
@@ -365,9 +267,7 @@
           class="point MapView-2"
         >
           <div class="label">Estación de Usaquén</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
+          <div class="nom-estacion">Haz click para visitar la estación.</div>
         </div>
         <div
           v-show="Fp == false"
@@ -375,9 +275,7 @@
           class="point MapView-3"
         >
           <div class="label">Estación de Cajicá</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
+          <div class="nom-estacion">Haz click para visitar la estación.</div>
         </div>
         <div
           v-show="Fp == false"
@@ -385,9 +283,7 @@
           class="point MapView-4"
         >
           <div class="label">Estación de Chía</div>
-          <div class="nom-estacion">
-            Haz click para navegar en primera persona.
-          </div>
+          <div class="nom-estacion">Haz click para visitar la estación.</div>
         </div>
       </div>
     </transition>
@@ -654,52 +550,19 @@
           </div>
         </div>
       </div>
-      <!-- <div v-show="onViewFP" class="pointObject ObjView-1">
-        <div id="Obj-1" @click="ObjHistory1()" class="labelObject">
-          Teléfono
-        </div>
-        <div class="infoObject">
-          Haz click conocer la historia de este objecto.
-        </div>
-      </div> -->
-      <!-- <div id="ModalObj-1" class="ModalObjects">
-        <div class="contentObj">
-          <div class="headerModal">
-            <span class="closeObj">&times;</span>
-          </div>
-          <div class="contentModal">
-            <div class="imageObject">
-              <img
-                class="PictureModal"
-                src="../assets/Icons/Icons-Picture.png"
-                alt="Fotografia Objeto"
-              />
-            </div>
-            <div class="titleObj">
-              <h1 class="NameObject">Nombre del objeto.</h1>
-            </div>
-            <div class="historyObjtext">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                qui commodi neque sequi hic, asperiores, mollitia placeat
-                quisquam expedita pariatur impedit omnis. Quod consequatur
-                repellendus illum quaerat enim molestiae sint?
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
-    <div v-show="onViewFP == false" id="footer01">
-      <div class="instView">
-        <img
-          class="Mouse"
-          src="../assets/Icons/Icons-Clic.png"
-          alt="Icono Mouse"
-        />
-        <p>Haz click y arrastra el ratón para mover la vista</p>
+    <transition name="fade">
+      <div v-show="!onViewFP" id="footer01">
+        <div class="instView">
+          <img
+            class="Mouse"
+            src="../assets/Icons/Icons-Clic.png"
+            alt="Icono Mouse"
+          />
+          <p>Haz click y arrastra el ratón para mover la vista</p>
+        </div>
       </div>
-    </div>
+    </transition>
     <div id="keyLock">
       <div id="lockCursor" class="instEsc">
         <img
@@ -710,43 +573,46 @@
         <p>Presiona la tecla Escape para liberar el cursor.</p>
       </div>
     </div>
-    <div v-show="onViewFP" id="footer02">
-      <div class="instMove">
-        <img
-          class="Keys"
-          src="../assets/Icons/Icons-Keys.png"
-          alt="Teclas de movimiento"
-        />
-        <p>Presiona las teclas para desplazarte.</p>
+    <transition name="fade">
+      <div v-show="onViewFP" id="footer02">
+        <div class="instMove">
+          <img
+            class="Keys"
+            src="../assets/Icons/Icons-Keys.png"
+            alt="Teclas de movimiento"
+          />
+          <p>Presiona las teclas para desplazarte.</p>
+        </div>
+        <div class="instMoveCamera">
+          <img
+            class="Mouse MouseClic"
+            src="../assets/Icons/Icons-Clic.png"
+            alt="Icono Mouse"
+          />
+          <p>
+            Oprime click derecho
+            <br />
+            para mirar a tu alrededor.
+          </p>
+        </div>
+        <div class="instJump">
+          <img
+            class="Mouse"
+            src="../assets/Icons/Icons-Space.png"
+            alt="Icono Espace"
+          />
+          <p>
+            Oprime o mantén la tecla Espacio
+            <br />
+            para saltar y moverte mas rápido.
+          </p>
+        </div>
       </div>
-      <div class="instMoveCamera">
-        <img
-          class="Mouse MouseClic"
-          src="../assets/Icons/Icons-Clic.png"
-          alt="Icono Mouse"
-        />
-        <p>
-          Oprime click derecho
-          <br />
-          para mirar a tu alrededor.
-        </p>
-      </div>
-      <div class="instJump">
-        <img
-          class="Mouse"
-          src="../assets/Icons/Icons-Space.png"
-          alt="Icono Espace"
-        />
-        <p>
-          Oprime la tecla Espacio
-          <br />
-          para saltar y moverte mas rápido.
-        </p>
-      </div>
-    </div>
-    <div id="footer03">
+    </transition>
+
+    <div v-show="!onViewFP" id="footer03">
       <div id="menuTeam" @click="ShowTeam()">
-        <span class="tooltiptext">Equipo Ferriel</span>
+        <!-- <span class="tooltiptext">Equipo Ferriel</span> -->
         <img
           class="iconTeam"
           src="../assets/Icons/Icons-Team.png"
@@ -772,8 +638,8 @@ import { Capsule } from "three/examples/jsm/math/Capsule";
 import Toggle from "./Toggle.vue";
 import Informacion from "./InfoBoton.vue";
 import Carga from "./EsperaUsuarios.vue";
-import AeControls from "./AerialControls.vue";
-import FpControls from "./FirstControls.vue";
+//import AeControls from "./AerialControls.vue";
+//import FpControls from "./FirstControls.vue";
 
 export default {
   name: "MapaEstaciones",
@@ -781,8 +647,8 @@ export default {
     Informacion,
     Carga,
     Toggle,
-    AeControls,
-    FpControls,
+    //AeControls,
+    //FpControls,
   },
   data() {
     return {
@@ -1341,13 +1207,6 @@ export default {
           element: document.querySelector(".MapView-4"),
         },
       ];
-      /* this.pointsObjects = [
-        {
-          //Telefono
-          position: new THREE.Vector3(34, 1, 6),
-          element: document.querySelector(".ObjView-1"),
-        },
-      ]; */
       window.addEventListener("resize", this.onWindowResize);
     },
     pointObjs() {
@@ -1617,23 +1476,6 @@ export default {
         this.hideModalPoint();
       }
     },
-    ObjHistory1() {
-      var modal = document.getElementById("ModalObj-1");
-      var obj = document.getElementById("Obj-1");
-      var span = document.getElementsByClassName("closeObj")[0];
-
-      obj.onclick = function () {
-        modal.style.display = "block";
-      };
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    },
     contentPoints() {
       for (this.point of this.points) {
         const screenPosition = this.point.position.clone();
@@ -1698,7 +1540,7 @@ export default {
       this.MainRotation.copy(this.camera.rotation);
 
       const PosEst1 = new THREE.Vector3(-36, 1, 0);
-      const RotEst1 = new THREE.Vector3(0, Math.PI/2, 0);
+      const RotEst1 = new THREE.Vector3(0, Math.PI / 2, 0);
 
       this.playerCollider.translate(PosEst1);
 
@@ -1716,6 +1558,7 @@ export default {
         .onComplete(() => {
           this.onStation = true;
           this.cameraFp.position.copy(PosEst1);
+          this.firstPerson();
         })
         .start();
 
@@ -1762,7 +1605,7 @@ export default {
       this.MainRotation.copy(this.camera.rotation);
 
       const PosEst3 = new THREE.Vector3(36, 1, 0);
-      const RotEst3 = new THREE.Vector3(0, -Math.PI/2, 0);
+      const RotEst3 = new THREE.Vector3(0, -Math.PI / 2, 0);
 
       this.playerCollider.translate(PosEst3);
 
@@ -1866,6 +1709,19 @@ export default {
         this.pControls.lock();
         this.pControls.connect();
       });
+      /* this.pControls.addEventListener("unlock", function () {
+        var cursor = document.getElementById("lockCursor");
+        cursor.style.display = "none";
+      });
+      this.pControls.addEventListener("lock", function () {
+        var cursor = document.getElementById("lockCursor");
+        cursor.style.display = "block";
+      }); */
+      /* this.container.addEventListener("click", function () {
+        this.pControls.connect();
+        this.pControls.lock();
+      }); */
+
       document.addEventListener("keydown", (event) => {
         this.keyStates[event.code] = true;
       });
@@ -1996,10 +1852,6 @@ export default {
       } else {
         this.controls.update();
       }
-      /* console.log("x", this.playerCollider.end.x);
-      console.log("y", this.playerCollider.end.y);
-      console.log("z", this.playerCollider.end.z); */
-
       /* const d = this.clock.getDelta();
       this.mixer.update(d); */
 

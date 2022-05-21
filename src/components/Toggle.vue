@@ -25,17 +25,17 @@ export default {
   --dark: #28292c;
 
 } 
-
+label {
+  margin: 0;
+}
 .toggle-wrapper {
   display: flex;
-  justify-content: flex-end;
-  position: fixed;
+  justify-content: center;
+  align-items: center;
   z-index: 7;
-  right: 3%;
-  top: 4%;
 }
 .toggle {
-  position: relative;
+  position: absolute;
   display: flex;
   width: 60px;
   height: 34px;
