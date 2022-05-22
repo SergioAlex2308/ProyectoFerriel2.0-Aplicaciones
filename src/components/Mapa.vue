@@ -4,15 +4,12 @@
       <Carga class="loadPage" v-show="!loaded"></Carga>
     </transition>
     <div v-show="!onViewFP" class="IconsDarkMode">
-      <img src="../assets/Icons/Icons-Moon.png" alt="Luna" />
-      <Toggle :mode="mode" @toggle="$emit('toggle')" />
       <img src="../assets/Icons/Icons-Sun.png" alt="Sol" />
+      <Toggle :mode="mode" @toggle="$emit('toggle')" />
+      <img src="../assets/Icons/Icons-Moon.png" alt="Luna" />
     </div>
     <!-- <AeControls :View="onViewFP"></AeControls> -->
     <!-- <FpControls :ViewFp="onViewFP"></FpControls> -->
-    <!-- <div id="title">
-      <img id="logo" src="../assets/Images/logo.png" alt="Logo" />
-    </div> -->
 
     <div v-show="!onViewFP" id="header">
       <div id="menuIcon" @click="ShowInfo()">
@@ -128,6 +125,17 @@
                   velocidad.
                 </p>
               </div>
+            </div>
+          </div>
+          <div class="footerModal">
+            <div class="audios">
+              <audio controls muted>
+                <source
+                  src="../assets/audios/sonidotren.mp3"
+                  type="audio/mpeg"
+                />
+                <source src="horse.ogv" type="audio/ogg" />
+              </audio>
             </div>
           </div>
         </div>
@@ -282,7 +290,7 @@
           @click="FPEstacion4()"
           class="point MapView-4"
         >
-          <div class="label">Estación de Chía</div>
+          <div class="label">Estación La Caro</div>
           <div class="nom-estacion">Haz click para visitar la estación.</div>
         </div>
       </div>
@@ -426,7 +434,7 @@
               <img
                 class="PictureModal"
                 src="../assets/Images/Zipaquira01.jpg"
-                alt="Fotografia Objeto"
+                alt="Fotografia"
               />
             </div>
             <div class="titleSta">
@@ -438,7 +446,28 @@
                 la República, comenzó la construcción con un estilo neoclásico
                 francés de la edificación conocida como la estación Tres
                 Esquinas, parte del trayecto hacia el norte del Ferrocarril de
-                la Sabana; el 8 de diciembre de 1927, fue inaugurada con la
+                la Sabana.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-7" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Zipaquira02.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Texto Información</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                El 8 de diciembre de 1927, fue inaugurada la estación con la
                 presencia de varios funcionarios del Gobierno, con bombos y
                 platillos, pues marcaba el punto de partida para el progreso de
                 la ciudad.
@@ -448,14 +477,14 @@
         </div>
       </div>
       <!-- Usaquén -->
-      <div v-show="onViewFP" id="Modal-7" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-8" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
               <img
                 class="PictureModal"
-                src="../assets/Images/Usaquen02.jpg"
-                alt="Fotografia Objeto"
+                src="../assets/Images/Usaquen01.jpg"
+                alt="Fotografia"
               />
             </div>
             <div class="titleSta">
@@ -466,16 +495,73 @@
                 La estación del tren de Usaquén fue, con la estación de La
                 Sabana, los principales centros de recepción de la Bogotá de
                 antaño, cuando esta no tenía vías y el norte eran potreros.
-                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-9" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Usaquen02.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Usaquén</h1>
+            </div>
+            <div class="historyStation">
+              <p>
                 El ferrocarril del nordeste llegó a la estación de Usaquén hacia
                 1926 con el fin de comunicar los departamentos de Cundinamarca y
                 Boyacá.
-                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-10" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Usaquen03.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Usaquén</h1>
+            </div>
+            <div class="historyStation">
+              <p>
                 El proyecto del tren de la Sabana, terminado en 1953, tuvo en
                 Bogotá estaciones principales como la de Chapinero, Calle 100,
                 Fontibón, Bosa, entre otras, que a la postre determinaron la
                 dirección en la que la capital se desarrolló.
-                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-11" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Usaquen04.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Usaquén</h1>
+            </div>
+            <div class="historyStation">
+              <p>
                 Las únicas estaciones “sobrevivientes” son Usaquén y Sabana, las
                 cuales son patrimonio histórico de cómo la ciudad olvidó este
                 sistema vial para enfocarse en la construcción de vías y la
@@ -487,18 +573,18 @@
         </div>
       </div>
       <!-- Chía -->
-      <div v-show="onViewFP" id="Modal-8" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-12" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
               <img
                 class="PictureModal"
-                src="../assets/Images/Chia02.jpg"
-                alt="Fotografia Objeto"
+                src="../assets/Images/Chia01.jpg"
+                alt="Fotografia"
               />
             </div>
             <div class="titleSta">
-              <h1 class="NameStation">Estación de Chía</h1>
+              <h1 class="NameStation">Estación La Caro</h1>
             </div>
             <div class="historyStation">
               <p>
@@ -512,10 +598,48 @@
                 castellano y las lenguas nativas del país, orientado a la
                 investigación y a la divulgación de la cultura del libro y la
                 lectura.
-                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-13" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Chia02.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación La Caro</h1>
+            </div>
+            <div class="historyStation">
+              <p>
                 Su arquitectura es de estilo republicano, llamada así en memoria
                 de Miguel Antonio Caro, político y escritor.
-                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-14" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Chia03.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación La Caro</h1>
+            </div>
+            <div class="historyStation">
+              <p>
                 El Ferrocarril de la Sabana sirvió como base para la expansión
                 de las vías férreas hacia el resto del país las cuales
                 posteriormente se unieron bajo la administración de los
@@ -526,14 +650,14 @@
         </div>
       </div>
       <!-- Cajicá -->
-      <div v-show="onViewFP" id="Modal-9" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-15" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
               <img
                 class="PictureModal"
                 src="../assets/Images/Cajica01.jpg"
-                alt="Fotografia Objeto"
+                alt="Fotografia"
               />
             </div>
             <div class="titleSta">
@@ -546,6 +670,192 @@
                 voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
                 recusandae alias numquam.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-16" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Cajica02.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Cajicá</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                neque, sint quas a sunt velit non consectetur debitis laboriosam
+                voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
+                recusandae alias numquam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-17" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Cajica03.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Estación de Cajicá</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                neque, sint quas a sunt velit non consectetur debitis laboriosam
+                voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
+                recusandae alias numquam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Photo Station -->
+      <!-- Zipaquirá -->
+      <div v-show="onViewFP" id="Modal-18" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Zipaquira03.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-19" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Zipaquira04.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-20" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Zipaquira05.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Chía -->
+      <div v-show="onViewFP" id="Modal-21" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Chia04.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-22" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Chia05.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Cajicá -->
+      <div v-show="onViewFP" id="Modal-23" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Cajica04.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Usaquén -->
+      <div v-show="onViewFP" id="Modal-24" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureModal"
+                src="../assets/Images/Usaquen05.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Fotografia</h1>
+            </div>
+            <div class="historyStation">
+              <p>Foto tomada por Sergio Martínez.</p>
             </div>
           </div>
         </div>
@@ -692,11 +1002,11 @@ export default {
       pointsObjects: [], //PuntosObjetos
       pointObject: null,
       modalObj: null,
-      Model1: null,
+      groupIndicator: null,
+      Indicator: 24,
       intersects: null,
       pointer: new THREE.Vector2(),
       INTERSECTED: null,
-      labelRenderer: null,
       pControls: null, //FirstPerson
       onViewFP: false,
       onStation: false,
@@ -1210,85 +1520,245 @@ export default {
       window.addEventListener("resize", this.onWindowResize);
     },
     pointObjs() {
+      this.groupIndicator = new THREE.Group();
+      this.scene.add(this.groupIndicator);
+
       this.color = new THREE.Color();
       this.white = new THREE.Color().setHex(0xffffff);
       //Add geometry
-      var geometry = new THREE.SphereGeometry(0.1, 3, 2);
-      var material = new THREE.MeshLambertMaterial({
+      var geometryInside = new THREE.SphereGeometry(0.1, 3, 2);
+      var geometryOutside = new THREE.SphereGeometry(0.3, 3, 2);
+      /* var material = new THREE.MeshLambertMaterial({
         color: Math.random() * 0xffffff,
+      }); */
+      const material = new THREE.MeshLambertMaterial({
+        color: 0xf80346,
       });
 
+      /* const wireframeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        wireframe: true,
+        transparent: true,
+      }); */
+
+      /* const wireframe = new THREE.Mesh(geometryInside, wireframeMaterial); */
+
+      /* *****************OBJECTS***************** */
       //Maquina de escribir
-      var sphere1 = new THREE.Mesh(geometry, material);
+      var sphere1 = new THREE.Mesh(geometryInside, material);
       sphere1.position.x = 51.5;
       sphere1.position.y = 1.4;
       sphere1.position.z = 0;
       sphere1.nameId = "Label1";
+      /* sphere1.add(wireframe); */
       this.scene.add(sphere1);
+      this.groupIndicator.add(sphere1);
 
       //Telegrafo
-      var sphere2 = new THREE.Mesh(geometry, material);
+      var sphere2 = new THREE.Mesh(geometryInside, material);
       sphere2.position.x = 0;
       sphere2.position.y = 2;
       sphere2.position.z = -5;
       sphere2.nameId = "Label2";
       this.scene.add(sphere2);
+      this.groupIndicator.add(sphere2);
 
       //Perforador
-      var sphere3 = new THREE.Mesh(geometry, material);
+      var sphere3 = new THREE.Mesh(geometryInside, material);
       sphere3.position.x = 51;
       sphere3.position.y = 1.3;
       sphere3.position.z = 8;
       sphere3.nameId = "Label3";
       this.scene.add(sphere3);
+      this.groupIndicator.add(sphere3);
 
       //Vagoneta
-      var sphere4 = new THREE.Mesh(geometry, material);
+      var sphere4 = new THREE.Mesh(geometryOutside, material);
       sphere4.position.x = 61.2;
       sphere4.position.y = 2;
       sphere4.position.z = 4.5;
       sphere4.nameId = "Label4";
       this.scene.add(sphere4);
+      this.groupIndicator.add(sphere4);
 
       //Telefono
-      var sphere5 = new THREE.Mesh(geometry, material);
+      var sphere5 = new THREE.Mesh(geometryInside, material);
       sphere5.position.x = 4;
       sphere5.position.y = 2;
       sphere5.position.z = 5;
       sphere5.nameId = "Label5";
       this.scene.add(sphere5);
+      this.groupIndicator.add(sphere5);
 
+      /* *****************NAME & INFO STATION***************** */
       //Zipaquirá
-      var sphere6 = new THREE.Mesh(geometry, material);
+      var sphere6 = new THREE.Mesh(geometryOutside, material);
       sphere6.position.x = -44.7;
       sphere6.position.y = 2;
       sphere6.position.z = -3.8;
       sphere6.nameId = "Label6";
       this.scene.add(sphere6);
+      this.groupIndicator.add(sphere6);
 
-      //Usaquén
-      var sphere7 = new THREE.Mesh(geometry, material);
-      sphere7.position.x = 2.6;
-      sphere7.position.y = 2.2;
-      sphere7.position.z = -41;
+      var sphere7 = new THREE.Mesh(geometryOutside, material);
+      sphere7.position.x = 0;
+      sphere7.position.y = 2;
+      sphere7.position.z = 0;
       sphere7.nameId = "Label7";
       this.scene.add(sphere7);
+      this.groupIndicator.add(sphere7);
 
-      //Chía
-      var sphere8 = new THREE.Mesh(geometry, material);
-      sphere8.position.x = -2.5;
+      //Usaquén
+      var sphere8 = new THREE.Mesh(geometryOutside, material);
+      sphere8.position.x = 2.6;
       sphere8.position.y = 2.2;
-      sphere8.position.z = 39.5;
+      sphere8.position.z = -41;
       sphere8.nameId = "Label8";
       this.scene.add(sphere8);
+      this.groupIndicator.add(sphere8);
 
-      //Cajicá
-      var sphere9 = new THREE.Mesh(geometry, material);
-      sphere9.position.x = 45;
+      var sphere9 = new THREE.Mesh(geometryOutside, material);
+      sphere9.position.x = 1;
       sphere9.position.y = 2.2;
-      sphere9.position.z = 2.6;
+      sphere9.position.z = 0;
       sphere9.nameId = "Label9";
       this.scene.add(sphere9);
+      this.groupIndicator.add(sphere9);
+
+      var sphere10 = new THREE.Mesh(geometryOutside, material);
+      sphere10.position.x = 2;
+      sphere10.position.y = 2.2;
+      sphere10.position.z = 0;
+      sphere10.nameId = "Label10";
+      this.scene.add(sphere10);
+      this.groupIndicator.add(sphere10);
+
+      var sphere11 = new THREE.Mesh(geometryOutside, material);
+      sphere11.position.x = 3;
+      sphere11.position.y = 2.2;
+      sphere11.position.z = 0;
+      sphere11.nameId = "Label11";
+      this.scene.add(sphere11);
+      this.groupIndicator.add(sphere11);
+
+      //Chía
+      var sphere12 = new THREE.Mesh(geometryOutside, material);
+      sphere12.position.x = -2.5;
+      sphere12.position.y = 2.2;
+      sphere12.position.z = 39.5;
+      sphere12.nameId = "Label12";
+      this.scene.add(sphere12);
+      this.groupIndicator.add(sphere12);
+
+      var sphere13 = new THREE.Mesh(geometryOutside, material);
+      sphere13.position.x = 4;
+      sphere13.position.y = 2.2;
+      sphere13.position.z = 0;
+      sphere13.nameId = "Label13";
+      this.scene.add(sphere13);
+      this.groupIndicator.add(sphere13);
+
+      var sphere14 = new THREE.Mesh(geometryOutside, material);
+      sphere14.position.x = 5;
+      sphere14.position.y = 2.2;
+      sphere14.position.z = 0;
+      sphere14.nameId = "Label14";
+      this.scene.add(sphere14);
+      this.groupIndicator.add(sphere14);
+
+      //Cajicá
+      var sphere15 = new THREE.Mesh(geometryOutside, material);
+      sphere15.position.x = 45;
+      sphere15.position.y = 2.2;
+      sphere15.position.z = 2.6;
+      sphere15.nameId = "Label15";
+      this.scene.add(sphere15);
+      this.groupIndicator.add(sphere15);
+
+      var sphere16 = new THREE.Mesh(geometryOutside, material);
+      sphere16.position.x = 6;
+      sphere16.position.y = 2.2;
+      sphere16.position.z = 0;
+      sphere16.nameId = "Label16";
+      this.scene.add(sphere16);
+      this.groupIndicator.add(sphere16);
+
+      var sphere17 = new THREE.Mesh(geometryOutside, material);
+      sphere17.position.x = 7;
+      sphere17.position.y = 2.2;
+      sphere17.position.z = 0;
+      sphere17.nameId = "Label17";
+      this.scene.add(sphere17);
+      this.groupIndicator.add(sphere17);
+
+      /* *****************PHOTO STATION***************** */
+      //Zipaquirá
+      var sphere18 = new THREE.Mesh(geometryOutside, material);
+      sphere18.position.x = 8;
+      sphere18.position.y = 2.2;
+      sphere18.position.z = 0;
+      sphere18.nameId = "Label18";
+      this.scene.add(sphere18);
+      this.groupIndicator.add(sphere18);
+
+      var sphere19 = new THREE.Mesh(geometryOutside, material);
+      sphere19.position.x = 9;
+      sphere19.position.y = 2.2;
+      sphere19.position.z = 0;
+      sphere19.nameId = "Label19";
+      this.scene.add(sphere19);
+      this.groupIndicator.add(sphere19);
+
+      var sphere20 = new THREE.Mesh(geometryOutside, material);
+      sphere20.position.x = 10;
+      sphere20.position.y = 2.2;
+      sphere20.position.z = 0;
+      sphere20.nameId = "Label20";
+      this.scene.add(sphere20);
+      this.groupIndicator.add(sphere20);
+
+      //Chía
+      var sphere21 = new THREE.Mesh(geometryOutside, material);
+      sphere21.position.x = 11;
+      sphere21.position.y = 2.2;
+      sphere21.position.z = 0;
+      sphere21.nameId = "Label21";
+      this.scene.add(sphere21);
+      this.groupIndicator.add(sphere21);
+
+      var sphere22 = new THREE.Mesh(geometryOutside, material);
+      sphere22.position.x = 12;
+      sphere22.position.y = 2.2;
+      sphere22.position.z = 0;
+      sphere22.nameId = "Label22";
+      this.scene.add(sphere22);
+      this.groupIndicator.add(sphere22);
+
+      //Usaquén
+      var sphere23 = new THREE.Mesh(geometryOutside, material);
+      sphere23.position.x = 13;
+      sphere23.position.y = 2.2;
+      sphere23.position.z = 0;
+      sphere23.nameId = "Label23";
+      this.scene.add(sphere23);
+      this.groupIndicator.add(sphere23);
+
+      //Cajicá
+      var sphere24 = new THREE.Mesh(geometryOutside, material);
+      sphere24.position.x = 14;
+      sphere24.position.y = 2.2;
+      sphere24.position.z = 0;
+      sphere24.nameId = "Label24";
+      this.scene.add(sphere24);
+      this.groupIndicator.add(sphere24);
+
+      var sphere25 = new THREE.Mesh(geometryOutside, material);
+      sphere25.position.x = 15;
+      sphere25.position.y = 2.2;
+      sphere25.position.z = 0;
+      sphere25.nameId = "Label25";
+      this.scene.add(sphere25);
+      this.groupIndicator.add(sphere25);
     },
     ShowInfo() {
       var modal = document.getElementById("MenuInfo");
@@ -1434,7 +1904,7 @@ export default {
       this.pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
     },
     intersectPoint() {
-      for (let id = 1; id < 10; id++) {
+      for (let id = 1; id < this.Indicator; id++) {
         if (this.intersects[0].object.nameId === `Label${id}`) {
           this.modal = document.getElementById(`Modal-${id}`);
           this.modal.style.display = "block";
@@ -1442,15 +1912,22 @@ export default {
       }
     },
     hideModalPoint() {
-      for (let id = 1; id < 10; id++) {
+      for (let id = 1; id < this.Indicator; id++) {
         this.modal = document.getElementById(`Modal-${id}`);
         this.modal.style.display = "none";
       }
     },
     rayPoints() {
+      //Animation
+      this.groupIndicator.traverse(function (object) {
+        if (object.isMesh === true) {
+          object.rotation.y += 0.05;
+        }
+      });
+
       this.raycaster.setFromCamera(this.pointer, this.cameraFp);
       this.intersects = this.raycaster.intersectObjects(
-        this.scene.children,
+        this.groupIndicator.children,
         false
       );
 
@@ -1698,11 +2175,17 @@ export default {
 
       this.pControls.addEventListener("unlock", function () {
         var cursor = document.getElementById("lockCursor");
+        var btn = document.getElementById("btn-back");
+
         cursor.style.display = "none";
+        btn.style.display = "";
       });
       this.pControls.addEventListener("lock", function () {
         var cursor = document.getElementById("lockCursor");
+        var btn = document.getElementById("btn-back");
+
         cursor.style.display = "block";
+        btn.style.display = "none";
       });
       this.container.addEventListener("contextmenu", (e) => {
         e.preventDefault();

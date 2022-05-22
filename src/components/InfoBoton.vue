@@ -60,16 +60,11 @@
               </p>
             </div>
           </div>
-          <div class="pocisionamientoaudio">
-            <div class="audios">
-              <audio controls muted>
-                <source
-                  src="../assets/audios/sonidotren.mp3"
-                  type="audio/mpeg"
-                />
-                <source src="horse.ogv" type="audio/ogg" />
-              </audio>
-            </div>
+          <div class="audios">
+            <audio controls muted>
+              <source src="../assets/audios/sonidotren.mp3" type="audio/mpeg" />
+              <source src="horse.ogv" type="audio/ogg" />
+            </audio>
           </div>
         </div>
         <div id="horarios" class="seccion" style="display: none">

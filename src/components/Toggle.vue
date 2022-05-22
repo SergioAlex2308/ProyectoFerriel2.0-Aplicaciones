@@ -1,8 +1,6 @@
 <template>
   <div class="toggle-wrapper">
-   
     <label class="toggle">
-      
       <input
         type="checkbox"
         :checked="mode === 'dark' ? 'checked' : false"
@@ -23,8 +21,7 @@ export default {
 :root {
   --light: #d8dbe0;
   --dark: #28292c;
-
-} 
+}
 label {
   margin: 0;
 }
@@ -52,7 +49,7 @@ label {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #000000;
+  background: #ffc400;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -68,7 +65,7 @@ label {
   transition: 0.4s;
 }
 input:checked + .toggler {
-  background: #f3d721;
+  background: #0040cb;
 }
 input:focus + toggler {
   box-shadow: 0 0 2px #2196f3;
