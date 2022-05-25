@@ -14,6 +14,9 @@
     --modal-scroll-hover-color: #000000;
     --modal-scroll-shadow-color: #808080;
 
+    /* Modal Objects */
+    --modal-nameStation-size: 36px;
+
     /*Load Color*/
     --load-bg-color: #262626;
 
@@ -53,19 +56,22 @@
     --tool-bg-color: #000000;
     --tool-txt-color: #ffffff;
 
+    /* Audio */
+    --audio-shadow-color: #ffffff;
+
     /******** DARK MODE ********/
     /*Modal color*/
-    --dark-modal-bg-color: #000000;
+    --dark-modal-bg-color: #2e2e2e;
     --dark-modal-title-color: #ffffff;
-    --dark-modal-subtitle-color: #000000;
+    --dark-modal-subtitle-color: #ffffff;
     --dark-modal-txt-color: #ffffff;
     --dark-bg-modal-color: #00000099;
-    --dark-modal-header-border-color: #0000001a;
+    --dark-modal-header-border-color: #ffffff1a;
     --dark-modal-close: #aaaaaa;
     --dark-modal-close-hover: #000;
-    --dark-modal-scroll-color: #808080;
-    --dark-modal-scroll-hover-color: #000000;
-    --dark-modal-scroll-shadow-color: #808080;
+    --dark-modal-scroll-color: #ffffff;
+    --dark-modal-scroll-hover-color: #676767;
+    --dark-modal-scroll-shadow-color: #525252;
 
     /*Load Color*/
     --dark-load-bg-color: #262626;
@@ -82,7 +88,7 @@
     --dark-shadow-icon-color: #00000066;
 
     /*Button view*/
-    --dark-btn-bg-color: #303030;
+    --dark-btn-bg-color: #ffffff;
     --dark-btn-bg-hover-color: #0f0f0f;
     --dark-btn-txt-color: #ffffff;
     --dark-btn-bg-hover-color: #ffffff;
@@ -90,11 +96,10 @@
     --dark-btn-shadow-color: #0f0f0f35;
 
     /*Station labels*/
-    --dark-label-txt-color: #ffffff;
-    --dark-label-bg-color: #000000cc;
-    --dark-label-info-bg-color: #ffffffcb;
-    --dark-label-txt-info-color: #000000;
-    --dark-label-border-color: #000000cc;
+    --dark-label-txt-color: #000000;
+    --dark-label-bg-color: #ffffffcc;
+    --dark-label-info-bg-color: #000000cb;
+    --dark-label-txt-info-color: #ffffff;
 
     /*Footer icons*/
     --dark-footer-bg-color: #00000025;
@@ -268,6 +273,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .buttonView {
     position: absolute;
     background-color: var(--btn-bg-color);
@@ -284,7 +290,24 @@
     transition: transform .2s;
     z-index: 0;
 }
-.IconsDarkMode{
+
+.buttonView:hover {
+    transform: scale(1.05);
+    background-color: var(--btn-bg-hover-color);
+    color: var(--btn-txt-hover-color);
+}
+
+.dark .buttonView {
+    color: var(--dark-btn-txt-color);
+}
+
+.dark .buttonView:hover {
+
+    background-color: var(--dark-btn-bg-hover-color);
+    color: var(--dark-btn-txt-hover-color);
+}
+
+.IconsDarkMode {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -296,23 +319,11 @@
     border-radius: 10% 10% 10% 10% / 50% 50% 50% 50%;
     background-color: var(--footer-bg-color);
 }
+
 .IconsDarkMode img {
     width: 30px;
     height: 30px;
     filter: drop-shadow(1px 2px 1px var(--shadow-icon-color));
-}
-.dark .buttonView {
-    color: var(--dark-btn-txt-color);
-}
-.dark .buttonView:hover {
-   
-    background-color: var(--dark-btn-bg-hover-color);
-    color: var(--dark-btn-txt-hover-color);
-}
-.buttonView:hover {
-    transform: scale(1.05);
-    background-color: var(--btn-bg-hover-color);
-    color: var(--btn-txt-hover-color);
 }
 
 #MenuInfo {
@@ -361,6 +372,11 @@
     z-index: 0;
 }
 
+.dark .point .label {
+    background: var(--dark-label-bg-color);
+    color: var(--dark-label-txt-color);
+}
+
 .point .label::after {
     content: "";
     display: flex;
@@ -370,7 +386,11 @@
     top: 99%;
     border-width: 25px;
     border-style: solid;
-    border-color: var(--label-border-color) transparent transparent transparent;
+    border-color: var(--label-bg-color) transparent transparent transparent;
+}
+
+.dark .point .label::after {
+    border-color: var(--dark-label-bg-color) transparent transparent transparent;
 }
 
 .point {
@@ -399,6 +419,10 @@
     transition: opacity 0.3s;
     pointer-events: none;
 }
+.dark .point .nom-estacion {
+    background: var(--dark-label-info-bg-color);
+    color: var(--dark-label-txt-info-color);
+}
 
 .point:hover .nom-estacion {
     opacity: 1;
@@ -418,7 +442,7 @@
     height: 100px;
     left: 0;
     top: -50px;
-    background-color: #000000;
+    background-color: var(--label-bg-color);
     transform: skew(-40deg);
     transform: scale(0, 0);
     transition: transform 0.3s;
@@ -547,9 +571,11 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
+
 .dark .contentObj {
     background-color: var(--dark-modal-bg-color);
 }
+
 @keyframes appear {
     0% {
         opacity: 0;
@@ -624,10 +650,21 @@
     padding: 5%;
 }
 
-.PictureModal {
-    max-width: 60%;
+.PictureHorizontal {
+    max-width: 90%;
     height: auto;
 }
+
+.PictureVertical {
+    max-width: 70%;
+    height: auto;
+}
+
+.PictureSquare {
+    max-width: 100%;
+    height: auto;
+}
+
 
 .titleObj {
     display: flex;
@@ -641,6 +678,11 @@
     color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
+    font-size: var(--modal-nameStation-size);
+}
+
+.dark .NameObject {
+    color: var(--dark-modal-title-color);
 }
 
 .historyObjtext {
@@ -648,6 +690,11 @@
     justify-content: center;
     padding: 2% 5% 2%;
     text-align: justify;
+    color: var(--modal-txt-color);
+}
+
+.dark .historyObjtext {
+    color: var(--dark-modal-txt-color);
 }
 
 .ModalStation {
@@ -663,8 +710,9 @@
     /* background-color: rgb(0, 0, 0); */
     background-color: var(--bg-modal-color);
 }
-.dark .ModalStation { 
-    background-color: var( --dark-bg-modal-color);
+
+.dark .ModalStation {
+    background-color: var(--dark-bg-modal-color);
 }
 
 .contentSta {
@@ -672,6 +720,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
     background-color: var(--modal-bg-color);
     margin: auto;
@@ -681,6 +730,7 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
+
 .dark .contentSta {
     background-color: var(--dark-modal-bg-color);
 }
@@ -692,6 +742,13 @@
 }
 
 .imageStation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+.imageOwn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -710,6 +767,11 @@
     color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
+    font-size: var(--modal-nameStation-size);
+}
+
+.dark .NameStation {
+    color: var(--dark-modal-title-color);
 }
 
 .historyStation {
@@ -717,6 +779,11 @@
     justify-content: center;
     padding: 2% 5% 2%;
     text-align: justify;
+    color: var(--modal-txt-color);
+}
+
+.dark .historyStation {
+    color: var(--dark-modal-txt-color);
 }
 
 #ModalHelp {
@@ -748,9 +815,11 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
+
 .dark .contentHelp {
     background-color: var(--dark-modal-bg-color);
 }
+
 .titleHelp {
     display: flex;
     justify-content: center;
@@ -764,14 +833,20 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
+
 .dark .NameMenu {
     color: var(--dark-modal-title-color);
 }
+
 .textHelp {
     display: flex;
     justify-content: center;
     padding: 2% 5% 2%;
     text-align: justify;
+    color: var(--modal-txt-color);
+}
+.dark .textHelp {
+    color: var(--dark-modal-txt-color);
 }
 
 .titleControls {
@@ -781,6 +856,10 @@
     color: var(--modal-subtitle-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 200;
+    color: var(--modal-txt-color);
+}
+.dark .titleControls {
+    color: var(--dark-modal-txt-color);
 }
 
 .PictureControls {
@@ -792,12 +871,15 @@
 .invert {
     margin-left: 10%;
     margin-right: 10%;
-    filter: invert(100%);
+    filter: brightness(0);
 }
 
 .invert img {
     width: 80px;
     padding-bottom: 1%;
+}
+.dark .invert {
+    filter: brightness(1);
 }
 
 .InstControls {
@@ -806,6 +888,10 @@
     align-items: center;
     margin-bottom: 5%;
     margin-right: 5%;
+    color: var(--modal-txt-color);
+}
+.dark .InstControls {
+    color: var(--dark-modal-txt-color);
 }
 
 .footerModal {
@@ -864,6 +950,7 @@
         transform: translateY(-10px);
     }
 }
+
 #keyLock {
     position: absolute;
     display: flex;
@@ -986,12 +1073,7 @@
 .instJump:hover {
     transform: scale(1.1);
 }
-/* p{
-    color: var(--modal-txt-color);
-}
-.dark p{
-    color: var(--dark-modal-txt-color);
-} */
+
 #footer03 {
     position: absolute;
     bottom: 5em;
@@ -1028,7 +1110,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent  var(--tool-bg-color) transparent transparent;
+    border-color: transparent var(--tool-bg-color) transparent transparent;
 }
 
 #menuTeam:hover .tooltiptext {
@@ -1095,7 +1177,8 @@
     border-radius: 2%;
     animation: appear 350ms ease-in 1;
 }
-.dark .contentMenu{
+
+.dark .contentMenu {
     background-color: var(--dark-modal-bg-color);
 }
 
@@ -1108,13 +1191,10 @@
     color: var(--modal-txt-color);
 }
 
-
-h1{
-    color: var(--modal-txt-color);
-}
-.dark .titleTeam h1{
+.dark .titleTeam h1 {
     color: var(--dark-modal-txt-color);
 }
+
 .titleTeam h1 {
     color: var(--modal-title-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1133,6 +1213,10 @@ h1{
     margin-left: 10%;
 }
 
+.Member {
+    border-radius: 50%;
+}
+
 .infoMember {
     display: flex;
     flex-direction: column;
@@ -1146,12 +1230,26 @@ h1{
     text-align: start;
 }
 
+.dark .nameMember {
+    color: var(--dark-modal-subtitle-color);
+}
+
 .rolMember {
     color: var(--modal-subtitle-color);
     text-align: start;
 }
 
+.dark .rolMember {
+    color: var(--dark-modal-subtitle-color);
+}
+
 .universidad {
     padding-top: 5%;
+    color: var(--modal-subtitle-color);
     box-shadow: 0 -8px 14px -9px var(--modal-header-border-color);
+}
+
+.dark .universidad {
+    color: var(--dark-modal-subtitle-color);
+    box-shadow: 0 -8px 14px -9px var(--dark-modal-header-border-color);
 }

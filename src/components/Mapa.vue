@@ -67,7 +67,7 @@
                 <div class="invert">
                   <img src="../assets/Icons/Icons-Clic.png" alt="Icono Mouse" />
                 </div>
-                <p class="textControls" id="zoomtexto19">
+                <p id="zoomtexto19">
                   Haz clic izquierdo y arrastra para mover la vista.
                 </p>
               </div>
@@ -83,7 +83,7 @@
                     alt="Teclas de movimiento"
                   />
                 </div>
-                <p class="textControls" id="zoomtexto21">
+                <p id="zoomtexto21">
                   Con las teclas A, W, S y D, te podras desplazar a través de
                   entorno.
                 </p>
@@ -96,7 +96,7 @@
                     alt="Icono Mouse"
                   />
                 </div>
-                <p class="textControls" id="zoomtexto22">
+                <p id="zoomtexto22">
                   Haz clic derecho para poder mover la cámara y mirar a tu
                   alrededor.
                 </p>
@@ -120,7 +120,7 @@
                     alt="Icono tecla espacio"
                   />
                 </div>
-                <p class="textControls" id="zoomtexto24">
+                <p id="zoomtexto24">
                   Para moverte mas rápido por el entorno puedes saltar y tomar
                   velocidad.
                 </p>
@@ -147,7 +147,7 @@
         <div class="contentMenu darkmode">
           <div class="headerModal">
             <div class="buttons">
-              <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
+              <!-- <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
                 <img
                   src="../assets/Icons/Icons-ZoomOut.png"
                   alt="Lupa disminucion"
@@ -160,7 +160,7 @@
                   alt="Lupa aumento"
                   class="Lens"
                 />
-              </div>
+              </div> -->
             </div>
             <span class="closeTeam">&times;</span>
           </div>
@@ -171,8 +171,8 @@
             <div class="teamMember">
               <div class="pictureTeam">
                 <img
-                  class="circular--square"
-                  src="../assets/Icons/Icons-User.png"
+                  class="Member"
+                  src="../assets/Images/SergioMartinez.jpg"
                   width="100px"
                   alt="IconUser"
                 />
@@ -191,8 +191,8 @@
             <div class="teamMember">
               <div class="pictureTeam">
                 <img
-                  class="circular--square"
-                  src="../assets/Icons/Icons-User.png"
+                  class="Member"
+                  src="../assets/Images/SergioMartinez.jpg"
                   width="100px"
                   alt="IconUser"
                 />
@@ -209,7 +209,7 @@
             <div class="teamMember">
               <div class="pictureTeam">
                 <img
-                  class="circular--square"
+                  class="Member"
                   src="../assets/Icons/Icons-User.png"
                   width="100px"
                   alt="IconUser"
@@ -227,7 +227,7 @@
             <div class="teamMember">
               <div class="pictureTeam">
                 <img
-                  class="circular--square"
+                  class="Member"
                   src="../assets/Icons/Icons-User.png"
                   width="100px"
                   alt="IconUser"
@@ -307,7 +307,7 @@
           <div class="contentModal">
             <div class="imageObject">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/MaquinaRoyal.jpg"
                 alt="Fotografia Objeto"
               />
@@ -332,7 +332,7 @@
           <div class="contentModal">
             <div class="imageObject">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Telegrafo.jpg"
                 alt="Fotografia Objeto"
               />
@@ -356,7 +356,7 @@
           <div class="contentModal">
             <div class="imageObject">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Perforador.jpg"
                 alt="Fotografia Objeto"
               />
@@ -379,7 +379,7 @@
           <div class="contentModal">
             <div class="imageObject">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Vagoneta.png"
                 alt="Fotografia Objeto"
               />
@@ -404,7 +404,7 @@
           <div class="contentModal">
             <div class="imageObject">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Telefono.png"
                 alt="Fotografia Objeto"
               />
@@ -432,7 +432,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Zipaquira01.jpg"
                 alt="Fotografia"
               />
@@ -457,7 +457,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Zipaquira02.jpg"
                 alt="Fotografia"
               />
@@ -482,7 +482,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Usaquen01.jpg"
                 alt="Fotografia"
               />
@@ -505,7 +505,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Usaquen02.jpg"
                 alt="Fotografia"
               />
@@ -528,7 +528,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Usaquen03.jpg"
                 alt="Fotografia"
               />
@@ -552,7 +552,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Usaquen04.jpg"
                 alt="Fotografia"
               />
@@ -578,7 +578,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Chia01.jpg"
                 alt="Fotografia"
               />
@@ -608,7 +608,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Chia02.jpg"
                 alt="Fotografia"
               />
@@ -630,7 +630,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Chia03.jpg"
                 alt="Fotografia"
               />
@@ -655,7 +655,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Cajica01.jpg"
                 alt="Fotografia"
               />
@@ -679,7 +679,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureVertical"
                 src="../assets/Images/Cajica02.jpg"
                 alt="Fotografia"
               />
@@ -703,7 +703,7 @@
           <div class="contentModal">
             <div class="imageStation">
               <img
-                class="PictureModal"
+                class="PictureHorizontal"
                 src="../assets/Images/Cajica03.jpg"
                 alt="Fotografia"
               />
@@ -726,137 +726,102 @@
       <!-- Zipaquirá -->
       <div v-show="onViewFP" id="Modal-18" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Zipaquira03.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureSquare"
+              src="../assets/Images/Zipaquira03.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
       <div v-show="onViewFP" id="Modal-19" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Zipaquira04.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureVertical"
+              src="../assets/Images/Zipaquira04.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
       <div v-show="onViewFP" id="Modal-20" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Zipaquira05.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureVertical"
+              src="../assets/Images/Zipaquira05.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
       <!-- Chía -->
       <div v-show="onViewFP" id="Modal-21" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Chia04.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureHorizontal"
+              src="../assets/Images/Chia04.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
       <div v-show="onViewFP" id="Modal-22" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Chia05.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureHorizontal"
+              src="../assets/Images/Chia05.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
       <!-- Cajicá -->
       <div v-show="onViewFP" id="Modal-23" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Cajica04.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureHorizontal"
+              src="../assets/Images/Cajica04.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
       <!-- Usaquén -->
       <div v-show="onViewFP" id="Modal-24" class="ModalStation">
         <div class="contentSta">
-          <div class="contentModal">
-            <div class="imageStation">
-              <img
-                class="PictureModal"
-                src="../assets/Images/Usaquen05.jpg"
-                alt="Fotografia"
-              />
-            </div>
-            <div class="titleSta">
-              <h1 class="NameStation">Fotografia</h1>
-            </div>
-            <div class="historyStation">
-              <p>Foto tomada por Sergio Martínez.</p>
-            </div>
+          <div class="imageOwn">
+            <img
+              class="PictureHorizontal"
+              src="../assets/Images/Usaquen05.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Fotografía tomada el 20 de Marzo del 2022.</p>
           </div>
         </div>
       </div>
@@ -960,6 +925,38 @@ export default {
     //AeControls,
     //FpControls,
   },
+  props: ["mode"],
+  watch: {
+    mode(modeApp) {
+      //console.log("Modo paso %s a %s", anterior, nuevo);
+      if (modeApp === "light") {
+        this.scene.background = new THREE.Color(this.bgColorLight);
+
+        this.MainLight01.color = new THREE.Color(this.MainColorLight);
+        this.MainLight02.color = new THREE.Color(this.MainColorLight);
+        this.MainLight03.color = new THREE.Color(this.MainColorLight);
+        this.MainLight04.color = new THREE.Color(this.MainColorLight);
+
+        this.MainLight01.intensity = this.LightIntensity;
+        this.MainLight02.intensity = this.LightIntensity;
+        this.MainLight03.intensity = this.LightIntensity;
+        this.MainLight04.intensity = this.LightIntensity;
+
+      } else {
+        this.scene.background = new THREE.Color(this.bgColorDark);
+
+        this.MainLight01.color = new THREE.Color(this.MainColorDark);
+        this.MainLight02.color = new THREE.Color(this.MainColorDark);
+        this.MainLight03.color = new THREE.Color(this.MainColorDark);
+        this.MainLight04.color = new THREE.Color(this.MainColorDark);
+
+        this.MainLight01.intensity = this.DarkIntensity;
+        this.MainLight02.intensity = this.DarkIntensity;
+        this.MainLight03.intensity = this.DarkIntensity;
+        this.MainLight04.intensity = this.DarkIntensity;
+      }
+    },
+  },
   data() {
     return {
       loaded: false, //Carga
@@ -996,6 +993,20 @@ export default {
       MainTarget: null,
       MainPosition: null,
       MainRotation: null,
+      MainLight01: null, //LightsStations
+      MainLight02: null,
+      MainLight03: null,
+      MainLight04: null,
+      LightIntensity: null,
+      MainColorLight: null, 
+      MainColorDark: null,
+      DarkIntensity: null,
+      ZipaLight: null,
+      UsaLight: null,
+      CaroLight: null,
+      CajiLight: null,
+      bgColorLight: null,
+      bgColorDark: null,
       points: [], //PuntosEstaciones
       point: null,
       Fp: false,
@@ -1070,69 +1081,15 @@ export default {
       this.camera.rotation.order = "YXZ";
       this.cameraFp.rotation.order = "YXZ";
 
-      // create scene
+      // create scene -- Light Mode Default
       const nearFog = 60;
       const farFog = 90;
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color("#6dd2dc");
       this.scene.fog = new THREE.Fog(0x4eacce, nearFog, farFog);
 
-      // add lights
-      /* const ambientLight = new THREE.HemisphereLight(
-        0xffffff, // bright sky color
-        0x222222, // dim ground color
-        0.5 // intensity
-      );
-      const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
-      mainLight.position.set(10, 2, 10);
-      mainLight.castShadow = true;
-      mainLight.shadow.camera.top = 2;
-      mainLight.shadow.camera.bottom = -2;
-      mainLight.shadow.camera.left = -2;
-      mainLight.shadow.camera.right = 2;
-      mainLight.shadow.camera.near = 0.1;
-      mainLight.shadow.camera.far = 40;
-      this.scene.add(ambientLight, mainLight); */
-
-      const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
-      hemiLight.position.set(0, 20, 0);
-      this.scene.add(hemiLight);
-
-      /* const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-      dirLight.color.setHSL(0.1, 1, 0.95);
-      dirLight.position.set(-1, 1.75, 1);
-      dirLight.position.multiplyScalar(30);
-      this.scene.add(dirLight);
-
-      dirLight.castShadow = true;
-
-      dirLight.shadow.mapSize.width = 2048;
-      dirLight.shadow.mapSize.height = 2048;
-
-      const d = 50;
-
-      dirLight.shadow.camera.left = -d;
-      dirLight.shadow.camera.right = d;
-      dirLight.shadow.camera.top = d;
-      dirLight.shadow.camera.bottom = -d;
-
-      dirLight.shadow.camera.far = 3500;
-      dirLight.shadow.bias = -0.0001; */
-
-      /* const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
-      this.scene.add(dirLightHelper); */
-
-      /* const spotLight = new THREE.SpotLight(0xffffff);
-      spotLight.position.set(-3, 2, -25);
-
-      spotLight.castShadow = true;
-      spotLight.shadow.mapSize.width = 1024;
-      spotLight.shadow.mapSize.height = 1024;
-      spotLight.shadow.camera.near = 500;
-      spotLight.shadow.camera.far = 4000;
-      spotLight.shadow.camera.fov = 30;
-
-      this.scene.add(spotLight); */
+      //Add lights
+      this.initLights();
 
       //Load Model
       const loader01 = new GLTFLoader().setPath("/Models/");
@@ -1162,26 +1119,19 @@ export default {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
 
-          this.mesh.receiveShadow = true;
-          this.mesh.castShadow = true;
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
 
           if (this.mesh) {
             this.load01 = true;
           }
-          /* this.mesh.traverse(function (child) {
-            if (child instanceof THREE.Mesh) {
-              child.visible = false;
-            }
-          }); */
-          //this.worldOctree.fromGraphNode(gltf.scene);
-          /*  this.mesh.scene.traverse(function (object) {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.traverse(function (node) {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-          //this.animate();
         },
         undefined,
         undefined
@@ -1190,9 +1140,17 @@ export default {
         "Zipaquira01.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
 
+         /*  gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          });
+ */
           this.scene.add(gltf.scene);
           if (this.mesh) {
             this.load02 = true;
@@ -1211,6 +1169,17 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
+
+         /*  gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load03 = true;
           }
@@ -1222,9 +1191,18 @@ export default {
         "Puentes.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load04 = true;
           }
@@ -1236,9 +1214,18 @@ export default {
         "CajicaLetrero.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load05 = true;
           }
@@ -1250,9 +1237,18 @@ export default {
         "ZipaquiraLetrero.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          });
+ */
           if (this.mesh) {
             this.load06 = true;
           }
@@ -1264,9 +1260,18 @@ export default {
         "Usaquen01.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+         /*  gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load07 = true;
           }
@@ -1278,9 +1283,18 @@ export default {
         "UsaquenLetrero.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load08 = true;
           }
@@ -1292,9 +1306,18 @@ export default {
         "Chia01.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          });
+ */
           if (this.mesh) {
             this.load09 = true;
           }
@@ -1306,9 +1329,18 @@ export default {
         "ChiaLetrero.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+         /*  gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load10 = true;
           }
@@ -1412,9 +1444,18 @@ export default {
         "Obj1-Vagoneta.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load17 = true;
           }
@@ -1427,9 +1468,18 @@ export default {
         "Obj2-MaquinaEscribir.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load18 = true;
           }
@@ -1442,9 +1492,18 @@ export default {
         "Obj3-Perforadora.glb",
         (gltf) => {
           this.mesh = gltf;
-          this.mesh.castShadow = true;
-          this.mesh.receiveShadow = true;
           this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
           if (this.mesh) {
             this.load19 = true;
           }
@@ -1492,7 +1551,7 @@ export default {
         //controls.minAzimuthAngle = Math.PI/4;
         //controls.maxAzimuthAngle = Math.PI/4;
       }
-
+      //Point Stations
       this.raycaster = new THREE.Raycaster();
       this.raycaster2 = new THREE.Raycaster();
       this.points = [
@@ -1518,6 +1577,102 @@ export default {
         },
       ];
       window.addEventListener("resize", this.onWindowResize);
+    },
+    initLights() {
+      this.MainColorLight = 0xffffff;
+      this.LightIntensity = 0.5;
+      this.bgColorLight = 0x6dd2dc;
+
+      this.MainColorDark = 0x3388cc;
+      this.DarkIntensity = 0.1;
+      this.bgColorDark = 0x3388cc;
+      //Main Light Scene
+      this.MainLight01 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
+      this.MainLight02 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
+      this.MainLight03 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
+      this.MainLight04 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
+
+      this.MainLight01.position.set(30, 30, 0);
+      this.MainLight02.position.set(-30, 30, 0);
+      this.MainLight03.position.set(0, 30, 30);
+      this.MainLight04.position.set(30, 30, -30);
+
+      //this.MainLight.position.multiplyScalar(30);
+      this.scene.add(this.MainLight01);
+      this.scene.add(this.MainLight02);
+      this.scene.add(this.MainLight03);
+      this.scene.add(this.MainLight04);
+
+      /* this.MainLight01.castShadow = true;
+      this.MainLight02.castShadow = true;
+      this.MainLight03.castShadow = true;
+      this.MainLight04.castShadow = true;
+
+      this.MainLight01.shadow.mapSize.width = 2048;
+      this.MainLight01.shadow.mapSize.height = 2048;
+
+      this.MainLight02.shadow.mapSize.width = 2048;
+      this.MainLight02.shadow.mapSize.height = 2048;
+
+      this.MainLight03.shadow.mapSize.width = 2048;
+      this.MainLight03.shadow.mapSize.height = 2048;
+
+      this.MainLight04.shadow.mapSize.width = 2048;
+      this.MainLight04.shadow.mapSize.height = 2048; */
+
+      /* const d = 50;
+
+      this.MainLight01.shadow.camera.left = -d;
+      this.MainLight01.shadow.camera.right = d;
+      this.MainLight01.shadow.camera.top = d;
+      this.MainLight01.shadow.camera.bottom = -d;
+      this.MainLight01.shadow.camera.far = 3500;
+      this.MainLight01.shadow.bias = -0.0001;
+
+      this.MainLight02.shadow.camera.left = -d;
+      this.MainLight02.shadow.camera.right = d;
+      this.MainLight02.shadow.camera.top = d;
+      this.MainLight02.shadow.camera.bottom = -d;
+      this.MainLight02.shadow.camera.far = 3500;
+      this.MainLight02.shadow.bias = -0.0001;
+
+      this.MainLight03.shadow.camera.left = -d;
+      this.MainLight03.shadow.camera.right = d;
+      this.MainLight03.shadow.camera.top = d;
+      this.MainLight03.shadow.camera.bottom = -d;
+      this.MainLight03.shadow.camera.far = 3500;
+      this.MainLight03.shadow.bias = -0.0001;
+
+      this.MainLight04.shadow.camera.left = -d;
+      this.MainLight04.shadow.camera.right = d;
+      this.MainLight04.shadow.camera.top = d;
+      this.MainLight04.shadow.camera.bottom = -d;
+      this.MainLight04.shadow.camera.far = 3500;
+      this.MainLight04.shadow.bias = -0.0001; */
+
+      /* GLOBAL LIGHT */
+      /* const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.1);
+      hemiLight.position.set(0, 0, 0);
+      this.scene.add(hemiLight); */
+
+      /* Stations Lights */
+      //ZipaLight
+      /* this.ZipaLight = new THREE.SpotLight(0xffffff);
+      this.ZipaLight.position.set(0, 30, 0);
+      this.ZipaLight.angle = Math.PI/2;
+      const targetZipa = new THREE.Object3D();
+      targetZipa.position.set(-50, 0, 0);
+      this.scene.add(targetZipa);
+      this.ZipaLight.target = targetZipa; */
+
+      /* this.ZipaLight.castShadow = true;
+      this.ZipaLight.shadow.mapSize.width = 1024;
+      this.ZipaLight.shadow.mapSize.height = 1024;
+      this.ZipaLight.shadow.camera.near = 500;
+      this.ZipaLight.shadow.camera.far = 4000;
+      this.ZipaLight.shadow.camera.fov = 30;
+
+      this.scene.add(this.ZipaLight); */
     },
     pointObjs() {
       this.groupIndicator = new THREE.Group();
@@ -2379,6 +2534,9 @@ export default {
   mounted() {
     this.init();
     this.animate();
+  },
+  created() {
+    console.log(this.mode);
   },
 };
 const getfontsize = (id, ip) => {

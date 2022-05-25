@@ -1,6 +1,6 @@
 <template>
   <div id="Modal">
-    <div id="contentMenu" class="darkmode">
+    <div id="contentMenu">
       <div class="headerModal">
         <div class="buttons">
           <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
@@ -17,22 +17,6 @@
               class="Lens"
             />
           </div>
-          <!-- <button
-            type="button"
-            id="ZoomMenos"
-            class="btn btn-dark mr-1"
-            @click="ZoomMenos()"
-          >
-            Disminuir
-          </button>
-          <button
-            type="button"
-            id="ZoomMas"
-            class="btn btn-dark mr-1"
-            @click="ZoomMas()"
-          >
-            Aumentar
-          </button> -->
         </div>
         <span class="closeMenu">&times;</span>
       </div>
