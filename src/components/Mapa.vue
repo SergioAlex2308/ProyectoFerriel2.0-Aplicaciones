@@ -172,7 +172,7 @@
               <div class="pictureTeam">
                 <img
                   class="Member"
-                  src="../assets/Images/SergioMartinez.jpg"
+                  src="../assets/Images/JhonMartinez.jpg"
                   width="100px"
                   alt="IconUser"
                 />
@@ -425,9 +425,34 @@
           </div>
         </div>
       </div>
+      <!-- Carretilla -->
+      <div v-show="onViewFP" id="Modal-6" class="ModalObjects">
+        <div class="contentObj">
+          <div class="contentModal">
+            <div class="imageObject">
+              <img
+                class="PictureHorizontal"
+                src="../assets/Images/Telefono.png"
+                alt="Fotografia Objeto"
+              />
+            </div>
+            <div class="titleObj">
+              <h1 class="NameObject">Carretilla</h1>
+            </div>
+            <div class="historyObjtext">
+              <p>
+                Es un vagón pequeño que sirve para el transporte de mercancías,
+                principalmente minerales, piedra, arena o materiales de
+                construcción. También se usaba para transportar pequeños grupos
+                de personas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Info Station -->
       <!-- Zipaquirá -->
-      <div v-show="onViewFP" id="Modal-6" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-7" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -452,7 +477,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-7" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-8" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -477,7 +502,7 @@
         </div>
       </div>
       <!-- Usaquén -->
-      <div v-show="onViewFP" id="Modal-8" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-9" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -500,7 +525,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-9" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-10" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -523,7 +548,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-10" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-11" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -547,7 +572,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-11" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-12" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -573,7 +598,7 @@
         </div>
       </div>
       <!-- Chía -->
-      <div v-show="onViewFP" id="Modal-12" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-13" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -603,7 +628,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-13" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-14" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -625,7 +650,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-14" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-15" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -650,7 +675,7 @@
         </div>
       </div>
       <!-- Cajicá -->
-      <div v-show="onViewFP" id="Modal-15" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-16" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -674,7 +699,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-16" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-17" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
@@ -698,13 +723,13 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-17" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-18" class="ModalStation">
         <div class="contentSta">
           <div class="contentModal">
             <div class="imageStation">
               <img
                 class="PictureHorizontal"
-                src="../assets/Images/Cajica03.jpg"
+                src="../assets/Images/Cajica04.jpg"
                 alt="Fotografia"
               />
             </div>
@@ -724,7 +749,7 @@
       </div>
       <!-- Photo Station -->
       <!-- Zipaquirá -->
-      <div v-show="onViewFP" id="Modal-18" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-19" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
@@ -738,7 +763,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-19" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-20" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
@@ -752,7 +777,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-20" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-21" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
@@ -767,7 +792,7 @@
         </div>
       </div>
       <!-- Chía -->
-      <div v-show="onViewFP" id="Modal-21" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-22" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
@@ -781,7 +806,7 @@
           </div>
         </div>
       </div>
-      <div v-show="onViewFP" id="Modal-22" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-23" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
@@ -796,12 +821,12 @@
         </div>
       </div>
       <!-- Cajicá -->
-      <div v-show="onViewFP" id="Modal-23" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-24" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
               class="PictureHorizontal"
-              src="../assets/Images/Cajica04.jpg"
+              src="../assets/Images/Cajica03.jpg"
               alt="Fotografia"
             />
           </div>
@@ -811,12 +836,12 @@
         </div>
       </div>
       <!-- Usaquén -->
-      <div v-show="onViewFP" id="Modal-24" class="ModalStation">
+      <div v-show="onViewFP" id="Modal-25" class="ModalStation">
         <div class="contentSta">
           <div class="imageOwn">
             <img
               class="PictureHorizontal"
-              src="../assets/Images/Usaquen05.jpg"
+              src="../assets/Images/Usaquen06.jpg"
               alt="Fotografia"
             />
           </div>
@@ -979,6 +1004,9 @@ export default {
       load17: false, //Vagoneta load
       load18: false, //Maquina escribir load
       load19: false, //Perforador load
+      load20: false, //Telefono load
+      load21: false, //Telegrafo load
+      load22: false, //Carretilla load
       esperatime: true,
       mostrar: false,
       container: null,
@@ -1014,7 +1042,7 @@ export default {
       pointObject: null,
       modalObj: null,
       groupIndicator: null,
-      Indicator: 24,
+      Indicator: 26,
       intersects: null,
       pointer: new THREE.Vector2(),
       INTERSECTED: null,
@@ -1111,6 +1139,9 @@ export default {
       const loader17 = new GLTFLoader().setPath("/Models/");
       const loader18 = new GLTFLoader().setPath("/Models/");
       const loader19 = new GLTFLoader().setPath("/Models/");
+      const loader20 = new GLTFLoader().setPath("/Models/");
+      const loader21 = new GLTFLoader().setPath("/Models/");
+      const loader22 = new GLTFLoader().setPath("/Models/");
 
       //Models
       loader01.load(
@@ -1512,6 +1543,78 @@ export default {
         undefined,
         undefined
       );
+      loader20.load(
+        "Obj4-Telefono.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
+          if (this.mesh) {
+            this.load20 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader21.load(
+        "Obj5-Telegrafo.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
+          if (this.mesh) {
+            this.load21 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader22.load(
+        "Obj6-Carretilla.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+
+          /* gltf.scene.receiveShadow = true;
+          gltf.scene.castShadow = true;
+          this.mesh.scene.traverse((object) => {
+            if (object.isMesh) object.castShadow = true;
+          });
+          this.mesh.scene.traverse((node) => {
+            if (node.isMesh || node.isLight) node.castShadow = true;
+            if (node.isMesh || node.isLight) node.receiveShadow = true;
+          }); */
+
+          if (this.mesh) {
+            this.load22 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
 
       this.pointObjs();
 
@@ -1557,12 +1660,12 @@ export default {
       this.points = [
         {
           //Zipaquirá
-          position: new THREE.Vector3(-50, 6, 0),
+          position: new THREE.Vector3(0, 6, 50),
           element: document.querySelector(".MapView-1"),
         },
         {
           //Usaquén
-          position: new THREE.Vector3(0, 6, -50),
+          position: new THREE.Vector3(-50, 6, 0),
           element: document.querySelector(".MapView-2"),
         },
         {
@@ -1572,7 +1675,7 @@ export default {
         },
         {
           //Chía
-          position: new THREE.Vector3(0, 5, 45),
+          position: new THREE.Vector3(0, 6, -45),
           element: document.querySelector(".MapView-4"),
         },
       ];
@@ -1690,20 +1793,12 @@ export default {
         color: 0xf80346,
       });
 
-      /* const wireframeMaterial = new THREE.MeshBasicMaterial({
-        color: 0x000000,
-        wireframe: true,
-        transparent: true,
-      }); */
-
-      /* const wireframe = new THREE.Mesh(geometryInside, wireframeMaterial); */
-
       /* *****************OBJECTS***************** */
       //Maquina de escribir
       var sphere1 = new THREE.Mesh(geometryInside, material);
-      sphere1.position.x = 51.5;
-      sphere1.position.y = 1.4;
-      sphere1.position.z = 0;
+      sphere1.position.x = 51.9;
+      sphere1.position.y = 1.7;
+      sphere1.position.z = 0.3;
       sphere1.nameId = "Label1";
       /* sphere1.add(wireframe); */
       this.scene.add(sphere1);
@@ -1711,209 +1806,210 @@ export default {
 
       //Telegrafo
       var sphere2 = new THREE.Mesh(geometryInside, material);
-      sphere2.position.x = 0;
-      sphere2.position.y = 2;
-      sphere2.position.z = -5;
+      sphere2.position.x = 6.8;
+      sphere2.position.y = 1.3;
+      sphere2.position.z = 48.7;
       sphere2.nameId = "Label2";
       this.scene.add(sphere2);
       this.groupIndicator.add(sphere2);
 
       //Perforador
       var sphere3 = new THREE.Mesh(geometryInside, material);
-      sphere3.position.x = 51;
+      sphere3.position.x = 51.1;
       sphere3.position.y = 1.3;
-      sphere3.position.z = 8;
+      sphere3.position.z = 7.8;
       sphere3.nameId = "Label3";
       this.scene.add(sphere3);
       this.groupIndicator.add(sphere3);
 
       //Vagoneta
       var sphere4 = new THREE.Mesh(geometryOutside, material);
-      sphere4.position.x = 61.2;
-      sphere4.position.y = 2;
-      sphere4.position.z = 4.5;
+      sphere4.position.x = 58;
+      sphere4.position.y = 1.5;
+      sphere4.position.z = 3;
       sphere4.nameId = "Label4";
       this.scene.add(sphere4);
       this.groupIndicator.add(sphere4);
 
       //Telefono
       var sphere5 = new THREE.Mesh(geometryInside, material);
-      sphere5.position.x = 4;
-      sphere5.position.y = 2;
-      sphere5.position.z = 5;
+      sphere5.position.x = -0.4;
+      sphere5.position.y = 3.6;
+      sphere5.position.z = 47.9;
       sphere5.nameId = "Label5";
       this.scene.add(sphere5);
       this.groupIndicator.add(sphere5);
 
-      /* *****************NAME & INFO STATION***************** */
-      //Zipaquirá
+      //Carretilla
       var sphere6 = new THREE.Mesh(geometryOutside, material);
-      sphere6.position.x = -44.7;
-      sphere6.position.y = 2;
-      sphere6.position.z = -3.8;
+      sphere6.position.x = -9.7;
+      sphere6.position.y = 1.3;
+      sphere6.position.z = 57.8;
       sphere6.nameId = "Label6";
       this.scene.add(sphere6);
       this.groupIndicator.add(sphere6);
 
+      /* *****************NAME & INFO STATION***************** */
+      //Zipaquirá
       var sphere7 = new THREE.Mesh(geometryOutside, material);
-      sphere7.position.x = 0;
-      sphere7.position.y = 2;
-      sphere7.position.z = 0;
+      sphere7.position.x = -4.8;
+      sphere7.position.y = 2.3;
+      sphere7.position.z = 44.3;
       sphere7.nameId = "Label7";
       this.scene.add(sphere7);
       this.groupIndicator.add(sphere7);
 
-      //Usaquén
       var sphere8 = new THREE.Mesh(geometryOutside, material);
-      sphere8.position.x = 2.6;
-      sphere8.position.y = 2.2;
-      sphere8.position.z = -41;
+      sphere8.position.x = 0;
+      sphere8.position.y = 1.3;
+      sphere8.position.z = 55;
       sphere8.nameId = "Label8";
       this.scene.add(sphere8);
       this.groupIndicator.add(sphere8);
 
+      //Usaquén
       var sphere9 = new THREE.Mesh(geometryOutside, material);
-      sphere9.position.x = 1;
-      sphere9.position.y = 2.2;
-      sphere9.position.z = 0;
+      sphere9.position.x = -40.9;
+      sphere9.position.y = 2.3;
+      sphere9.position.z = -2.6;
       sphere9.nameId = "Label9";
       this.scene.add(sphere9);
       this.groupIndicator.add(sphere9);
 
       var sphere10 = new THREE.Mesh(geometryOutside, material);
-      sphere10.position.x = 2;
-      sphere10.position.y = 2.2;
-      sphere10.position.z = 0;
+      sphere10.position.x = -39;
+      sphere10.position.y = 1.3;
+      sphere10.position.z = 4.1;
       sphere10.nameId = "Label10";
       this.scene.add(sphere10);
       this.groupIndicator.add(sphere10);
 
       var sphere11 = new THREE.Mesh(geometryOutside, material);
-      sphere11.position.x = 3;
-      sphere11.position.y = 2.2;
-      sphere11.position.z = 0;
+      sphere11.position.x = -56;
+      sphere11.position.y = 1.3;
+      sphere11.position.z = 8.5;
       sphere11.nameId = "Label11";
       this.scene.add(sphere11);
       this.groupIndicator.add(sphere11);
 
-      //Chía
       var sphere12 = new THREE.Mesh(geometryOutside, material);
-      sphere12.position.x = -2.5;
-      sphere12.position.y = 2.2;
-      sphere12.position.z = 39.5;
+      sphere12.position.x = -55;
+      sphere12.position.y = 1.3;
+      sphere12.position.z = 1.2;
       sphere12.nameId = "Label12";
       this.scene.add(sphere12);
       this.groupIndicator.add(sphere12);
 
+      //Chía
       var sphere13 = new THREE.Mesh(geometryOutside, material);
-      sphere13.position.x = 4;
-      sphere13.position.y = 2.2;
-      sphere13.position.z = 0;
+      sphere13.position.x = 2.5;
+      sphere13.position.y = 2.3;
+      sphere13.position.z = -39.7;
       sphere13.nameId = "Label13";
       this.scene.add(sphere13);
       this.groupIndicator.add(sphere13);
 
       var sphere14 = new THREE.Mesh(geometryOutside, material);
-      sphere14.position.x = 5;
-      sphere14.position.y = 2.2;
-      sphere14.position.z = 0;
+      sphere14.position.x = 6;
+      sphere14.position.y = 1.3;
+      sphere14.position.z = -50;
       sphere14.nameId = "Label14";
       this.scene.add(sphere14);
       this.groupIndicator.add(sphere14);
 
-      //Cajicá
       var sphere15 = new THREE.Mesh(geometryOutside, material);
-      sphere15.position.x = 45;
-      sphere15.position.y = 2.2;
-      sphere15.position.z = 2.6;
+      sphere15.position.x = -12;
+      sphere15.position.y = 1.3;
+      sphere15.position.z = -53;
       sphere15.nameId = "Label15";
       this.scene.add(sphere15);
       this.groupIndicator.add(sphere15);
 
+      //Cajicá
       var sphere16 = new THREE.Mesh(geometryOutside, material);
-      sphere16.position.x = 6;
-      sphere16.position.y = 2.2;
-      sphere16.position.z = 0;
+      sphere16.position.x = 45;
+      sphere16.position.y = 2.3;
+      sphere16.position.z = 2.6;
       sphere16.nameId = "Label16";
       this.scene.add(sphere16);
       this.groupIndicator.add(sphere16);
 
       var sphere17 = new THREE.Mesh(geometryOutside, material);
-      sphere17.position.x = 7;
-      sphere17.position.y = 2.2;
-      sphere17.position.z = 0;
+      sphere17.position.x = 38;
+      sphere17.position.y = 1.3;
+      sphere17.position.z = -9.5;
       sphere17.nameId = "Label17";
       this.scene.add(sphere17);
       this.groupIndicator.add(sphere17);
 
-      /* *****************PHOTO STATION***************** */
-      //Zipaquirá
       var sphere18 = new THREE.Mesh(geometryOutside, material);
-      sphere18.position.x = 8;
-      sphere18.position.y = 2.2;
-      sphere18.position.z = 0;
+      sphere18.position.x = 38;
+      sphere18.position.y = 1.3;
+      sphere18.position.z = 9.5;
       sphere18.nameId = "Label18";
       this.scene.add(sphere18);
       this.groupIndicator.add(sphere18);
 
+      /* *****************PHOTO STATION***************** */
+      //Zipaquirá
       var sphere19 = new THREE.Mesh(geometryOutside, material);
-      sphere19.position.x = 9;
-      sphere19.position.y = 2.2;
-      sphere19.position.z = 0;
+      sphere19.position.x = 10;
+      sphere19.position.y = 1.3;
+      sphere19.position.z = 55;
       sphere19.nameId = "Label19";
       this.scene.add(sphere19);
       this.groupIndicator.add(sphere19);
 
       var sphere20 = new THREE.Mesh(geometryOutside, material);
-      sphere20.position.x = 10;
-      sphere20.position.y = 2.2;
-      sphere20.position.z = 0;
+      sphere20.position.x = -13;
+      sphere20.position.y = 1.3;
+      sphere20.position.z = 41;
       sphere20.nameId = "Label20";
       this.scene.add(sphere20);
       this.groupIndicator.add(sphere20);
 
-      //Chía
       var sphere21 = new THREE.Mesh(geometryOutside, material);
-      sphere21.position.x = 11;
-      sphere21.position.y = 2.2;
-      sphere21.position.z = 0;
+      sphere21.position.x = 6;
+      sphere21.position.y = 1.3;
+      sphere21.position.z = 35;
       sphere21.nameId = "Label21";
       this.scene.add(sphere21);
       this.groupIndicator.add(sphere21);
 
+      //Chía
       var sphere22 = new THREE.Mesh(geometryOutside, material);
-      sphere22.position.x = 12;
-      sphere22.position.y = 2.2;
-      sphere22.position.z = 0;
+      sphere22.position.x = -2.5;
+      sphere22.position.y = 1.3;
+      sphere22.position.z = -53;
       sphere22.nameId = "Label22";
       this.scene.add(sphere22);
       this.groupIndicator.add(sphere22);
 
-      //Usaquén
       var sphere23 = new THREE.Mesh(geometryOutside, material);
-      sphere23.position.x = 13;
-      sphere23.position.y = 2.2;
-      sphere23.position.z = 0;
+      sphere23.position.x = 12;
+      sphere23.position.y = 1.3;
+      sphere23.position.z = -53;
       sphere23.nameId = "Label23";
       this.scene.add(sphere23);
       this.groupIndicator.add(sphere23);
 
       //Cajicá
       var sphere24 = new THREE.Mesh(geometryOutside, material);
-      sphere24.position.x = 14;
-      sphere24.position.y = 2.2;
-      sphere24.position.z = 0;
+      sphere24.position.x = 53;
+      sphere24.position.y = 1.3;
+      sphere24.position.z = 12;
       sphere24.nameId = "Label24";
       this.scene.add(sphere24);
       this.groupIndicator.add(sphere24);
 
       var sphere25 = new THREE.Mesh(geometryOutside, material);
-      sphere25.position.x = 15;
-      sphere25.position.y = 2.2;
-      sphere25.position.z = 0;
+      sphere25.position.x = -44.5;
+      sphere25.position.y = 1.3;
+      sphere25.position.z = 5;
       sphere25.nameId = "Label25";
       this.scene.add(sphere25);
       this.groupIndicator.add(sphere25);
+
     },
     ShowInfo() {
       var modal = document.getElementById("MenuInfo");
@@ -1966,7 +2062,13 @@ export default {
         this.load13 &&
         this.load14 &&
         this.load15 &&
-        this.load16
+        this.load16 &&
+        this.load17 &&
+        this.load18 &&
+        this.load19 &&
+        this.load20 &&
+        this.load21 &&
+        this.load22
       ) {
         this.loaded = true;
       }
@@ -2171,8 +2273,8 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst1 = new THREE.Vector3(-36, 1, 0);
-      const RotEst1 = new THREE.Vector3(0, Math.PI / 2, 0);
+      const PosEst1 = new THREE.Vector3(0, 1, 35);
+      const RotEst1 = new THREE.Vector3(0, Math.PI, 0);
 
       this.playerCollider.translate(PosEst1);
 
@@ -2204,8 +2306,8 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst2 = new THREE.Vector3(0, 1, -35);
-      const RotEst2 = new THREE.Vector3(0, 0, 0);
+      const PosEst2 = new THREE.Vector3(-36, 1, 0);
+      const RotEst2 = new THREE.Vector3(0, Math.PI/2, 0);
 
       this.playerCollider.translate(PosEst2);
 
@@ -2268,8 +2370,8 @@ export default {
       this.MainPosition.copy(this.camera.position);
       this.MainRotation.copy(this.camera.rotation);
 
-      const PosEst4 = new THREE.Vector3(0, 1, 35);
-      const RotEst4 = new THREE.Vector3(0, Math.PI, 0);
+      const PosEst4 = new THREE.Vector3(0, 1, -35);
+      const RotEst4 = new THREE.Vector3(0, 0, 0);
 
       this.playerCollider.translate(PosEst4);
 
