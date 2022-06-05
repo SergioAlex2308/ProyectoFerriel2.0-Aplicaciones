@@ -29,7 +29,7 @@
       <div id="ModalHelp" class="ModalControls">
         <div class="contentHelp">
           <div class="headerModal">
-            <div class="buttons">
+            <!-- <div class="buttons">
               <div id="ZoomMenos" @click="ZoomMenos()" class="boton">
                 <img
                   src="../assets/Icons/Icons-ZoomOut.png"
@@ -44,7 +44,7 @@
                   class="Lens"
                 />
               </div>
-            </div>
+            </div> -->
             <span class="close">&times;</span>
           </div>
           <div class="contentModal">
@@ -53,10 +53,12 @@
             </div>
             <div class="textHelp">
               <p id="zoomtexto17">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                qui commodi neque sequi hic, asperiores, mollitia placeat
-                quisquam expedita pariatur impedit omnis. Quod consequatur
-                repellendus illum quaerat enim molestiae sint?
+                A continuación te presentamos los controles para que puedas
+                navegar a través del entorno 3D, estos controles están divididos
+                en 2 momentos, el primero es cuando te encuentres en la vista
+                aérea (Vista del mapa), el segundo es cuando ingreses a
+                cualquiera de las estaciones y puedas moverte parar conocer la
+                historia que encuentras en cada una de ellas.
               </p>
             </div>
             <h3 class="titleControls" id="zoomtexto18">
@@ -488,7 +490,7 @@
               />
             </div>
             <div class="titleSta">
-              <h1 class="NameStation">Texto Información</h1>
+              <h1 class="NameStation">Estación de Zipaquirá</h1>
             </div>
             <div class="historyStation">
               <p>
@@ -850,6 +852,114 @@
           </div>
         </div>
       </div>
+      <!-- Point interest -->
+      <!-- Catedral de sal -->
+      <div v-show="onViewFP" id="Modal-26" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureVertical"
+                src="../assets/Images/Catedral01.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Catedral de sal</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                La catedral de la Sal de Zipaquirá es considerada como uno de
+                los logros arquitectónicos y artísticos más notables de la
+                arquitectura colombiana, por lo que se le ha otorgado incluso el
+                título de joya arquitectónica de la modernidad.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-27" class="ModalStation">
+        <div class="contentSta">
+          <div class="imageOwn">
+            <img
+              class="PictureHorizontal"
+              src="../assets/Images/Catedral02.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Catedral de sal.</p>
+          </div>
+        </div>
+      </div>
+      <!-- University -->
+      <div v-show="onViewFP" id="Modal-28" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureHorizontal"
+                src="../assets/Images/logo.png"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">
+                Proyecto Aplicaciones 3D e Integración multimedia
+              </h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                Este proyecto fue realizado para estas asignaturas en conjunto,
+                teniendo en cuenta los temas de elaboración de proyectos de este
+                ámbito.
+                <br />
+                <br />
+                Ingeniería en Multimedia - Bogotá, Colombia (2022).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Puente chia -->
+      <div v-show="onViewFP" id="Modal-29" class="ModalStation">
+        <div class="contentSta">
+          <div class="contentModal">
+            <div class="imageStation">
+              <img
+                class="PictureHorizontal"
+                src="../assets/Images/Puente01.jpg"
+                alt="Fotografia"
+              />
+            </div>
+            <div class="titleSta">
+              <h1 class="NameStation">Puente del común.</h1>
+            </div>
+            <div class="historyStation">
+              <p>
+                Puente que data de la época colonial sobre el río Bogotá, fue
+                construido en 1796. Operó como único puente para vehículos
+                motorizados hasta bien entrada la segunda mitad del siglo XX. En
+                1957 fue declarado Monumento Nacional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="onViewFP" id="Modal-30" class="ModalStation">
+        <div class="contentSta">
+          <div class="imageOwn">
+            <img
+              class="PictureVertical"
+              src="../assets/Images/Puente02.jpg"
+              alt="Fotografia"
+            />
+          </div>
+          <div class="historyStation">
+            <p>Puente del común.</p>
+          </div>
+        </div>
+      </div>
     </div>
     <transition name="fade">
       <div v-show="!onViewFP" id="footer01">
@@ -966,7 +1076,6 @@ export default {
         this.MainLight02.intensity = this.LightIntensity;
         this.MainLight03.intensity = this.LightIntensity;
         this.MainLight04.intensity = this.LightIntensity;
-
       } else {
         this.scene.background = new THREE.Color(this.bgColorDark);
 
@@ -1026,7 +1135,7 @@ export default {
       MainLight03: null,
       MainLight04: null,
       LightIntensity: null,
-      MainColorLight: null, 
+      MainColorLight: null,
       MainColorDark: null,
       DarkIntensity: null,
       ZipaLight: null,
@@ -1042,7 +1151,7 @@ export default {
       pointObject: null,
       modalObj: null,
       groupIndicator: null,
-      Indicator: 26,
+      Indicator: 31, //Labels Cantidad + 1
       intersects: null,
       pointer: new THREE.Vector2(),
       INTERSECTED: null,
@@ -1072,6 +1181,7 @@ export default {
       vector2: new THREE.Vector3(),
       vector3: new THREE.Vector3(),
       clock: new THREE.Clock(),
+      clock2: new THREE.Clock(),
       GRAVITY: 30,
       mixer: null, //Animations
     };
@@ -1142,6 +1252,7 @@ export default {
       const loader20 = new GLTFLoader().setPath("/Models/");
       const loader21 = new GLTFLoader().setPath("/Models/");
       const loader22 = new GLTFLoader().setPath("/Models/");
+      const loader23 = new GLTFLoader().setPath("/Models/");
 
       //Models
       loader01.load(
@@ -1172,7 +1283,7 @@ export default {
         (gltf) => {
           this.mesh = gltf;
 
-         /*  gltf.scene.receiveShadow = true;
+          /*  gltf.scene.receiveShadow = true;
           gltf.scene.castShadow = true;
           this.mesh.scene.traverse((object) => {
             if (object.isMesh) object.castShadow = true;
@@ -1201,7 +1312,7 @@ export default {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
 
-         /*  gltf.scene.receiveShadow = true;
+          /*  gltf.scene.receiveShadow = true;
           gltf.scene.castShadow = true;
           this.mesh.scene.traverse((object) => {
             if (object.isMesh) object.castShadow = true;
@@ -1293,7 +1404,7 @@ export default {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
 
-         /*  gltf.scene.receiveShadow = true;
+          /*  gltf.scene.receiveShadow = true;
           gltf.scene.castShadow = true;
           this.mesh.scene.traverse((object) => {
             if (object.isMesh) object.castShadow = true;
@@ -1362,7 +1473,7 @@ export default {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
 
-         /*  gltf.scene.receiveShadow = true;
+          /*  gltf.scene.receiveShadow = true;
           gltf.scene.castShadow = true;
           this.mesh.scene.traverse((object) => {
             if (object.isMesh) object.castShadow = true;
@@ -1615,6 +1726,27 @@ export default {
         undefined,
         undefined
       );
+      //Model Animation
+      loader23.load(
+        "animacionprueba.glb",
+        (gltf) => {
+          this.mesh = gltf.scene;
+          //this.scene.add(gltf.scene);
+           this.scene.add(this.mesh);
+          /* if (this.mesh) {
+            this.load22 = true;
+          } */
+          this.mixer = new THREE.AnimationMixer(this.mesh);
+          this.mixer.clipAction(gltf.animations[ 0 ]).play();
+
+          //this.worldOctree.fromGraphNode(gltf.scene);
+          this.animate();
+        },
+        undefined,
+        function (e) {
+          console.error(e);
+        }
+      );
 
       this.pointObjs();
 
@@ -1690,10 +1822,22 @@ export default {
       this.DarkIntensity = 0.1;
       this.bgColorDark = 0x3388cc;
       //Main Light Scene
-      this.MainLight01 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
-      this.MainLight02 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
-      this.MainLight03 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
-      this.MainLight04 = new THREE.DirectionalLight(this.MainColorLight, this.LightIntensity);
+      this.MainLight01 = new THREE.DirectionalLight(
+        this.MainColorLight,
+        this.LightIntensity
+      );
+      this.MainLight02 = new THREE.DirectionalLight(
+        this.MainColorLight,
+        this.LightIntensity
+      );
+      this.MainLight03 = new THREE.DirectionalLight(
+        this.MainColorLight,
+        this.LightIntensity
+      );
+      this.MainLight04 = new THREE.DirectionalLight(
+        this.MainColorLight,
+        this.LightIntensity
+      );
 
       this.MainLight01.position.set(30, 30, 0);
       this.MainLight02.position.set(-30, 30, 0);
@@ -1860,9 +2004,9 @@ export default {
       this.groupIndicator.add(sphere7);
 
       var sphere8 = new THREE.Mesh(geometryOutside, material);
-      sphere8.position.x = 0;
+      sphere8.position.x = 3;
       sphere8.position.y = 1.3;
-      sphere8.position.z = 55;
+      sphere8.position.z = 56;
       sphere8.nameId = "Label8";
       this.scene.add(sphere8);
       this.groupIndicator.add(sphere8);
@@ -2010,6 +2154,48 @@ export default {
       this.scene.add(sphere25);
       this.groupIndicator.add(sphere25);
 
+      //Catedral de sal
+      var sphere26 = new THREE.Mesh(geometryOutside, material);
+      sphere26.position.x = 0;
+      sphere26.position.y = 1.3;
+      sphere26.position.z = 2;
+      sphere26.nameId = "Label26";
+      this.scene.add(sphere26);
+      this.groupIndicator.add(sphere26);
+
+      var sphere27 = new THREE.Mesh(geometryOutside, material);
+      sphere27.position.x = 0;
+      sphere27.position.y = 1.3;
+      sphere27.position.z = 4;
+      sphere27.nameId = "Label27";
+      this.scene.add(sphere27);
+      this.groupIndicator.add(sphere27);
+
+      //Universidad
+      var sphere28 = new THREE.Mesh(geometryOutside, material);
+      sphere28.position.x = 0;
+      sphere28.position.y = 1.3;
+      sphere28.position.z = 6;
+      sphere28.nameId = "Label28";
+      this.scene.add(sphere28);
+      this.groupIndicator.add(sphere28);
+
+      //Puente del común
+      var sphere29 = new THREE.Mesh(geometryOutside, material);
+      sphere29.position.x = 0;
+      sphere29.position.y = 1.3;
+      sphere29.position.z = 8;
+      sphere29.nameId = "Label29";
+      this.scene.add(sphere29);
+      this.groupIndicator.add(sphere29);
+
+      var sphere30 = new THREE.Mesh(geometryOutside, material);
+      sphere30.position.x = 0;
+      sphere30.position.y = 1.3;
+      sphere30.position.z = 10;
+      sphere30.nameId = "Label30";
+      this.scene.add(sphere30);
+      this.groupIndicator.add(sphere30);
     },
     ShowInfo() {
       var modal = document.getElementById("MenuInfo");
@@ -2307,7 +2493,7 @@ export default {
       this.MainRotation.copy(this.camera.rotation);
 
       const PosEst2 = new THREE.Vector3(-36, 1, 0);
-      const RotEst2 = new THREE.Vector3(0, Math.PI/2, 0);
+      const RotEst2 = new THREE.Vector3(0, Math.PI / 2, 0);
 
       this.playerCollider.translate(PosEst2);
 
@@ -2592,8 +2778,8 @@ export default {
       } else {
         this.controls.update();
       }
-      /* const d = this.clock.getDelta();
-      this.mixer.update(d); */
+      const d = this.clock2.getDelta();
+      this.mixer.update(d);
 
       TWEEN.update();
       this.rayPoints();

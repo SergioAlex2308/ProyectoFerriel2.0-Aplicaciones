@@ -1,33 +1,37 @@
 :root {
 	/******** LIGHT MODE ********/
 	/*Table*/
-	--table-header-color: #9e9e9e;
+	--table-header-color: #4369ff;
 	--table-hover-color: #9191916c;
-	--table-txt-color: #030303;
-	--table-bg-color: #7c7c7c;
+	--table-txt-color: #ffffff;
+	--table-bg-color: #2f48ad;
+	--table-bg-info-color: #828bb0;
 	--table-border-color: #000000;
 
 	/* Buttons */
-	--btns-bg-color: #303030;
+	--btns-bg-color: #4369ff;
     --btns-bg-hover-color: #0f0f0f;
     --btns-txt-color: #ffffff;
     --btns-bg-hover-color: #ffffff;
     --btns-txt-hover-color: #000000;
     --btns-shadow-color: #0f0f0f35;
 
+	/* Audio */
+	--audio-shadow-color: #4369ff;
+
 	/******** DARK MODE ********/
 	/* Table */
-	--dark-table-header-color: #494949;
+	--dark-table-header-color: #1c369f;
 	--dark-table-hover-color: #0000006c;
-	--dark-table-txt-color: #cacaca;
-	--dark-table-bg-color: #050505;
-	--dark-table-border-color: #6a6a6a;
+	--dark-table-txt-color: #ffffff;
+	--dark-table-bg-color: #284cdb;
+	--dark-table-bg-info-color: #828bb0;
+	--dark-table-border-color: #182043;
 
 	/* Buttons */
-	--dark-btns-bg-color: #ffffff;
-    --dark-btns-bg-hover-color: #0f0f0f;
+	--dark-btns-bg-color: #aeb8ff;
+    --dark-btns-bg-hover-color: #4369ff;
     --dark-btns-txt-color: #000000;
-    --dark-btns-bg-hover-color: #000000;
     --dark-btns-txt-hover-color: #ffffff;
     --dark-btns-shadow-color: #ffffff2e;
 }
@@ -45,9 +49,9 @@
 audio:hover,
 audio:focus,
 audio:active {
-	-webkit-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
-	box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 15px 15px 20px var(--audio-shadow-hover-color);
+	-moz-box-shadow: 15px 15px 20px var(--audio-shadow-hover-color);
+	box-shadow: 15px 15px 20px var(--audio-shadow-hover-color);
 	-webkit-transform: scale(1.05);
 	-moz-transform: scale(1.05);
 	transform: scale(1.05);
@@ -195,13 +199,12 @@ audio {
 	padding: 33px;
 	min-height: 250px;
 	border-radius: 2%;
-	filter: drop-shadow(3px 5px 2px var(--modal-scroll-shadow-color));
+	/* filter: drop-shadow(3px 5px 2px var(--modal-scroll-shadow-color)); */
 	animation: appear 350ms ease-in 1;
 }
 
 .dark #contentMenu {
 	background: var(--dark-modal-bg-color);
-	filter: drop-shadow(3px 5px 2px var(--dark-modal-scroll-shadow-color));
 }
 
 .seccionMenu {
@@ -298,6 +301,10 @@ audio {
 	text-align: center;
 	border-collapse: collapse;
 	margin-bottom: 2%;
+}
+
+tr {
+	background-color: var(--table-bg-info-color);
 }
 
 .tableHorario tr:hover {

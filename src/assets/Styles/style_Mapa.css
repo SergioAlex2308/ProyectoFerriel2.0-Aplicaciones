@@ -3,27 +3,27 @@
 
     /*Modal color*/
     --modal-bg-color: #ffffff;
-    --modal-title-color: #000000;
-    --modal-subtitle-color: #000000;
-    --modal-txt-color: #000000;
+    --modal-title-color: #4369ff;
+    --modal-subtitle-color: #273b89;
+    --modal-txt-color: #252f58;
     --bg-modal-color: #00000099;
     --modal-header-border-color: #0000001a;
-    --modal-close: #aaaaaa;
-    --modal-close-hover: #000;
-    --modal-scroll-color: #808080;
-    --modal-scroll-hover-color: #000000;
-    --modal-scroll-shadow-color: #808080;
+    --modal-close: #2c47b6;
+    --modal-close-hover: #5370e2;
+    --modal-scroll-color: #4369ff;
+    --modal-scroll-hover-color: #142259;
+    --modal-scroll-shadow-color: #224fff;
 
     /* Modal Objects */
     --modal-nameStation-size: 36px;
 
     /*Load Color*/
-    --load-bg-color: #262626;
+    --load-bg-color: #4369ff;
 
     /*Menu icon color*/
-    --icon-bg-color: #00000047;
-    --icon-hover-color: #000000;
-    --burger-line-color: #ffffff;
+    --icon-bg-color: #ffffff8f;
+    --icon-hover-color: #142259;
+    --burger-line-color: #4369ff;
 
     /*Header color*/
     --title-bg-color: #262626;
@@ -32,7 +32,7 @@
     --shadow-icon-color: #00000066;
 
     /*Button view*/
-    --btn-bg-color: #303030;
+    --btn-bg-color: #4369ff;
     --btn-bg-hover-color: #0f0f0f;
     --btn-txt-color: #ffffff;
     --btn-bg-hover-color: #ffffff;
@@ -41,7 +41,7 @@
 
     /*Station labels*/
     --label-txt-color: #ffffff;
-    --label-bg-color: #000000cc;
+    --label-bg-color: #334ebcd8;
     --label-info-bg-color: #ffffffcb;
     --label-txt-info-color: #000000;
     --label-border-color: #000000cc;
@@ -57,21 +57,25 @@
     --tool-txt-color: #ffffff;
 
     /* Audio */
-    --audio-shadow-color: #ffffff;
+    --audio-shadow-color: #4369ff;
+    --audio-shadow-hover-color: #3b4d95;
+
+    /* CrossHair */
+    --cross-bg-color: #0f1426;
 
     /******** DARK MODE ********/
     /*Modal color*/
-    --dark-modal-bg-color: #2e2e2e;
+    --dark-modal-bg-color: #142259;
     --dark-modal-title-color: #ffffff;
     --dark-modal-subtitle-color: #ffffff;
     --dark-modal-txt-color: #ffffff;
     --dark-bg-modal-color: #00000099;
-    --dark-modal-header-border-color: #ffffff1a;
+    --dark-modal-header-border-color: #0011557a;
     --dark-modal-close: #aaaaaa;
     --dark-modal-close-hover: #000;
     --dark-modal-scroll-color: #ffffff;
-    --dark-modal-scroll-hover-color: #676767;
-    --dark-modal-scroll-shadow-color: #525252;
+    --dark-modal-scroll-hover-color: #001155;
+    --dark-modal-scroll-shadow-color: #001155;
 
     /*Load Color*/
     --dark-load-bg-color: #262626;
@@ -110,6 +114,9 @@
     /*Tooltip*/
     --dark-tool-bg-color: #000000;
     --dark-tool-txt-color: #ffffff;
+
+    /* CrossHair */
+    --dark-cross-bg-color: #ffffff;
 
 }
 
@@ -464,7 +471,7 @@
 
 #cross {
     height: 20px;
-    background-color: #000;
+    background-color: var(--cross-bg-color);
     position: relative;
     width: 3px;
     animation: appear 4s ease-in 1;
@@ -472,12 +479,20 @@
 
 #cross::after {
     position: absolute;
-    background: #000000;
+    background: var(--cross-bg-color);
     content: "";
     height: 3px;
     left: -9px;
     top: 9px;
     width: 20px;
+}
+
+.dark #cross {
+    background-color: var(--dark-cross-bg-color);
+}
+
+.dark #cross::after {
+    background-color: var(--dark-cross-bg-color);
 }
 
 .pointObject {
@@ -856,7 +871,6 @@
     color: var(--modal-subtitle-color);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 200;
-    color: var(--modal-txt-color);
 }
 .dark .titleControls {
     color: var(--dark-modal-txt-color);
