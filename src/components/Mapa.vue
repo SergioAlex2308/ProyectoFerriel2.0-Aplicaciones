@@ -1116,6 +1116,17 @@ export default {
       load20: false, //Telefono load
       load21: false, //Telegrafo load
       load22: false, //Carretilla load
+      load23: false, //Trenanimado load
+      load24: false, //Nubesanimado load
+      load25: false, //Catedral load
+      load26: false, //Puente comun load
+      load27: false, //Universidad load
+      load28: false, //Locomotoras load
+      load29: false, //CatedralColisiones load
+      load30: false, //PuenteColisiones load
+      load31: false, //UniversidadColisiones load
+      load32: false, //LocomotoraColisiones load
+      load33: false, //Rieles load
       esperatime: true,
       mostrar: false,
       container: null,
@@ -1253,6 +1264,17 @@ export default {
       const loader21 = new GLTFLoader().setPath("/Models/");
       const loader22 = new GLTFLoader().setPath("/Models/");
       const loader23 = new GLTFLoader().setPath("/Models/");
+      const loader24 = new GLTFLoader().setPath("/Models/");
+      const loader25 = new GLTFLoader().setPath("/Models/");
+      const loader26 = new GLTFLoader().setPath("/Models/");
+      const loader27 = new GLTFLoader().setPath("/Models/");
+      //const loader28 = new GLTFLoader().setPath("/Models/");
+      const loader29 = new GLTFLoader().setPath("/Models/");
+      const loader30 = new GLTFLoader().setPath("/Models/");
+      const loader31 = new GLTFLoader().setPath("/Models/");
+      //const loader32 = new GLTFLoader().setPath("/Models/");
+      const loader33 = new GLTFLoader().setPath("/Models/");
+
 
       //Models
       loader01.load(
@@ -1707,17 +1729,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load22 = true;
           }
@@ -1733,19 +1744,150 @@ export default {
           this.mesh = gltf.scene;
           //this.scene.add(gltf.scene);
            this.scene.add(this.mesh);
-          /* if (this.mesh) {
-            this.load22 = true;
-          } */
+          if (this.mesh) {
+            this.load23 = true;
+          }
           this.mixer = new THREE.AnimationMixer(this.mesh);
           this.mixer.clipAction(gltf.animations[ 0 ]).play();
-
-          //this.worldOctree.fromGraphNode(gltf.scene);
           this.animate();
         },
         undefined,
         function (e) {
           console.error(e);
         }
+      );
+      loader24.load(
+        "animacionprueba.glb",
+        (gltf) => {
+          this.mesh = gltf.scene;
+          //this.scene.add(gltf.scene);
+           this.scene.add(this.mesh);
+          if (this.mesh) {
+            this.load24 = true;
+          }
+          this.mixer = new THREE.AnimationMixer(this.mesh);
+          this.mixer.clipAction(gltf.animations[ 0 ]).play();
+          this.animate();
+        },
+        undefined,
+        function (e) {
+          console.error(e);
+        }
+      );
+      //Islas
+      loader25.load(
+        "CatedralModelos.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load25 = true;
+          }
+        },
+        undefined,
+        undefined
+      );
+      loader26.load(
+        "PuentecomunModelos.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load26 = true;
+          }
+        },
+        undefined,
+        undefined
+      );
+      loader27.load(
+        "UniversidadModelos.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load27 = true;
+          }
+        },
+        undefined,
+        undefined
+      );
+      /* loader28.load(
+        "Obj6-Carretilla.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load28 = true;
+          }
+        },
+        undefined,
+        undefined
+      ); */
+      //Collitions islas
+      loader29.load(
+        "CatedralColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load29 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader30.load(
+        "PuentecomunColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load30 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader31.load(
+        "UniversidadColisiones.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load31 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      /* loader32.load(
+        "Obj6-Carretilla.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load32 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      ); */
+      //Train
+      loader33.load(
+        "TrenRieles.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load33 = true;
+          }
+        },
+        undefined,
+        undefined
       );
 
       this.pointObjs();
@@ -2254,7 +2396,18 @@ export default {
         this.load19 &&
         this.load20 &&
         this.load21 &&
-        this.load22
+        this.load22 &&
+        this.load23 &&
+        this.load24 &&
+        this.load25 &&
+        this.load26 &&
+        this.load27 &&
+        //this.load28 &&
+        this.load29 &&
+        this.load30 &&
+        this.load31 &&
+        //this.load32 &&
+        this.load33
       ) {
         this.loaded = true;
       }
