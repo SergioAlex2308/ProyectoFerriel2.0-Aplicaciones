@@ -30,23 +30,22 @@
           <div class="contentHistory">
             <div>
               <p id="zoomtexto2" class="mitexto">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not o nly five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages , and more recently with desktop
-                publishing software like Aldus PageMaker including versions o f
-                Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry.
+                Ferriel es un aplicativo web donde podrás moverte a través de un
+                entorno 3D mientras conoces las estaciones de la zona Sabana
+                Norte, su historia y algunos de los objetos que se utilizaban en
+                las épocas de antaño en las estaciones de tren. 
+                <br>
+                <br>
+                A lo largo del
+                mapa de Ferriel Web encontraras diversos marcadores, interactúa
+                centrando el cursor sobre ellos, de esta manera podrás conocer
+                la información que contiene cada uno.
               </p>
             </div>
           </div>
           <div class="audios">
             <audio controls muted>
-              <source src="../assets/audios/sonidotren.mp3" type="audio/mpeg" />
+              <source src="../assets/audios/Bienvenida.wav" type="audio/mpeg" />
               <source src="horse.ogv" type="audio/ogg" />
             </audio>
           </div>

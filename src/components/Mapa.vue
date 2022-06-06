@@ -133,7 +133,7 @@
             <div class="audios">
               <audio controls muted>
                 <source
-                  src="../assets/audios/sonidotren.mp3"
+                  src="../assets/audios/Seccionayuda.wav"
                   type="audio/mpeg"
                 />
                 <source src="horse.ogv" type="audio/ogg" />
@@ -434,7 +434,7 @@
             <div class="imageObject">
               <img
                 class="PictureHorizontal"
-                src="../assets/Images/Telefono.png"
+                src="../assets/Images/Carretilla.jpg"
                 alt="Fotografia Objeto"
               />
             </div>
@@ -692,10 +692,9 @@
             </div>
             <div class="historyStation">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                neque, sint quas a sunt velit non consectetur debitis laboriosam
-                voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
-                recusandae alias numquam.
+                La estación del tren de Cajicá hace parte del ferrocarril del
+                Norte, fue declarado Bien de Interés Cultural a nivel nacional
+                en el año 1996.
               </p>
             </div>
           </div>
@@ -716,10 +715,10 @@
             </div>
             <div class="historyStation">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                neque, sint quas a sunt velit non consectetur debitis laboriosam
-                voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
-                recusandae alias numquam.
+                En 2009 fue restaurada con el objetivo de ser transformada en
+                centro artesanal y gastronómico del municipio. Sin embargo,
+                actualmente allí opera la Oficina de Planeación y la Personería
+                Municipal.
               </p>
             </div>
           </div>
@@ -740,10 +739,12 @@
             </div>
             <div class="historyStation">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                neque, sint quas a sunt velit non consectetur debitis laboriosam
-                voluptate! Nulla, nisi odit? Delectus eveniet nisi maiores
-                recusandae alias numquam.
+                Posee un diseño republicano característico de los edificios
+                nacionales de los años 20 y 30. A pesar de que la línea férrea
+                llegó a Cajicá en 1986, fue hasta 1926 que se construyó la
+                actual estación, siendo ministros de Obras Públicas Laureano
+                Gómez y Mariano Ospina Pérez y Gerente del Ferrocarril, Eduardo
+                Ortiz Borda.
               </p>
             </div>
           </div>
@@ -980,7 +981,7 @@
           src="../assets/Icons/Icons-Escape.png"
           alt="Icono tecla escape"
         />
-        <p>Presiona la tecla Escape para liberar el cursor.</p>
+        <p>Presiona la tecla Escape para regresar a la vista aérea.</p>
       </div>
     </div>
     <transition name="fade">
@@ -1094,8 +1095,8 @@ export default {
   data() {
     return {
       loaded: false, //Carga
-      load01: false, //Cajicá load
-      load02: false, //Zipaquirá load
+      load01: false, //Cajicá load //Modelos ferriel mapa
+      load02: false, //Zipaquirá load // Colisiones ferriel mapa
       load03: false, //Parque load
       load04: false, //Puentes load
       load05: false, //Cajicá Letrero load
@@ -1195,6 +1196,8 @@ export default {
       clock2: new THREE.Clock(),
       GRAVITY: 30,
       mixer: null, //Animations
+      mixer2: null,
+      mixer3: null
     };
   },
   methods: {
@@ -1245,6 +1248,10 @@ export default {
       const loader02 = new GLTFLoader().setPath("/Models/");
       const loader03 = new GLTFLoader().setPath("/Models/");
       const loader04 = new GLTFLoader().setPath("/Models/");
+      /* const loader01 = new GLTFLoader().setPath("/Models/");
+      const loader02 = new GLTFLoader().setPath("/Models/");
+      const loader03 = new GLTFLoader().setPath("/Models/");
+      const loader04 = new GLTFLoader().setPath("/Models/");
       const loader05 = new GLTFLoader().setPath("/Models/");
       const loader06 = new GLTFLoader().setPath("/Models/");
       const loader07 = new GLTFLoader().setPath("/Models/");
@@ -1267,32 +1274,20 @@ export default {
       const loader24 = new GLTFLoader().setPath("/Models/");
       const loader25 = new GLTFLoader().setPath("/Models/");
       const loader26 = new GLTFLoader().setPath("/Models/");
-      const loader27 = new GLTFLoader().setPath("/Models/");
+      const loader27 = new GLTFLoader().setPath("/Models/"); */
       //const loader28 = new GLTFLoader().setPath("/Models/");
-      const loader29 = new GLTFLoader().setPath("/Models/");
-      const loader30 = new GLTFLoader().setPath("/Models/");
-      const loader31 = new GLTFLoader().setPath("/Models/");
+      //const loader29 = new GLTFLoader().setPath("/Models/");
+      //const loader30 = new GLTFLoader().setPath("/Models/");
+      //const loader31 = new GLTFLoader().setPath("/Models/");
       //const loader32 = new GLTFLoader().setPath("/Models/");
-      const loader33 = new GLTFLoader().setPath("/Models/");
-
+      //const loader33 = new GLTFLoader().setPath("/Models/");
 
       //Models
       loader01.load(
-        "Cajica01.glb",
+        "FerrielModelos.glb",
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load01 = true;
           }
@@ -1301,11 +1296,64 @@ export default {
         undefined
       );
       loader02.load(
-        "Zipaquira01.glb",
+        "FerrielColisiones.glb",
         (gltf) => {
           this.mesh = gltf;
+          this.scene.add(gltf.scene);
+          if (this.mesh) {
+            this.load02 = true;
+          }
+          this.worldOctree.fromGraphNode(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      loader03.load(
+        "AnimacionTren.glb",
+        (gltf) => {
+          this.mesh = gltf.scene;
+          //this.scene.add(gltf.scene);
+          this.scene.add(this.mesh);
+          if (this.mesh) {
+            this.load03 = true;
+          }
+          //Locomotora
+          this.mixer = new THREE.AnimationMixer(this.mesh);
+          this.mixer.clipAction(gltf.animations[0]).play();
 
-          /*  gltf.scene.receiveShadow = true;
+          //Vagon
+          this.mixer2 = new THREE.AnimationMixer(this.mesh);
+          this.mixer2.clipAction(gltf.animations[1]).play();
+
+          this.animate();
+        },
+        undefined,
+        function (e) {
+          console.error(e);
+        }
+      );
+      loader04.load(
+        "Animacionlogo.glb",
+        (gltf) => {
+          this.mesh = gltf.scene;
+          //this.scene.add(gltf.scene);
+          this.scene.add(this.mesh);
+          this.mixer3 = new THREE.AnimationMixer(this.mesh);
+          this.mixer3.clipAction(gltf.animations[0]).play();
+          this.animate();
+        },
+        undefined,
+        function (e) {
+          console.error(e);
+        }
+      );
+      /* loader01.load(
+        "Cajica01.glb",
+        (gltf) => {
+          this.mesh = gltf;
+          this.scene.add(gltf.scene);
+
+          gltf.scene.receiveShadow = true;
           gltf.scene.castShadow = true;
           this.mesh.scene.traverse((object) => {
             if (object.isMesh) object.castShadow = true;
@@ -1314,16 +1362,22 @@ export default {
             if (node.isMesh || node.isLight) node.castShadow = true;
             if (node.isMesh || node.isLight) node.receiveShadow = true;
           });
- */
+
+          if (this.mesh) {
+            this.load01 = true;
+          }
+        },
+        undefined,
+        undefined
+      ); */
+      /* loader02.load(
+        "Zipaquira01.glb",
+        (gltf) => {
+          this.mesh = gltf;
           this.scene.add(gltf.scene);
           if (this.mesh) {
             this.load02 = true;
           }
-          //this.worldOctree.fromGraphNode(gltf.scene);
-          //this.animate();
-          /* this.Model1 = new THREE.Object3D();
-          this.Model1.add(this.mesh.scene);
-          this.scene.add(this.Model1); */
         },
         undefined,
         undefined
@@ -1333,17 +1387,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /*  gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load03 = true;
           }
@@ -1356,17 +1399,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load04 = true;
           }
@@ -1379,17 +1411,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load05 = true;
           }
@@ -1402,17 +1423,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          });
- */
           if (this.mesh) {
             this.load06 = true;
           }
@@ -1425,17 +1435,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /*  gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load07 = true;
           }
@@ -1448,17 +1447,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load08 = true;
           }
@@ -1471,17 +1459,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          });
- */
           if (this.mesh) {
             this.load09 = true;
           }
@@ -1494,26 +1471,15 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /*  gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load10 = true;
           }
         },
         undefined,
         undefined
-      );
+      ); */
       //Collitions
-      loader11.load(
+      /* loader11.load(
         "CajicaColisiones.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -1602,24 +1568,13 @@ export default {
         },
         undefined,
         undefined
-      );
+      ); */
       //Objects
-      loader17.load(
+      /* loader17.load(
         "Obj1-Vagoneta.glb",
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load17 = true;
           }
@@ -1633,17 +1588,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load18 = true;
           }
@@ -1657,17 +1601,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load19 = true;
           }
@@ -1681,17 +1614,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load20 = true;
           }
@@ -1705,17 +1627,6 @@ export default {
         (gltf) => {
           this.mesh = gltf;
           this.scene.add(gltf.scene);
-
-          /* gltf.scene.receiveShadow = true;
-          gltf.scene.castShadow = true;
-          this.mesh.scene.traverse((object) => {
-            if (object.isMesh) object.castShadow = true;
-          });
-          this.mesh.scene.traverse((node) => {
-            if (node.isMesh || node.isLight) node.castShadow = true;
-            if (node.isMesh || node.isLight) node.receiveShadow = true;
-          }); */
-
           if (this.mesh) {
             this.load21 = true;
           }
@@ -1736,9 +1647,9 @@ export default {
         },
         undefined,
         undefined
-      );
+      ); */
       //Model Animation
-      loader23.load(
+      /* loader23.load(
         "animacionprueba.glb",
         (gltf) => {
           this.mesh = gltf.scene;
@@ -1773,9 +1684,9 @@ export default {
         function (e) {
           console.error(e);
         }
-      );
+      ); */
       //Islas
-      loader25.load(
+      /* loader25.load(
         "CatedralModelos.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -1810,7 +1721,7 @@ export default {
         },
         undefined,
         undefined
-      );
+      ); */
       /* loader28.load(
         "Obj6-Carretilla.glb",
         (gltf) => {
@@ -1824,7 +1735,7 @@ export default {
         undefined
       ); */
       //Collitions islas
-      loader29.load(
+      /* loader29.load(
         "CatedralColisiones.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -1862,7 +1773,7 @@ export default {
         },
         undefined,
         undefined
-      );
+      ); */
       /* loader32.load(
         "Obj6-Carretilla.glb",
         (gltf) => {
@@ -1877,7 +1788,7 @@ export default {
         undefined
       ); */
       //Train
-      loader33.load(
+      /* loader33.load(
         "TrenRieles.glb",
         (gltf) => {
           this.mesh = gltf;
@@ -1888,7 +1799,7 @@ export default {
         },
         undefined,
         undefined
-      );
+      ); */
 
       this.pointObjs();
 
@@ -2128,7 +2039,7 @@ export default {
 
       //Carretilla
       var sphere6 = new THREE.Mesh(geometryOutside, material);
-      sphere6.position.x = -9.7;
+      sphere6.position.x = 7;
       sphere6.position.y = 1.3;
       sphere6.position.z = 57.8;
       sphere6.nameId = "Label6";
@@ -2298,43 +2209,43 @@ export default {
 
       //Catedral de sal
       var sphere26 = new THREE.Mesh(geometryOutside, material);
-      sphere26.position.x = 0;
+      sphere26.position.x = -45.9;
       sphere26.position.y = 1.3;
-      sphere26.position.z = 2;
+      sphere26.position.z = 49;
       sphere26.nameId = "Label26";
       this.scene.add(sphere26);
       this.groupIndicator.add(sphere26);
 
       var sphere27 = new THREE.Mesh(geometryOutside, material);
-      sphere27.position.x = 0;
+      sphere27.position.x = -49;
       sphere27.position.y = 1.3;
-      sphere27.position.z = 4;
+      sphere27.position.z = 45.5;
       sphere27.nameId = "Label27";
       this.scene.add(sphere27);
       this.groupIndicator.add(sphere27);
 
       //Universidad
       var sphere28 = new THREE.Mesh(geometryOutside, material);
-      sphere28.position.x = 0;
+      sphere28.position.x = 46;
       sphere28.position.y = 1.3;
-      sphere28.position.z = 6;
+      sphere28.position.z = 46;
       sphere28.nameId = "Label28";
       this.scene.add(sphere28);
       this.groupIndicator.add(sphere28);
 
       //Puente del común
       var sphere29 = new THREE.Mesh(geometryOutside, material);
-      sphere29.position.x = 0;
+      sphere29.position.x = 46;
       sphere29.position.y = 1.3;
-      sphere29.position.z = 8;
+      sphere29.position.z = -37;
       sphere29.nameId = "Label29";
       this.scene.add(sphere29);
       this.groupIndicator.add(sphere29);
 
       var sphere30 = new THREE.Mesh(geometryOutside, material);
-      sphere30.position.x = 0;
+      sphere30.position.x = 52;
       sphere30.position.y = 1.3;
-      sphere30.position.z = 10;
+      sphere30.position.z = -37;
       sphere30.nameId = "Label30";
       this.scene.add(sphere30);
       this.groupIndicator.add(sphere30);
@@ -2374,7 +2285,7 @@ export default {
       };
     },
     HideWait() {
-      if (
+      /* if (
         this.load01 &&
         this.load02 &&
         this.load03 &&
@@ -2409,6 +2320,9 @@ export default {
         //this.load32 &&
         this.load33
       ) {
+        this.loaded = true;
+      } */
+      if (this.load01 && this.load02 && this.load03) {
         this.loaded = true;
       }
     },
@@ -2933,6 +2847,8 @@ export default {
       }
       const d = this.clock2.getDelta();
       this.mixer.update(d);
+      this.mixer2.update(d);
+      this.mixer3.update(d);
 
       TWEEN.update();
       this.rayPoints();
